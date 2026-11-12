@@ -1,0 +1,400 @@
+% Shared basic results; load once from the master.
+% Dependency order: certificates -> converse -> regularity -> convergence.
+\subsection{Positive variational equations and converse contraction weights}
+\label{s:PositiveWeights}
+Let $\varphi_t$ be the flow of $\dot y=g(y)$ on a compact forward-invariant
+set $K$. For a continuous matrix field $A$, write $\Psi(t,y)$ for the
+fundamental matrix of
+\[
+ \dot\xi=A(\varphi_t(y))\xi,\qquad \Psi(0,y)=I.
+\]
+For a $C^1$ field $H$, put $D_hH=(\partial_yH)g$, componentwise.
+The matrix $A$ must be specified: estimates for the full, transverse,
+and exterior-power variational equations have different consequences.
+
+\beP[Common and transported certificates for linear equations along a flow]
+[][VarCert]
+Suppose $g$ is $C^1$ near $K$ and $A:K\to\mathbb R^{d\times d}$ is
+continuous. Each of the following conditions implies uniform exponential decay.
+\begin{enumerate}
+\item A symmetric $C^1$ field $P$ satisfies, for $0<m\le M$ and $c>0$,
+\begin{equation}\label{HG:transportLMI}
+ mI\preceq P\preceq MI,\qquad
+ D_hP+A^\top P+PA\preceq-2cP\qquad(y\in K).
+\end{equation}
+Then $\|\Psi(t,y)\|_2\le\sqrt{M/m}\,e^{-ct}$.
+\item A fixed diagonal signature matrix $\Sigma$, with entries $\pm1$,
+makes $C=\Sigma A\Sigma^{-1}$ Metzler on $K$, and a $C^1$ field $v$ satisfies
+\begin{equation}\label{HG:transportLP}
+ m\mathbf1\le v\le M\mathbf1,\qquad
+ D_hv+C^\top v\le-cv\qquad(y\in K).
+\end{equation}
+Then $\|\Psi(t,y)\|_1\le(M/m)e^{-ct}$.
+This assertion also holds for a continuous flow and continuous $v$
+with a continuous forward orbital derivative, used in place of $D_hv$.
+\end{enumerate}
+The norms $(\xi^\top P(y)\xi)^{1/2}$ and $v(y)^\top|\Sigma\xi|$
+respectively decay at rate $c$ along trajectories.
+
+For constant certificates the derivative terms vanish. If
+$A(K)\subseteq\operatorname{conv}\{A_1,\ldots,A_q\}$, it suffices to check
+one of the following systems with the same certificate at every vertex:
+\begin{equation}\label{HG:LMI}
+ P\succ0,\qquad A_j^\top P+PA_j\preceq-2cP\quad(1\le j\le q),
+\end{equation}
+\begin{equation}\label{HG:LP}
+ v\gg0,\qquad C_j^\top v\le-cv\quad(1\le j\le q),
+ \qquad C_j=\Sigma A_j\Sigma^{-1}\text{ Metzler}.
+\end{equation}
+For fixed $c$, these are LMIs in $P$ and linear inequalities in $v$,
+respectively. They express logarithmic-norm bounds in the constant norms
+with transformations $\Theta=P^{1/2}$ and
+$\Theta=\operatorname{Diag}(v)\Sigma$.
+\eeP
+\begin{proof}
+Along a solution,
+\[
+ \frac{d}{dt}(\xi^\top P\xi)
+ =\xi^\top(D_hP+A^\top P+PA)\xi
+ \le-2c\,\xi^\top P\xi,
+\]
+which proves the first estimate. For the second, positivity of the
+Metzler equation for $\Sigma\xi$ gives, almost everywhere,
+\[
+ \frac{d}{dt}\bigl(v^\top|\Sigma\xi|\bigr)
+ \le(D_hv+C^\top v)^\top|\Sigma\xi|
+ \le-cv^\top|\Sigma\xi|.
+\]
+Integration and the bounds on $v$ prove the claim, including its
+orbital-derivative version. Convex combinations preserve the constant
+inequalities and the Metzler property. The logarithmic-norm statements
+follow from the symmetric part in the Euclidean case and the weighted
+column sums in the $\ell^1$ case.
+\end{proof}
+
+\beD[Lur'e systems are absolutely contracting when one norm contracts them for a whole class of nonlinearities]
+[absolute Lur'e contractivity][LurCon]
+A \emph{Lur'e system} is $\dot x=-Vx+B\Phi(Wx,t)$, with $V\in\mathbb R^{n_S\times n_S}$,
+$B\in\mathbb R_+^{n_S\times m}$, $W\in\mathbb R_+^{m\times n_S}$. Let $P\succ0$, $\|x\|_P^2=x^\top Px$ and
+$\eta>0$. The right-hand side $f$ is \emph{strongly infinitesimally contracting} with respect to
+$\|\cdot\|_P$ with rate $\eta$ if
+\[
+ (f(x_1,t)-f(x_2,t))^\top P(x_1-x_2)\le-\eta\|x_1-x_2\|_P^2
+ \qquad\text{for all }x_1,x_2,t.
+\]
+The system is \emph{absolutely contracting} over a class of nonlinearities if this holds with
+the same $P$ and $\eta$ for every $\Phi$ in the class. The class of
+\cite{davydov2024exponential} consists of the \emph{cocoercive} maps,
+\[
+ (\Phi(y_1,t)-\Phi(y_2,t))^\top(y_1-y_2)\ge\rho\|\Phi(y_1,t)-\Phi(y_2,t)\|_2^2,
+ \qquad\rho>0.
+\]
+\eeD
+
+\beR[Absolute Lur'e contractivity and the test $\bar R_0<1/L$]
+By \cite[Theorem~1]{davydov2024exponential}, absolute contractivity over the cocoercive class
+holds if and only if some $\lambda\ge0$ satisfies
+\[
+ \begin{pmatrix}
+ -V^\top P-PV+2\eta P & PB+\lambda W^\top\\
+ B^\top P+\lambda W & -2\lambda\rho I
+ \end{pmatrix}\preceq0.
+\]
+A coordinatewise response with $0\le \Phi'\le L$ is cocoercive with $\rho=1/L$, so
+$\dot x=-Vx+\Phi(\beta Wx)$ is the case $B=I$, with $\beta W$ in place of $W$. Put
+$\bar R_0=\beta\rho(V^{-1}W)$. For $V=I$, $\beta>0$ and symmetric $W\ge0$ with $r=\rho(W)>0$, the
+matrix inequality with $P=I$, $\lambda=1/(\beta r)$ reduces to $\beta Lr\le1-\eta$, so it agrees
+with the test $\bar R_0<1/L$.
+
+In general the cocoercive class is strictly larger and the two conditions differ, as the
+following illustration, which is not taken from \cite{davydov2024exponential}, shows. Take $V=I$,
+$W=\begin{pmatrix}0&a\\0&0\end{pmatrix}$ with $\beta aL>2$. Then $\bar R_0=0$, and every coordinatewise
+response gives a triangular system, contracting in the norm $\max\{|z_1|/p_1,|z_2|\}$ for any
+$p_1>\beta aL$. The linear map
+$\Phi(y)=\frac L2\begin{pmatrix}1&-1\\1&1\end{pmatrix}y$ is cocoercive with $\rho=1/L$, but
+$-I+\beta\frac L2\begin{pmatrix}1&-1\\1&1\end{pmatrix}W$ has the eigenvalue $-1+\beta aL/2>0$, so no
+$P$ gives absolute contractivity.
+
+With $V$ a nonsingular $M$-matrix and $W\ge0$, absolute contractivity over the cocoercive class
+implies $\bar R_0<1/L$: the admissible map $\Phi(y)=Ly$ requires $-V+\beta LW$ to be Hurwitz. The
+example above shows that the converse fails. Thus the distinction is not merely the choice of
+norm: the cocoercive class also allows coupling between the coordinates of the response.
+For firing-rate networks with monotone nonexpansive coordinatewise activations,
+\cite{Gokhale2026} give a sufficient condition with a positive diagonal multiplier. An elementary
+deduction from it recovers the spectral bound exactly for $V=I$, including nonsymmetric and
+reducible $W\ge0$. Put $M=\beta LW$ and normalize the response to have slopes in $[0,1]$. The
+criterion is
+\[
+ \begin{pmatrix}
+ -2(1-\eta)P & P+M^\top Q\\
+ P+QK & -2Q
+ \end{pmatrix}\preceq0,
+ \qquad P\succ0,\quad Q\succ0\ \text{diagonal},\quad\eta>0.
+\]
+Testing the identity activation shows that its feasibility implies $\rho(M)<1$. Conversely, if
+$\rho(M)<1$, the nonnegative matrix $G=(I+M)/2$ is Schur stable and admits a positive diagonal
+matrix $P$ with $G^\top PG\prec P$ \cite{rantzer2015scalable}. Taking $Q=P$, the Schur complement is
+\[
+ 2\bigl(G^\top PG-(1-\eta)P\bigr),
+\]
+which is negative definite for sufficiently small $\eta>0$. The triangular example above satisfies
+this criterion: it separates the coupled cocoercive class from the coordinatewise class, not
+the test $\bar R_0<1/L$ from the coordinatewise criterion.
+These LMIs use a quadratic function of the difference of two states. The classical
+Lur'e--Postnikov quadratic-plus-integral construction, associated with Popov criteria
+\cite{Khalil2002}, instead works about an equilibrium. For $\dot x=-Vx+\Phi(Wx+h)$ with $V$ positive
+diagonal, slopes in $[0,1]$ and an equilibrium $x^*$, put $e=x-x^*$ and
+$\psi_i(s)=\Phi_i((Wx^*+h)_i+s)-\Phi_i((Wx^*+h)_i)$, so that $\dot e=-Ve+\psi(We)$. With $X\succ0$
+and $N=\operatorname{Diag}(\nu_i)\succeq0$, $T\succeq0$, both diagonal, the function
+\[
+ L_{\mathrm{LP}}(e)=e^\top Xe+2\sum_i\nu_i\int_0^{(We)_i}\psi_i(s)\,ds
+\]
+is bounded above and below by quadratics. Writing $z=\psi(We)$, differentiation gives
+\[
+ \dot L_{\mathrm{LP}}=2e^\top X(-Ve+z)+2z^\top NW(-Ve+z).
+\]
+Since $T$ is diagonal, the sector inequalities $\psi_i(s)(s-\psi_i(s))\ge0$ give
+$z^\top T(We-z)\ge0$. Adding twice this quantity bounds $\dot L_{\mathrm{LP}}$ above by the quadratic
+form in $(e,z)$ of the matrix in the \emph{Lur'e--Postnikov LMI}
+\begin{equation}\label{eq:LPLMI}
+ \begin{pmatrix}
+ -XV-VX & X-VW^\top N+W^\top T\\
+ X-NWV+TW & NW+W^\top N-2T
+ \end{pmatrix}\prec0.
+\end{equation}
+Feasibility of \eqref{eq:LPLMI} therefore implies global exponential stability of $\bar x$. It
+certifies stability of that equilibrium rather than contraction, and this function is distinct
+from the Fenchel--Bregman divergence.
+\bookref{t:KBsharp}{The subcritical contraction statement of Theorem~\ref{t:KBsharp} belongs to
+the established theory of coordinatewise slope-restricted Lur'e systems \cite{Davydov}.
+Its constructive conclusion is different: with $V,W,L$ fixed, every prescribed finite number of
+stable equilibria can be realized by one common scalar response whenever $\bar R_0>1/L$. No conclusion
+at $\bar R_0=1/L$ is asserted.}{}
+\eeR
+
+For monotone systems and positive linear time-varying systems the converse principle is
+\cite[Theorem~4.3, Corollary~4.8]{KawanoBesselinkCao2020}. The next theorem formulates it over a
+compact base flow: the base need not be cooperative, $A$ need not be its Jacobian, and only
+forward evolution is used.
+
+\beT[Cooperative variational equations admit state-dependent contraction weights exactly when they are uniformly exponentially stable]
+[converse contraction weights][Wgt]\label{t:SCM-converse}
+Let $g$ be continuous and uniquely integrable near $K$, with continuous
+flow $\varphi_t$, and let $A:K\to\mathbb R^{n\times n}$ be continuous and
+Metzler. The following are equivalent:
+\begin{enumerate}
+\item There are $M,\alpha>0$ such that
+$\|\Psi(t,y)\|\le Me^{-\alpha t}$ for all $t\ge0$ and $y\in K$.
+\item There are $c>0$ and a continuous, uniformly positive weight
+$v:K\to\mathbb R^n$ with continuous forward orbital derivative
+\[
+ \dot v(y)=\left.\frac{d}{dt}v(\varphi_t(y))\right|_{t=0+},
+ \qquad \dot v+A^\top v\le-cv\quad\text{on }K.
+\]
+\end{enumerate}
+Under these conditions, every fixed $q\gg0$ gives the weight
+\[
+ v(y)=\int_0^\infty\Psi(t,y)^\top q\,dt,
+ \qquad \dot v+A^\top v=-q.
+\]
+\eeT
+\begin{proof}
+The implication (2)$\Rightarrow$(1) follows from
+Proposition~\ref{p:VarCert} with $\Sigma=I$ and the minimum and maximum
+of the components of $v$ on $K$.
+For (1)$\Rightarrow$(2), the displayed integral converges uniformly and
+is continuous. Since $A$ is bounded, $\Psi(t,y)=I+O(t)$ uniformly near
+$t=0$; positivity gives $v_i(y)\ge\delta q_i/2$ for some $\delta>0$.
+The cocycle identity yields, for $s\ge0$,
+\[
+ v(\varphi_s(y))=
+ \Psi(s,y)^{-\top}\left[v(y)-\int_0^s\Psi(t,y)^\top q\,dt\right].
+\]
+Differentiation at $s=0$ gives the asserted continuous orbital derivative.
+Boundedness of $v$ then gives $q\ge cv$ for some $c>0$.
+\end{proof}
+
+\beR[Smooth variational equations admit smooth contraction weights]
+[][WgtSmooth]
+Under the equivalent conditions of Theorem~\ref{t:Wgt}, if $g$ and $A$
+extend as $C^1$ fields near $K$, the weight can be chosen $C^1$ near $K$.
+Indeed, fix $q\gg0$ and choose $T>0$ so that
+$\Psi(T,y)^\top q\le q/2$ on $K$. The finite-horizon weight satisfies
+\[
+ v_T(y)=\int_0^T\Psi(t,y)^\top q\,dt,\qquad
+ D_hv_T+A^\top v_T=\Psi(T,y)^\top q-q\le-q/2.
+\]
+This is the construction of \cite[Appendix~B, (61)]{KawanoBesselinkCao2020}, there with
+$q=\mathbf1$. Finite-time smooth dependence gives $C^1$ regularity; uniform positivity
+and boundedness give $D_hv_T+A^\top v_T\le-cv_T$ for some $c>0$.
+If $K$ is a rectangular box, $C^1$ tensor Bernstein approximation
+provides a polynomial weight: sufficiently close approximants preserve
+positivity and the strictly negative residual. Polynomial $g,A$ are
+not required for existence, but permit polynomial certificate searches.
+\eeR
+
+The next theorem is a compact-domain consequence of the converse principle. Its hypothesis is
+global convergence to a Hurwitz equilibrium on a forward invariant set, whereas
+\cite[Theorem~4.3]{KawanoBesselinkCao2020} starts from incremental exponential stability on a
+forward and backward invariant set.
+
+\beT[Global convergence and contraction weights are equivalent for cooperative systems]
+[][EqWgt]
+Let $K\subset\mathbb R^n$ be compact, convex, with nonempty interior,
+and forward invariant under a $C^2$ vector field $f$ defined near $K$.
+Suppose $J(x)=Df(x)$ is Metzler on $K$, $f(e)=0$ for some $e\in K$,
+and $J(e)$ is Hurwitz. The following are equivalent:
+\begin{enumerate}
+\item Every solution starting in $K$ converges to $e$.
+\item The state variational matrix $\Psi(t,x)=D_x\varphi_t(x)$ satisfies
+$\|\Psi(t,x)\|\le Me^{-\alpha t}$ for some $M,\alpha>0$, all $t\ge0$,
+and all $x\in K$.
+\item There are $c>0$ and a $C^1$ weight $v\gg0$ near $K$ such that
+\[
+ (\partial_xv)f+J^\top v\le-cv\qquad\text{on }K.
+\]
+\end{enumerate}
+In this case $e$ is globally exponentially stable relative to $K$.
+If $K$ is a rectangular box, $v$ may be chosen polynomial.
+\eeT
+\begin{proof}
+Theorem~\ref{t:Wgt} and Remark~\ref{r:WgtSmooth} give (2)$\Leftrightarrow$(3)
+and the polynomial conclusion. Convexity gives
+\[
+ \varphi_t(x)-e
+ =\int_0^1\Psi(t,e+\theta(x-e))(x-e)\,d\theta,
+\]
+so (2) implies exponential convergence and hence (1).
+
+Assume (1). Since $J(e)$ is Metzler and Hurwitz,
+\[
+ w=(-J(e))^{-\top}\mathbf1\gg0,\qquad P_w=\operatorname{Diag}(w).
+\]
+For $\mu_1(H)=\max_j(H_{jj}+\sum_{i\ne j}|H_{ij}|)$, continuity gives
+$\lambda>0$ and a neighbourhood $U$ of $e$ such that
+$\mu_1(P_wJ(x)P_w^{-1})\le-\lambda$ on $U\cap K$.
+Local asymptotic stability gives a relatively open forward-invariant
+neighbourhood $V$ of $e$ in $K$, contained in $U$.
+Every $x\in K$ enters $V$ at some time $t_x$; continuity gives a
+relatively open neighbourhood of $x$ entering $V$ at the same time.
+A finite subcover and forward invariance give $T<\infty$ such that
+$\varphi_t(K)\subset V$ for all $t\ge T$.
+With $L_w=\sup_{x\in K}\|P_wJ(x)P_w^{-1}\|_1$, the initial bound
+$e^{L_wt}$ and subsequent decay at rate $\lambda$ yield
+\[
+ \|P_w\Psi(t,x)P_w^{-1}\|_1
+ \le e^{(L_w+\lambda)T}e^{-\lambda t}
+ \qquad(t\ge0,\ x\in K).
+\]
+Equivalence of norms proves (2).
+\end{proof}
+
+In the setting of Theorem~\ref{t:EqWgt}, the weight $v$ of item (3) defines the intrinsic distance
+\[
+ d_v(x,y)=\inf_\gamma\int_0^1v(\gamma(\theta))^\top|\gamma'(\theta)|\,d\theta,
+\]
+over $C^1$ paths in $K$ from $x$ to $y$. Item (3) and the Metzler property give
+$d_v(\varphi_t(x),\varphi_t(y))\le e^{-ct}d_v(x,y)$, so $L(x)=d_v(x,e)$ is an equilibrium Lyapunov
+function, possibly nonsmooth, with $L(\varphi_t(x))\le e^{-ct}L(x)$.
+
+\emph{\shortalt{Transverse application}{Transverse and compound applications}.}
+For a resident flow, taking $A=J^\perp$ in
+Proposition~\ref{p:VarCert} or Theorem~\ref{t:Wgt} certifies the transverse
+variational equation without requiring a cooperative resident field.
+Theorem~\ref{t:EqWgt}, in contrast, concerns the full Jacobian; its
+convergence conclusion cannot be inferred from transverse decay alone.
+
+\beP[Composite Lyapunov functions combine resident storage with transverse decay][][ComLya]
+Write the equations as $\dot z=f_z(z,y)$, $\dot y=f_y(z,y)$ with $z\ge0$ and $f_z(0,y)=0$, and let
+$y^*$ be a resident equilibrium. On a compact forward-invariant set $K\subseteq\{z\ge0\}$ containing
+$(0,y^*)$, suppose there are $\ell\gg0$, $a,c>0$, $b\ge0$, and a continuous resident storage
+$U\ge0$, vanishing only at $y^*$ and differentiable near the resident projection of $K$, such that
+\[
+ \ell^\top f_z(z,y)\le-c\ell^\top z,
+\]
+\[
+ \nabla U(y)^\top f_y(0,y)\le-a\|y-y^*\|^2,
+ \qquad
+ \nabla U(y)^\top\bigl(f_y(z,y)-f_y(0,y)\bigr)\le b\ell^\top z
+ \quad ((z,y)\in K).
+\]
+Then, for any $\kappa>b/c$, the function $H(z,y)=U(y)+\kappa\ell^\top z$ satisfies
+\[
+ \dot H\le-a\|y-y^*\|^2-(\kappa c-b)\ell^\top z,
+\]
+and $(0,y^*)$ is globally asymptotically stable relative to $K$.
+\eeP
+\begin{proof}
+Adding the three inequalities gives the estimate for $\dot H$. Since $z\ge0$ and $\ell\gg0$, $H\ge0$ on
+$K$ and vanishes only at $(0,y^*)$, and the right-hand side is negative elsewhere. Thus $H$ is a strict
+Lyapunov function on the compact forward-invariant set $K$.
+\end{proof}
+This is a standard composite-Lyapunov argument. The first inequality concerns the full nonlinear
+equations on $K$, not merely their transverse linearization on the siphon face.
+\bookref{s:FenBre}{The linear term is the zero-reference limit of Subsection~\ref{s:FenBre}.}{}
+\bookref{p:ComBas}{Proposition~\ref{p:ComBas} gives an application to a threshold network.}{}
+
+% Compound and Orlando discussion: unused by the short paper.
+\ifshort\else
+For $\dot x=f(x)$ of class $C^1$, take $g=f$ and
+$A=J^{[k]}$, where $J=Df$ and $J^{[k]}$ is the additive compound on
+$\bigwedge^k\mathbb R^n$, of dimension $\binom nk$.
+If $\Psi$ is the state variational matrix, differentiation of its minors gives
+\[
+ \frac{d}{dt}\Psi^{(k)}=J^{[k]}\Psi^{(k)},\qquad \Psi^{(k)}(0)=I.
+\]
+Proposition~\ref{p:VarCert} therefore bounds infinitesimal
+$k$-dimensional volumes. Linearity of $J\mapsto J^{[k]}$ carries a
+convex enclosure by $J_1,\ldots,J_q$ to the enclosure by
+$J_1^{[k]},\ldots,J_q^{[k]}$.
+
+\emph{Orlando's identity ($n\ge2$).}
+For $p(\lambda)=\det(\lambda I-J)=\lambda^n+a_1\lambda^{n-1}+\cdots+a_n$,
+let $\Delta_{n-1}(p)=\det(a_{2j-i})_{i,j=1}^{n-1}$, with $a_0=1$
+and $a_\ell=0$ outside $0\le\ell\le n$. Since the eigenvalues of
+$J^{[2]}$ are $\lambda_i+\lambda_j$, $i<j$, Orlando's identity reads
+\begin{equation}\label{HG:orlandoeq}
+ \Delta_{n-1}(p)=\det(-J^{[2]})
+ =(-1)^{\binom n2}\prod_{i<j}(\lambda_i+\lambda_j).
+\end{equation}
+At a Hopf point a pair sums to zero. Thus a contraction certificate
+for $J^{[2]}$ excludes a Hopf point at any equilibrium where it holds.
+\fi
+
+% Inactive legacy result retained for source compatibility.
+\iffalse
+\beP[Autonomous convergence by a constant compound norm][][CompConv]
+Let $\dot x=f(x)$ be an autonomous system with $f$ of class $C^1$
+on an open neighbourhood of a compact, convex, forward invariant
+set $K\subset\mathbb R^n$, $n\ge2$, with nonempty interior in the
+chosen reduced coordinates. Put $J(x)=Df(x)$ and
+$N_2=\binom n2$. Let $J^{[2]}$ be the additive compound acting on
+$\bigwedge^2\mathbb R^n$. Suppose there are a constant invertible
+$\Theta\in\mathbb R^{N_2\times N_2}$, a vector norm with induced
+logarithmic norm $\mu$, and a constant $c>0$ such that
+\[
+ \mu\bigl(\Theta J^{[2]}(x)\Theta^{-1}\bigr)\le-c
+ \qquad(x\in K).
+\]
+Then $K$ contains no nonconstant periodic orbit and every trajectory
+starting in $K$ approaches the set
+$\mathcal E=\{x\in K:f(x)=0\}$.
+If $\mathcal E=\{e\}$, every such trajectory converges to $e$.
+If $e$ is also locally asymptotically stable relative to $K$, it is
+globally asymptotically stable relative to $K$.
+\eeP
+\begin{proof}[Proof by the autonomous convergence theorem]
+On compound coordinates use the fixed norm
+$\|\zeta\|_*:=\|\Theta\zeta\|$. Its logarithmic norm satisfies
+$\mu_*(B)=\mu(\Theta B\Theta^{-1})$.
+The hypothesis therefore gives precisely the constant-norm condition of
+\cite[Theorem~12]{WuKanevskiyMargaliot2022} on the compact convex
+invariant set $K$. That theorem gives convergence to the equilibrium
+set. A nonconstant periodic orbit cannot approach that closed set,
+since its compact image is disjoint from it. The uniqueness assertion
+and the final stability assertion follow immediately.
+Only a neighbourhood of $K$ is needed: a smooth cutoff equal to one
+near $K$ extends the vector field to all of $\mathbb R^n$ without
+changing its trajectories or Jacobian on $K$.
+\end{proof}
+\fi

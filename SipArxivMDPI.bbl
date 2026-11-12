@@ -1,0 +1,604 @@
+\begin{thebibliography}{999}
+
+\bibitem[Iacopini et~al.(2019)Iacopini, Petri, Barrat, and Latora]{IPB}
+Iacopini, I.; Petri, G.; Barrat, A.; Latora, V.
+\newblock Simplicial models of social contagion.
+\newblock {\em Nature communications} {\bf 2019}, {\em 10},~2485.
+
+\bibitem[Granovetter(1978)]{granovetter1978}
+Granovetter, M.
+\newblock Threshold Models of Collective Behavior.
+\newblock {\em American Journal of Sociology} {\bf 1978}, {\em 83},~1420--1443.
+\newblock {\url{https://doi.org/10.1086/226707}}.
+
+\bibitem[Kaye(2026)]{Kaye26}
+Kaye, A.R.
+\newblock From Individual Thresholds to Collective Hysteresis: A Mechanistic
+  Model of the Dawn Chorus.
+\newblock {\em Journal of the Royal Society Interface} {\bf 2026}, {\em
+  23},~20260267.
+\newblock {\url{https://doi.org/10.1098/rsif.2026.0267}}.
+
+\bibitem[Boudourides(2026)]{Boud26}
+Boudourides, M.
+\newblock Collective Hysteresis and Multistability in Threshold Networks.
+\newblock arXiv:2609.10580 [cs.SI],  2026.
+
+\bibitem[Betteti et~al.(2025)Betteti, Baggio, Bullo, and Zampieri]{Betteti2025}
+Betteti, S.; Baggio, G.; Bullo, F.; Zampieri, S.
+\newblock Firing Rate Models as Associative Memory: Synaptic Design for Robust
+  Retrieval.
+\newblock {\em Neural Computation} {\bf 2025}, {\em 37},~1807--1838.
+\newblock {\url{https://doi.org/10.1162/neco.a.28}}.
+
+\bibitem[Kawano et~al.(2020)Kawano, Besselink, and Cao]{KawanoBesselinkCao2020}
+Kawano, Y.; Besselink, B.; Cao, M.
+\newblock Contraction Analysis of Monotone Systems via Separable Functions.
+\newblock {\em IEEE Transactions on Automatic Control} {\bf 2020}, {\em
+  65},~3486--3501.
+\newblock {\url{https://doi.org/10.1109/TAC.2019.2944923}}.
+
+\bibitem[Davydov et~al.(2024)Davydov, Proskurnikov, and Bullo]{Davydov}
+Davydov, A.; Proskurnikov, A.V.; Bullo, F.
+\newblock Non-Euclidean contraction analysis of continuous-time neural
+  networks.
+\newblock {\em IEEE Transactions on Automatic Control} {\bf 2024}, {\em
+  70},~235--250.
+
+\bibitem[Davydov and Bullo(2024)]{davydov2024exponential}
+Davydov, A.; Bullo, F.
+\newblock Exponential stability of parametric optimization-based controllers
+  via {Lur'e} contractivity.
+\newblock {\em IEEE Control Systems Letters} {\bf 2024}, {\em 8},~1277--1282.
+\newblock {\url{https://doi.org/10.1109/LCSYS.2024.3408110}}.
+
+\bibitem[Ofir et~al.(2024)Ofir, Ovseevich, and
+  Margaliot]{OfirOvseevichMargaliot2024}
+Ofir, R.; Ovseevich, A.; Margaliot, M.
+\newblock Contraction and {$k$}-contraction in {Lurie} systems with
+  applications to networked systems.
+\newblock {\em Automatica} {\bf 2024}, {\em 159},~111341,
+  \href{http://arxiv.org/abs/2212.13440}{{\normalfont [2212.13440]}}.
+\newblock {\url{https://doi.org/10.1016/j.automatica.2023.111341}}.
+
+\bibitem[Ofir et~al.(2025)Ofir, Slotine, and
+  Margaliot]{OfirSlotineMargaliot2025}
+Ofir, R.; Slotine, J.J.; Margaliot, M.
+\newblock $k$-Contraction in a Generalized {Lurie} System.
+\newblock {\em IEEE Transactions on Automatic Control} {\bf 2025}, {\em
+  70},~3394--3401,  \href{http://arxiv.org/abs/2309.07514}{{\normalfont
+  [2309.07514]}}.
+\newblock {\url{https://doi.org/10.1109/TAC.2024.3510516}}.
+
+\bibitem[Aihara et~al.(2014)Aihara, Mizumoto, Otsuka, Awano, Nagira, Okuno, and
+  Aihara]{Aihara2014}
+Aihara, I.; Mizumoto, T.; Otsuka, T.; Awano, H.; Nagira, K.; Okuno, H.G.;
+  Aihara, K.
+\newblock Spatio-Temporal Dynamics in Collective Frog Choruses Examined by
+  Mathematical Modeling and Field Observations.
+\newblock {\em Scientific Reports} {\bf 2014}, {\em 4}.
+\newblock 3891, {\url{https://doi.org/10.1038/srep03891}}.
+
+\bibitem[Hartbauer and R{\"o}mer(2016)]{HartbauerRomer2016}
+Hartbauer, M.; R{\"o}mer, H.
+\newblock Rhythm Generation and Rhythm Perception in Insects: The Evolution of
+  Synchronous Choruses.
+\newblock {\em Frontiers in Neuroscience} {\bf 2016}, {\em 10}.
+\newblock 223, {\url{https://doi.org/10.3389/fnins.2016.00223}}.
+
+\bibitem[Scheffer et~al.(2001)Scheffer, Carpenter, Foley, Folke, and
+  Walker]{Scheffer2001}
+Scheffer, M.; Carpenter, S.; Foley, J.A.; Folke, C.; Walker, B.
+\newblock Catastrophic Shifts in Ecosystems.
+\newblock {\em Nature} {\bf 2001}, {\em 413},~591--596.
+\newblock {\url{https://doi.org/10.1038/35098000}}.
+
+\bibitem[Scheffer et~al.(2009)Scheffer, Bascompte, Brock, Brovkin, Carpenter,
+  Dakos, Held, van Nes, Rietkerk, and Sugihara]{Scheffer2009}
+Scheffer, M.; Bascompte, J.; Brock, W.A.; Brovkin, V.; Carpenter, S.R.; Dakos,
+  V.; Held, H.; van Nes, E.H.; Rietkerk, M.; Sugihara, G.
+\newblock Early-warning signals for critical transitions.
+\newblock {\em Nature} {\bf 2009}, {\em 461},~53--59.
+\newblock {\url{https://doi.org/10.1038/nature08227}}.
+
+\bibitem[Kuehn(2011)]{Kuehn2011}
+Kuehn, C.
+\newblock A mathematical framework for critical transitions: Bifurcations,
+  fast--slow systems and stochastic dynamics.
+\newblock {\em Physica D} {\bf 2011}, {\em 240},~1020--1035.
+\newblock {\url{https://doi.org/10.1016/j.physd.2011.02.012}}.
+
+\bibitem[Kr\"onke et~al.(2020)Kr\"onke, Wunderling, Winkelmann, Staal, Stumpf,
+  Tuinenburg, and Donges]{kroenke2020}
+Kr\"onke, J.; Wunderling, N.; Winkelmann, R.; Staal, A.; Stumpf, B.;
+  Tuinenburg, O.A.; Donges, J.F.
+\newblock Dynamics of tipping cascades on complex networks.
+\newblock {\em Physical Review E} {\bf 2020}, {\em 101},~042311.
+\newblock {\url{https://doi.org/10.1103/PhysRevE.101.042311}}.
+
+\bibitem[Thurstone(1927)]{Thurstone1927}
+Thurstone, L.L.
+\newblock A Law of Comparative Judgment.
+\newblock {\em Psychological Review} {\bf 1927}, {\em 34},~273--286.
+\newblock {\url{https://doi.org/10.1037/h0070288}}.
+
+\bibitem[McCulloch and Pitts(1943)]{McCulloch1943}
+McCulloch, W.S.; Pitts, W.
+\newblock A Logical Calculus of the Ideas Immanent in Nervous Activity.
+\newblock {\em The Bulletin of Mathematical Biophysics} {\bf 1943}, {\em
+  5},~115--133.
+\newblock {\url{https://doi.org/10.1007/BF02478259}}.
+
+\bibitem[Schelling(1971)]{Schelling1971}
+Schelling, T.C.
+\newblock Dynamic Models of Segregation.
+\newblock {\em The Journal of Mathematical Sociology} {\bf 1971}, {\em
+  1},~143--186.
+\newblock {\url{https://doi.org/10.1080/0022250X.1971.9989794}}.
+
+\bibitem[Glauber(1963)]{Glauber1963}
+Glauber, R.J.
+\newblock Time-Dependent Statistics of the Ising Model.
+\newblock {\em Journal of Mathematical Physics} {\bf 1963}, {\em 4},~294--307.
+\newblock {\url{https://doi.org/10.1063/1.1703954}}.
+
+\bibitem[Watts(2002)]{Watts2002}
+Watts, D.J.
+\newblock A simple model of global cascades on random networks.
+\newblock {\em Proceedings of the National Academy of Sciences} {\bf 2002},
+  {\em 99},~5766--5771.
+\newblock {\url{https://doi.org/10.1073/pnas.082090499}}.
+
+\bibitem[Wiedermann et~al.(2020)Wiedermann, Smith, Heitzig, and
+  Donges]{Wiedermann2020}
+Wiedermann, M.; Smith, E.K.; Heitzig, J.; Donges, J.F.
+\newblock A network-based microfoundation of {Granovetter}'s threshold model
+  for social tipping.
+\newblock {\em Scientific Reports} {\bf 2020}, {\em 10},~11202.
+\newblock {\url{https://doi.org/10.1038/s41598-020-67102-6}}.
+
+\bibitem[Kook et~al.(2021)Kook, Choi, and Min]{Kook2021}
+Kook, J.; Choi, J.; Min, B.
+\newblock Double transitions and hysteresis in heterogeneous contagion
+  processes.
+\newblock {\em Physical Review E} {\bf 2021}, {\em 104},~044306.
+\newblock {\url{https://doi.org/10.1103/PhysRevE.104.044306}}.
+
+\bibitem[Gokhale et~al.(2026)Gokhale, Proskurnikov, Kawano, and
+  Bullo]{Gokhale2026}
+Gokhale, A.; Proskurnikov, A.V.; Kawano, Y.; Bullo, F.
+\newblock Contracting Neural Networks: Sharp {LMI} Conditions with Applications
+  to Integral Control and Deep Learning.
+\newblock arXiv:2604.00119,  2026.
+
+\bibitem[Izhikevich(1998)]{Izhikevich1998}
+Izhikevich, E.M.
+\newblock Multiple cusp bifurcations.
+\newblock {\em Neural Networks} {\bf 1998}, {\em 11},~495--508.
+\newblock {\url{https://doi.org/10.1016/S0893-6080(97)00117-2}}.
+
+\bibitem[Hopfield(1984)]{Hopfield1984}
+Hopfield, J.J.
+\newblock Neurons with Graded Response Have Collective Computational Properties
+  Like Those of Two-State Neurons.
+\newblock {\em Proceedings of the National Academy of Sciences USA} {\bf 1984},
+  {\em 81},~3088--3092.
+\newblock {\url{https://doi.org/10.1073/pnas.81.10.3088}}.
+
+\bibitem[Arino et~al.(2003)Arino, McCluskey, and van~den Driessche]{ArinoMc}
+Arino, J.; McCluskey, C.C.; van~den Driessche, P.
+\newblock Global results for an epidemic model with vaccination that exhibits
+  backward bifurcation.
+\newblock {\em SIAM Journal on Applied Mathematics} {\bf 2003}, {\em
+  64},~260--276.
+
+\bibitem[Wilson and Cowan(1972)]{WilsonCowan1972}
+Wilson, H.R.; Cowan, J.D.
+\newblock Excitatory and Inhibitory Interactions in Localized Populations of
+  Model Neurons.
+\newblock {\em Biophysical Journal} {\bf 1972}, {\em 12},~1--24.
+\newblock {\url{https://doi.org/10.1016/S0006-3495(72)86068-5}}.
+
+\bibitem[Guckenheimer(1986)]{Guc}
+Guckenheimer, J.
+\newblock Multiple bifurcation problems for chemical reactors.
+\newblock {\em Physica D: Nonlinear Phenomena} {\bf 1986}, {\em 20},~1--20.
+
+\bibitem[Adenane et~al.(2026{\natexlab{a}})Adenane, Avram, Halanay, Horvath,
+  and Khong]{AAHK}
+Adenane, R.; Avram, F.; Halanay, A.D.; Horvath, A.; Khong, S.Z.
+\newblock A Perron-Frobenius strong threshold theorem for $(A, B, P,\varphi) $
+  balanced bilinear model.
+\newblock {\em Mathematical Biosciences and Engineering} {\bf 2026}, {\em
+  23},~2720--2770.
+
+\bibitem[Adenane et~al.(2026{\natexlab{b}})Adenane, Avram, Beldiman, and
+  Halanay]{AAHRah}
+Adenane, R.; Avram, F.; Beldiman, M.; Halanay, A.D.
+\newblock From the Volterra type Lyapunov functions of Rahman-Zou towards a
+  competitive exclusion partition property.
+\newblock {\em Mathematics, MDPI} {\bf 2026}.
+
+\bibitem[Avram et~al.(2026)Avram, Adenane, and Halanay]{AAHrel}
+Avram, F.; Adenane, R.; Halanay, A.D.
+\newblock Persistence, coexistence and boundary transcritical relays for
+  multi-strain epidemic models.
+\newblock {\em Mathematics, MDPI} {\bf 2026}.
+
+\bibitem[Avram and Adenane(2026)]{AA26}
+Avram, F.; Adenane, R.
+\newblock Applications of the triangularity of the Jacobian on siphon faces,
+  and of the Metzler property of its transversal component: Sparse Lyapunov
+  certificates, Entropy and graph classification, and Global stability on the
+  stable side of a Hopf boundary.
+\newblock {\em Preprint} {\bf 2026}.
+
+\bibitem[van~den Driessche and Watmough(2002)]{Van}
+van~den Driessche, P.; Watmough, J.
+\newblock Reproduction numbers and sub-threshold endemic equilibria for
+  compartmental models of disease transmission.
+\newblock {\em Math. Biosci.} {\bf 2002}, {\em 180},~29--48.
+
+\bibitem[Angeli et~al.(2007)Angeli, De~Leenheer, and Sontag]{AdLS}
+Angeli, D.; De~Leenheer, P.; Sontag, E.D.
+\newblock A {P}etri net approach to the study of persistence in chemical
+  reaction networks.
+\newblock {\em Mathematical Biosciences} {\bf 2007}, {\em 210},~598--618.
+\newblock {\url{https://doi.org/10.1016/j.mbs.2007.07.003}}.
+
+\bibitem[Shiu and Sturmfels(2010)]{ShiuStu}
+Shiu, A.; Sturmfels, B.
+\newblock Siphons in chemical reaction networks.
+\newblock {\em Bulletin of mathematical biology} {\bf 2010}, {\em
+  72},~1448--1463.
+
+\bibitem[Avram et~al.(2025)Avram, Adenane, Basnarkov, and Horvath]{AABH25}
+Avram, F.; Adenane, R.; Basnarkov, L.; Horvath, A.
+\newblock The Similarity Between Epidemiologic Strains, Minimal Self-Replicable
+  Siphons, and Autocatalytic Cores in (Chemical) Reaction Networks: Towards a
+  Unifying Framework.
+\newblock {\em Mathematics} {\bf 2025}, {\em 14},~23.
+
+\bibitem[Diekmann et~al.(1990)Diekmann, Heesterbeek, and Metz]{Diek}
+Diekmann, O.; Heesterbeek, J.A.P.; Metz, J.A.
+\newblock On the definition and the computation of the basic reproduction ratio
+  R0 in models for infectious diseases in heterogeneous populations.
+\newblock {\em Journal of mathematical biology} {\bf 1990}, {\em 28},~365--382.
+
+\bibitem[Angeli and Sontag(2004)]{AngeliSontag2004}
+Angeli, D.; Sontag, E.D.
+\newblock Multi-stability in monotone input/output systems.
+\newblock {\em Systems \& Control Letters} {\bf 2004}, {\em 51},~185--202.
+\newblock {\url{https://doi.org/10.1016/j.sysconle.2003.08.003}}.
+
+\bibitem[Angeli et~al.(2004)Angeli, Ferrell, and
+  Sontag]{AngeliFerrellSontag2004}
+Angeli, D.; Ferrell, James~E., J.; Sontag, E.D.
+\newblock Detection of multistability, bifurcations, and hysteresis in a large
+  class of biological positive-feedback systems.
+\newblock {\em Proceedings of the National Academy of Sciences} {\bf 2004},
+  {\em 101},~1822--1827.
+\newblock {\url{https://doi.org/10.1073/pnas.0308265100}}.
+
+\bibitem[Coogan(2019)]{Coogan2019}
+Coogan, S.
+\newblock A contractive approach to separable {Lyapunov} functions for monotone
+  systems.
+\newblock {\em Automatica} {\bf 2019}, {\em 106},~349--357.
+\newblock {\url{https://doi.org/10.1016/j.automatica.2019.05.001}}.
+
+\bibitem[Wang et~al.(2010)Wang, Lu, and Chen]{WangLuChen2010}
+Wang, L.; Lu, W.; Chen, T.
+\newblock Coexistence and Local Stability of Multiple Equilibria in Neural
+  Networks with Piecewise Linear Nondecreasing Activation Functions.
+\newblock {\em Neural Networks} {\bf 2010}, {\em 23},~189--200.
+\newblock {\url{https://doi.org/10.1016/j.neunet.2009.11.010}}.
+
+\bibitem[Piotrowski et~al.(2024)Piotrowski, Cavalcante, and
+  Gabor]{piotrowski2024fixed}
+Piotrowski, T.J.; Cavalcante, R.L.; Gabor, M.
+\newblock Fixed points of nonnegative neural networks.
+\newblock {\em Journal of Machine Learning Research} {\bf 2024}, {\em
+  25},~1--40.
+
+\bibitem[Retnaraj et~al.(2026)Retnaraj, Betteti, Davydov, Bullo, and
+  Cort{\'e}s]{Retnaraj2026}
+Retnaraj, W.; Betteti, S.; Davydov, A.; Bullo, F.; Cort{\'e}s, J.
+\newblock Timescale Limits of Linear-Threshold Networks.
+\newblock arXiv:2604.16710,  2026.
+
+\bibitem[Stewart et~al.(2003)Stewart, Golubitsky, and Pivato]{SGP03}
+Stewart, I.; Golubitsky, M.; Pivato, M.
+\newblock Symmetry Groupoids and Patterns of Synchrony in Coupled Cell
+  Networks.
+\newblock {\em SIAM Journal on Applied Dynamical Systems} {\bf 2003}, {\em
+  2},~609--646.
+
+\bibitem[Golubitsky et~al.(2005)Golubitsky, Stewart, and
+  Torok]{golubitsky2005patterns}
+Golubitsky, M.; Stewart, I.; Torok, A.
+\newblock Patterns of synchrony in coupled cell networks with multiple arrows.
+\newblock {\em SIAM Journal on Applied Dynamical Systems} {\bf 2005}, {\em
+  4},~78--100.
+
+\bibitem[Hasty et~al.(2001)Hasty, Isaacs, Dolnik, McMillen, and
+  Collins]{Hasty2001}
+Hasty, J.; Isaacs, F.; Dolnik, M.; McMillen, D.; Collins, J.J.
+\newblock Designer Gene Networks: Towards Fundamental Cellular Control.
+\newblock {\em Chaos} {\bf 2001}, {\em 11},~207--220.
+\newblock {\url{https://doi.org/10.1063/1.1345702}}.
+
+\bibitem[Isaacs et~al.(2003)Isaacs, Hasty, Cantor, and Collins]{Isaacs2003}
+Isaacs, F.J.; Hasty, J.; Cantor, C.R.; Collins, J.J.
+\newblock Prediction and Measurement of an Autoregulatory Genetic Module.
+\newblock {\em Proceedings of the National Academy of Sciences USA} {\bf 2003},
+  {\em 100},~7714--7719.
+\newblock {\url{https://doi.org/10.1073/pnas.1332628100}}.
+
+\bibitem[Van~Hoek and Hogeweg(2006)]{vanHoek}
+Van~Hoek, M.; Hogeweg, P.
+\newblock In silico evolved lac operons exhibit bistability for artificial
+  inducers, but not for lactose.
+\newblock {\em Biophysical journal} {\bf 2006}, {\em 91},~2833--2843.
+
+\bibitem[Kuznetsov(2004)]{kuznetsov2004}
+Kuznetsov, Y.A.
+\newblock {\em Elements of Applied Bifurcation Theory}, 3 ed.; Springer: New
+  York,  2004.
+\newblock {\url{https://doi.org/10.1007/978-1-4757-3978-7}}.
+
+\bibitem[Lohmiller and Slotine(1998)]{LohmillerSlotine1998}
+Lohmiller, W.; Slotine, J.J.E.
+\newblock On Contraction Analysis for Non-linear Systems.
+\newblock {\em Automatica} {\bf 1998}, {\em 34},~683--696.
+\newblock {\url{https://doi.org/10.1016/S0005-1098(98)00019-3}}.
+
+\bibitem[Forni and Sepulchre(2014)]{ForniSepulchre2014}
+Forni, F.; Sepulchre, R.
+\newblock A Differential Lyapunov Framework for Contraction Analysis.
+\newblock {\em IEEE Transactions on Automatic Control} {\bf 2014}, {\em
+  59},~614--628.
+\newblock {\url{https://doi.org/10.1109/TAC.2013.2285771}}.
+
+\bibitem[Giesl(2015)]{Giesl2015}
+Giesl, P.
+\newblock Converse Theorems on Contraction Metrics for an Equilibrium.
+\newblock {\em Journal of Mathematical Analysis and Applications} {\bf 2015},
+  {\em 424},~1380--1403.
+\newblock {\url{https://doi.org/10.1016/j.jmaa.2014.12.010}}.
+
+\bibitem[Russo et~al.(2010)Russo, {Di Bernardo}, and
+  Sontag]{RussoDiBernardoSontag2010}
+Russo, G.; {Di Bernardo}, M.; Sontag, E.D.
+\newblock Global Entrainment of Transcriptional Systems to Periodic Inputs.
+\newblock {\em PLoS Computational Biology} {\bf 2010}, {\em 6},~e1000739.
+\newblock {\url{https://doi.org/10.1371/journal.pcbi.1000739}}.
+
+\bibitem[Bullo(2026)]{Bullo2026}
+Bullo, F.
+\newblock {\em Contraction Theory for Dynamical Systems}, 1.3 ed.; Kindle
+  Direct Publishing,  2026.
+
+\bibitem[Ruan(2017)]{ruan2017spatiotemporal}
+Ruan, S.
+\newblock Spatiotemporal epidemic models for rabies among animals.
+\newblock {\em Infectious disease modelling} {\bf 2017}, {\em 2},~277--287.
+
+\bibitem[Weinberger et~al.(2002)Weinberger, Lewis, and
+  Li]{WeinbergerLewisLi2002}
+Weinberger, H.F.; Lewis, M.A.; Li, B.
+\newblock Analysis of linear determinacy for spread in cooperative models.
+\newblock {\em Journal of Mathematical Biology} {\bf 2002}, {\em 45},~183--218.
+
+\bibitem[Davydovych et~al.(2023)Davydovych, Dutka, and
+  Cherniha]{DavydovychDutkaCherniha2023}
+Davydovych, V.; Dutka, V.; Cherniha, R.
+\newblock Reaction-diffusion equations in mathematical models arising in
+  epidemiology,  2023.
+\newblock arXiv:2311.02652.
+
+\bibitem[Seneta(1981)]{Seneta}
+Seneta, E.
+\newblock {\em Non-negative Matrices and Markov Chains}, 2nd ed.; Springer: New
+  York,  1981.
+
+\bibitem[Elsner and Johnson(2007)]{ElsnerJohnson}
+Elsner, L.; Johnson, C.R.
+\newblock {\em The Theory of Finitely Many Linear Inequalities}; American
+  Mathematical Society: Providence, RI,  2007.
+
+\bibitem[Nussbaum(1986)]{Nussbaum1986}
+Nussbaum, R.D.
+\newblock Convexity and Log Convexity for the Spectral Radius.
+\newblock {\em Linear Algebra and its Applications} {\bf 1986}, {\em
+  73},~59--122.
+
+\bibitem[Karlin(1982)]{Karlin1982}
+Karlin, S.
+\newblock Classifications of Selection-Migration Structures and Conditions for
+  a Protected Polymorphism.
+\newblock {\em Evolutionary Biology} {\bf 1982}, {\em 14},~61--204.
+
+\bibitem[Altenberg(2012)]{Altenberg2012}
+Altenberg, L.
+\newblock Resolvent Positive Linear Operators Exhibit the Reduction Phenomenon.
+\newblock {\em Proceedings of the National Academy of Sciences} {\bf 2012},
+  {\em 109},~3705--3710.
+
+\bibitem[Dockery et~al.(1998)Dockery, Hutson, Mischaikow, and
+  Pernarowski]{Dockery1998}
+Dockery, J.; Hutson, V.; Mischaikow, K.; Pernarowski, M.
+\newblock The Evolution of Slow Dispersal Rates: A Reaction Diffusion Model.
+\newblock {\em Journal of Mathematical Biology} {\bf 1998}, {\em 37},~61--83.
+
+\bibitem[Speirs and Gurney(2001)]{SpeirsGurney2001}
+Speirs, D.C.; Gurney, W.S.C.
+\newblock Population persistence in rivers and estuaries.
+\newblock {\em Ecology} {\bf 2001}, {\em 82},~1219--1237.
+
+\bibitem[Li(2012)]{Li2012}
+Li, B.
+\newblock Traveling wave solutions in partially degenerate cooperative
+  reaction--diffusion systems.
+\newblock {\em Journal of Differential Equations} {\bf 2012}, {\em
+  252},~4842--4861.
+
+\bibitem[Aminzare and Sontag(2012)]{AminzareSontag2012}
+Aminzare, Z.; Sontag, E.D.
+\newblock Logarithmic Lipschitz norms and diffusion-induced instability,  2012.
+\newblock arXiv:1208.0326.
+
+\bibitem[Song et~al.(2006)Song, Cao, and Zhao]{SongCaoZhao2006}
+Song, Q.; Cao, J.; Zhao, Z.
+\newblock Periodic solutions and its exponential stability of
+  reaction--diffusion recurrent neural networks with continuously distributed
+  delays.
+\newblock {\em Nonlinear Analysis: Real World Applications} {\bf 2006}, {\em
+  7},~65--80.
+
+\bibitem[Faye and Kilpatrick(2018)]{FayeKilpatrick2018}
+Faye, G.; Kilpatrick, Z.P.
+\newblock Threshold of front propagation in neural fields: An interface
+  dynamics approach,  2018.
+\newblock arXiv:1801.05878.
+
+\bibitem[Smith(1995)]{smith1995}
+Smith, H.L.
+\newblock {\em Monotone Dynamical Systems: An Introduction to the Theory of
+  Competitive and Cooperative Systems}; Vol.~41, {\em Mathematical Surveys and
+  Monographs}, American Mathematical Society: Providence, RI,  1995.
+
+\bibitem[Hirsch and Smith(2006)]{Hirsch}
+Hirsch, M.W.; Smith, H.
+\newblock Monotone dynamical systems.
+\newblock {\em Handbook of differential equations: ordinary differential
+  equations} {\bf 2006}, {\em 2},~239--357.
+
+\bibitem[Golubitsky and Stewart(2023)]{golubitsky2023dynamics}
+Golubitsky, M.; Stewart, I.
+\newblock {\em Dynamics and Bifurcation in Networks: Theory and Applications of
+  Coupled Differential Equations}; SIAM,  2023.
+
+\bibitem[Fife and McLeod(1977)]{FifeMcLeod1977}
+Fife, P.C.; McLeod, J.B.
+\newblock The approach of solutions of nonlinear diffusion equations to
+  travelling front solutions.
+\newblock {\em Archive for Rational Mechanics and Analysis} {\bf 1977}, {\em
+  65},~335--361.
+
+\bibitem[Turelli and Barton(2017)]{TurelliBarton2017}
+Turelli, M.; Barton, N.H.
+\newblock Deploying dengue-suppressing Wolbachia: Robust models predict slow
+  but effective spatial spread in Aedes aegypti.
+\newblock {\em Theoretical Population Biology} {\bf 2017}, {\em 115},~45--60.
+
+\bibitem[Schmidt et~al.(2017)]{SchmidtEtAl2017}
+Schmidt, T.L.;  et~al.
+\newblock Local introduction and heterogeneous spatial spread of
+  dengue-suppressing Wolbachia through an urban population of Aedes aegypti.
+\newblock {\em PLoS Biology} {\bf 2017}, {\em 15},~e2001894.
+
+\bibitem[Chan et~al.(2016)Chan, Kim, and Marangell]{ChanKimMarangell2016}
+Chan, M.H.; Kim, P.S.; Marangell, R.
+\newblock Stability of travelling waves in a Wolbachia invasion,  2016.
+\newblock arXiv:1603.05744.
+
+\bibitem[Smoller(1994)]{Smoller1994}
+Smoller, J.
+\newblock {\em Shock Waves and Reaction--Diffusion Equations}, 2 ed.; Springer:
+  New York,  1994.
+
+\bibitem[Alexander et~al.(1990)Alexander, Gardner, and
+  Jones]{AlexanderGardnerJones1990}
+Alexander, J.; Gardner, R.; Jones, C.
+\newblock A topological invariant arising in the stability analysis of
+  travelling waves.
+\newblock {\em Journal f\"ur die reine und angewandte Mathematik} {\bf 1990},
+  {\em 410},~167--212.
+
+\bibitem[Sandstede(2002)]{Sandstede2002}
+Sandstede, B.
+\newblock Stability of travelling waves. In {\em Handbook of Dynamical
+  Systems}; North-Holland,  2002; Vol.~2, pp. 983--1055.
+
+\bibitem[Volpert et~al.(1994)Volpert, Volpert, and Volpert]{Volpert-alt2}
+Volpert, A.I.; Volpert, V.A.; Volpert, V.A.
+\newblock {\em Traveling Wave Solutions of Parabolic Systems}; American
+  Mathematical Society,  1994.
+
+\bibitem[Rantzer(2015)]{rantzer2015scalable}
+Rantzer, A.
+\newblock Scalable control of positive systems.
+\newblock {\em European Journal of Control} {\bf 2015}, {\em 24},~72--80.
+\newblock {\url{https://doi.org/10.1016/j.ejcon.2015.04.004}}.
+
+\bibitem[Haddad and Chellaboina(2011)]{haddad2010}
+Haddad, W.M.; Chellaboina, V.
+\newblock {\em Nonlinear dynamical systems and control: a {Lyapunov}-based
+  approach}; Princeton University Press,  2011.
+
+\bibitem[Avram et~al.(2024{\natexlab{a}})Avram, Adenane, and Neagu]{AAN}
+Avram, F.; Adenane, R.; Neagu, M.
+\newblock Advancing Mathematical Epidemiology and Chemical Reaction Network
+  Theory via Synergies Between Them.
+\newblock {\em Entropy} {\bf 2024}, {\em 26},~936.
+
+\bibitem[Avram et~al.(2024{\natexlab{b}})Avram, Adenane, Halanay, and
+  Johnston]{AAHJ}
+Avram, F.; Adenane, R.; Halanay, A.D.; Johnston, M.D.
+\newblock Stability in Reaction Network Models via an Extension of the Next
+  Generation Matrix Method.
+\newblock arXiv preprint arXiv:2411.11867,  2024.
+
+\bibitem[Avram et~al.(2026)Avram, Adenane, and Halanay]{AAH26}
+Avram, F.; Adenane, R.; Halanay, A.D.
+\newblock Triangularity of the Jacobian on siphon faces, the Metzler property
+  of its transversal component, and other results.
+\newblock {\em Preprint} {\bf 2026}.
+
+\bibitem[Berman and Plemmons(1994)]{Berman}
+Berman, A.; Plemmons, R.J.
+\newblock {\em Nonnegative matrices in the mathematical sciences}; SIAM:
+  Philadelphia,  1994.
+\newblock {\url{https://doi.org/10.1137/1.9781611971262}}.
+
+\bibitem[Freedman et~al.(1994)Freedman, Ruan, and Tang]{FRT94}
+Freedman, H.I.; Ruan, S.; Tang, M.
+\newblock Uniform persistence and flows near a closed positively invariant set.
+\newblock {\em Journal of Dynamics and Differential Equations} {\bf 1994}, {\em
+  6},~583--600.
+\newblock {\url{https://doi.org/10.1007/BF02218848}}.
+
+\bibitem[Hofbauer and Schreiber(2010)]{HS10}
+Hofbauer, J.; Schreiber, S.J.
+\newblock Robust permanence for interacting structured populations.
+\newblock {\em Journal of Differential Equations} {\bf 2010}, {\em
+  248},~1955--1971.
+\newblock {\url{https://doi.org/10.1016/j.jde.2009.11.010}}.
+
+\bibitem[Hofbauer and Schreiber(2022)]{HofSch}
+Hofbauer, J.; Schreiber, S.J.
+\newblock Permanence via invasion graphs: incorporating community assembly into
+  modern coexistence theory.
+\newblock {\em Journal of mathematical biology} {\bf 2022}, {\em 85},~54.
+
+\bibitem[Smith and Thieme(2011)]{SmithThieme2011}
+Smith, H.L.; Thieme, H.R.
+\newblock {\em Dynamical Systems and Population Persistence}; Vol. 118, {\em
+  Graduate Studies in Mathematics}, American Mathematical Society: Providence,
+  RI,  2011.
+\newblock {\url{https://doi.org/10.1090/gsm/118}}.
+
+\bibitem[Khalil(2002)]{Khalil2002}
+Khalil, H.K.
+\newblock {\em Nonlinear Systems}, 3 ed.; Prentice Hall: Upper Saddle River,
+  NJ,  2002.
+
+\bibitem[Mertikopoulos and Sandholm(2016)]{MertikopoulosSandholm2016}
+Mertikopoulos, P.; Sandholm, W.H.
+\newblock Learning in Games via Reinforcement and Regularization.
+\newblock {\em Mathematics of Operations Research} {\bf 2016}, {\em
+  41},~1297--1324.
+\newblock {\url{https://doi.org/10.1287/moor.2016.0778}}.
+
+\end{thebibliography}

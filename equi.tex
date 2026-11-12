@@ -1,0 +1,127 @@
+\section{Equilibria, folds, and multistability for threshold networks}\label{s:KBmulti}
+
+\subsection{Autonomous response networks undergo folds and cusps}
+The derivative tests below are the standard scalar reduction of an
+equilibrium equation with a simple zero eigenvalue
+\cite{kuznetsov2004}. Theorem~\ref{t:Spe}(3) transfers these bifurcations from invariant
+group reductions when the complementary directions are stable.
+%Parameters are constant along trajectories.
+On an invariant siphon face,
+full stability additionally requires stability of the absent directions.
+
+\beP[Equilibria admit saddle-node and cusp tests, and nondegenerate cusps persist]
+[][sadCus]\label{p:cusprobust}
+Let $f$ be $C^2$ near an equilibrium $(x_*,\theta_*)$ of
+$\dot x=f(x;\theta)$, with $x\in\mathbb R^{n_S}$, $\theta\in\mathbb R^p$.
+Assume $J=\partial_xf$ has a simple zero eigenvalue and all its other
+eigenvalues have negative real parts.
+A saddle-node bifurcation is also called a fold bifurcation.
+Evaluate all derivatives below
+at this equilibrium and choose
+\[
+ Jr=0,\quad \ell^\top J=0,\quad \ell^\top r=1,\qquad
+ Q=I-r\ell^\top,\qquad \mathcal B=\partial_x^2f.
+\]
+\BEN \im
+Varying $\theta_j$ gives a nondegenerate saddle-node if
+\[
+ a_j:=\ell^\top f_{\theta_j}\ne0,\qquad
+ b_2:=\ell^\top\mathcal B[r,r]\ne0.
+\]
+\im
+For the cusp test assume additionally that $f$ is $C^3$ and put
+$\mathcal C=\partial_x^3f$.
+If $b_2=0$, define uniquely
+\[
+ Jh_{20}=-\mathcal B[r,r],\quad\ell^\top h_{20}=0,
+ \qquad Jh_j=-Qf_{\theta_j},\quad\ell^\top h_j=0.
+\]
+In this case, a nondegenerate cusp is unfolded by $(\theta_1,\theta_2)$ if
+\[
+ b_3:=\ell^\top\bigl(\mathcal C[r,r,r]
+                  +3\mathcal B[r,h_{20}]\bigr)\ne0,
+ \qquad
+ \det\begin{pmatrix}a_1&a_2\\d_1&d_2\end{pmatrix}\ne0,
+\]
+where $d_j=\ell^\top\bigl((\partial_xf_{\theta_j})r+
+\mathcal B[r,h_j]\bigr)$.
+\im
+Under the cusp conditions above, every sufficiently small $C^3$
+perturbation of the vector-field family has a unique nearby cusp,
+with shifted state and unfolding parameters $(\theta_1,\theta_2)$.
+The cubic and unfolding conditions and the strictly stable complementary
+spectrum persist. If the family depends smoothly on additional
+perturbation parameters, the continued cusp depends smoothly on them
+to the order supplied by the implicit-function theorem.
+The continuation remains admissible when the original state and
+unfolding parameters are interior to their admissible domains;
+at a parameter boundary, admissibility must be checked separately.
+\EEN
+In all three assertions, parameters other than the two designated
+unfolding parameters (or the single saddle-node parameter) are held fixed.
+\eeP
+\begin{proof}
+The projection $Q$ has range $\ker\ell^\top$, which $J$ preserves,
+and $J$ is invertible on that range. The implicit-function theorem
+therefore solves
+\[
+ Qf(x_*+\xi r+w;\theta)=0,\qquad w\in\ker\ell^\top,
+\]
+uniquely as $w=w(\xi,\theta)$ near $(0,\theta_*)$. Put
+\[
+ g(\xi,\theta)=\ell^\top
+ f(x_*+\xi r+w(\xi,\theta);\theta).
+\]
+Nearby equilibria correspond exactly to $g=0$. At the base point,
+$w=0$, $w_\xi=0$, and differentiation of the projected equation gives
+\[
+ Jw_{\xi\xi}=-Q\mathcal B[r,r],\qquad
+ Jw_{\theta_j}=-Qf_{\theta_j}.
+\]
+If $b_2=0$, then $Q\mathcal B[r,r]=\mathcal B[r,r]$, proving both
+solvability and uniqueness of $h_{20}$; also $w_{\theta_j}=h_j$.
+Since $\ell^\top J=0$, the scalar derivatives are
+\[
+ g_{\theta_j}=a_j,\qquad g_{\xi\xi}=b_2,
+ \qquad g_{\xi\theta_j}=d_j,
+ \qquad g_{\xi\xi\xi}=b_3\quad(b_2=0).
+\]
+These are the usual saddle-node and cusp tests for the equilibrium equation
+\cite{kuznetsov2004}. The stable complementary spectrum gives the
+corresponding differential-equation bifurcations. In particular, $g$
+is obtained by solving the complementary equilibrium equations; the
+center-manifold differential equation has the same nondegeneracy tests.
+
+For persistence, apply the implicit-function theorem to
+$\mathcal H=(g,g_\xi,g_{\xi\xi})$ in the variables
+$(\theta_1,\theta_2,\xi)$. At the cusp,
+\[
+ D\mathcal H=
+ \begin{pmatrix}a_1&a_2&0\\d_1&d_2&0\\ *&*&b_3\end{pmatrix},
+ \qquad
+ \det D\mathcal H=b_3
+ \det\begin{pmatrix}a_1&a_2\\d_1&d_2\end{pmatrix}\ne0.
+\]
+The same complementary-equation reduction is available for nearby
+families. Small $C^3$ perturbations give small $C^1$ perturbations
+of $\mathcal H$, so its locally unique zero persists. Continuity
+preserves the strict nondegeneracy and spectral conditions, and
+interior admissibility is open.
+
+For linear $P_i$ in \eqref{polR}, with $\varphi_i=\Phi_i'$,
+the required state derivatives are
+\[
+ \mathcal B_i[r,r]=b_i\beta^2\varphi_i'(h_i+\beta(Wx)_i)(Wr)_i^2,
+ \qquad
+ \mathcal C_i[r,r,r]=b_i\beta^3\varphi_i''(h_i+\beta(Wx)_i)(Wr)_i^3.
+\]
+The correction terms use the same bilinear form:
+\[
+ \mathcal B_i[r,z]
+ =b_i\beta^2\varphi_i'(h_i+\beta(Wx)_i)(Wr)_i(Wz)_i.
+\]
+\end{proof}
+
+% p:KBinterpolate is retained as an alias of t:KBsharp.
+% Elsewhere cite the interpolation construction in the proof of
+% Theorem~\ref{t:KBsharp}, rather than a separate proposition.

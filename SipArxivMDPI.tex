@@ -1,0 +1,175 @@
+% SipArxivMDPI.tex -- MDPI submission driver, assembled from the files of SipArxiv.tex.
+% Compile: pdflatex, bibtex, pdflatex, pdflatex.
+\documentclass[mathematics,article,submit,pdftex]{Definitions/mdpi}
+
+%=================================================================
+% MDPI internal commands - do not modify
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ }
+\daterevised{ }
+\dateaccepted{ }
+\datepublished{ }
+\hreflink{https://doi.org/}
+
+%=================================================================
+% mdpi.cls provides the capitalised theorem environments; wrap them BEFORE
+% \input{preamble}, which defines a lowercase environment only if still undefined.
+\NewDocumentEnvironment{theorem}{o}
+  {\IfValueTF{#1}{\begin{Theorem}[#1]}{\begin{Theorem}}}{\end{Theorem}}
+\NewDocumentEnvironment{lemma}{o}
+  {\IfValueTF{#1}{\begin{Lemma}[#1]}{\begin{Lemma}}}{\end{Lemma}}
+\NewDocumentEnvironment{corollary}{o}
+  {\IfValueTF{#1}{\begin{Corollary}[#1]}{\begin{Corollary}}}{\end{Corollary}}
+\NewDocumentEnvironment{proposition}{o}
+  {\IfValueTF{#1}{\begin{Proposition}[#1]}{\begin{Proposition}}}{\end{Proposition}}
+\NewDocumentEnvironment{definition}{o}
+  {\IfValueTF{#1}{\begin{Definition}[#1]}{\begin{Definition}}}{\end{Definition}}
+\NewDocumentEnvironment{example}{o}
+  {\IfValueTF{#1}{\begin{Example}[#1]}{\begin{Example}}}{\end{Example}}
+\NewDocumentEnvironment{remark}{o}
+  {\IfValueTF{#1}{\begin{Remark}[#1]}{\begin{Remark}}}{\end{Remark}}
+\NewDocumentEnvironment{hypothesis}{o}
+  {\IfValueTF{#1}{\begin{Hypothesis}[#1]}{\begin{Hypothesis}}}{\end{Hypothesis}}
+\NewDocumentEnvironment{assumption}{o}
+  {\IfValueTF{#1}{\begin{Assumption}[#1]}{\begin{Assumption}}}{\end{Assumption}}
+
+% mdpi.cls sets its own page layout; tell the shared preamble not to reset it.
+\def\AAdefNnogeometry{}
+\input{preamble}
+\showkeysfalse% submission build: no [t:KEY] mnemonics in result headings
+\commonredtrue% commonRed is input below; tool.tex cites it
+\def\withSpatial{}% the spatial sections and their idea in abs and mainRes
+\tolerance=2000
+\newif\ifjournal \journaltrue
+\shorttrue% drops \nsh{...} text that cites the omitted SIS sections
+\captionsetup{labelfont=bf,labelsep=space}
+\usetikzlibrary{arrows.meta,positioning}
+% one transverse notation throughout: J_tra (main text) instead of J^\perp (shared appendices)
+
+% \xs{...}: text that cites supplementary-only results; omitted in the journal version
+\newcommand{\xs}[1]{\ifjournal\else#1\fi}
+% glossary grouped by subsection: each entry records the number and title of the current section or subsection
+\makeatletter
+\AtBeginDocument{%
+  \renewcommand{\refstepcounter}[1]{%
+    \@epidcrn@orig@refstepcounter{#1}%
+    \ifstrequal{#1}{section}{\protected@xdef\@currentsectionname{\thesection\space\unexpanded\expandafter{\@currentlabelname}}%
+      \protected@write\@auxout{}{\string\expandafter\string\gdef\string\csname\space secnm@\thesection\string\endcsname{\unexpanded\expandafter{\@currentlabelname}}}}{}%
+    \ifstrequal{#1}{subsection}{\protected@xdef\@currentsectionname{\thesubsection\space\unexpanded\expandafter{\@currentlabelname}}}{}%
+  }%
+}
+\renewglossarystyle{unifiedstyle}{%
+  \setglossarystyle{list}%
+  \renewcommand*{\glossarypreamble}{\gdef\glslastsec{}\gdef\glslastnum{}}%
+  \renewcommand{\glossentry}[2]{%
+    \protected@edef\glscursec{\glsentryuseriv{##1}}%
+    \protected@edef\glscurnum{\glsentryuseriii{##1}}%
+    \ifx\glscurnum\glslastnum\else
+      \global\let\glslastnum\glscurnum
+      \ifcsname secnm@\glscurnum\endcsname
+        \protected@edef\glssecline{\glscurnum\space\csname secnm@\glscurnum\endcsname}%
+        \ifx\glssecline\glscursec\else
+          \item[]\textbf{\S\,\glssecline}%
+        \fi
+      \fi
+    \fi
+    \ifx\glscursec\glslastsec\else
+      \item[]\textbf{\S\,\glscursec}%
+      \global\let\glslastsec\glscursec
+    \fi
+    \item[\glsentryuserii{##1} \glsentryuseri{##1}:] ``\glossentryname{##1}'' \glsentrydesc{##1}%
+  }%
+}
+\makeatother
+\AddToHook{begindocument/end}{\hypersetup{hidelinks}}
+\def\bcP{\mathcal P^{(\ge 0)}}
+
+%=================================================================
+\Title{Beyond the Next-Generation Matrix Criterion for  Production models: Global Stability and Arbitrary
+Multistability  Threshold Networks}
+
+\Author{Florin Avram}
+
+\AuthorNames{Florin Avram}
+
+\address{Laboratoire de Math\'{e}matiques Appliqu\'{e}es, Universit\'{e} de Pau, Pau, France;
+avramf3@gmail.com}
+
+% Abstract (Do not insert blank lines, an enumerate, or \hyperlink)
+\abstract{This paper exploits the Jacobian triangularity of siphon faces and the Metzler property of the transverse Jacobian block for positive
+production networks, which encompass higher-order SIS networks, simplicial contagion models,
+threshold models and firing-rate networks. (1) First-order production terms in the absent variables
+determine the transverse invasion matrices on siphon faces; terms at least quadratic in those
+variables leave these matrices unchanged at a fixed resident state but can create bistability.
+(2) For threshold networks with a
+prescribed response-slope bound, a sharp extension of the next-generation number separates global
+convergence from the possibility of arbitrarily many stable equilibria. (3) With diffusion, at a homogeneous resident with irreducible transverse matrix and nonzero diffusion in that block, an invasion number above one (an unstable resident) gives a positive linear spreading speed, and threshold networks keep their transition, with a uniform speed bound. (4) Invariant group partitions give exact reduced equations that preserve local stability in
+cooperative networks and lift saddle-node and cusp bifurcations, including hysteresis. (5) Odds-polynomial responses
+preserve the siphon lattice as their coefficients vary, and degree four is the exact minimum for a
+stable origin together with a positive nondegenerate cusp. (6) Response zero sets and production monomials
+determine siphons; cross-couplings preserve overlapping ones under a monomial condition; a three-population network combines nonzero residents,
+distinct invasion numbers, at least eight stable equilibria and an interior cusp. (7) Positive
+weights give extinction certificates and characterize contraction; Lyapunov--Volterra functions are
+Fenchel--Bregman divergences, and composite functions certify explicit subsets of the basins of
+attraction of boundary residents.}
+
+\keyword{siphon; next-generation matrix; threshold network; firing-rate network; multistability;
+cusp bifurcation; contraction; Lyapunov--Volterra function; spreading speed}
+
+\MSC{34D20; 34D23; 34C23; 37N25; 92B20; 92D30}
+
+%=================================================================
+\begin{document}
+
+\input{ideaHeads}
+
+\tableofcontents
+\input{intC}
+\input{mainRes}
+\input{brn}
+\input{KP1}
+\input{spaTh}
+\input{mod}
+\input{commonRed}
+\input{equi}
+\input{equiA}
+\input{overl}
+\input{spaOv}
+\input{concShort}
+
+%=================================================================
+\funding{This research received no external funding.}
+
+\dataavailability{No new data were generated or analysed. The Mathematica script
+\texttt{overlNum.wl}, which reproduces the numerical tables, and the Python scripts \texttt{choFront.py}, \texttt{spaFront.py}, \texttt{overFront.py} and \texttt{frontSta.py}, which reproduce the figures and the front computations, are provided as Supplementary Material.}
+
+\useofartificialintelligence{A large language model (Claude, Anthropic) was used to help check
+mathematical statements against the cited sources, to revise the text and to assist with \LaTeX. The
+author reviewed all content and takes full responsibility for it.}
+
+\conflictsofinterest{The author declares no conflicts of interest.}
+
+%=================================================================
+\appendix
+\input{SiIn}
+\input{tool}
+\input{contCert}
+\input{positiveWeights}
+\input{fenBre}
+\input{depSip}
+
+%=================================================================
+\begin{adjustwidth}{-\extralength}{0cm}
+\reftitle{References}
+\bibliography{SipArxivMDPI}
+\PublishersNote{}
+\end{adjustwidth}
+\end{document}

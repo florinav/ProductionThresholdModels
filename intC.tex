@@ -1,0 +1,186 @@
+\section{Introduction to production and threshold models with response functions}
+\label{sec:intro}
+
+\beD[Production and threshold models][][prMod]\label{d:KB}
+A \emph{production model}  is a system which decomposes as
+\begin{equation}\label{eq:KB}
+ \dot x=f(x,t)=\Pi(x,t)-Vx,
+\end{equation}
+where $\Pi\ge0$ is nondecreasing in $x$  (extensions where monotonicity is not required will  also
+appear  later), and $V$ is a nonsingular
+$M$-matrix (which implies that the Jacobian $\partial_x\Pi -V$ is Metzler). The state has $n_S$ coordinates and
+evolves in the nonnegative orthant.
+
+A \emph{threshold response} is a nonnegative nondecreasing function $\Phi$
+(boundedness and smoothness assumptions are stated in each result),
+which is applied in
+\emph{production  models} coordinatewise:
+\begin{equation}\label{polR}
+ \Pi_i(x)=b_i\Phi_i\bigl(h_i+P_i(x)\bigr),\qquad b_i>0,
+\end{equation}
+
+
+
+Here $P_i(x)$ are either polynomials with nonnegative coefficients, or of the form
+$P_i(x)=\beta(Wx)_i$, $W\ge0$.
+
+\eeD
+
+Production models \eqref{eq:KB} contain the following subclasses, distinguished by the form of $\Pi$. In the last two, $\Pi$ need
+not be nondecreasing; these are the extensions announced in Definition~\ref{d:prMod}.
+\BEN
+\im {\bf Polynomial production  models:}
+With $P_i$ in \eqr{polR} a polynomial with nonnegative coefficients, monomials such as $x_1x_3$ represent higher-order interactions, and the
+choice of monomials decides which siphons survive. This case carries the constructions of Theorems~\ref{t:siphMulti},
+\ref{t:Net} and~\ref{t:KBoverlapCusp}.
+\im
+{\bf (Positive) Lur'e systems} $\dot x=B\Phi(\beta Wx,t)-Vx$, with $B,W\ge0$, and $\Phi(y,t)$ nonnegative, nondecreasing and $C^1$ in $y$, contain firing-rate networks ($B=I$) and Hopfield networks ($\beta W=I$). Contraction results for Lur'e systems are found for example in \cite{Davydov,davydov2024exponential,OfirOvseevichMargaliot2024,OfirSlotineMargaliot2025}.
+Lur'e systems contain the following subclasses:
+\BEN
+
+\im {\bf Linear production threshold models}. These are the autonomous Lur'e case $B=\operatorname{Diag}(b_i)$, with $\Phi_i(h_i+\beta(Wx)_i)$, $W\ge0$. The scalar case is $\dot x=-x+\Phi(h+\beta x)$, with external stimulus $h$ and threshold distribution
+\begin{equation}\label{eq:response}
+ \Phi(q)=\mathbb P(\Theta\le q),
+\end{equation}
+the proportion of individuals whose threshold does not exceed $q$. In Granovetter's model
+\cite{granovetter1978} individuals act once the active fraction exceeds a personal threshold; his map
+$r(t+1)=\Phi[r(t)]$ has the equilibria of $\dot x=-x+\Phi(x)$. In Kaye's dawn-chorus model \cite{Kaye26}, light
+and neighbouring songs promote singing; Kaye relates folds and cusps to the threshold density. Collective animal choruses are also modelled in
+\cite{Aihara2014,HartbauerRomer2016}.
+\im Scheffer et al.\ \cite{Scheffer2001} analyse catastrophic shifts through
+$\dot x=a-bx+rx^p/(x^p+h^p)$, whose response includes the constant term $a$; see also
+\cite{Scheffer2009,Kuehn2011}, and \cite{kroenke2020} for tipping cascades between coupled subsystems.
+\im The probabilistic form \eqref{eq:response} has early roots in Thurstone's comparative judgment \cite{Thurstone1927}; related
+foundations are the all-or-none units of McCulloch and Pitts \cite{McCulloch1943}, Schelling's models of segregation and tipping
+\cite{Schelling1971}, and Glauber's spin dynamics \cite{Glauber1963}.
+\im
+The network case with $V=I$ and $W\mathbf1=\mathbf1$, $\dot x_i=-x_i+\Phi(h+\beta(Wx)_i)$, is studied by Boudourides
+\cite{Boud26}: homogeneous branches, reductions, multistability, heterogeneous cusps, and the persistence of families of
+stable equilibria under weak interblock coupling. Network versions show how local exposure and topology control global
+cascades \cite{Watts2002}, and smooth and stochastic variants produce saddle-node transitions and hysteresis
+\cite{Wiedermann2020,Kook2021}.
+\im
+Firing-rate networks $\dot x=-Vx+\Phi(Wx+h)$, with $V$ positive diagonal, synaptic matrix $W\ge0$, constant stimulus $h$ and a
+coordinatewise nonnegative nondecreasing activation $\Phi$, are a central model of neural
+population dynamics \cite{Betteti2025,Davydov,Gokhale2026}; multiple cusp bifurcations in neural networks were studied in
+\cite{Izhikevich1998}. Theorem~\ref{t:KBsharp} applies directly to them when the response is common. For $V=I$, the variable $y=Wx+h$ satisfies the
+Hopfield equation \cite{Hopfield1984}, $\dot y=-y+W\Phi(y)+h$.
+\EEN
+
+
+\im {\bf Models with a state-dependent factor:}
+\begin{equation}\label{eq:KB-general-response}
+ \Pi_i(x)=a_i(x_i)\Phi_i\bigl(h_i+P_i(x)\bigr),\qquad a_i\ge0\ \text{of class }C^1.
+\end{equation}
+The main case is a \emph{capacity factor} $1-\rho_ix_i$, $\rho_i>0$, which decreases from one to zero as $x_i$ increases to its
+capacity $1/\rho_i$ (for instance a susceptible fraction), possibly multiplying a production $G_i\ge0$ of no specified form:
+\begin{equation}\label{eq:KB-capacity}
+ \Pi_i(x)=(1-\rho_ix_i)G_i(x),\qquad x\in[0,1/\rho],\quad V(1/\rho)\ge0.
+\end{equation}
+Then $\Pi\ge0$ holds only on this box, whose upper faces point inward, since $f_i(x)\le-(V(1/\rho))_i\le0$ at $x_i=1/\rho_i$, and
+$\Pi_i$ need not be nondecreasing in $x_i$. If also $\partial_jG_i\ge0$ for $j\ne i$, the Jacobian is Metzler on the box.
+Higher-order SIS networks and simplicial contagion \cite{IPB} are
+\begin{equation}\label{eq:SIS}
+ \dot x_i=-\mu_ix_i+(1-x_i)
+ \Bigl(\sum_ja_{ij}x_j+\sum_{|E|\ge2}\beta_{iE}\prod_{j\in E}x_j\Bigr),
+ \qquad \mu_i>0,\quad a_{ij},\beta_{iE}\ge0,
+\end{equation}
+on $[0,1]^{n_S}$, with the susceptible fraction $1-x_i$ as capacity factor. Their scalar form is
+\begin{equation}\label{eq:simp}
+ \dot u=-u+\lambda u(1-u)+\lambda_\Delta u^2(1-u).
+\end{equation}
+In epidemiology such models exhibit backward bifurcation \cite{ArinoMc}. The excitatory Wilson--Cowan equation
+\cite{WilsonCowan1972} is $\tau\dot E=-E+(k-rE)S(cE+P)$, where distinct response functions represent differences between
+excitatory and inhibitory populations, and logistic growth with saturating loss is $\dot x=rx(1-x/K)-cx^2/(x^2+h^2)$.
+
+\im {\bf A family containing all of the above:}
+\begin{equation}\label{eq:intro-family}
+ \Pi_i(x)=(1-\rho_ix_i)\Bigl[\eta_i+\sum_{k}b_{ik}\Phi_{ik}\bigl(h_{ik}+P_{ik}(x)\bigr)\Bigr],
+ \qquad P_{ik}(x)=\sum_{\nu\ne0}a_{ik\nu}x^\nu,\quad a_{ik\nu}\ge0,
+\end{equation}
+with $\rho_i,\eta_i\ge0$, $b_{ik}>0$, finitely many monomials, and nonnegative nondecreasing $C^1$ responses (bounded distribution
+functions and the identity are allowed). The removal may be nonlinear, $Vx+L(x)$, with $L_i(x_i)$ nondecreasing $C^1$ and
+$L_i(0)=0$ (grazing, harvesting, saturating loss), so that $\dot x=-Vx-L(x)+\Pi(x)$. This combines threshold responses
+($\rho=L=0$), pairwise or product terms, capacity factors, and saturating losses. Responses, removal coefficients and
+interaction strengths may vary by coordinate; activity levels, fractions or concentrations need not all lie in $[0,1]$.
+\EEN
+
+% Fluctuation limits and random neural networks: not used by the cusp and
+% siphon results, so the short paper drops them.
+\ifshort\else
+\paragraph{The response function survives in the fluctuation limit.}
+For example, if a population of size $n$ has active fraction
+$z$ and transition rates
+$n(1-z)\Phi(h+\beta z)$ and $nz[1-\Phi(h+\beta z)]$,
+its large-population limit satisfies
+\[
+\dot x=\Phi(h+\beta x)-x.
+\]
+Under the usual smoothness assumptions and convergence of the
+initial fluctuations, the central limit approximation
+$\sqrt n(z-x)\Rightarrow U$ satisfies
+\[
+dU_t=
+[\beta \Phi'(h+\beta x_t)-1]U_t\,dt
++\sqrt{(1-x_t)\Phi(h+\beta x_t)
++x_t[1-\Phi(h+\beta x_t)]}\,dB_t.
+\]
+Thus the original response $\Phi$ determines the limiting dynamics
+and the noise amplitude, while its derivative determines the
+linear fluctuation drift. Explicit limit results retaining nonlinear
+responses include the martingale central limit theorem for
+stochastic Wilson--Cowan neural fields of
+\cite[Theorem~2.3]{riedler2013}, and the functional central
+limit theorem for age-dependent Hawkes networks of
+\cite{chevallier2017}. An interesting direction for further work is
+to establish response-dependent fluctuation limits under independent
+inverse-subordinator time changes, connecting the present models with
+the work of Leonenko, Macci and Pacchiarotti
+\cite{LeonenkoMacciPacchiarotti2021}.
+\fi
+
+
+
+
+\paragraph{Why folds and cusps matter for modelling.}
+Past a fold the state can jump to another attractor, and reversing the parameter need not restore it. This is the mechanism
+of catastrophic regime shifts \cite{Scheffer2001} and tipping cascades \cite{kroenke2020}, and of the backward bifurcation of
+epidemic and social-contagion models, where an established state persists although invasion is impossible
+\cite{IPB,Kook2021,ArinoMc}. A cusp, where two fold curves meet, marks the change from a gradual and reversible response to an
+abrupt and hysteretic one when its outer branches are attracting, which is why cusps serve as design and diagnostic tools
+\cite{Guc}. Several cusps give  several regions of bistability and several switching thresholds.
+
+\beD[Siphons separate absent variables from resident variables on an invariant face]
+[][Siphons]
+Let $\dot x=f(x)$ be $C^1$ near a forward-invariant region
+$\Omega\subseteq\mathbb R^{n_S}_+$, with $f_i(x)\ge0$ on $x_i=0$.
+A nonempty index set $\Sigma$ is a \emph{siphon} if
+\[
+ \mathcal F_\Sigma=\{x\in\Omega:x_i=0\ (i\in\Sigma)\},
+ \qquad f_\Sigma(0,y)=0
+ \quad\text{for every }(0,y)\in\Omega.
+\]
+Equivalently, $\mathcal F_\Sigma$ is forward invariant. A minimal
+siphon contains no smaller nonempty siphon. With $z=x_\Sigma$ and
+$y=x_{\Sigma^c}$, the equations on the face are
+$\dot y=f_{\Sigma^c}(0,y)$, called the resident system.
+Minimal siphons may overlap and need not form a partition
+(Example~\ref{e:KBoverlap}).
+\eeD
+
+
+\paragraph{The relevance of siphon calculus.}
+Several of the methods we use below (for multistability, cusp constructions, propagation of waves,  etc), have already been used  in particular examples of epidemic, genetic,
+ neural and threshold models. We are revisiting them here from the point of view  of siphon calculus, which was developed recently in papers like \cite{AAHK,AAHRah,AAHrel,AA26}, building upon the \NGM\ method of \cite{Van},  the persistence result of Angeli, De Leenheer
+and Sontag \cite{AdLS},  the algebraic analysis
+of siphons and boundary steady states by Shiu and Sturmfels
+\cite{ShiuStu}, and on the underlying \CRN\ quest of identifying ``structures" (or the minimal assumptions), which make  the resolution of similar  particular examples work out.  One striking example is the fact that the transverse Jacobian block of any siphon face is Metzler, and hence that the Freidlin--G"artner--Weinberger--Lewis--Li wave-speed formula gives a general principle: it yields the linear spreading speed of the invasion of any resident on a siphon face under Laplacian diffusion.
+
+Minimal siphons turn out to correspond often to epidemiologic strains \cite{AABH25}. Last but not least, they distinguish classic models where minimal siphons are typically disjoint from less studied ones, where intersection is possible, like  the
+three-population  network of Theorem~\ref{t:KBoverlapCusp},
+$\dot x_1=-x_1+\Phi_a(x_1+\alpha x_2)$, $\dot x_2=-x_2+\Phi_a(x_2+\beta x_1x_3)$,
+$\dot x_3=-x_3+\Phi_a(x_3+\gamma x_2)$, with $\Phi_a$ a quartic odds response.%
+
+
+
+

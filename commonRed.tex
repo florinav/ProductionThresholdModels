@@ -1,0 +1,724 @@
+% Short-paper version. Load after mod and mod_partII, before equi.
+% The longer former version is preserved, commented out, at the end.
+
+\section{Invariant partitions preserve stability and lift bifurcations}\lbl{s:KBred}
+The reduction below replaces species with equal state values by one
+variable per group. We first state the invariance condition, then show
+when reduced equations determine full equilibrium stability and
+bifurcations, and finally apply the condition to shared threshold responses.
+
+\beD[Invariant partitions give exact equations for group-constant states][][LinRed]
+Consider $\dot x=f(x;\theta)$ for $n_S$ species, with
+$x\in\mathbb R^{n_S}$ and $f$ locally Lipschitz in $x$.
+Partition $\{1,\ldots,n_S\}$ into $n_G$ nonempty groups
+$C_1,\ldots,C_{n_G}$. Define the characteristic matrix $H$ and
+averaging matrix $L$ by
+\be{HL}
+\begin{gathered}
+ H\in\mathbb R^{n_S\times n_G},\qquad
+ H_{ia}=\begin{cases}1,&i\in C_a,\\0,&i\notin C_a,\end{cases}
+ \qquad L=(H^\top H)^{-1}H^\top,\\
+ (Lx)_a=\frac{1}{|C_a|}\sum_{i\in C_a}x_i,\qquad
+ LH=I_{n_G},\qquad H\mathbf1_{n_G}=\mathbf1_{n_S}.
+\end{gathered}
+\ee
+Here $|C_a|$ is the size of group $a$, and $I_d$ and $\mathbf1_d$
+are the identity matrix and all-ones vector of dimension $d$.
+For $y\in\mathbb R^{n_G}$,
+$(Hy)_i=\sum_{b=1}^{n_G}H_{ib}y_b=y_a$ when $i\in C_a$.
+Thus $x=Hy$ assigns the common value $y_a$ to every species in $C_a$.
+The associated \emph{synchrony subspace} is
+\be{syncSpace}
+ \Delta_C=\{x:x_i=x_j\text{ whenever }i,j\in C_a,
+                    \ a=1,\ldots,n_G\}=\operatorname{im}H.
+\ee
+It is invariant if solutions starting there remain there.
+This holds precisely when
+\be{groupInv}
+ f(Hy;\theta)=H\widehat f(y;\theta),
+ \qquad\text{where}\qquad \widehat f(y;\theta):=Lf(Hy;\theta),
+\ee
+for all admissible $y,\theta$. Equivalently, the derivatives
+$f_i(Hy;\theta)$ are equal for all $i$ in each group.
+The common values then satisfy $\dot y=\widehat f(y;\theta)$.
+The groups need not be siphons, and invariance does not imply
+convergence to $\Delta_C$ from outside it.
+\eeD
+
+The matrix form of the balance condition used below is explicit.
+For $A\in\mathbb R^{n_S\times n_S}$,
+\[
+ AH=H\widehat A
+ \quad\Longleftrightarrow\quad
+ \sum_{j\in C_b}A_{ij}=\widehat A_{ab}
+ \quad(i\in C_a,\quad a,b=1,\ldots,n_G).
+\]
+Thus the sum over each column group is independent of the row chosen
+within a row group. This is the equitable (or weighted balanced)
+partition condition for a matrix. It is used for $A$ in the next theorem
+and for the coefficient matrices $V,W$ in the threshold application below.
+General balanced partitions and synchrony subspaces are studied in
+\cite{SGP03,golubitsky2005patterns}. For row-stochastic threshold networks
+the exact quotient reduction is in \cite{Boud26}.
+
+\beT[Invariant partitions preserve spectral stability and lift saddle-nodes and cusps]
+[stability and bifurcation lifting][Spe]
+\label{t:KBspectral}\label{t:RedF}\label{t:KBquot}
+\label{p:KBquot}\label{p:KBextremalquot}\label{t:KBbiflift}
+Let $H,L$ be the characteristic and averaging matrices of
+Definition~\ref{d:LinRed}. Write $J(x;\theta):=\partial_x f(x;\theta)$ and, assuming
+\eqref{groupInv}, let $\widehat J(y;\theta):=\partial_y\widehat f(y;\theta)$
+denote the Jacobian of the reduced vector field.
+\begin{enumerate}
+\item Assume that $A\in\mathbb R^{n_S\times n_S}$ is Metzler and
+that there exists a matrix $\widehat A\in\mathbb R^{n_G\times n_G}$
+satisfying $AH=H\widehat A$.
+Then $\widehat A=LAH$ is Metzler, and
+\begin{equation}\label{eq:spectral-equality}
+ \|e^{At}\|_\infty=\|e^{\widehat A t}\|_\infty
+ \quad(t\ge0),\qquad s(A)=s(\widehat A)
+\end{equation}
+(no irreducibility is required).
+\item For a $C^1$ family satisfying \eqref{groupInv},
+$J(Hy;\theta)H=H\widehat J(y;\theta)$.
+At a lifted equilibrium with Metzler $J$, reduced and full local
+exponential stability are equivalent. If the full system is cooperative
+on a forward-invariant box $[0,H\bar y]$, $\bar y\gg0$, its least
+and greatest equilibria are the lifts of the reduced ones. Full and
+reduced uniqueness are equivalent, and uniqueness implies convergence
+of every trajectory in the box.
+\item Suppose the family is $C^k$, $k\ge3$, and the reduced system
+has a nondegenerate saddle-node or a generically unfolded cusp.
+If the full Jacobian is irreducible Metzler and
+$s(\widehat J)=0$, the same bifurcation occurs in the full system
+at the same parameter values, with strictly stable complementary
+ directions. More generally this conclusion holds for any fixed
+full-column-rank $H$ defining an invariant reduction, provided the full
+Jacobian has a simple zero eigenvalue and all other eigenvalues have
+negative real parts. Stability of the center branches then determines
+full local stability.
+\end{enumerate}
+\eeT
+\begin{proof}
+Off-diagonal entries of $\widehat A=LAH$ are averages of sums of
+nonnegative entries between distinct groups, hence are nonnegative.
+The intertwining identity and positivity give
+\[
+ \|e^{At}\|_\infty=\|e^{At}\mathbf1_{n_S}\|_\infty
+ =\|He^{\widehat A t}\mathbf1_{n_G}\|_\infty
+ =\|e^{\widehat A t}\|_\infty,
+\]
+since $\|Hz\|_\infty=\|z\|_\infty$. Taking exponential growth rates
+proves item 1. Differentiating \eqref{groupInv} proves the
+Jacobian identity and hence the stability assertion in item 2.
+For its remaining claims, Proposition~\ref{p:KBpositive}(a) applies
+to a cooperative invariant box (its order argument uses only these
+hypotheses). The trajectories from $0$ and $H\bar y$ stay in
+$\operatorname{im}H$ and converge to the full extremal equilibria;
+these are therefore the lifts of the reduced extrema. Comparison
+proves the uniqueness and convergence claims.
+
+For item 3, item 1 and irreducible Metzler theory give a simple zero
+and a strictly stable complement; the more general alternative
+assumes these properties directly. In coordinates $x=Hy+Zz$,
+where $Z\in\mathbb R^{n_S\times(n_S-n_G)}$ has columns
+complementing $\operatorname{im}H$ and
+$z\in\mathbb R^{n_S-n_G}$ measures departures from that subspace, include
+$\dot\theta=0$. Invariance for every nearby parameter gives the
+linearization
+\[
+ \begin{pmatrix}
+ \widehat J&\partial_\theta\widehat f&*\\
+ 0&0&0\\
+ 0&0&A_\perp
+ \end{pmatrix}
+ \quad\text{in the order }(y,\theta,z),
+\]
+with $A_\perp$ Hurwitz. The full generalized center subspace lies
+in $z=0$. A center manifold of the extended reduced system therefore
+lifts to a full center manifold with unchanged dynamics. The stable
+complement persists nearby, proving the bifurcation and stability
+claims.
+\end{proof}
+
+\paragraph{Shared responses and invariant groups.}
+Consider the production model \bookref{eq:KB}{\eqref{eq:KB}}{$\dot x=\Pi(x)-Vx$, with $V$ a
+nonsingular $M$-matrix}. For a specified family $\mathcal S$ of siphons (for example, the minimal
+siphons of a zero-onset model), impose
+\begin{equation}\label{eq:KB-share-siphons}
+ \Phi_i=\Phi_j\quad\text{as functions whenever }i,j\in \Sigma,\quad \Sigma\in\mathcal S.
+\end{equation}
+Overlaps force agreement. Let $C_1,\ldots,C_{n_G}$ be the resulting $n_G$ equivalence
+classes of the $n_S$ species indices, with uncovered indices initially
+singleton classes. Here $\kappa:\{1,\ldots,n_S\}\to\{1,\ldots,n_G\}$
+assigns each species to its class. Equivalently,
+\begin{equation}\label{eq:KB-shared-response}
+ \Phi_i=\widehat\Phi_{\kappa(i)},\quad i\in C_{\kappa(i)},\qquad
+ \Pi_i(x)=a_i(x_i)\widehat\Phi_{\kappa(i)}(h_i+P_i(x)).
+\end{equation}
+Covered classes are unions of overlapping siphons and hence siphons:
+their zero faces are intersections of invariant faces. Uncovered classes
+need not be siphons; further response sharing is optional. Sharing on
+\emph{every} siphon would force one global response whenever the full index
+set is a siphon. Preserving the response zero sets preserves the chosen
+family (Proposition~\ref{p:InvF}).
+
+\beP[Sharing responses preserves the general theory but does not imply reduction]
+[shared responses and theorem scope][KBshared]
+Consider \eqref{eq:KB-shared-response} with the positivity and
+invariance assumptions of Proposition~\ref{p:KBpositive}.
+\begin{enumerate}
+\item For constant coefficients $a_i=b_i>0$, linear polynomials
+$P_i=\beta(Wx)_i$, $\beta\ge0$, $W\ge0$, and
+$0\le\widehat\Phi_a'\le L_a$, a sufficient condition for exponential contraction is
+\begin{equation}\label{eq:KB-shared-contraction}
+ \beta\rho\!\left(
+ \operatorname{Diag}(b_iL_{\kappa(i)})WV^{-1}\right)<1.
+\end{equation}
+\item On a siphon face $x_\Sigma=0$, write $y=x_{\Sigma^c}$ for the resident
+coordinates. If $P_i(0,y)=0$ for $i\in \Sigma$ and
+$\widehat\Phi_{\kappa(i)}(h_i)=0$, the transverse matrix is
+\begin{equation}\label{eq:KB-shared-transverse}
+ J^\perp(y)=-V_\Sigma+
+ \operatorname{Diag}\!\left(
+ a_i(0)\widehat\Phi_{\kappa(i)}'(h_i):i\in \Sigma\right)
+ \partial_{x_\Sigma}P_\Sigma(0,y).
+\end{equation}
+Derivatives at a boundary argument are understood from the admissible
+side when needed. If the response, stimulus and $a_i(0)$ are common
+on $\Sigma$, their scalar factor is common; the remaining matrix need
+not have constant rows or equal eigenvalues.
+\item Use the characteristic matrix $H$ of these response classes.
+Sufficient conditions for \eqref{groupInv} are
+\[
+ VH=H\widehat V,\qquad
+ a_i(r)=\widehat a_a(r),\quad h_i=\widehat h_a,\quad
+ P_i(Hy)=\widehat P_a(y)\quad(i\in C_a).
+\]
+For linear $P(x)=\beta Wx$, the two matrix conditions are
+\[
+ \sum_{j\in C_b}V_{ij}=\widehat V_{ab},\qquad
+ \sum_{j\in C_b}W_{ij}=\widehat W_{ab}
+ \quad(i\in C_a),
+\]
+with sums independent of $i$ within each group; then
+$\widehat P(y)=\beta\widehat Wy$.
+Thus variables initially equal within each $C_a$ remain equal,
+and their common values satisfy
+\[
+ \dot y_a=-(\widehat V y)_a+
+ \widehat a_a(y_a)\widehat\Phi_a(\widehat h_a+\widehat P_a(y)).
+\]
+When the system is cooperative, Theorem~\ref{t:Spe}(2) transfers local
+exponential stability exactly between a reduced equilibrium and its lift.
+Without cooperativity, exact reduction alone gives no such conclusion.
+\end{enumerate}
+\eeP
+\begin{proof}
+The contraction assertion is a case of the multivariable Lur'e theorem of
+\cite{Davydov}. Directly, put
+$B=\beta\operatorname{Diag}(b_iL_{\kappa(i)})W$ and $M=B-V$.
+Here $\beta\ge0$. The spectral inequality gives $s(M)<0$.
+Since $M$ is Metzler and Hurwitz,
+$q=(-M)^{-1}\mathbf1_{n_S}\gg0$ satisfies
+$Mq=-\mathbf1_{n_S}\le-cq$,
+where $c=1/\max_iq_i>0$. Moreover $J(x)\le M$ entrywise and $J(x)$ is Metzler.
+The mean-value formula on the convex box therefore gives, for two solutions,
+\[
+ D^+\|x(t)-\widetilde x(t)\|_{\infty,q}
+ \le-c\|x(t)-\widetilde x(t)\|_{\infty,q},
+ \qquad \|w\|_{\infty,q}=\max_i |w_i|/q_i.
+\]
+Integration proves exponential contraction.
+
+Differentiating the production gives
+\[
+ \partial_j\Pi_i
+ =\delta_{ij}a_i'(x_i)\widehat\Phi_{\kappa(i)}(h_i+P_i(x))
+ +a_i(x_i)\widehat\Phi_{\kappa(i)}'(h_i+P_i(x))\partial_jP_i(x).
+\]
+The first term vanishes on the specified face, proving
+\eqref{eq:KB-shared-transverse}.
+For the reduction, direct substitution gives \eqref{groupInv}.
+Uniqueness then preserves equality within each group, and
+Theorem~\ref{t:Spe}(2) gives the stability transfer.
+\end{proof}
+\beR[Shared responses and correlated thresholds]
+[shared thresholds][KBsharenote]
+Sharing a response means sharing a threshold \emph{distribution};
+it does not mean that all variables use the same random threshold
+realization or the same noise. Such correlated updates require a
+separate microscopic model. For disjoint minimal siphons of a linear
+network the sharing requirement is particularly simple, but even
+then unequal removal coefficients or unequal row sums can prevent
+reduction. For example, $V=\operatorname{Diag}(1,2)$,
+$P_1=x_2$, $P_2=x_1$, $h=0$, and a common zero-onset response
+have the minimal siphon $\{1,2\}$, whereas at $x_1=x_2=r>0$,
+$f_1=-r+\Phi(r)$ and $f_2=-2r+\Phi(r)$ are unequal.
+\eeR
+
+\beR[Response shape, zero sets and sharpness]
+[shape and zeros][KBshapenote]
+Changing response shapes while preserving their zero sets preserves
+siphons, but can change slopes in \eqref{eq:KB-shared-transverse},
+contraction constants, equilibria, saddle-nodes and cusps. For a globally $C^1$ zero-onset response,
+Remark~\ref{r:KBonset} gives $\widehat\Phi_a'(0)=0$; hence zero stimulus
+and $P_i$ vanishing on the face give $J^\perp=-V_\Sigma$.
+The common-response sharpness theorem
+\ref{t:KBsharp} already satisfies any prescribed equality among
+responses, but its full-support perturbation removes all nonempty
+siphons. It must not be used to assert arbitrary multistability
+while simultaneously preserving a prescribed nontrivial siphon
+family. For SIS the common identity response is already shared
+by every index; restrictions on its infection coefficients and
+susceptible factors remain essential.
+\eeR
+
+
+
+% Previous general coupling discussion (inactive; not needed below).
+% In coupled-cell theory, the variables are called cells.
+% For an explicit ODE formulation, consider
+% \[
+%  \dot x_i=g_a(x_i;\theta)
+%  +\sum_{\tau=1}^{q}\sum_{j=1}^{n_S}
+%  A^{(\tau)}_{ij}\,h_\tau(x_i,x_j;\theta),
+%  \qquad i\in C_a,
+% \]
+% where $q$ is a positive integer, $A^{(\tau)}$ are fixed
+% $n_S\times n_S$ matrices with nonnegative entries, and
+% $g_a$ and $h_\tau$ are scalar locally Lipschitz functions.
+% For this representation, the partition is \emph{balanced} if
+% \[
+%  \sum_{j\in C_b}A^{(\tau)}_{ij}
+%  =\sum_{j\in C_b}A^{(\tau)}_{kj}
+%  =:\widehat A^{(\tau)}_{ab}
+%  \qquad
+%  (i,k\in C_a,\quad a,b=1,\ldots,n_G,\quad \tau=1,\ldots,q).
+% \]
+% Indeed, substituting $x_i=y_a$ for $i\in C_a$ gives
+% \[
+%  f_i(Hy;\theta)
+%  =g_a(y_a;\theta)
+%  +\sum_{\tau=1}^{q}\sum_{b=1}^{n_G}
+%  \widehat A^{(\tau)}_{ab}\,h_\tau(y_a,y_b;\theta),
+%  \qquad i\in C_a.
+% \]
+% The right-hand side is independent of the choice of $i$ within
+% $C_a$, proving invariance of the synchrony subspace.
+%
+%  Such partitions give
+% synchrony subspaces invariant for every vector field compatible
+% with the network architecture
+% \cite{SGP03,golubitsky2005patterns}.
+% Here we require \eqref{groupInv} for the specified family $f$.
+% The groups need not be siphons.
+
+% Preserved longer reduction toolbox (inactive in the short paper).
+% % Reorganized shared appendix file; load once in the documented order.
+% % Shared reference file. Load directly from each master, once.
+% \section{Invariant embeddings and exact quotients describe different reductions}
+% \beD[Invariant embeddings and exact quotients of an ODE][][LinRed]
+% Here $n_S$ counts state variables and $n_G$ counts reduced variables.
+% Let $\dot x=f(x)$ on an open set $D\subset\mathbb R^{n_S}$, with $f$ locally
+% Lipschitz, and let $H\in\mathbb R^{n_S\times n_G}$ and
+% $L\in\mathbb R^{n_G\times n_S}$ satisfy $LH=I_{n_G}$. Set
+% $P=HL$ and $Q=I_{n_S}-P$. Then
+% \[
+%  x=Hy+\eta,\qquad y=Lx,\qquad \eta=Qx\in\ker L.
+% \]
+% The matrix $P$ is a projection onto $\operatorname{im}H$; it need not
+% be orthogonal. Two different identities define reductions:
+% \begin{enumerate}
+% \item An \emph{invariant embedding} satisfies
+% $f(Hy)=Hg(y)$ for every $y$ with $Hy\in D$.
+% Solutions starting in $\operatorname{im}H$ remain there for as long as
+% they exist in $D$, and satisfy $\dot y=g(y)=Lf(Hy)$.
+% \item An \emph{exact quotient} satisfies $Lf(x)=g(Lx)$ for every $x\in D$,
+% where $g$ is locally Lipschitz on $L(D)$.
+% Every full solution projects to $\dot y=g(y)$, including solutions
+% outside $\operatorname{im}H$.
+% \end{enumerate}
+% Neither identity implies the other. A partition matrix $H$ produces
+% an invariant synchrony subspace when the first identity holds; a
+% weighted aggregation $L$ produces a closed equation for all projected
+% trajectories when the second holds.
+% \eeD
+%
+% \beP[Embeddings and quotients give opposite triangular derivative identities]
+% [][LinRed]
+% Assume $f,g$ are $C^1$ and use the notation of Definition~\ref{d:LinRed}.
+% The coordinate equations are
+% \[
+%  \dot y=Lf(Hy+\eta),\qquad \dot\eta=Qf(Hy+\eta).
+% \]
+% For an invariant embedding, at $x=Hy$,
+% \[
+%  Df(Hy)H=HDg(y),\qquad Qf(Hy)=0,
+% \]
+% and the derivative in coordinates $(y,\eta)\in\mathbb R^{n_G}\times\ker L$ is
+% \[
+%  \begin{pmatrix}
+%  Dg(y)&LDf(Hy)|_{\ker L}\\
+%  0&QDf(Hy)|_{\ker L}
+%  \end{pmatrix}.
+% \]
+% Thus the complementary matrix is $QDf(Hy)|_{\ker L}$;
+% $\ker L$ itself need not be invariant under $Df(Hy)$.
+% For an exact quotient,
+% \[
+%  LDf(x)=Dg(Lx)L,\qquad \dot y=g(y),
+% \]
+% so $\ker L$ is invariant under $Df(x)$ and the derivative is
+% \[
+%  \begin{pmatrix}
+%  Dg(Lx)&0\\
+%  QDf(x)H&Df(x)|_{\ker L}
+%  \end{pmatrix}.
+% \]
+% For an exact quotient, let $x_*$ be a full equilibrium and set $y_*=Lx_*$. Then $g(y_*)=0$, and in quotient coordinates,
+% \[
+%  \operatorname{spec}Df(x_*)=
+%  \operatorname{spec}Dg(y_*)\ \cup\
+%  \operatorname{spec}\bigl(Df(x_*)|_{\ker L}\bigr),
+% \]
+% counting algebraic multiplicities. If the quotient equilibrium is locally exponentially stable, the full equilibrium is locally exponentially stable precisely when the remaining eigenvalues also have negative real parts. For an embedding at $x_*=Hy_*$, the same spectral and stability
+% conclusions hold with complementary matrix $QDf(Hy_*)|_{\ker L}$.
+% An equilibrium of a quotient need not have a full equilibrium above it.
+% \eeP
+% \begin{proof}
+% Apply $L$ and $Q$ to the original equation and differentiate the defining
+% identities. For an embedding the lower-left derivative block vanishes
+% at $\eta=0$. For a quotient the upper-right block vanishes everywhere,
+% and $LDf(x)\eta=0$ for $\eta\in\ker L$.
+% In either case the block-triangular characteristic polynomial gives
+% the stated spectral decomposition at an equilibrium. The assertion about stability
+% refers to local exponential stability and follows by linearization.
+% \end{proof}
+%
+% \paragraph{Two elementary distinctions.}
+% With $L=(1,0)$ and $H=(1,0)^\top$, the system
+% $\dot x_1=-x_1+x_2^2$, $\dot x_2=-x_2$ has the invariant embedding
+% $x_2=0$, but $x_1$ does not satisfy a closed equation for arbitrary
+% initial conditions. Conversely, $\dot x_1=-x_1$, $\dot x_2=1-x_2$
+% has the exact quotient $\dot y=-y$, but the chosen subspace $x_2=0$
+% is not invariant. In a quotient, decay of differences between two
+% solutions with the same projected trajectory does not imply that
+% each residual $\eta$ tends to zero.
+%
+% \paragraph{Common notation for exact group reductions.}
+% Let $H$ indicate a partition into nonempty groups $C_1,\ldots,C_{n_G}$,
+% with one entry $1$ in each row. Set
+% \[
+%  L=(H^\top H)^{-1}H^\top,\quad LH=I_{n_G},\quad H\mathbf1=\mathbf1,
+%  \quad P=HL,\quad Q=I-P,\quad U=\operatorname{im}H,\quad W=\ker L.
+% \]
+% This is the partition specialization of Definition~\ref{d:LinRed}.
+% The coordinates $Lx$ are group means, $Px$ repeats those means, and
+% $Qx$ measures departures from equality within groups. These groups
+% need not be siphons. Equalities of weighted inputs are the balanced
+% colourings of coupled-cell networks \cite{SGP03,golubitsky2005patterns}.
+%
+% \beT[Positive invariant partitions preserve the spectral abscissa exactly]
+% [spectral equality under replication][Spe]\label{t:KBspectral}
+% \emph{Scope: positive linear systems; in applications, the Jacobian of a
+% cooperative system, a principal submatrix of a Jacobian, or the transverse matrix on a siphon
+% face. In each application the displayed partition identity must hold for that
+% matrix.}
+%
+% Let $H$ be the indicator matrix of a partition into nonempty groups ($H\mathbf1=\mathbf1$, exactly one entry $1$ per row, and all other entries zero). If $A$ is Metzler and $AH=H{\widehat A}$, then $\widehat A$ is Metzler and
+% \begin{equation}\label{eq:spectral-equality}
+%  \|e^{At}\|_\infty=\|e^{{\widehat A}t}\|_\infty\quad(t\ge0),
+%  \qquad s(A)=s(\widehat A).
+% \end{equation}
+% If $A\ge0$, then $\widehat A\ge0$ and $\rho(A)=\rho(\widehat A)$.
+% No irreducibility is required. For continuous time-dependent Metzler
+% matrices $A(t)H=H{\widehat A}(t)$, the fundamental matrices satisfy
+% \[
+%  \Phi_A(t,s)H=H\Phi_{\widehat A}(t,s),\qquad
+%  \|\Phi_A(t,s)\|_\infty=\|\Phi_{\widehat A}(t,s)\|_\infty.
+% \]
+% Here $t\ge s$. Consequently the full and reduced equations have the
+% same uniform exponential-stability bounds in the maximum norm.
+% For periodic coefficients their monodromy matrices have equal spectral
+% radii. These conclusions also hold for locally bounded measurable
+% coefficients satisfying the Metzler and partition conditions almost
+% everywhere; the evolution identities hold for every $t\ge s$.
+% \eeT
+% \begin{proof}
+% Off-diagonal entries of $\widehat A=LAH$, $L=(H^\top H)^{-1}H^\top$, are averages of sums of
+% nonnegative entries of $A$ between different groups. Uniqueness of the linear
+% initial-value problem gives the intertwining identities. Positivity and
+% $H\mathbf1=\mathbf1$ then give
+% \[
+%  \|\Phi_A\|_\infty=\|\Phi_A\mathbf1\|_\infty
+%  =\|H\Phi_{\widehat A}\mathbf1\|_\infty=\|\Phi_{\widehat A}\|_\infty.
+% \]
+% Nonempty groups give $\|Hy\|_\infty=\|y\|_\infty$, which justifies the last equality. For constant matrices take the large-time exponential growth rate.
+% For nonnegative matrices use $A^nH=H{\widehat A}^n$ and the spectral-radius
+% formula. Apply that argument to the monodromy matrices as well.
+% \end{proof}
+%
+% \beT[Invariant synchrony reductions preserve cooperative equilibrium stability and extremal equilibria]
+% [synchrony reductions and stability][RedF]\label{t:KBquot}\label{p:KBquot}\label{p:KBextremalquot}
+% Let $f$ be $C^1$ near a group-constant box $\Omega=[0,H\bar y]$,
+% $\bar y\gg0$, and suppose the box is forward invariant.
+% The group-constant subspace intersected with $\Omega$ is invariant exactly when
+% \[
+%  f(Hy)=H\widehat f(y),\qquad \widehat f(y)=Lf(Hy),\quad 0\le y\le\bar y.
+% \]
+% Then $\dot y=\widehat f(y)$ is the exact reduced system and
+% $J(Hy)H=H\widehat J(y)$. If $J(Hy^*)$ is Metzler at a lifted equilibrium,
+% \[
+%  s(J(Hy^*))=s(\widehat J(y^*)),
+% \]
+% so reduced and full local exponential stability are equivalent.
+% If $f$ is cooperative throughout $\Omega$, its least and greatest
+% equilibria are $x^-=Hy^-$ and $x^+=Hy^+$, the lifts of the reduced
+% extremal equilibria. Full and reduced uniqueness are equivalent;
+% uniqueness implies convergence of every full trajectory in $\Omega$.
+% Intermediate equilibria need not be group-constant.
+%
+% For a production representation $f=-Vx+\Pi(x)$ with $V$ a nonsingular
+% $M$-matrix, sufficient reduction identities are
+% \[
+%  VH=HB_V,\qquad \Pi(Hy)=H\widehat\Pi(y).
+% \]
+% Then $B_V$ is a nonsingular $M$-matrix and
+% $\widehat f=-B_Vy+\widehat\Pi(y)$. At a lifted equilibrium with
+% Metzler $J_*$, choose $\alpha>0$ so that $B_*=J_*+\alpha I_{n_S}\ge0$.
+% With $\widehat B_* =\widehat J_*+\alpha I_{n_G}$,
+% \[
+%  (B_*/\alpha)H=H(\widehat B_*/\alpha),\qquad
+%  \rho(B_*/\alpha)=\rho(\widehat B_*/\alpha),\qquad
+%  \operatorname{sign}s(J_*)=\operatorname{sign}(\rho(B_*/\alpha)-1).
+% \]
+% If the production derivative has nonnegative off-diagonal entries,
+% one can instead choose $c\ge0$ with $B_*:=\partial_x\Pi+cI_{n_S}\ge0$,
+% $V_c=V+cI_{n_S}$, $B_{V,c}=B_V+cI_{n_G}$, and
+% $\widehat B_*:=\partial_y\widehat\Pi+cI_{n_G}$. Then
+% \[
+%  B_*V_c^{-1}H=H\widehat B_*B_{V,c}^{-1},\qquad
+%  \rho(B_*V_c^{-1})=\rho(\widehat B_*B_{V,c}^{-1}).
+% \]
+% Both are exact next-generation tests, including reducible systems. Here production derivatives and their
+% reduced counterparts are evaluated at the corresponding equilibrium.
+% If $\partial_x\Pi\ge0$, take $c=0$; a coordinate-dependent shift
+% need not preserve the partition.
+% \eeT
+% \begin{proof}
+% Tangency gives the reduction identity, and differentiating gives
+% $JH=H\widehat J$. Theorem~\ref{t:Spe} proves spectral equality.
+% Forward invariance makes $0$ a subsolution and $H\bar y$ a
+% supersolution. Cooperativity therefore makes their trajectories
+% nondecreasing and nonincreasing, respectively. Compactness gives
+% limits, which are equilibria by continuity of the flow; comparison
+% with every equilibrium makes them the least and greatest equilibria. Exact reduction keeps both
+% trajectories group-constant, proving the extremal assertions; comparison
+% then proves convergence when their limits coincide.
+% The identity $e^{-Vt}H=He^{-B_Vt}$ and Theorem~\ref{t:Spe} show that
+% $-B_V$ is Metzler and Hurwitz; hence $B_V$ is a nonsingular $M$-matrix.
+% Differentiation and a common scalar shift give the displayed
+% intertwining identities; $V_c^{-1}H=HB_{V,c}^{-1}$ gives the second
+% one. The nonnegative-matrix assertion of Theorem~\ref{t:Spe} and the
+% regular-splitting criterion prove the next-generation tests.
+% \end{proof}
+%
+% \paragraph{Scope of the reduction.}
+% These statements apply to the autonomous system under study, including
+% a resident restriction. Local exponential stability of an equilibrium of that restriction in a larger system also requires negative real parts for all eigenvalues in the absent directions.
+% For a prescribed input, the reduction identity must hold for every input;
+% it then compares dynamics with that same input. An invariant embedding does not imply $Lf(x)=\widehat f(Lx)$
+% away from synchrony. Exact reduction and
+% local equilibrium stability do not imply synchronization of arbitrary
+% initial values. In particular a synchrony partition is independent of
+% the choice of a siphon face.
+% \iffalse
+% \beP[Exponential transverse decay bounds quadratic forcing of reduced trajectories]
+% [quadratic forcing and tracking][QuadLift]
+% On a compact forward invariant set $K$, consider the system
+% \begin{equation}\label{eq:SCM-quadratic-lift-system}
+%  \dot u=f_0(u)+R(u,\eta)[\eta,\eta],\qquad
+%  \dot\eta=-A_0(t,u,\eta)\eta,
+% \end{equation}
+% where $R(u,\eta)$ is a uniformly bounded bilinear map and $|\eta|$ denotes the Euclidean norm. Assume $(A_0+A_0^\top)/2\succeq\gamma_0I$ with
+% $\gamma_0>0$, and $f_0$ contracting at rate $\lambda>0$ in a constant
+% norm on the convex forward invariant set
+% $K_0:=\{u:(u,0)\in K\}$. Assume also $(u,\eta)\in K$ implies
+% $(u,0)\in K$. If $\bar u'=f_0(\bar u)$ and $\bar u(0)=u(0)$, then
+% $|\eta(t)|\le e^{-\gamma_0t}|\eta(0)|$ and, for every
+% $0<\nu<\min\{\lambda,2\gamma_0\}$,
+% \begin{equation}\label{eq:SCM-quadratic-lift-bound}
+%  \|u(t)-\bar u(t)\|\le C_\nu e^{-\nu t}|\eta(0)|^2.
+% \end{equation}
+%
+% More generally the same conclusion holds if the transverse estimate is
+% $|\eta(t)|\le M e^{-\gamma_0t}|\eta(0)|$, $M\ge1$, regardless of its
+% method of proof. Here the displayed system is assumed to have unique
+% solutions, $f_0$ is $C^1$, and contraction refers to its Jacobian
+% logarithmic norm on $K_0$. The constant is uniform over initial states
+% in $K$. When $\lambda\ne2\gamma_0$, the endpoint rate
+% $\nu=\min\{\lambda,2\gamma_0\}$ is also admissible.
+% \eeP
+% \begin{proof}
+% The symmetric-part inequality gives
+% $(|\eta|^2)'\le-2\gamma_0|\eta|^2$. In the more general version use
+% the assumed estimate. Boundedness of the bilinear map $R$ gives
+% \[\|R(u,\eta)[\eta,\eta]\|\le C M^2 e^{-2\gamma_0t}|\eta(0)|^2.\]
+% The segment between $u(t)$ and $\bar u(t)$ lies in the convex set $K_0$.
+% Treating $R(u(t),\eta(t))[\eta(t),\eta(t)]$ as the forcing residual, the logarithmic-norm inequality and scalar comparison give
+% \[
+%  \|u(t)-\bar u(t)\|\le CM^2|\eta(0)|^2
+%  \begin{cases}
+%  (e^{-2\gamma_0t}-e^{-\lambda t})/(\lambda-2\gamma_0),
+%        &\lambda\ne2\gamma_0,\\
+%  t e^{-\lambda t},&\lambda=2\gamma_0.
+%  \end{cases}
+% \]
+% For unequal rates the first expression is at most
+% $e^{-\min\{\lambda,2\gamma_0\}t}/|\lambda-2\gamma_0|$.
+% For either case and $0<\nu<\min\{\lambda,2\gamma_0\}$,
+% write the convolution as
+% \[
+%  e^{-\nu t}\int_0^t
+%  e^{-(\lambda-\nu)(t-s)}e^{-(2\gamma_0-\nu)s}\,ds
+%  \le\frac{e^{-\nu t}}{\max\{\lambda-\nu,2\gamma_0-\nu\}}.
+% \]
+% Thus one may take
+% $C_\nu=CM^2/\max\{\lambda-\nu,2\gamma_0-\nu\}$,
+% where $C$ is a uniform bound for $R$ from the Euclidean transverse
+% norm to the chosen norm on the reduced coordinates.
+% \end{proof}
+%
+%
+%
+% \paragraph{Partition contraction and quantitative tracking.}
+% Use the partition matrices $H,L,P,Q$ and spaces $U,W$ defined above.
+%
+% \beT[Embedded partitions, exact quotients, Metzler stability and transverse tracking]
+% \emph{(i) Invariant embeddings, quotients, and Metzler stability.}
+% Let $K\subset\mathbb R^{n_S}$ be a compact convex forward-invariant set
+% with $PK\subset K$, and let $f$ be $C^1$ near $K$. Suppose
+% \[
+%  Qf(H\rho)=0\qquad (\rho\in LK),
+%  \qquad g(\rho)=Lf(H\rho).
+% \]
+% Then $U\cap K$ is invariant, and the solutions there satisfy
+% $\dot\rho=g(\rho)$.
+% If $LK$ has nonempty interior in $\mathbb R^{n_G}$, or the embedding
+% identity holds on an open neighbourhood of $LK$, differentiation and
+% continuity give $Df(H\rho)H=HDg(\rho)$ and spectral inclusion.
+% When $Df(H\rho)$ is Metzler, Theorem~\ref{t:Spe} gives
+% $s(Df(H\rho))=s(Dg(\rho))$, hence equivalence of reduced and full
+% local exponential stability at lifted equilibria. No synchronization
+% hypothesis is needed. Without the Metzler assumption the spectral
+% abscissae need not agree. The domain hypothesis is essential: for
+% $K=\{0\}$, $H=(1,1)^\top$ and $f(x)=(x_1,-x_2)$, the embedding
+% identity holds on $LK=\{0\}$ but $Df(0)H=(1,-1)^\top$ is not in
+% $\operatorname{im}H$.
+%
+%
+% The embedding is an \emph{exact quotient} on $K$ if
+% \[
+%  Lf(x)=g(Lx)\qquad(x\in K).
+% \]
+% A sufficient differential criterion for this identity is
+% \begin{equation}\label{eq:toolQuotient}
+%  LDf(x)Q=0\qquad(x\in K).
+% \end{equation}
+% If $K$ has nonempty interior, the criterion is also necessary.
+%
+%
+% \medskip
+% \noindent\emph{(ii) Transverse contraction and quantitative tracking.}
+% Assume in addition that $f$ is $C^2$ near $K$.
+% Let $Z$ have orthonormal columns spanning $W$ and set
+% $J_W(x)=Z^\top Df(x)Z$. Suppose a positive definite matrix
+% $M_0$ and $c>0$ satisfy
+% \begin{equation}\label{eq:toolTransverse}
+%  J_W(x)^\top M_0+M_0J_W(x)\preceq-2cM_0
+%  \qquad(x\in K).
+% \end{equation}
+% Then, with $\eta=Qx$, every trajectory in $K$ satisfies
+% \[
+%  \|Z^\top\eta(t)\|_{M_0}
+%  \le e^{-ct}\|Z^\top\eta(0)\|_{M_0}.
+% \]
+% Assume also that the reduced flow $\dot\rho=g(\rho)$ contracts
+% incrementally on $LK$ at rate $\lambda>0$ in a fixed norm, and let
+% $\bar\rho$ solve it with $\bar\rho(0)=Lx(0)$. Then, uniformly for
+% $x(0)\in K$ and each $0<\nu<\min\{\lambda,c\}$,
+% \[
+%  \|Lx(t)-\bar\rho(t)\|
+%  \le C_\nu e^{-\nu t}\|Qx(0)\|_2.
+% \]
+% If additionally the \emph{linear averaged forcing} vanishes,
+% \begin{equation}\label{eq:toolQuadraticForcing}
+%  LDf(H\rho)Q=0\qquad(\rho\in LK),
+% \end{equation}
+% then, for every $0<\nu<\min\{\lambda,2c\}$, the stronger
+% estimate holds:
+% \[
+%  \|Lx(t)-\bar\rho(t)\|
+%  \le \widetilde C_\nu e^{-\nu t}\|Qx(0)\|_2^2.
+% \]
+% The constants depend on $K$, $f$, the certified norms and rates,
+% not on $x(0)$. In either case the full system has a unique
+% equilibrium in $K$, lying in $U$, and every trajectory in $K$
+% converges to it exponentially. When $W=\{0\}$, the transverse
+% condition is vacuous.
+%
+% If $K$ is a box and $Df$ is entrywise multiaffine, the constant
+% quadratic inequality \eqref{eq:toolTransverse} holds throughout $K$
+% if and only if it holds at every vertex of $K$.
+%
+% \eeT
+% \begin{proof}
+% \emph{Part (i).}
+% The first identity means $f(H\rho)=Hg(\rho)$; uniqueness of the
+% ODE proves invariance.
+% Under the added domain hypothesis, differentiate the embedding
+% identity on the open set, or on the interior of the convex body $LK$,
+% and extend by continuity. Proposition~\ref{p:LinRed} and
+% Theorem~\ref{t:Spe} give the spectral conclusions.
+%
+%
+% For $x\in K$, the segment $Px+tQx$ belongs to $K$, and
+% \[
+%  Lf(x)-Lf(Px)=\int_0^1 LDf(Px+tQx)Qx\,dt.
+% \]
+% Criterion \eqref{eq:toolQuotient} makes this zero, while
+% $Lf(Px)=g(Lx)$. Conversely, when $K$ has nonempty interior and the
+% quotient identity holds, differentiation along the $W$ directions
+% there gives $LDf(x)Q=0$; continuity extends it to $K$.
+%
+% \emph{Part (ii).}
+% Invariance gives $Qf(Px)=0$. Since $x=Px+\eta$ and the segment
+% from $Px$ to $x$ lies in $K$,
+% \[
+%  (Z^\top\eta)'=\left[\int_0^1J_W(Px+t\eta)\,dt\right]
+%                      Z^\top\eta.
+% \]
+% Integrating \eqref{eq:toolTransverse} and differentiating the
+% quadratic norm proves transverse decay. Taylor's formula gives
+% \[
+%  (Lx)'=g(Lx)+LDf(Px)\eta+r(x),
+%  \qquad \|r(x)\|\le A\|\eta\|_2^2,
+% \]
+% with a constant $A$ independent of $x\in K$. In particular, the
+% forcing is $O(\|\eta\|_2)$, and under
+% \eqref{eq:toolQuadraticForcing} it is $O(\|\eta\|_2^2)$.
+% Apply the convolution estimate in the proof of
+% Proposition~\ref{p:QuadLift}, with forcing bounded respectively by
+% $C e^{-ct}\|\eta(0)\|_2$ and $C e^{-2ct}\|\eta(0)\|_2^2$.
+% Norm equivalence supplies the constants; compactness absorbs the quadratic
+% remainder into the linear bound in the first case. Strictly smaller rates
+% cover $c=\lambda$ or $2c=\lambda$.
+% A contractive flow on compact forward-invariant $LK$ has a unique
+% equilibrium, by applying its time-$T$ contraction and the semigroup
+% property. Transverse decay forces all full equilibria into $U$;
+% tracking then proves full convergence and uniqueness. Finally,
+% for a multiaffine Jacobian on a box each value of $J_W$ is a convex
+% combination of its vertex values; the inequality is affine in $J_W$.
+% \end{proof}
+% \fi

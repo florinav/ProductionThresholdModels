@@ -1,0 +1,6 @@
+% ideaHeads.tex -- reads abs.tex silently, only to store the idea headings used by mainRes; prints nothing.
+\begingroup
+\renewenvironment{abstract}{}{}
+\setbox0=\vbox{\hsize=\textwidth
+\input{abs}}
+\endgroup

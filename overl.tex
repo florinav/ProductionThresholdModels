@@ -1,0 +1,730 @@
+\subsection{Overlapping minimal siphons support distinct invasion thresholds and interior cusps}
+
+\paragraph{Reading siphons from the production.}
+\beR[Gaussian and logistic responses have no siphons]
+[no siphons][KBnosiph]
+Gaussian and logistic CDFs are strictly positive at every finite argument.
+They therefore exclude nonempty siphons whenever $a_i(0)>0$ for all $i$.
+Zero-onset responses can admit siphons, depending on $h$, $P$ and $V$;
+irreducibility of the interaction graph alone does not settle the question.
+\eeR
+\beR[Graph rule for siphons]
+[graph rule][KBsiphgraph]
+For zero stimulus, linear nonnegative $P_i$ and such zero-onset
+responses, Proposition~\ref{p:InvF} gives a graph description;
+with nondiagonal $V$, include transfer edges $j\to i$ whenever
+$-v_{ij}>0$, as well as the positive edges of $W$. Siphons are the
+sets containing every predecessor of each of their indices, and
+minimal siphons are the source strongly connected components of
+this combined graph. This graph rule requires a response positive
+at every positive argument; a response with an additional flat zero
+interval on a finite box requires \eqref{eq:KB-response-zero-test}.
+\eeR
+\beR[The response has a definite order along transverse rays]
+[transverse order][KBtransOrder]
+For the threshold model on a siphon face, fix $h_i=0$, a positive resident state $y$,
+and a nonzero polynomial $P_i$ with $P_i(0,y)=0$. Put
+\[
+ d_i=\min_{a_{i\nu}>0}\sum_{j\in \Sigma}\nu_j\ge1,\qquad
+ \Phi_i(t)=c_it^{k_i}+o(t^{k_i})\quad(t\downarrow0),\quad c_i,k_i>0.
+\]
+For each fixed $\zeta\gg0$, the leading coefficient
+$p_i(\zeta,y)>0$ satisfies
+\[
+ P_i(\varepsilon\zeta,y)=\varepsilon^{d_i}p_i(\zeta,y)
+ +o(\varepsilon^{d_i}),\qquad
+ \Pi_i(\varepsilon\zeta,y)
+ =b_ic_ip_i(\zeta,y)^{k_i}\varepsilon^{d_ik_i}
+ +o(\varepsilon^{d_ik_i}).
+\]
+Thus the response has order $d_ik_i$ along positive transverse rays.
+For the model with factors $a_i$ this order also holds if $a_i(0)>0$;
+a vanishing $a_i(0)$ can increase it.
+The density has order $k_i-1$ only if additionally
+$\Phi_i'(t)=k_ic_it^{k_i-1}+o(t^{k_i-1})$; this does not follow
+by differentiating the response expansion.
+Grouping monomials by their degree in $z$ gives the leading
+term; its coefficient is positive for $\zeta,y\gg0$.
+Substitution into the response expansion gives the displayed
+production expansion. Multiplication by $a_i(0)+o(1)$ proves the
+assertion for the factors $a_i$ when $a_i(0)>0$. No differentiation of an
+$o(\cdot)$ remainder is used.
+\eeR
+
+\beXa[Minimal siphons can overlap for higher-order $P_i$]
+[overlapping minimal siphons][KBoverlap]
+On $[0,1]^3$, let $V=I$, $h_i=0$, and
+\[
+ P_1(x)=x_2,\qquad P_2(x)=x_1x_3,\qquad P_3(x)=x_2,
+ \qquad \Pi_i(x)=\Phi_i(P_i(x)),
+\]
+where $0\le \Phi_i\le1$, $\Phi_i(0)=0$ and $\Phi_i(q)>0$ for $q>0$.
+The minimal siphons are $\{1,2\}$ and $\{2,3\}$.
+Indeed, absence of $1$ or $3$ forces inclusion of $2$, and absence
+of $2$ must be accompanied by absence of $1$ or $3$ to suppress
+$x_1x_3$. Neither singleton is a siphon, and $\{1,3\}$ is not one.
+Sharing a response on both minimal siphons forces
+$\Phi_1=\Phi_2=\Phi_3$. Thus minimal siphons do not in general form a
+partition. Smooth admissible responses exist, for example
+$\Phi_i(q)=\exp(-1/q)$ for $q>0$ and zero for $q\le0$.
+\eeXa
+
+\paragraph{Why Example~\ref{e:KBoverlap} has no nontrivial boundary residents.}
+Consider first the unmodified model of Example~\ref{e:KBoverlap},
+\[
+ \dot x_1=-x_1+\Phi(x_2),\qquad
+ \dot x_2=-x_2+\Phi(x_1x_3),\qquad
+ \dot x_3=-x_3+\Phi(x_2),
+\]
+where $\Phi(0)=0$ and $\Phi(q)>0$ for $q>0$. Its minimal siphons
+are $\Sigma_{12}=\{1,2\}$ and $\Sigma_{23}=\{2,3\}$.
+On $x_1=x_2=0$ the resident equation is $\dot x_3=-x_3$;
+on $x_2=x_3=0$ it is $\dot x_1=-x_1$.
+In fact, the origin is its only boundary equilibrium: at an
+equilibrium, $x_1=0$ or $x_3=0$ forces $x_2=0$ and then all
+coordinates to vanish, while $x_2=0$ forces $x_1x_3=0$.
+For an odds response with $\Phi'(0+)=a_1$, its Jacobian at the
+origin is
+\[
+ J(0)=\begin{pmatrix}
+ -1&a_1&0\\ 0&-1&0\\ 0&a_1&-1
+ \end{pmatrix},\qquad \sigma(J(0))=\{-1,-1,-1\}.
+\]
+The transverse blocks at resident levels $x_3=u$ and $x_1=u$
+are, respectively,
+\[
+ J_{12}^\perp(u)=\begin{pmatrix}-1&a_1\\a_1u&-1\end{pmatrix},
+ \qquad
+ J_{23}^\perp(u)=\begin{pmatrix}-1&a_1u\\a_1&-1\end{pmatrix}.
+\]
+Both have spectral abscissa $-1+a_1\sqrt{u}$, but the
+resident satisfies $\dot u=-u$, so $u>0$ is not a resident
+equilibrium. Thus the overlap is genuine, while the original
+model has no nontrivial boundary equilibrium at which to
+compare invasion thresholds. In particular, varying the onset
+slope does not change its boundary-equilibrium invasion
+eigenvalues.
+
+We now add self-feedback without changing the two minimal
+siphons. Use the quartic odds response $\Phi_a$ of
+equation~\eqref{eq:oddsFamily}, with
+\[
+ \phi_a(q)=a_1q+a_2q^2+\frac{128}{343}q^3
+                    +\frac{1024}{343}q^4,\qquad
+ a^0=\left(\frac{342}{343},\frac{368}{343}\right),
+\]
+and let $r=1/8$, $s=1/2$. By Proposition~\ref{p:Qua},
+$-u+\Phi_{a^0}(u)$ has stable roots $0,s$ and a nondegenerate
+cusp root $r$. For $a=(a_1,a_2)$ near $a^0$, denote by
+$s_a$ the unique root near $s$; it depends smoothly on $a$,
+and
+\[
+ s_a>0,\qquad \lambda_s(a):=\Phi_a'(s_a)-1<0,
+ \qquad a_1<1.
+\]
+
+
+\beT[Three-population odds networks with overlapping minimal siphons admit distinct invasion thresholds, multiple stable equilibria, and an interior cusp]\label{t:KBoverlapCusp}
+Consider, on $[0,1]^3$, the cooperative threshold network
+\begin{equation}\label{eq:KBoverlapCusp}
+\begin{aligned}
+ \dot x_1&=-x_1+\Phi_a(x_1+\alpha x_2),\\
+ \dot x_2&=-x_2+\Phi_a(x_2+\beta x_1x_3),\\
+ \dot x_3&=-x_3+\Phi_a(x_3+\gamma x_2),
+\end{aligned}
+\qquad \alpha,\beta,\gamma>0.
+\end{equation}
+Keep the two higher coefficients of $\phi_a$ fixed as above.
+Then the following conclusions hold.
+\begin{enumerate}
+\item The minimal siphons are exactly
+$\Sigma_{12}=\{1,2\}$ and $\Sigma_{23}=\{2,3\}$;
+the only other nonempty siphon is $\{1,2,3\}$.
+Every equilibrium has support either $\varnothing$,
+$\{1\}$, $\{3\}$, or $\{1,2,3\}$.
+For $x\gg0$ the Jacobian is irreducible and Metzler.
+
+\item Besides $E_0=0$, the equilibria
+\[
+ E_{12}=(0,0,s_a),\qquad E_{23}=(s_a,0,0)
+\]
+lie on the respective proper siphon faces. The tangential
+eigenvalue at each is $\lambda_s(a)<0$. Their transverse
+matrices, with absent variables ordered as $(x_1,x_2)$ and
+$(x_2,x_3)$, respectively, are
+\begin{equation}\label{eq:KBoverlapJtra}
+ J_{12}^\perp=\begin{pmatrix}
+ a_1-1&a_1\alpha\\ a_1\beta s_a&a_1-1
+ \end{pmatrix},\qquad
+ J_{23}^\perp=\begin{pmatrix}
+ a_1-1&a_1\beta s_a\\ a_1\gamma&a_1-1
+ \end{pmatrix}.
+\end{equation}
+Consequently the two face reproduction numbers and spectral
+abscissae are exactly
+\begin{equation}\label{eq:KBoverlapR}
+\begin{aligned}
+ R_{\Sigma_{12}}&=a_1\bigl(1+\sqrt{\alpha\beta s_a}\bigr),&
+ s(J_{12}^\perp)&=R_{\Sigma_{12}}-1,\\
+ R_{\Sigma_{23}}&=a_1\bigl(1+\sqrt{\gamma\beta s_a}\bigr),&
+ s(J_{23}^\perp)&=R_{\Sigma_{23}}-1.
+\end{aligned}
+\end{equation}
+In particular $E_{12}$ and $E_{23}$ are locally
+exponentially stable precisely when their respective
+reproduction numbers are less than one. With $a$ and
+$\beta>0$ fixed, the two thresholds can be varied
+independently by $\alpha$ and $\gamma$; they differ whenever
+$\alpha\ne\gamma$. For example, the critical values are
+\[
+ \alpha_c=\gamma_c=
+ \frac{(1-a_1)^2}{a_1^2\beta s_a}.
+\]
+These exact boundary-threshold formulas do not presume the
+existence of an interior cusp at the critical couplings.
+
+\item There is $\delta>0$ and a smooth map
+\[
+ (\alpha,\beta,\gamma)\longmapsto
+ \bigl(a_1(\alpha,\beta,\gamma),
+       a_2(\alpha,\beta,\gamma),
+       x_c(\alpha,\beta,\gamma)\bigr)
+\]
+defined for $0\le\alpha,\beta,\gamma<\delta$,
+with $(a_1,a_2,x_c)=(342/343,368/343,r)$ at zero
+coupling, such that \eqref{eq:KBoverlapCusp} has a
+nondegenerate interior cusp near $(r,s,s)$. Its zero
+eigenvalue is simple, its other two eigenvalues have
+negative real parts, and $(a_1,a_2)$ generically unfold
+the cusp.
+
+\item Along this cusp continuation, for every sufficiently
+small $\alpha,\beta,\gamma>0$, the system has
+\emph{at least eight distinct locally exponentially stable
+equilibria}: the origin, $E_{12}$, $E_{23}$, and at least
+five strictly positive equilibria. These eight stable
+equilibria are distinct from the interior cusp equilibrium.
+Both proper siphon faces are transversely stable at
+$E_{12}$ and $E_{23}$, respectively. No assertion of
+exactly eight stable equilibria is made.
+\end{enumerate}
+\eeT
+
+\begin{proof}
+For the siphon classification, on $x_1=0$ the first
+production argument equals $\alpha x_2$, so a siphon
+containing $1$ must contain $2$. Similarly, one containing
+$3$ must contain $2$. On $x_2=0$ the second argument equals
+$\beta x_1x_3$, so a siphon containing $2$ must contain
+at least one of $1$ and $3$. This gives exactly the three
+listed siphons. At an equilibrium, $x_2>0$ implies
+$x_1,x_3>0$ by the first and third equations; whereas
+$x_2=0$ implies $x_1x_3=0$ by the second equation.
+Thus the asserted supports are exhaustive. In the strictly
+positive interior, the four cross derivatives associated
+with the edges $2\to1$, $1\to2$, $3\to2$, $2\to3$ are
+strictly positive. Hence the Jacobian is irreducible Metzler.
+The box is invariant because $\Phi_a(q)\ge0$ for $q\ge0$ and
+$\Phi_a(q)<1$ for every finite $q\ge0$.
+
+On $\Sigma_{12}$ the sole resident coordinate satisfies
+$\dot x_3=-x_3+\Phi_a(x_3)$, independently of the couplings;
+the same scalar equation holds for $x_1$ on $\Sigma_{23}$.
+Differentiating the absent equations gives
+\eqref{eq:KBoverlapJtra}. Since the linear removal matrix
+is the identity, the nonnegative production blocks have
+Perron eigenvalues
+$a_1(1+\sqrt{\alpha\beta s_a})$ and
+$a_1(1+\sqrt{\gamma\beta s_a})$, respectively.
+The tangential eigenvalue is $\lambda_s(a)<0$.
+The triangular face Jacobians then give the stability
+equivalences. At the origin, the $x_1x_3$ term has no
+linear part, and the Jacobian is triangular after reordering;
+all its eigenvalues equal $a_1-1<0$.
+
+For cusp continuation, regard $(x_2,x_3)$ as the
+hyperbolic variables and $x_1$ as the scalar critical
+variable. At $(a,\alpha,\beta,\gamma)=(a^0,0,0,0)$
+and $(x_1,x_2,x_3)=(r,s,s)$, the derivatives of the last
+two equilibrium equations with respect to $(x_2,x_3)$
+form $\lambda_s(a^0)I_2$, which is invertible.
+The implicit-function theorem therefore solves those
+equilibrium equations locally as
+\[
+ (x_2,x_3)=Y(x_1;a,\alpha,\beta,\gamma).
+\]
+Substitution in the first equilibrium equation produces
+the scalar Lyapunov--Schmidt equation
+\[
+ g(x_1;a,\alpha,\beta,\gamma)
+ =-x_1+\Phi_a\bigl(x_1+\alpha Y_1(x_1;a,\alpha,\beta,\gamma)\bigr).
+\]
+At zero coupling, $g(x_1)=\Phi_a(x_1)-x_1$. By
+Proposition~\ref{p:Qua}, at $(x_1,a)=(r,a^0)$,
+\[
+ g=g_{x_1}=g_{x_1x_1}=0,\qquad
+ g_{x_1x_1x_1}=\frac{36}{49}\ne0,
+\]
+and
+\[
+ \det\frac{\partial(g,g_{x_1})}{\partial(a_1,a_2)}
+ =r^2(1-r)^4>0.
+\]
+At zero coupling $J=\operatorname{Diag}(0,\lambda_s(a^0),\lambda_s(a^0))$ and $f_1$ is independent of
+$(x_2,x_3)$. Both null vectors are $e_1$ and $h_{20}=0$, so these are the cusp conditions of
+Proposition~\ref{p:sadCus}(2). Proposition~\ref{p:sadCus}(3) gives the stated smooth cusp
+continuation in $(\alpha,\beta,\gamma)$, with the cubic, unfolding, and stable
+complementary-eigenvalue conditions. Strict positivity of the cusp coordinates and of
+all four odds coefficients persists by continuity.
+
+Finally we prove the stable-equilibrium count without
+assuming that the nonlinear equations can be solved
+explicitly. Let $S\subset\{1,2,3\}$ and write $z^S(a)$ for
+the vector having coordinate $s_a$ at each index in $S$
+and zero elsewhere. At zero coupling the eight $z^S(a)$
+are distinct, hyperbolically stable equilibria of the
+three decoupled scalar equations. Define the increasing
+map $T_{a,\alpha,\beta,\gamma}:[0,1]^3\to[0,1]^3$ by
+\[
+ T(x)=\bigl(\Phi_a(x_1+\alpha x_2),
+             \Phi_a(x_2+\beta x_1x_3),
+             \Phi_a(x_3+\gamma x_2)\bigr).
+\]
+For every $S$, nonnegativity of the couplings gives
+$T(z^S(a))\ge z^S(a)$ componentwise.
+Since $\Phi_a'(0+)<1$ and $\Phi_a'(s_a)<1$, one can choose a
+single small $h>0$, uniformly for $a$ near $a^0$, such
+that the eight boxes
+\[
+ I_S(a)=[z^S(a),z^S(a)+h\mathbf1]
+\]
+are pairwise disjoint, lie in $[0,1]^3$, and satisfy
+$\Phi_a(t+h)<t+h$ for $t\in\{0,s_a\}$.
+For sufficiently small nonnegative couplings,
+$T(z^S(a)+h\mathbf1)\le z^S(a)+h\mathbf1$.
+Monotonicity then makes every $I_S(a)$ invariant under
+$T$. By reducing $h$ and the coupling bound if necessary,
+$\Phi_a'$ is uniformly less than one at all arguments attained
+in these boxes, and the row sums of $D T$ are uniformly
+less than one, since the row sums of the Jacobian of the arguments tend to one as
+the couplings vanish. Therefore $T$ is a contraction on
+each box. Each box contains a unique equilibrium
+$e^S$, and $J(e^S)=DT(e^S)-I$ is Hurwitz.
+
+The three boxes indexed by $S=\varnothing,\{1\},\{3\}$
+contain the exact stable equilibria $E_0,E_{23},E_{12}$.
+For the remaining five subsets, the equilibrium is
+strictly positive: if $2\in S$ then $x_2>0$ forces
+$x_1,x_3>0$; if $S=\{1,3\}$ then $x_1,x_3>0$
+forces $x_2>0$. Thus at least five stable equilibria
+are interior. Their boxes are separated from the cusp,
+whose first coordinate is close to $r$, rather than
+to $0$ or $s$. Along the cusp continuation all parameters
+remain in the neighborhoods just used. This completes
+the proof.
+\end{proof}
+
+\paragraph{Method: certify cusp continuation and simultaneous stability.}
+Choose a square augmented system $\mathcal G(X;\eta)=0$ for an equilibrium, its simple zero
+eigenvalue, the vanishing quadratic coefficient, and two adjustable unfolding parameters. Here $X$
+collects the unknown state, normalized nullvectors and adjustable parameters; $\eta$ denotes the
+remaining couplings. The standard cusp formulas already used in the paper supply these equations.
+State the normalization explicitly and check that the augmented Jacobian is invertible at the seed.
+For a box $\mathcal X$, centre $X_0$, coupling box $E$, and a fixed numerical inverse approximation
+$C$, enclose
+\[
+ \mathcal K(\mathcal X,E)
+ =X_0-C\mathcal G(X_0;E)
+  +\bigl(I-C D_X\mathcal G(\mathcal X;E)\bigr)(\mathcal X-X_0).
+\]
+Certify strict inclusion in $\operatorname{int}\mathcal X$ and a uniform norm bound
+\[
+ \sup_{X\in\mathcal X,\,\eta\in E}\|I-C D_X\mathcal G(X;\eta)\|<1.
+\]
+With $C$ nonsingular, these conditions give a unique augmented solution in $\mathcal X$ for each
+fixed $\eta\in E$. Separately certify positivity of the required coefficients and states,
+nonvanishing of the cubic coefficient and unfolding determinant, and negativity of the real parts
+of all complementary eigenvalues. Enclose the continued stable equilibria in disjoint boxes with
+validated existence and Hurwitz tests, and enclose the resident equilibria and their transverse
+invasion inequalities. A successful cusp solve alone certifies none of these additional assertions.
+
+\beC[Three-population odds networks admit nine stable equilibria near the interior cusp][nine stable equilibria][Nin]
+Fix any sufficiently small positive coupling triple
+$(\alpha,\beta,\gamma)$ covered by Theorem~\ref{t:KBoverlapCusp}, and let
+$a^c=(a_1^c,a_2^c)$ be its continued cusp coefficients, with
+$a_3=128/343$ and $a_4=1024/343$ fixed.
+There exists a nonempty open set of admissible coefficient pairs
+$(a_1,a_2)$ whose closure contains $a^c$, on which the network has
+at least nine distinct locally exponentially stable equilibria:
+the origin, two equilibria on the proper siphon faces, and at least
+six strictly positive equilibria.
+Two additional strictly positive equilibria near the former cusp
+each have exactly one unstable eigenvalue.
+The minimal siphons remain $\Sigma_{12}=\{1,2\}$ and
+$\Sigma_{23}=\{2,3\}$, and the two continued stable boundary equilibria
+remain transversely stable.
+\eeC
+\begin{proof}
+At $a=a^c$, Theorem~\ref{t:KBoverlapCusp} supplies eight distinct hyperbolically
+stable equilibria, separated from the interior cusp equilibrium.
+The implicit-function theorem continues these equilibria to a common
+neighbourhood of $a^c$, preserving their distinctness and stability.
+The origin remains an equilibrium. The two stable boundary equilibria
+remain on their respective invariant siphon faces, and the other five
+remain strictly positive.
+
+Write the vector field as
+$f=(f_1,f_2,f_3)^\top$ and put $H=(f_2,f_3)^\top$.
+As in the proof of Theorem~\ref{t:KBoverlapCusp}, the last two equilibrium
+equations can be solved near the cusp as
+\[
+ (x_2,x_3)=Y(x_1;a),
+ \qquad
+ g(x_1;a)=f_1(x_1,Y(x_1;a);a).
+\]
+At the cusp,
+\[
+ g=g_{x_1}=g_{x_1x_1}=0,\qquad
+ g_{x_1x_1x_1}>0,\qquad
+ \det\frac{\partial(g,g_{x_1})}{\partial(a_1,a_2)}\ne0.
+\]
+The positivity of the cubic follows by continuity from its reference
+value $36/49$. The generic scalar cusp unfolding therefore has an open
+parameter region, accumulating at $a^c$, with three simple nearby
+equilibria. In their increasing $x_1$ order, the derivatives
+$g_{x_1}$ are positive, negative, and positive, respectively.
+
+To transfer these signs to the full system, let
+\[
+ J_{\mathrm{res}}
+   =D_{(x_2,x_3)}H
+\]
+at a nearby equilibrium. This matrix remains Hurwitz, since it is close
+to the strictly stable resident matrix used in the cusp construction.
+The Schur-complement identity gives
+\[
+ \det D_xf=\det J_{\mathrm{res}}\,g_{x_1}.
+\]
+The two eigenvalues complementary to the critical eigenvalue remain
+in the open left half-plane. Their product is positive, as is
+$\det J_{\mathrm{res}}$. Hence the remaining real eigenvalue has the
+same sign as $g_{x_1}$. The middle equilibrium is locally exponentially
+stable, whereas each outer equilibrium has exactly one unstable
+eigenvalue.
+
+All three equilibria are strictly positive and lie in a neighbourhood
+disjoint from the eight continued stable equilibria. The middle one
+therefore raises the stable count to at least nine, including at least
+six strictly positive equilibria. Shrinking the parameter region
+preserves positivity of the odds coefficients and the strict
+inequalities $R_{\Sigma_{12}}<1$ and $R_{\Sigma_{23}}<1$ at the two
+continued boundary equilibria. The fixed positive couplings and
+unchanged production supports preserve the minimal siphons.
+\end{proof}
+
+\beP[A composite energy certifies an explicit subset of the basin of a boundary equilibrium][][ComBas]
+For \eqref{eq:KBoverlapCusp} with $\alpha,\beta,\gamma>0$ and $a_1>0$, let $\mathcal E_a$ be the
+scalar energy following Proposition~\ref{p:Qua}. Take $\eta>0$, and put
+$\ell=(\sqrt\beta,\sqrt\alpha)$, $\bar z=\eta/\min\{\sqrt\alpha,\sqrt\beta\}$,
+$\bar q=\bar z(1+\max\{\alpha,\beta\})$ and $\rho=\sup_{0<q\le\bar q}\Phi_a(q)/q$. Assume
+\[
+ c:=1-\rho\bigl(1+\sqrt{\alpha\beta}\bigr)>0,
+\]
+and that $0<y_-<s_a<y_+<1$ satisfy $\Phi_a(q)>q$ on $[y_-,s_a)$, $\Phi_a(q)<q$ on $(s_a,y_+]$,
+$\Phi_a(y_++\gamma\bar z)\le y_+$ and $\Phi_a'(s_a)<1$. Put
+\[
+ M_U=\max_{y\in[y_-,y_+]}|\Phi_a^{-1}(y)-y|,\qquad
+ M_\Phi=\max_{q\in[y_-,\,y_++\gamma\bar z]}\Phi_a'(q).
+\]
+Then
+\[
+ K=\{x:\ x_1,x_2\ge0,\ \sqrt\beta\,x_1+\sqrt\alpha\,x_2\le\eta,\ y_-\le x_3\le y_+\}
+\]
+is forward invariant, and for $\kappa>\gamma M_UM_\Phi/(c\sqrt\alpha)$,
+\[
+ H(x)=\mathcal E_a(x_3)-\mathcal E_a(s_a)+\kappa\bigl(\sqrt\beta\,x_1+\sqrt\alpha\,x_2\bigr)
+\]
+is a strict Lyapunov function on $K$. Thus $E_{12}=(0,0,s_a)$ is globally asymptotically stable
+relative to $K$, so $K$ is an explicit subset of its basin of attraction. Exchanging $x_1$ with $x_3$ and $\alpha$ with $\gamma$ gives the same statement for
+$E_{23}$.
+\eeP
+\begin{proof}
+Put $z=(x_1,x_2)$. On $K$, $x_1,x_2\le\bar z$ and $x_3\le1$, so the arguments of the first two equations lie
+in $[0,\bar q]$. Hence $\dot x_1\le-x_1+\rho(x_1+\alpha x_2)$ and $\dot x_2\le-x_2+\rho(x_2+\beta x_1)$, and
+therefore $\ell^\top\dot z\le-c\,\ell^\top z$. The faces $x_1=0$, $x_2=0$ point inward, and
+$\ell^\top z$ decreases at the level $\eta$. On $x_3=y_-$, $\dot x_3\ge-y_-+\Phi_a(y_-)>0$; on $x_3=y_+$,
+$\dot x_3\le-y_++\Phi_a(y_++\gamma\bar z)\le0$. So $K$ is forward invariant.
+
+Let $U(y)=\mathcal E_a(y)-\mathcal E_a(s_a)$, so $U'(y)=\Phi_a^{-1}(y)-y$. The sign conditions and
+monotonicity of $\Phi_a$ give $U'<0$ on $[y_-,s_a)$ and $U'>0$ on $(s_a,y_+]$; thus $U\ge0$ vanishes only at
+$s_a$. Next, $U'(y)(-y+\Phi_a(y))=-(\Phi_a^{-1}(y)-y)(y-\Phi_a(y))$, and the quotient of
+$(\Phi_a^{-1}(y)-y)(y-\Phi_a(y))$ by $(y-s_a)^2$ is continuous and positive on $[y_-,y_+]$, with limit
+$(1-\Phi_a'(s_a))^2/\Phi_a'(s_a)$ at $s_a$. This gives the second inequality of
+Proposition~\ref{p:ComLya}. Finally,
+$U'(x_3)(\Phi_a(x_3+\gamma x_2)-\Phi_a(x_3))\le M_UM_\Phi\gamma x_2\le b\,\ell^\top z$, with
+$b=\gamma M_UM_\Phi/\sqrt\alpha$. Proposition~\ref{p:ComLya} applies.
+\end{proof}
+
+The hypothesis $c>0$ is stronger than $R_{\Sigma_{12}}<1$, because it holds on all of $K$: it uses
+$\rho\ge a_1$ and the bound $x_3\le1$ rather than the value $s_a$. At the couplings of
+Table~\ref{tab:KBoverlapNum}, with the reference coefficients $(a_1,a_2)=(342/343,368/343)$,
+$s_a=1/2$, $\bar z=1/10$, $y_-=1/5$ and $y_+=7/10$, one has $\rho\approx0.99998$ and
+$c\approx1.6\cdot10^{-5}$; this numerical check, with the derivative bound tested at sampled points,
+is illustrative.
+
+\beP[A Lyapunov--Volterra function certifies attraction to a boundary resident]
+[][LVboundary]
+Under the hypotheses of Proposition~\ref{p:ComBas}, retain its invariant set $K$ and constants $c>0$, $M_\Phi$, $y_-$, $y_+$ and $s_a$. Define
+\[
+ U_V(y)=y-s_a-s_a\log\frac{y}{s_a},\qquad
+ M_V=\max_{y\in[y_-,y_+]}\left|1-\frac{s_a}{y}\right|,\qquad
+ b_V=\frac{\gamma M_\Phi M_V}{\sqrt{\alpha}}.
+\]
+For every $\kappa>b_V/c$, the function
+\[
+ H_V(x)=x_3-s_a-s_a\log\frac{x_3}{s_a}+\kappa\bigl(\sqrt{\beta}\,x_1+\sqrt{\alpha}\,x_2\bigr)
+\]
+is a strict Lyapunov function on $K$ for $E_{12}=(0,0,s_a)$. More precisely, put
+\[
+ a_*=\min_{y\in[y_-,y_+]}\frac{y-\Phi_a(y)}{y-s_a}>0,
+\]
+where the quotient at $y=s_a$ is defined as $1-\Phi_a'(s_a)$. Then
+\[
+ \dot H_V\le-\frac{a_*}{y_+}(x_3-s_a)^2-(\kappa c-b_V)\bigl(\sqrt{\beta}\,x_1+\sqrt{\alpha}\,x_2\bigr),
+\]
+and
+\[
+ H_V(x(t))\le e^{-\omega_Vt}H_V(x(0)),\qquad
+ \omega_V=\min\left\{\frac{2a_*y_-^2}{s_ay_+},\ c-\frac{b_V}{\kappa}\right\}>0.
+\]
+Consequently every trajectory starting in $K$ converges to $E_{12}$.
+\eeP
+\begin{proof}
+Write $y=x_3$ and $Z=\sqrt{\beta}\,x_1+\sqrt{\alpha}\,x_2$. The proof of Proposition~\ref{p:ComBas} gives $\dot Z\le-cZ$. For the resident equation,
+\[
+ U_V'(y)\bigl(-y+\Phi_a(y)\bigr)=-\frac{y-s_a}{y}\bigl(y-\Phi_a(y)\bigr)\le-\frac{a_*}{y_+}(y-s_a)^2.
+\]
+The additional production caused by $x_2$ satisfies
+\[
+ U_V'(y)\bigl[\Phi_a(y+\gamma x_2)-\Phi_a(y)\bigr]\le M_VM_\Phi\gamma x_2\le b_VZ.
+\]
+Adding $\kappa\dot Z$ proves the derivative inequality. The sign assumptions of Proposition~\ref{p:ComBas} and $\Phi_a'(s_a)<1$ make the quotient defining $a_*$ continuous and strictly positive.
+
+Moreover, $U_V(s_a)=U_V'(s_a)=0$ and $U_V''(y)=s_a/y^2$, so
+\[
+ \frac{s_a}{2y_+^2}(y-s_a)^2\le U_V(y)\le\frac{s_a}{2y_-^2}(y-s_a)^2.
+\]
+These bounds give $\dot H_V\le-\omega_VH_V$ and the asserted convergence.
+\end{proof}
+
+This is the classical weighted Lyapunov--Volterra form about $E_{12}$. The positive resident coordinate contributes $x_3-s_a-s_a\log(x_3/s_a)$, and the coordinates whose equilibrium values are zero contribute linear terms, using $\lim_{p\downarrow0}(x-p-p\log(x/p))=x$. Thus the Fenchel--Bregman interpretation of Subsection~\ref{s:FenBre} has a direct application to the threshold network, without changing its equations or introducing an inverse response into the certificate. At the values above, $M_V=3/2$, $b_V\approx1.69\cdot10^{-4}$ and $b_V/c\approx10.4$ (illustrative).
+
+For Theorem~\ref{t:Net} at $a=a^0$, suppose $0<\bar x<1/8$ and
+$c_2:=1-(1+\gamma)\sup_{0<q\le\bar x(1+\gamma)}\Phi_{a^0}(q)/q>0$. Then for every $\varepsilon\ge0$ every
+solution starting in $[0,\bar x]\times(0,1]$ converges to $(0,y^*)$. Indeed, $y\le1$ gives
+$\dot x\le-c_2x$ on $[0,\bar x]$, so $x$ decays exponentially. Monotonicity of the response gives
+$\dot y\ge-y+\Phi_{a^0}(10y)$, so comparison with the scalar resident equation, whose only positive
+equilibrium is $y^*$, gives $\liminf y\ge y^*$. Since $y\le1$ and $x\to0$, the difference
+$\Phi_{a^0}(y(10+\varepsilon x))-\Phi_{a^0}(10y)$ tends to zero uniformly, and the scalar field is negative
+above $y^*$, so $\limsup y\le y^*$. On compact subsets of $[0,\bar x]\times(0,1)$ that are forward
+invariant, the resident storage $\int\Psi^{-1}-y^2/2$ about $y^*$, with $\Psi(y)=\Phi_{a^0}(10y)$, plus a
+linear term $\kappa x$ gives a Lyapunov function as in Proposition~\ref{p:ComLya}.
+
+\beR[A double boundary transcritical relay]
+[double boundary transcritical relay][KBrelay]
+Fix $a$ with $a_1<1$ and $\alpha,\gamma>0$, and vary only $\beta$. Species $2$ belongs to both $\Sigma_{12}$ and
+$\Sigma_{23}$, so its production, which contains $\beta x_1x_3$, gives a row of both transverse matrices. Since
+$x_2=0$ at $E_{12}$ and $E_{23}$, the residents do not depend on $\beta$. Hence both invasion numbers increase
+with $\beta$ at fixed residents, and
+\[
+ R_{\Sigma_{12}}=1\iff\beta=\beta_{12}:=\frac{(1-a_1)^2}{a_1^2\alpha s_a},\qquad
+ R_{\Sigma_{23}}=1\iff\beta=\beta_{23}:=\frac{(1-a_1)^2}{a_1^2\gamma s_a}.
+\]
+Since the tangential eigenvalue $\lambda_s(a)$ is negative, each resident is stable below its value and unstable
+above it. We call this a \emph{double boundary transcritical relay}, extending the boundary transcritical relays of
+\cite{AAHrel}: one parameter takes two residents, on the faces of two overlapping siphons, through transcritical
+bifurcations in turn.
+
+Each crossing is a nondegenerate transcritical bifurcation when $a_2>a_1^2$. The zero eigenvalue is simple, its
+irreducible Metzler block has Perron vectors $w,v\gg0$, and the parameter derivative
+$v^\top(\partial_\beta J^\perp)w$ is positive. Since $\Phi_a(q)=a_1q+(a_2-a_1^2)q^2+O(q^3)$, all second-order
+terms along the critical direction are nonnegative, with a positive sum, so the positive branch
+exists for $\beta$ below the critical value: the bifurcation is backward. Along the branch from $E_{12}$, the second equation gives
+\[
+ \beta=\frac{\Phi_a^{-1}(x_2)-x_2}{x_1x_3},
+\]
+with $x_1,x_3$ the roots of the first and third equations near $0$ and $s_a$. Figure~\ref{fig:relay} is computed
+from this formula.
+
+\emph{Numerical evidence.} The following was computed for the reference coefficients $a=(342,368,128,1024)/343$, so
+$s_a=1/2$ and $a_2-a_1^2\approx0.079$, with $\alpha=2\cdot10^{-7}$, $\gamma=5\cdot10^{-8}$, which give $\beta_{12}\approx85.5$ and
+$\beta_{23}\approx342$. Trajectories were integrated to $t=5\cdot10^7$ from $x_2(0)=10^{-4}$.
+\begin{enumerate}
+\item At $E_{12}$, with the critical Perron vectors normalized to have second coordinate one,
+$v^\top(\partial_\beta J)w\approx3.41\cdot10^{-5}$ and $\frac12v^\top D^2f[w,w]\approx0.079$. The predicted branch agrees with Newton
+solves: at $\beta=0.999\,\beta_{12}$ it predicts $x_2\approx3.682\cdot10^{-5}$, and the solve gives $3.684\cdot10^{-5}$.
+\item The largest real part of the Jacobian spectrum lies in $[3.3\cdot10^{-6},1.04\cdot10^{-3}]$ along the sampled backward branches,
+which are therefore unstable, and in $[-2.9\cdot10^{-3},-2.6\cdot10^{-3}]$ along the upper branches, which are stable.
+\item Below its value each resident attracts the perturbed state: the trajectories return to $E_{12}$ at $0.8\,\beta_{12}$ and to $E_{23}$
+at $0.8\,\beta_{23}$. Past its value the state jumps to an upper branch: the end states are $(3.66\cdot10^{-5},0.5343,0.5000)$ at
+$1.2\,\beta_{12}$ from $E_{12}$, and $(0.5000,0.5343,9.1\cdot10^{-6})$ at $1.2\,\beta_{23}$ from $E_{23}$.
+\item Between the two values one resident has been lost while the other survives: at $\beta=1.2\,\beta_{12}$ the trajectory from $E_{23}$ returns to
+$E_{23}$.
+\item The jump is not undone by decreasing $\beta$, down to the smallest value tested: from the upper state reached at
+$1.2\,\beta_{12}$, the trajectory stays on the upper branch at $0.5\,\beta_{12}$, with $x_2\approx0.516$, and at $0.05\,\beta_{12}$, with $x_2\approx0.502$.
+This is consistent with the backward branch reaching $\beta=0$ near $x_2=1/8$, so that no fold closes a hysteresis loop for $\beta>0$.
+\end{enumerate}
+
+\emph{Status.} Established here are the formulas for $\beta_{12},\beta_{23}$, the stability change of the residents, and,
+subject to checking the sketch above, nondegeneracy and the backward direction under $a_2>a_1^2$. Items (2)--(5) are computations at one choice of
+coefficients and couplings, and are not proved in general. It is open whether the upper branch, its stability and the irreversibility hold
+throughout the family, and whether \emph{relay} as defined in \cite{AAHrel}, where a crossing produces a positive branch on an adjacent
+face, covers this case, in which the branch leaving the face is interior. Each single crossing is a standard boundary transcritical (invasion)
+bifurcation. A limited literature search found no name for the feature emphasized here, that one production term of a shared
+species enters two transverse matrices while both residents stay fixed, so the term is proposed provisionally and the feature is not claimed to be new.
+
+The relay requires non-disjoint siphons. If $\Sigma$ and $\Sigma'$ are disjoint, the production of a species of $\Sigma$
+gives no row of $F_{\Sigma'}$, so changing it can affect $J_{\Sigma'}^\perp$ only by moving the resident.
+Folds and cusps do not distinguish the two cases: Theorem~\ref{t:Net} has them with the disjoint singleton siphons
+$\{x\}$ and $\{y\}$. The values above concern the boundary residents, and do not extend the small-coupling
+range of Theorem~\ref{t:KBoverlapCusp}: they lie far outside it, so the relay is not shown to occur next to the interior cusp.
+\eeR
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=.8\linewidth,xlabel={$\beta$},ylabel={$x_2$},xmin=0,xmax=450,ymin=-.03,ymax=.75,
+ xtick={0,200,400},tick label style={font=\scriptsize},label style={font=\small},title style={font=\small},extra x ticks={85.5},extra x tick labels={$\beta_{12}$},title={from $E_{12}$}]
+\addplot[blue,thick] coordinates {(0,0) (85.50,0)};
+\addplot[blue,dashed] coordinates {(85.50,0) (450,0)};
+\addplot[blue,dashed] coordinates {(85.50,0.0000) (85.03,0.0002) (84.79,0.0003) (84.43,0.0005) (83.88,0.0007) (83.04,0.0011) (81.79,0.0016) (79.91,0.0025) (77.12,0.0037) (73.01,0.0057) (67.07,0.0087) (58.74,0.0132) (47.56,0.0200) (40.44,0.0250) (29.80,0.0338) (21.34,0.0426) (14.76,0.0515) (9.77,0.0603) (6.12,0.0691) (3.55,0.0779) (1.85,0.0867) (0.82,0.0955) (0.27,0.1044) (0.05,0.1132) (0.00,0.1220) (0.00,0.1250)};
+\addplot[blue,thick] coordinates {(0.00,0.5000) (4.85,0.5020) (24.61,0.5096) (46.37,0.5173) (70.22,0.5249) (96.25,0.5326) (124.58,0.5402) (155.28,0.5478) (188.48,0.5555) (224.28,0.5631) (262.80,0.5708) (304.15,0.5784) (348.45,0.5861) (395.85,0.5937) (446.47,0.6013) (455.00,0.6026)};
+\draw[red,thick,-{Stealth[length=5pt]}] (axis cs:85.50,0) -- (axis cs:85.50,0.5295);
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}{.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=.8\linewidth,xlabel={$\beta$},ylabel={$x_2$},xmin=0,xmax=450,ymin=-.03,ymax=.75,
+ xtick={0,200,400},tick label style={font=\scriptsize},label style={font=\small},title style={font=\small},extra x ticks={342.0},extra x tick labels={$\beta_{23}$},title={from $E_{23}$}]
+\addplot[blue,thick] coordinates {(0,0) (341.99,0)};
+\addplot[blue,dashed] coordinates {(341.99,0) (450,0)};
+\addplot[blue,dashed] coordinates {(341.99,0.0000) (340.13,0.0002) (339.17,0.0003) (337.71,0.0005) (335.51,0.0007) (332.18,0.0011) (327.16,0.0016) (319.65,0.0025) (308.47,0.0037) (292.03,0.0057) (268.30,0.0087) (234.97,0.0132) (190.26,0.0200) (161.75,0.0250) (119.20,0.0338) (85.38,0.0426) (59.06,0.0515) (39.10,0.0603) (24.46,0.0691) (14.18,0.0779) (7.39,0.0867) (3.26,0.0955) (1.09,0.1044) (0.20,0.1132) (0.00,0.1220) (0.00,0.1250)};
+\addplot[blue,thick] coordinates {(0.00,0.5000) (19.42,0.5020) (98.51,0.5096) (185.60,0.5173) (281.08,0.5249) (385.30,0.5326) (455.00,0.5373)};
+\draw[red,thick,-{Stealth[length=5pt]}] (axis cs:341.99,0) -- (axis cs:341.99,0.5295);
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{The double boundary transcritical relay of Remark~\ref{r:KBrelay} for $\dot x_1=-x_1+\Phi_a(x_1+\alpha x_2)$, $\dot x_2=-x_2+\Phi_a(x_2+\beta x_1x_3)$, $\dot x_3=-x_3+\Phi_a(x_3+\gamma x_2)$: equilibria, with the backward branches given by $\beta=(\Phi_a^{-1}(x_2)-x_2)/(x_1x_3)$, for the reference coefficients and the couplings
+$\alpha,\gamma$ of Table~\ref{tab:KBoverlapNum}: the shared species $x_2$ against $\beta$. Solid curves are stable and dashed curves
+unstable. Each resident ($x_2=0$) loses stability at its own value, $\beta_{12}\approx85.5$ or $\beta_{23}\approx342$; the unstable
+positive branch leaves it backward and ends near $x_2=1/8$ as $\beta\to0$. Past its value the state jumps to the upper
+branch, where it remains when $\beta$ is decreased.}
+\label{fig:relay}
+\end{figure}
+
+\beR[The siphon lattice changes at zero coupling]
+The proof starts from the decoupled system $\alpha=\beta=\gamma=0$, at which
+every singleton $\{i\}$ is a siphon and every coordinate face is invariant. For
+$\alpha,\beta,\gamma>0$ the minimal siphons are instead $\Sigma_{12}$ and
+$\Sigma_{23}$. The implicit-function arguments only need the decoupled point as
+a base for continuation, so this causes no gap; but the siphon lattice is not
+constant across that point. Theorem~\ref{t:KBoverlapCusp} is a statement about
+the positive-coupling family, which retains the overlapping-siphon lattice of
+Example~\ref{e:KBoverlap}; it is not a continuation through zero coupling with an
+unchanged lattice. Likewise, $R_{\Sigma_{12}}$ and $R_{\Sigma_{23}}$ depend on the
+higher coefficients $a_2,a_3,a_4$ through $s_a$, although these coefficients do
+not appear explicitly in \eqref{eq:oddsTransverse}.
+\eeR
+
+\paragraph{A numerical instance.}
+Table~\ref{tab:KBoverlapNum} reports one coupling triple,
+$(\alpha,\beta,\gamma)=(2\cdot10^{-7},10^{-6},5\cdot10^{-8})$. The cusp was
+located by Newton's method on the seven equations $f=0$, $Jv=0$ ($v_1=1$),
+$w^\top D^2f(v,v)=0$ with $w$ a left null vector, in 60-digit arithmetic.
+The cubic coefficient and the unfolding determinant are those of the
+Lyapunov--Schmidt function $g$ of the proof. They were computed by central
+differences and agree, to the digits shown, with implicit differentiation of
+the resident equations. The eight equilibria were found by Newton's method from
+the points $z^S(a)$. The computation is illustrative, not interval-validated;
+the Mathematica script \texttt{overlNum.wl}, distributed with the source,
+reproduces the full-precision values.
+\begin{table}[H]
+\centering\small
+\begin{tabular}{ll}
+\hline
+Quantity & Value\\\hline
+continued coefficients $(a_1,a_2)$ & $(0.997082757,\ 1.072892269)$\\
+cusp $(x_1,x_2,x_3)$ & $(0.124986385,\ 0.500005319,\ 0.500004404)$\\
+complementary eigenvalues & $-0.0393616,\ -0.0393609$\\
+$g_{x_1x_1x_1}$ (reference $36/49\approx0.734694$) & $0.734463$\\
+$\det\partial(g,g_{x_1})/\partial(a_1,a_2)$ (reference $0.00915909$) & $0.00915761$\\
+resident level $s_a$ & $0.500003793$\\
+$R_{\Sigma_{12}}$, $R_{\Sigma_{23}}$ & $0.997083072,\ 0.997082914$\\\hline
+stable equilibrium, box $S$ & spectral abscissa\\\hline
+$\varnothing$: $(0,0,0)$ & $-0.002917$\\
+$\{3\}$: $(0,0,0.500003793)=E_{12}$ & $-0.002917$\\
+$\{1\}$: $(0.500003793,0,0)=E_{23}$ & $-0.002917$\\
+$\{2\}$: $(3.42\cdot10^{-5},\ 0.500003793,\ 8.55\cdot10^{-6})$ & $-0.002912$\\
+$\{2,3\}$: $(3.42\cdot10^{-5},\ 0.500003794,\ 0.500004404)$ & $-0.002912$\\
+$\{1,3\}$: $(0.500003794,\ 8.56\cdot10^{-5},\ 0.500003793)$ & $-0.002904$\\
+$\{1,2\}$: $(0.500006234,\ 0.500003793,\ 8.55\cdot10^{-6})$ & $-0.002916$\\
+$\{1,2,3\}$: $(0.500006234,\ 0.500009895,\ 0.500004404)$ & $-0.039361$\\\hline
+\end{tabular}
+\caption{Theorem~\ref{t:KBoverlapCusp} at
+$(\alpha,\beta,\gamma)=(2\cdot10^{-7},10^{-6},5\cdot10^{-8})$, with $a_3,a_4$
+fixed. Both invasion numbers are below one and differ, since $\alpha\ne\gamma$.}
+\label{tab:KBoverlapNum}
+\end{table}
+
+\paragraph{A nearby instance with nine stable equilibria.}
+Corollary~\ref{c:Nin} concerns coefficient pairs near, but not at, the cusp.
+Keeping the couplings of Table~\ref{tab:KBoverlapNum}, the same script moves
+$(a_1,a_2)$ from the cusp values by the solution $\delta a$ of
+$\partial_a(g,g_{x_1})\,\delta a=(0,-10^{-6})$, which makes $g_{x_1}$ negative at
+the cusp point. Newton's method from the eight points $z^S(b)$ and from three
+points near the former cusp gives eleven distinct equilibria, with residuals
+below $10^{-52}$ and minimal pairwise distance $2.85\cdot10^{-3}$
+(Table~\ref{tab:KBnineNum}). Nine of them have negative spectral abscissa. The
+middle equilibrium near the former cusp is stable, with spectral abscissa
+$-1.0\cdot10^{-6}$, of the order of the shift in $g_{x_1}$; the two outer ones
+have one positive eigenvalue each. This is again illustrative, not
+interval-validated.
+\begin{table}[H]
+\centering\small
+\begin{tabular}{ll}
+\hline
+Quantity & Value\\\hline
+coefficients $(a_1,a_2)$ & $(0.997084063,\ 1.072881819)$\\
+resident level $s_b$ & $0.499991347$\\
+$R_{\Sigma_{12}}$, $R_{\Sigma_{23}}$ & $0.997084378,\ 0.997084221$\\\hline
+equilibrium & spectral abscissa\\\hline
+the eight continued equilibria of Table~\ref{tab:KBoverlapNum} & between $-0.03935$ and $-0.002902$\\
+$(0.122134360,\ 0.499992838,\ 0.499991957)$ & $+1.97\cdot10^{-6}$\\
+$(0.124986385,\ 0.499992872,\ 0.499991957)$ & $-1.00\cdot10^{-6}$\\
+$(0.127850842,\ 0.499992907,\ 0.499991957)$ & $+2.03\cdot10^{-6}$\\\hline
+\end{tabular}
+\caption{Corollary~\ref{c:Nin} at the couplings of Table~\ref{tab:KBoverlapNum}:
+nine locally exponentially stable equilibria, the ninth being the middle
+equilibrium of the cusp unfolding.}
+\label{tab:KBnineNum}
+\end{table}
+
+\paragraph{Interpretation.}
+The bare model of Example~\ref{e:KBoverlap} has overlapping minimal
+siphons but no positive boundary resident; its self-feedback
+augmentation \eqref{eq:KBoverlapCusp} retains the same siphon lattice.
+Weak-coupling persistence of combinatorial families of stable
+equilibria is already in \cite{Boud26}, so the count of eight is
+not by itself the point; nor is the ninth stable equilibrium of
+Corollary~\ref{c:Nin}, which exists only off the cusp parameter and relies on
+the positive cubic coefficient. What the theorem adds is the combination:
+the stable equilibria coexist with a nondegenerate interior cusp,
+the coupling preserves two overlapping minimal siphons, the proper
+siphon faces carry nonzero resident equilibria, and distinct,
+explicit invasion numbers decide their transverse stability.
+This is local coexistence; the theorem does not assert that the cusp
+itself crosses either invasion-threshold hypersurface as a coupling is varied.

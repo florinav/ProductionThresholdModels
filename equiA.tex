@@ -1,0 +1,878 @@
+\subsection{Fixed-response activation and explicit cusp calculations}
+
+\paragraph{Onset with fixed responses.}
+The next result varies the coefficient of the polynomials $P_i$ rather
+than the shape of the responses.
+
+\beT[Increasing higher-order terms creates positive equilibria
+while zero remains stable][activation by higher-order terms][ActF]\label{t:KBactivation}
+Consider
+\[
+ \dot x=f(x;s)=-Vx+\Pi_s(x),\qquad
+ (\Pi_s)_i=b_i\Phi_i(sP_i(x)),\qquad s\ge0,
+\]
+where $V$ is a nonsingular $M$-matrix, $b\gg0$, and the invariant
+state space is $[0,\bar x]$, $\bar x=V^{-1}b$.
+Each $P_i$ is a nonzero polynomial with nonnegative coefficients and
+monomials of degree at least two. Assume
+$\Phi_i\in C^1([0,\infty))$, with the derivative at zero understood from
+the right, and
+\[
+ \Phi_i(0)=0,\qquad \Phi_i(t)\uparrow1\quad(t\to\infty),
+ \qquad \Phi_i'(t)>0\quad(t>0).
+\]
+The graph containing transfer edges $j\to i$ with $-v_{ij}>0$ and
+edges $j\to i$ supplied by pure-power terms $a x_j^k$ in $P_i$, $a>0$,
+is assumed strongly connected. Mixed monomials are allowed without
+supplying these edges. Then $s_*\in(0,\infty)$, defined by
+\begin{equation}\label{eq:KB-activation}
+ s_*:=\inf\{s\ge0:\exists x\gg0,\ x\le\bar x,\ \Pi_s(x)\ge Vx\},
+\end{equation}
+is attained by a positive equilibrium. Positive equilibria exist
+exactly for $s\ge s_*$, while zero is locally exponentially stable
+for every finite $s$.
+
+At the greatest equilibrium $x_*$ for $s=s_*$, the Jacobian has a
+simple zero eigenvalue and a strictly stable complement. If $f$ is
+$C^2$ near $(x_*,s_*)$ and
+\[
+ \ell^\top\partial_x^2f(x_*;s_*)[r,r]\ne0,
+ \qquad Jr=0,\quad\ell^\top J=0,\quad r,\ell\gg0,
+ \quad\ell^\top r=1,
+\]
+then, for $s>s_*$ sufficiently close to $s_*$, a saddle-node creates
+a locally exponentially stable positive equilibrium and a positive
+equilibrium with exactly one unstable eigenvalue.
+\eeT
+\begin{proof}
+A positive subsolution $\Pi_s(x)\ge Vx$ generates a nondecreasing
+trajectory bounded by $\bar x$, whose limit is a positive equilibrium.
+Increasing $s$ preserves the subsolution inequality. For $0<t<1$,
+$V(t\bar x)=tb$ and every $P_i(t\bar x)>0$, so $t\bar x$ is a
+subsolution for sufficiently large $s$. For sufficiently small $s$,
+\[
+ \sup_{x\in[0,\bar x]}\|V^{-1}\partial_x\Pi_s(x)\|_\infty<1,
+\]
+since $\partial_x\Pi_s\to0$ uniformly on the box. Thus
+$x\mapsto V^{-1}\Pi_s(x)$ is a contraction of the box into itself;
+its fixed point is zero. Consequently $0<s_*<\infty$.
+On bounded $s$-intervals, $\Pi_s(x)=O(\|x\|^2)$ uniformly near zero;
+$x=V^{-1}\Pi_s(x)$ therefore excludes small nonzero equilibria.
+Limits as $s\downarrow s_*$ give a nonzero equilibrium at $s_*$.
+At an equilibrium, a zero coordinate forces its graph predecessors to
+be zero; strong connectivity makes every nonzero equilibrium positive.
+Also $J(0)=-V$, giving stability of zero.
+
+The decreasing trajectory from $\bar x$ gives the greatest equilibrium
+$x_*$. It lies strictly below $\bar x$, since
+\[
+ \bar x-x_*=V^{-1}(b-\Pi_{s_*}(x_*))\gg0.
+\]
+Its Jacobian is irreducible Metzler. If $s(J)>0$, the positive Perron
+vector gives a strict subsolution $x_*+\varepsilon r$ inside the same
+box, contradicting maximality. If $s(J)<0$, the implicit-function
+theorem continues the positive equilibrium below $s_*$. Hence $s(J)=0$
+is simple and all other eigenvalues have negative real parts.
+Finally,
+\[
+ \ell^\top\partial_s f(x_*;s_*)
+ =\sum_i\ell_i b_i\Phi_i'(s_*P_i(x_*))P_i(x_*)>0.
+\]
+The saddle-node test of Proposition~\ref{p:sadCus} applies when
+its quadratic coefficient is nonzero.
+That coefficient is negative because positive equilibria do not exist
+below $s_*$. The two branches above it have zero and one unstable
+eigenvalues, respectively; the latter is a saddle in dimension at least two.
+\end{proof}
+
+\paragraph{Homogeneous branches, saddle-nodes, and heterogeneous cusps.}
+
+\beT[Balanced response arguments preserve scalar branches and their first instability]
+[homogeneous branches][KBhom]
+For \eqref{eq:KB}, suppose
+$V\mathbf1=v\mathbf1$, $v>0$, and
+$\Pi(s\mathbf1)=r(s)\mathbf1$ throughout the relevant interval.
+The states $x=s\mathbf1$, in which all variables are equal, then obey
+\begin{equation}\label{eq:KBscalar}
+ \dot s=-vs+r(s).
+\end{equation}
+If the Jacobian $J$ at such an equilibrium is Metzler, its spectral
+abscissa is $s(J)=-v+r'(s)$.
+When this number is zero the eigenvalue zero is semisimple, even
+without irreducibility. If $J$ is irreducible it is simple, and all
+heterogeneous eigenvalues have negative real parts.
+For $r(s)=b\Phi(h+\beta s)$ with $b,\beta>0$,
+write $\varphi=\Phi'$ and assume the derivatives used below exist and
+are continuous. A scalar saddle-node candidate
+satisfies
+\[
+ vs=b\Phi(z),\quad z=h+\beta s,\quad b\beta\varphi(z)=v.
+\]
+It is nondegenerate for variation of $h$ if $\varphi'(z)\ne0$.
+If $\varphi(z_c)>0$, $\varphi'(z_c)=0$, and
+$\varphi''(z_c)\ne0$, the scalar equation has a nondegenerate two-parameter cusp at
+\[
+ s_c=\frac b v\Phi(z_c),\qquad
+ \beta_c=\frac v{b\varphi(z_c)},\qquad
+ h_c=z_c-\beta_cs_c.
+\]
+At a saddle-node or cusp with irreducible Metzler full Jacobian, the scalar
+bifurcation has only stable complementary directions in the full system.
+For higher-order balanced $P_i$, one may take
+$r(s)=b\Phi(h+\sum_k a_ks^k)$ instead.
+\eeT
+\begin{proof}
+Invariance follows by substitution. With $H=\mathbf1$,
+Theorem~\ref{t:Spe}(1) gives spectral equality. More explicitly,
+$J\mathbf1=(-v+r'(s))\mathbf1$ implies
+$\|e^{Jt}\|_\infty=e^{(-v+r'(s))t}$. This proves spectral ordering
+and, at zero, boundedness of the semigroup excludes Jordan blocks.
+The scalar derivatives are
+$f_s=-v+b\beta\varphi$, $f_{ss}=b\beta^2\varphi'$, and
+$f_{sss}=b\beta^3\varphi''$. At the cusp the unfolding determinant
+in $(h,\beta)$ is $b^2\varphi(z_c)^2>0$.
+Proposition~\ref{p:sadCus} verifies these scalar bifurcations.
+The cusp or saddle-node lifts under Theorem~\ref{t:Spe}(3); in a
+reducible network several center directions may instead coexist.
+\end{proof}
+
+For $V=I$ and row-stochastic $W$, the spectral ordering and the semisimple or simple zero
+eigenvalue are in \cite{Boud26}; Theorem~\ref{t:KBhom} extends that argument to
+$V\mathbf1=v\mathbf1$ and nonlinear balanced production.
+
+For a unimodal density with $\varphi''(z_c)<0$, the cubic coefficient $f_{sss}$ is negative, so the outer branches of the cusp
+attract, and for $\beta>\beta_c$ the two folds bound a hysteresis loop in $h$ (Figure~\ref{fig:hyst}).
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=.78\linewidth,xlabel={$h$},ylabel={$s$},ymin=0,ymax=1,
+ tick label style={font=\scriptsize},label style={font=\small},title style={font=\small},xmin=-1.9,xmax=0.4,title={$\beta=1.5<\beta_c$}]
+\addplot[blue,thick] coordinates {(-3.2010,0.0007) (-3.0418,0.0012) (-2.8830,0.0020) (-2.7249,0.0033) (-2.5679,0.0052) (-2.4123,0.0082) (-2.2588,0.0125) (-2.1081,0.0188) (-1.9611,0.0274) (-1.8188,0.0392) (-1.6822,0.0548) (-1.5524,0.0749) (-1.4304,0.1003) (-1.3170,0.1314) (-1.2128,0.1685) (-1.1178,0.2119) (-1.0316,0.2611) (-0.9534,0.3156) (-0.8817,0.3745) (-0.8147,0.4364) (-0.7500,0.5000) (-0.6853,0.5636) (-0.6183,0.6255) (-0.5466,0.6844) (-0.4684,0.7389) (-0.3822,0.7881) (-0.2872,0.8315) (-0.1830,0.8686) (-0.0696,0.8997) (0.0524,0.9251) (0.1822,0.9452) (0.3188,0.9608) (0.4611,0.9726) (0.6081,0.9812) (0.7588,0.9875) (0.9123,0.9918) (1.0679,0.9948) (1.2249,0.9967) (1.3830,0.9980) (1.5418,0.9988) (1.7010,0.9993)};
+\end{axis}
+\end{tikzpicture}
+\end{minipage}\hfill
+\begin{minipage}{.48\linewidth}
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth,height=.78\linewidth,xlabel={$h$},ylabel={$s$},ymin=0,ymax=1,
+ tick label style={font=\scriptsize},label style={font=\small},title style={font=\small},xmin=-3.2,xmax=-0.8,title={$\beta=4>\beta_c$}]
+\addplot[blue,thick] coordinates {(-3.8003,0.0001) (-3.7296,0.0001) (-3.6588,0.0001) (-3.5882,0.0002) (-3.5176,0.0002) (-3.4470,0.0003) (-3.3765,0.0004) (-3.3061,0.0005) (-3.2358,0.0006) (-3.1657,0.0008) (-3.0957,0.0010) (-3.0259,0.0013) (-2.9564,0.0016) (-2.8872,0.0020) (-2.8183,0.0025) (-2.7499,0.0031) (-2.6820,0.0038) (-2.6148,0.0047) (-2.5482,0.0058) (-2.4825,0.0071) (-2.4177,0.0086) (-2.3541,0.0104) (-2.2917,0.0125) (-2.2308,0.0150) (-2.1715,0.0179) (-2.1141,0.0212) (-2.0588,0.0251) (-2.0058,0.0295) (-1.9553,0.0346) (-1.9076,0.0404) (-1.8629,0.0470) (-1.8216,0.0543) (-1.7838,0.0626) (-1.7498,0.0718) (-1.7198,0.0820) (-1.6940,0.0933) (-1.6726,0.1056) (-1.6559,0.1191) (-1.6438,0.1338) (-1.6365,0.1497) (-1.6341,0.1668)};
+\addplot[blue,thick] coordinates {(-2.3659,0.8332) (-2.3635,0.8503) (-2.3562,0.8662) (-2.3441,0.8809) (-2.3274,0.8944) (-2.3060,0.9067) (-2.2802,0.9180) (-2.2502,0.9282) (-2.2162,0.9374) (-2.1784,0.9457) (-2.1371,0.9530) (-2.0924,0.9596) (-2.0447,0.9654) (-1.9942,0.9705) (-1.9412,0.9749) (-1.8859,0.9788) (-1.8285,0.9821) (-1.7692,0.9850) (-1.7083,0.9875) (-1.6459,0.9896) (-1.5823,0.9914) (-1.5175,0.9929) (-1.4518,0.9942) (-1.3852,0.9953) (-1.3180,0.9962) (-1.2501,0.9969) (-1.1817,0.9975) (-1.1128,0.9980) (-1.0436,0.9984) (-0.9741,0.9987) (-0.9043,0.9990) (-0.8343,0.9992) (-0.7642,0.9994) (-0.6939,0.9995) (-0.6235,0.9996) (-0.5530,0.9997) (-0.4824,0.9998) (-0.4118,0.9998) (-0.3412,0.9999) (-0.2704,0.9999) (-0.1997,0.9999)};
+\addplot[blue,dashed] coordinates {(-1.6341,0.1668) (-1.6372,0.1877) (-1.6465,0.2102) (-1.6619,0.2342) (-1.6830,0.2596) (-1.7095,0.2864) (-1.7410,0.3144) (-1.7770,0.3435) (-1.8168,0.3736) (-1.8597,0.4045) (-1.9051,0.4360) (-1.9521,0.4679) (-2.0000,0.5000) (-2.0479,0.5321) (-2.0949,0.5640) (-2.1403,0.5955) (-2.1832,0.6264) (-2.2230,0.6565) (-2.2590,0.6856) (-2.2905,0.7136) (-2.3170,0.7404) (-2.3381,0.7658) (-2.3535,0.7898) (-2.3628,0.8123) (-2.3659,0.8332)};
+\draw[red,thick,-{Stealth[length=5pt]}] (axis cs:-1.6341,0.1668) -- (axis cs:-1.6341,0.9900);
+\draw[red,thick,-{Stealth[length=5pt]}] (axis cs:-2.3659,0.8332) -- (axis cs:-2.3659,0.0100);
+\end{axis}
+\end{tikzpicture}
+\end{minipage}
+\caption{Hysteresis on the homogeneous branch of Theorem~\ref{t:KBhom}, $\dot s=-s+\Phi_{\mathrm G}(h+\beta s)$, for the Gaussian response:
+the equilibria are $s=\Phi_{\mathrm G}(z)$, $h=z-\beta\Phi_{\mathrm G}(z)$, and $\beta_c=\sqrt{2\pi}$. Left: the response to $h$ is
+gradual and reversible. Right: solid branches are stable and the dashed branch is unstable. As $h$ increases the state jumps up at
+$h\approx-1.634$; as $h$ decreases it jumps down at $h\approx-2.366$.}
+\label{fig:hyst}
+\end{figure}
+
+\beT[Two identical response populations admit cusp formulas with linear exchange]
+[cusps with linear exchange][KBexchange]
+Consider $\dot x=-V_\kappa x+\Pi(x)$ for two populations with
+the same strictly increasing response $\Phi:\mathbb R\to(0,1)$ and coefficients,
+\[
+ V_\kappa=\begin{pmatrix}v+\kappa&-\kappa\\-\kappa&v+\kappa\end{pmatrix},
+ \quad W_\varepsilon=\begin{pmatrix}1-\varepsilon&\varepsilon\\
+ \varepsilon&1-\varepsilon\end{pmatrix},
+ \quad \Pi_i=b\Phi(h+\beta(W_\varepsilon x)_i),
+\]
+where $v,b,\beta>0$, $\kappa\ge0$, and
+$0\le\varepsilon\le1/2$. The terms with coefficient $\kappa$
+transfer activity between the two variables and cancel in their sum.
+Write the two response arguments as $a+s$ and $a-s$, and put
+\[
+ M(a,s)=\tfrac12(\Phi(a+s)+\Phi(a-s)),\quad
+ D(a,s)=\tfrac12(\Phi(a+s)-\Phi(a-s)),\quad
+ \widehat\beta=\beta b/v.
+\]
+The heterogeneous equilibria are parameterized, whenever $D\ne0$, by
+\begin{align*}
+ m&=\frac b v M,&d&=\frac b{v+2\kappa}D,&x_{1,2}&=m\pm d,\\
+ h&=a-\widehat\beta M,&
+ \varepsilon&=\frac12\left(1-
+ \frac{(v+2\kappa)s}{\beta bD}\right).
+\end{align*}
+At the same arguments $(a,s)$, define the parameter map without exchange,
+with unit removal and production coefficient, by
+\[
+ U=a-\widehat\beta M,\qquad
+ \varepsilon_0=\frac12\left(1-\frac{s}{\widehat\beta D}\right).
+\]
+The original parameters satisfy exactly
+\begin{equation}\label{eq:KB-cusp-affine}
+ (h,\varepsilon)=
+ \left(U,(1+2\kappa/v)\varepsilon_0-\kappa/v\right).
+\end{equation}
+Consequently its generic parameter-map folds and cusps are preserved
+by this affine transformation, retaining only those with admissible
+$0\le\varepsilon\le1/2$ and positive activities.
+Suppose $\Phi$ is $C^7$ near $z_c$ and, writing $\varphi=\Phi'$,
+\[
+ \varphi(z_c)>0,\qquad \varphi'(z_c)=0,\qquad
+ \varphi''(z_c)<0.
+\]
+Put $a_0=b/v$, $\beta_c=1/(a_0\varphi(z_c))$,
+$x_c=a_0\Phi(z_c)$, $h_c=z_c-\beta_cx_c$, and
+$\delta=\beta-\beta_c\downarrow0$.
+The two cusps related by interchanging the populations extend the
+zero-exchange calculation of \cite{Boud26}. They satisfy,
+for $\kappa=O(\delta)$,
+\begin{align*}
+ \varepsilon_c&=\frac{\delta}{3\beta_c}-\frac\kappa v+o(\delta),\\
+ |x_{1,c}-x_{2,c}|&=
+ 2\left[-\frac{2}{a_0\varphi''(z_c)\beta_c^4}\right]^{1/2}
+ \delta^{1/2}+o(\delta^{1/2}),\\
+ h_c(\beta)-h_c&=-x_c\delta+o(\delta).
+\end{align*}
+Let $\varepsilon_{0,c}(\widehat\beta)$ be the value of $\varepsilon_0$ at the cusps. Their
+couplings are admissible exactly when $\varepsilon_{0,c}(\widehat\beta)\ge\kappa/(v+2\kappa)$.
+For fixed $\kappa>0$, these cusps leave the physical range
+$\varepsilon\ge0$ sufficiently near the scalar cusp.
+\eeT
+\begin{proof}
+The mean equilibrium equation is $vm=bM$, and the contrast equation
+is $(v+2\kappa)d=bD$. The fields satisfy
+$a=h+\beta m$ and $s=\beta(1-2\varepsilon)d$.
+Eliminating $m,d$ gives the parameterization and
+\eqref{eq:KB-cusp-affine}. Its target transformation is invertible,
+so it preserves Whitney fold and cusp type. The source transformation
+from activities to fields is locally invertible when
+$\beta(1-2\varepsilon)\ne0$.
+
+\emph{Unit model.} Take $v=b=1$, $\kappa=0$, and write
+$\delta_u=\beta-\beta_c$. This is the model of \cite{Boud26}, whose theorem on
+heterogeneous cusps born from the scalar cusp gives two exchange-related generic Whitney
+cusps of the parameter map $(a,s)\mapsto(h,\varepsilon)$ and the three displayed laws.
+We record an exact form of its nondegeneracy computation.
+Let $\Xi=\partial_ah\,\partial_s\varepsilon-\partial_sh\,\partial_a\varepsilon$
+and let $D_k\Xi=\partial_a\Xi\,\partial_s\varepsilon-\partial_s\Xi\,\partial_a\varepsilon$
+be its derivative along the kernel direction $k=(\partial_s\varepsilon,-\partial_a\varepsilon)$. Put
+\[
+ R(a,s)=\frac{D(a,s)}s
+       =\frac12\int_{-1}^1\varphi(a+\tau s)\,d\tau,
+\]
+\[
+ H=(1-\beta M_a)R_s+\beta M_sR_a,
+ \qquad \mathcal K=R_s\partial_a-R_a\partial_s.
+\]
+Since $\mathcal K R=0$, direct differentiation gives the exact identities
+\[
+ \Xi=\frac{H}{2\beta R^2},\qquad
+ D_k\Xi=\frac{\mathcal K H}{4\beta^2R^4},\qquad
+ D_k^2\Xi=\frac{\mathcal K^2H}{8\beta^3R^6}.
+\]
+With $\delta_u=t^2$, $s=tS$, $a-z_c=t^2A$, the cusp branches have
+\[
+ S(0)=\pm S_*,\quad S_*^2=-\frac{2}{\beta_c^2\varphi''(z_c)},\qquad
+ A(0)=\frac{\varphi'''(z_c)}{4\beta_c^2\varphi''(z_c)^2},
+\]
+and, with $\varphi''=\varphi''(z_c)$, along them
+\[
+ \partial_s\Xi=\frac{\varphi''}{3}t^2+o(t^2),\qquad
+ \partial_s\varepsilon=\frac{\beta_c\varphi''S}{6}t+o(t),\qquad
+ D_k^2\Xi=-\frac{2\beta_c^2\varphi''^3S}{27}t^3+o(t^3).
+\]
+Thus $d\Xi\ne0$, the parameter map has rank one, and
+$D_k^2\Xi\ne0$ for all sufficiently small $t>0$.
+
+\emph{General model.} The activities are $a_0=b/v$ times the unit-model
+ones. With $\widehat\beta-\widehat\beta_c=a_0\delta$ and
+$\widehat\beta_c=a_0\beta_c$, the unit-model formulas give the displayed ones
+for $\kappa=0$; the transformation \eqref{eq:KB-cusp-affine} gives
+$\varepsilon_c=(1+2\kappa/v)\varepsilon_{0,c}-\kappa/v$, and the contrast carries the
+factor $b/(v+2\kappa)$ in place of $b/v$. For $\kappa=O(\delta)$, the product
+$(2\kappa/v)\varepsilon_{0,c}$ is $O(\delta^2)$ and the correction
+to the contrast is $O(\delta^{3/2})$; the leading coupling shift
+is $-\kappa/v$.
+By \eqref{eq:KB-cusp-affine}, $0\le\varepsilon\le1/2$ is equivalent to
+$\kappa/(v+2\kappa)\le\varepsilon_0\le1/2$, which is the admissibility test of the statement.
+Near the cusp the other two-dimensional eigenvalue is negative:
+at the same fields, its trace satisfies exactly
+\[
+ \operatorname{tr}J_\kappa
+ =v[-2+(1-\varepsilon_{0,c})(q_1+q_2)]
+  +\kappa[(1-2\varepsilon_{0,c})(q_1+q_2)-2],
+\]
+where
+$q_i=\widehat\beta\varphi(a\pm s)$.
+Here $q_1+q_2=2+o(\delta)$ and
+$\varepsilon_{0,c}=\delta/(3\beta_c)+o(\delta)$.
+For $\kappa=O(\delta)$, the trace is consequently
+$-2v\delta/(3\beta_c)+o(\delta)<0$.
+Thus physical cusps have one stable complementary direction.
+Theorem~\ref{t:Spe}(3) lifts them to an exact cooperative
+network realization whose Jacobian at the cusp is irreducible.
+\end{proof}
+
+\paragraph{Application: persistence of the two exchange cusps.}
+For each fixed sufficiently small $\beta-\beta_c>0$ for which
+Theorem~\ref{t:KBexchange} supplies two distinct nondegenerate
+full-network cusps, Proposition~\ref{p:sadCus} continues both under
+sufficiently small $C^3$ asymmetry or loss of equitability.
+Apply it in disjoint neighbourhoods of the two cusp states.
+Their stimulus and coupling values need no longer coincide,
+and the permissible perturbation size may depend on $\beta-\beta_c$.
+Interior admissibility persists; at a parameter boundary such as
+$\varepsilon=0$, check it separately using the exchange-induced
+admissibility inequality above.
+
+\beT[Unequal stimuli preserve both threshold cusps precisely within an explicit asymmetry interval]
+[][cuspAsym]
+Consider
+\[
+ \dot x_{1,2}=-x_{1,2}+
+ \Phi\bigl(h\pm\eta+\beta[(1-k)x_{1,2}+kx_{2,1}]\bigr),
+ \qquad 0\le k\le1/2,\quad\beta>0.
+\]
+Let $\Phi:\mathbb R\to(0,1)$ be a strictly increasing CDF, $C^5$ near zero,
+with $\Phi(-q)=1-\Phi(q)$. Put $\varphi=\Phi'$, assume $\varphi(0)>0$, $\varphi''(0)<0$,
+and set $\beta_c=1/\varphi(0)$. For $\beta=\beta_c+\delta$, $\delta>0$
+sufficiently small, there is a unique sufficiently small $s>0$ with
+$\beta\varphi(s)=1$. Define
+\[
+ D=\Phi(s)-\tfrac12>0,\qquad \eta_* =\beta D-s>0,\qquad
+ k_0=\frac{\eta_*}{2\beta D}.
+\]
+For $\zeta=\pm1$, the two continuations of the heterogeneous cusps at
+$\eta=0$ are
+\[
+ x_\zeta^*=(\tfrac12+\zeta D,\tfrac12-\zeta D),\qquad
+ h_\zeta^*=-\beta/2,\qquad k_\zeta^*=k_0+\frac{\zeta\eta}{2\beta D}.
+\]
+Both candidates lie in $0<k<1/2$ and are nondegenerate cusps of
+the $(h,k)$ family precisely while
+$|\eta|<\eta_*(\beta)$, with eigenvalues $0,-2k_\zeta^*<0$.
+At $|\eta|=\eta_*$ one reaches $k=0$ with two zero eigenvalues,
+ceasing to be a one-dimensional-centre cusp; beyond it that candidate
+has inadmissible $k<0$. The other cusp remains nondegenerate for
+asymmetries near this boundary. Moreover,
+\[
+ s=\sqrt{\frac{-2}{\beta_c^2\varphi''(0)}}\delta^{1/2}+O(\delta^{3/2}),\qquad
+ \eta_* =\frac{2}{3\beta_c}\sqrt{\frac{-2}{\beta_c^2\varphi''(0)}}
+ \delta^{3/2}+O(\delta^{5/2}).
+\]
+\eeT
+\begin{proof}
+In coordinates $m=(x_1+x_2)/2-1/2$, $d=(x_1-x_2)/2$, at
+$h=-\beta/2$, $m=0$ the arguments are $q_1=\eta+\beta(1-2k)d$, $q_2=-q_1$.
+The mean equation vanishes by symmetry; setting $d=\zeta D$, $q_1=\zeta s$
+gives $\zeta s=\eta+\beta(1-2k)\zeta D$, hence $k=k_\zeta^*$.
+Evenness of $\varphi$ and $\beta\varphi(s)=1$ give
+\[
+ J=-I+\begin{pmatrix}1-k&k\\k&1-k\end{pmatrix},
+\]
+with eigenvalues $0,-2k$ and mean-direction kernel for $k>0$.
+
+Write the equations as $f_m,f_d$. Since $\partial_df_d=-2k$, solve
+$f_d=0$ for $d=d(m,h,k)$ and put $g=f_m(m,d(m,h,k),h,k)$.
+At either candidate $d_m=0$. Differentiating $f_d=0$ twice gives
+\[
+ d_{mm}=\frac{\zeta\beta^2\varphi'(s)}{2k},\qquad
+ d_k=-\frac{\zeta D}{k}.
+\]
+Substitution into the derivatives of $g$ gives
+\[
+ g=g_m=g_{mm}=0,\qquad
+ g_{mmm}=\beta^3\varphi''(s)+\frac{3\beta^4(1-2k)\varphi'(s)^2}{2k},
+\]
+\[
+ g_h=1/\beta,\quad g_k=0,\quad g_{mk}=-\frac{\beta^2D\varphi'(s)}k,
+ \qquad
+ \det\begin{pmatrix}g_h&g_k\\g_{mh}&g_{mk}\end{pmatrix}
+ =-\frac{\beta D\varphi'(s)}k\ne0.
+\]
+These formulas apply to both signs because $\varphi'$ is odd;
+$\varphi'(s)<0$ for small positive $s$.
+Evenness also gives
+\[
+ \varphi(s)=\varphi(0)+\tfrac12\varphi''(0)s^2+O(s^4),\quad
+ s^2=-\frac{2\delta}{\beta_c^2\varphi''(0)}+O(\delta^2),
+\]
+\[
+ D=\varphi(0)s+\tfrac16\varphi''(0)s^3+O(s^5).
+\]
+Thus
+\[
+ \eta_* =\frac\delta{\beta_c}s+\frac{\beta_c}6\varphi''(0)s^3
+ +O(\delta^{5/2})=\frac{2\delta}{3\beta_c}s+O(\delta^{5/2}),
+ \qquad k_0=\frac\delta{3\beta_c}+O(\delta^2),
+\]
+proving the asymptotics. Directly,
+$\eta_* =\beta\int_0^s[\varphi(q)-\varphi(s)]\,dq>0$.
+For $|\eta|<\eta_*$, $0<k_\zeta^*<2k_0<1/2$.
+The cubic coefficient decreases with $k$ and at its upper endpoint is
+\[
+ g_{mmm}|_{k=2k_0}=-\tfrac72\beta_c^3\varphi''(0)+o(1)>0.
+\]
+Proposition~\ref{p:sadCus} therefore makes both candidates
+nondegenerate cusps unfolded by $(h,k)$.
+At the boundary the couplings are $0,2k_0$: the first has $J=0$,
+whereas the second retains its nonzero cubic coefficient and stable
+complementary eigenvalue, which persist nearby.
+\end{proof}
+
+\paragraph{Remarks.}
+The exact inequality $|\eta|<\beta(\Phi(s)-1/2)-s$, $\beta \Phi'(s)=1$,
+concerns the two inherited cusps, not possible distant ones.
+Their states and common stimulus remain fixed, while
+$k_+^*-k_-^*=\eta/(\beta D)$. Since $D=O(\delta^{1/2})$ and
+$k_0=O(\delta)$, stimulus asymmetry of order $\delta^{3/2}$ changes
+the coupling by its own order. For the standard Gaussian response $\Phi_{\mathrm G}$,
+\[
+ \beta_c=\sqrt{2\pi},\qquad s=\sqrt{2\log(\beta/\beta_c)},
+\]
+\[
+ \begin{aligned}
+ \eta_* &=\beta\left[\Phi_{\mathrm G}\!\left(\sqrt{2\log(\beta/\beta_c)}\right)-\tfrac12\right]
+ -\sqrt{2\log(\beta/\beta_c)}\\
+ &=\frac{2\sqrt2}{3\beta_c^{3/2}}(\beta-\beta_c)^{3/2}
+ +O((\beta-\beta_c)^{5/2}).
+ \end{aligned}
+\]
+Unequal removal coefficients or asymmetric response shapes require
+separate unfolding calculations; these formulas assume a symmetric
+response and unequal additive stimuli.
+
+\subsection{Odds-polynomial responses: a siphon-preserving cusp}
+\label{ss:oddsCusp}
+
+The constructions above give two distinct mechanisms: flat zero-onset
+responses preserve siphons but have vanishing onset slope, whereas the
+full-support responses in the explicit two-population cusp calculations
+exclude nontrivial zero faces. Polynomial odds provide a common class in
+which the response zero set is preserved while its onset slope and
+nonlinear shape can be varied independently.
+
+We use the cusp continuation criterion of Proposition~\ref{p:sadCus}
+and persistence of hyperbolic equilibria under weak coupling
+\cite{golubitsky2023dynamics,kuznetsov2004,Boud26}.
+The constructions below additionally preserve specified siphon faces
+and control their transverse stability.
+
+\beD[Odds-polynomial threshold response]
+[][Odd]
+Fix $m\ge1$ and $a_1,\ldots,a_m\ge0$ with $a_m>0$, and put
+\begin{equation}\label{eq:oddsFamily}
+ \varphi(q)=\sum_{k=1}^m a_kq^k,\qquad
+ \Phi(q)=\begin{cases}\dfrac{\varphi(q)}{1+\varphi(q)},&q\ge0,\\[4pt] 0,&q\le0.\end{cases}
+\end{equation}
+Then $\Phi$ is a nondecreasing distribution function, is strictly positive
+for $q>0$, tends to one as $q\to\infty$, and has zero set $(-\infty,0]$.
+It is smooth on $[0,\infty)$ from the right, with
+\[
+ \Phi'(0+)=a_1,\qquad \Phi''(0+)=2(a_2-a_1^2).
+\]
+If $a_1>0$, its extension by zero to negative arguments is not $C^1$ at
+zero. Derivatives at zero below are taken in the admissible nonnegative
+directions; local cusp calculations are performed at strictly
+positive arguments, where the vector field is smooth. Since $1+\varphi>0$ on a
+neighbourhood of $[0,\infty)$, the formula $\varphi/(1+\varphi)$ is a smooth
+extension of $\Phi$ there, so threshold models built from $\Phi$ with nonnegative
+polynomials $P_i$ satisfy the smoothness convention of Definition~\ref{d:KB}
+(Remark~\ref{r:KBonset}).
+\eeD
+
+\beP[Odds responses keep the siphon lattice and scale the invasion matrix][odds invasion matrix][Odd]
+Consider a production threshold model \eqref{eq:KB}, \eqref{polR} with $h_i=0$, a common
+response $\Phi$, and polynomials with $P_i(0)=0$. Keep $V$, $b_i$, and $P_i$ fixed while varying the
+admissible coefficients of $\Phi$ in \eqref{eq:oddsFamily}.
+Write $z=x_\Sigma$ and $y=x_{\Sigma^c}$.
+A nonempty set $\Sigma$ is a siphon if and only if
+\[
+ P_i(0,y)=0\quad(i\in\Sigma)
+ \quad\text{for every admissible resident state }y,
+\]
+and
+\begin{equation}\label{eq:oddsNoLinCoupling}
+ V_{\Sigma\Sigma^c}=0.
+\end{equation}
+Consequently the entire siphon lattice is independent of the odds
+coefficients. On such a face the transverse Jacobian is
+\begin{equation}\label{eq:oddsTransverse}
+ J_\Sigma^\perp(y)
+ =-V_\Sigma
+ +a_1\operatorname{Diag}(b_i:i\in\Sigma)D_zP_\Sigma(0,y).
+\end{equation}
+Thus only $a_1$ enters the transverse matrix at a \emph{fixed} resident
+state $y$, and it changes that matrix only if
+$D_zP_\Sigma(0,y)\ne0$. Higher odds coefficients may change invasion
+thresholds indirectly, by moving the resident equilibrium at which
+\eqref{eq:oddsTransverse} is evaluated.
+\eeP
+\begin{proof}
+The polynomials $P_i$ are nonnegative on the state space, so there $\Phi$ may be replaced by
+$\varphi/(1+\varphi)$, which is smooth near $q=0$; this gives a $C^1$ extension of the vector field,
+with $\Pi\ge0$ on the admissible state space. Proposition~\ref{p:InvF}(1) then applies: $\Sigma$ is a siphon exactly when
+$V_{\Sigma\Sigma^c}=0$ and $b_i\Phi(P_i(0,y))=0$ for $i\in\Sigma$. Since $b_i>0$ and $\Phi(q)>0$ for
+$q>0$, the second condition is $P_i(0,y)=0$, which proves the equivalence and independence from
+the response coefficients. Since $\Phi'(0+)=a_1$, the chain rule gives
+$\partial_z\Pi_\Sigma(0,y)=a_1\operatorname{Diag}(b_i)D_zP_\Sigma(0,y)$, and the formula for
+$J^\perp$ in Proposition~\ref{p:InvF}(1) proves \eqref{eq:oddsTransverse}.
+\end{proof}
+
+We next show why degree four, rather than a particular numerical choice
+of coefficients, produces a positive cusp together with a stable
+boundary equilibrium.
+
+\beP[Quartic odds attain the minimum degree for a positive cusp above a stable origin][minimal degree and quartic odds cusp][Qua]\label{p:Min}
+For $\dot x=-x+\Phi(x)$ with $\Phi$ defined by \eqref{eq:oddsFamily},
+degree four is the minimum admitting both a hyperbolically stable
+origin and a positive nondegenerate cusp. The following quartic
+family attains it and also has a second hyperbolically stable equilibrium.
+
+Choose $0<r<s<1$ with $3r+s\le1$, and define
+\[
+ c=\frac{1}{(1-r)^3(1-s)},\qquad
+ \varphi_{r,s}(q)=\frac{q-cq(q-r)^3(q-s)}{1-q}.
+\]
+The apparent singularity at $q=1$ is removable: the expression is the
+quartic polynomial
+\[
+ \begin{aligned}
+ \varphi_{r,s}(q)&=a_1q+a_2q^2+a_3q^3+a_4q^4,\\
+ a_1&=1-cr^3s,\\
+ a_2&=c(1-3r-s+3r^2+3rs),\\
+ a_3&=c(1-3r-s),\qquad a_4=c.
+ \end{aligned}
+\]
+The coefficients $a_1,a_2,a_4$ are positive, and $a_3\ge0$, with equality
+exactly when $3r+s=1$; thus $3r+s\le1$ is precisely the admissibility
+condition $a_k\ge0$. With the response $\Phi_{r,s}$
+constructed from $\varphi_{r,s}$, the scalar equation
+$\dot x=f_{r,s}(x)=-x+\Phi_{r,s}(x)$ on $[0,1]$ satisfies
+\[
+ f_{r,s}(x)=-\frac{cx(x-r)^3(x-s)}{1+\varphi_{r,s}(x)}.
+\]
+It has a hyperbolically stable origin, a nondegenerate positive cusp
+at $x=r$, and a hyperbolically stable positive equilibrium at $x=s$.
+More precisely,
+\[
+ f_{r,s}'(0)=-cr^3s<0,\qquad
+ f_{r,s}'''(r)=6cr(s-r)(1-r)>0,
+\]
+\[
+ f_{r,s}'(s)=-cs(s-r)^3(1-s)<0.
+\]
+The cusp is generically unfolded by $(a_1,a_2)$, keeping $a_3,a_4$
+fixed, since for any quartic odds polynomial
+\begin{equation}\label{eq:oddsUnfold}
+ \det\frac{\partial(f,f_x)}{\partial(a_1,a_2)}
+ =\frac{x^2}{(1+\varphi(x))^4}>0\qquad(x>0).
+\end{equation}
+In particular, at $x=r$ the determinant equals $r^2(1-r)^4$.
+
+The root parameters control the boundary stability margin and the cusp
+strength,
+\begin{equation}\label{eq:rsMargin}
+ 1-a_1=c\,r^3s,\qquad f_{r,s}'''(r)=6cr(s-r)(1-r),
+\end{equation}
+and over the admissible region
+\begin{equation}\label{eq:rsSup}
+ \sup_{0<r<s,\ 3r+s\le1}\,(1-a_1)=\frac1{81}.
+\end{equation}
+The supremum is not attained. It is approached only as $r,s\to1/4$,
+where $f_{r,s}'''(r)\to0$ and the cusp degenerates. For instance, $(r,s)=(1/5,2/5)$ has $a_3=0$ and margin $1/96$.
+
+For $r=1/8$ and $s=1/2$ this is exactly the reference polynomial
+\[
+ \varphi(q)=\tfrac1{343}(342q+368q^2+128q^3+1024q^4),
+\]
+for which
+\begin{equation}\label{eq:oddsFactor}
+ f(x)=-\frac{x(2x-1)(8x-1)^3}{343(1+\varphi(x))}.
+\end{equation}
+Here $f'(0)=-1/343$, $f'(1/2)=-27/686$, and
+\[
+ f=f_x=f_{xx}=0,\qquad f_{xxx}=\frac{36}{49}
+ \quad\text{at }x=\frac18.
+\]
+At this cusp the unfolding determinant in \eqref{eq:oddsUnfold}
+is $2401/262144$, and
+\[
+ \det\frac{\partial(f,f_x,f_{xx})}{\partial(x,a_1,a_2)}
+ =\frac{441}{65536}\ne0
+ \quad\text{at }(x,a_1,a_2)
+ =\left(\tfrac18,\tfrac{342}{343},\tfrac{368}{343}\right).
+\]
+\eeP
+\begin{proof}
+\emph{Minimum degree.}
+The numerator $(1-x)\varphi(x)-x$ has degree at most $m+1$,
+and contains the factor $x$. A positive triple equilibrium thus
+requires $m\ge3$. If $m=3$, its leading coefficient is $-a_3$
+and necessarily
+\[
+ (1-x)\varphi(x)-x=-a_3x(x-r)^3,\qquad r>0.
+\]
+Comparison of the coefficients of $x$ yields
+$a_1-1=a_3r^3>0$. Thus the origin is unstable.
+For $m\le2$ the numerator cannot contain both $x$ and a
+positive triple root. This proves the lower bound; the construction
+below proves attainment.
+
+\emph{Quartic construction.}
+The choice of $c$ makes
+$q-cq(q-r)^3(q-s)$ vanish at $q=1$, so division by $1-q$
+gives a polynomial of degree four with the displayed coefficients.
+Since $c>0$, $a_3\ge0$ is $3r+s\le1$, and
+$a_2=a_3+3cr(r+s)>0$. Also $r<s\le1-3r$ gives $r<1/4$ and
+$1-s\ge3r$, which imply $(1-r)^3(1-s)>r^3s$, hence $a_1>0$;
+finally $a_4=c>0$.
+The identity
+$(1-x)\varphi_{r,s}(x)-x=-cx(x-r)^3(x-s)$ proves the
+general factorization and hence its specialization
+\eqref{eq:oddsFactor}. The three derivatives follow by factoring at
+the respective equilibria and using
+$1+\varphi_{r,s}(r)=(1-r)^{-1}$ and
+$1+\varphi_{r,s}(s)=(1-s)^{-1}$.
+For the unfolding determinant, differentiating
+$f=(\varphi-x-x\varphi)/(1+\varphi)$ with respect to $a_1,a_2$
+and then $x$ gives \eqref{eq:oddsUnfold}; at the cusp,
+$f=f_x=f_{xx}=0$ and $f_{xxx}\ne0$. Hence the Jacobian
+of $(f,f_x,f_{xx})$ in $(x,a_1,a_2)$ equals
+$f_{xxx}$ times the unfolding determinant, and is nonzero. Proposition~\ref{p:sadCus} in one dimension,
+therefore gives the claimed generically unfolded cusp.
+Since $f_{r,s}'''(r)>0$, the cusp equilibrium itself is unstable;
+the two stable equilibria are $0$ and $s$.
+\emph{Stability margin.}
+The margin identity in \eqref{eq:rsMargin} is $f_{r,s}'(0)=a_1-1$.
+For \eqref{eq:rsSup}, the margin
+$\Delta(r,s)=1-a_1=r^3s/((1-r)^3(1-s))$ increases with $s$, so
+$\Delta(r,s)\le\Delta(r,1-3r)=r^2(1-3r)/(3(1-r)^3)$, and
+\[
+ \frac{d}{dr}\,\frac{r^2(1-3r)}{3(1-r)^3}=\frac{2r(1-4r)}{3(1-r)^4}>0
+ \qquad(0<r<\tfrac14).
+\]
+The bound therefore increases to its value $1/81$ at $r=1/4$, which is not
+admissible since there $s=1-3r=r$. Along any sequence with
+$\Delta\to1/81$ both $r$ and $s$ tend to $1/4$, so $s-r\to0$ and
+$f_{r,s}'''(r)\to0$.
+Substitution gives the stated exact values.
+\end{proof}
+
+\paragraph{The quartic odds construction has an explicit scalar energy.}
+For $\dot x=-x+\Phi_a(x)$ with an odds response $\Phi_a$ of Proposition~\ref{p:Qua}, $\Phi_a$ is strictly
+increasing on $[0,\infty)$ when $a_1>0$, maps that interval onto $[0,1)$, and has $\Phi_a^{-1}(0)=0$. Define
+\[
+ \mathcal E_a(x)=\int_0^x\Phi_a^{-1}(s)\,ds-\frac{x^2}{2},\qquad 0\le x<1.
+\]
+Then $\dot{\mathcal E}_a(x)=-(\Phi_a^{-1}(x)-x)(x-\Phi_a(x))\le0$, with equality exactly at scalar equilibria.
+At a positive equilibrium $e$, $\mathcal E_a''(e)=1/\Phi_a'(e)-1$, so a hyperbolically stable equilibrium
+is a strict local minimum of this energy. At a scalar cusp $r$, where $\Phi_a(r)=r$, $\Phi_a'(r)=1$ and
+$\Phi_a''(r)=0$, differentiating the inverse gives
+\[
+ \mathcal E_a'(r)=\mathcal E_a''(r)=\mathcal E_a'''(r)=0,\qquad \mathcal E_a''''(r)=-\Phi_a'''(r).
+\]
+For the reference quartic,
+\[
+ \mathcal E_a''(0+)=\frac1{342}>0,\qquad
+ \mathcal E_a''(1/2)=\frac{27}{659}>0,\qquad
+ \mathcal E_a''''(1/8)=-\frac{36}{49}<0.
+\]
+The stable origin and the stable positive equilibrium are therefore local energy minima, while the
+cusp is a degenerate local maximum at the reference parameter. This is the generator of the Fenchel--Bregman divergence
+of Subsection~\ref{s:FenBre} applied to the quartic construction, not an additional minimum-degree
+claim. The coupled odds networks have nonlinear $P_i$, so this energy does not simply sum over them.
+
+\beT[Networked odds responses carry an interior cusp over a stable siphon face]
+[][Net]
+Let $\Phi_a$ denote the odds response with $a_3=128/343$ and
+$a_4=1024/343$ fixed, and initially
+$(a_1,a_2)=a^0=(342/343,368/343)$ as in
+Proposition~\ref{p:Qua}. Consider the two-population family on
+the forward-invariant square $[0,1]^2$
+\begin{equation}\label{eq:oddsNet}
+ \dot x=-x+\Phi_a\bigl(x(1+\gamma y)\bigr),\qquad
+ \dot y=-y+\Phi_a\bigl(y(10+\varepsilon x)\bigr),
+ \qquad \gamma,\varepsilon\ge0.
+\end{equation}
+\BEN
+\item For every admissible $a$ and every $\gamma,\varepsilon\ge0$,
+ the faces $x=0$ and $y=0$ are invariant and the minimal siphons
+ are exactly $\{x\}$ and $\{y\}$.
+\item At $(\gamma,\varepsilon,a)=(0,0,a^0)$, the resident equation
+ $\dot y=-y+\Phi_{a^0}(10y)$ has exactly one positive equilibrium
+ $y^*=q^*/10$, where $q^*$ is the unique positive root of
+\begin{equation}\label{eq:oddsResident}
+ p(q)=1024q^4-10112q^3-912q^2-3338q-3077=0.
+\end{equation}
+ Its eigenvalue is strictly negative, and is given exactly by
+ \[
+ \lambda_y=-\frac{q^*p'(q^*)}{343(1+\varphi(q^*))}<0.
+ \]
+ In particular, at $(1/8,y^*)$ the full Jacobian has a simple
+ zero eigenvalue and a strictly negative complementary eigenvalue.
+\item There exists $\delta>0$ and smooth functions
+ $a_1(\gamma,\varepsilon)$, $a_2(\gamma,\varepsilon)$,
+ and $x_c(\gamma,\varepsilon)$, for
+ $0\le\gamma,\varepsilon<\delta$, reducing to
+ $(a_1^0,a_2^0,1/8)$ at zero coupling, such that
+ \eqref{eq:oddsNet} has a nondegenerate interior cusp near
+ $(1/8,y^*)$. Its complementary eigenvalue remains strictly
+ negative, and $(a_1,a_2)$ still unfold the cusp generically.
+\item Let $y_*(a_1,a_2)$ be the unique resident equilibrium
+ near $y^*$ for the current coefficients. On the continued cusp
+ family, the boundary equilibrium $(0,y_*)$ has transverse eigenvalue
+\begin{equation}\label{eq:oddsTransEig}
+ \lambda_{\mathrm{tra}}(\gamma,\varepsilon)
+ =-1+a_1(\gamma,\varepsilon)
+ \Bigl(1+\gamma y_*\bigl(a_1(\gamma,\varepsilon),
+                             a_2(\gamma,\varepsilon)\bigr)\Bigr).
+\end{equation}
+ This is $-1/343$ at zero coupling and remains negative for all
+ sufficiently small nonnegative couplings.
+\item Along the continued cusp family, a stable boundary
+ equilibrium near $(0,y^*)$ and a stable interior equilibrium
+ near $(1/2,y^*)$ coexist. For $\gamma,\varepsilon>0$, both off-diagonal Jacobian entries
+ are strictly positive at every positive interior state.
+\EEN
+Consequently, sufficiently small positive coupling preserves
+both minimal siphons, a nondegenerate interior cusp, and bistability
+between a stable boundary equilibrium and a stable positive equilibrium,
+with a strictly stable transverse invasion eigenvalue on the boundary.
+\eeT
+\begin{proof}
+For part 1, both arguments of $\Phi_a$ contain the corresponding
+variable as a factor. The zero-onset property therefore makes each
+coordinate zero face invariant. These singleton faces are the
+minimal siphon faces.
+
+For part 2, with $q=10y$ one computes
+\[
+ -y+\Phi_{a^0}(10y)
+ =-\frac{q\,p(q)}{10\,[343+343\varphi(q)]}.
+\]
+The coefficients of $p$ have exactly one sign change, so by
+Descartes' rule $p$ has exactly one positive root, counted with
+multiplicity. Since $p(0)<0$ and $p(q)\to\infty$, that root is
+simple and $p'(q^*)>0$. Differentiating the displayed identity at
+$q=q^*$ gives $\lambda_y$ as stated. The equations decouple at
+zero coupling, and Proposition~\ref{p:Qua} gives the zero eigenvalue
+in the $x$ direction.
+
+For part 3, at zero coupling the first equation is the scalar
+cusp of Proposition~\ref{p:Qua}, unfolded by $(a_1,a_2)$; the
+second equation is independent of $x$ and has eigenvalue
+$\lambda_y<0$. Eliminating its equilibrium equation therefore
+leaves exactly $\Phi_a(x)-x$, so the full system satisfies the cusp
+tests of Proposition~\ref{p:sadCus}. Its persistence assertion
+continues the cusp for small $(\gamma,\varepsilon)$, preserving
+the nonzero cubic, the unfolding determinant, and the stable
+complementary eigenvalue. Smoothness of this family gives the
+claimed smooth continuation. The base state and odds coefficients
+are strictly positive; restricting the continued family to
+nonnegative couplings preserves admissibility.
+
+For part 4, restriction to $x=0$ gives
+$\dot y=-y+\Phi_a(10y)$, independent of $\gamma,\varepsilon$.
+Its hyperbolic positive equilibrium continues smoothly with $a$.
+The face Jacobian is triangular, with transverse entry
+$-1+\Phi_a'(0+)(1+\gamma y_*)$, which is
+\eqref{eq:oddsTransEig}. This is strictly negative at the base
+point, so it remains so for sufficiently small couplings.
+
+For part 5, both $(0,y^*)$ and $(1/2,y^*)$ are hyperbolically
+stable at zero coupling: their tangential resident eigenvalue is
+$\lambda_y<0$, the former has transverse eigenvalue $-1/343$,
+and the latter has $x$ eigenvalue $-27/686$. The implicit-function
+theorem and spectral continuity preserve both equilibria and their
+stability under the continued parameter adjustment. The first stays
+on the invariant face $x=0$; the second remains strictly positive.
+For positive couplings, direct differentiation gives
+$\partial_y\dot x=\gamma x\Phi_a'(x(1+\gamma y))>0$
+and
+$\partial_x\dot y=\varepsilon y\Phi_a'(y(10+\varepsilon x))>0$
+when $x,y>0$.
+\end{proof}
+
+\beR[What the construction does and does not settle]
+For fixed odds coefficients from Proposition~\ref{p:Qua}, let $y^*$
+be a positive equilibrium of the corresponding resident equation
+$\dot y=-y+\Phi_{r,s}(10y)$. The transverse stability condition at
+$(0,y^*)$ is, by \eqref{eq:rsMargin},
+\begin{equation}\label{eq:rsGamma}
+ \gamma<\frac{1-a_1}{a_1y^*}=\frac{c\,r^3s}{(1-c\,r^3s)\,y^*},
+\end{equation}
+which is $-1+a_1(1+\gamma y^*)<0$ solved for $\gamma$. For the reference
+coefficients it is $\gamma<1/(342y^*)\approx2.9\times10^{-3}$.
+This is \emph{not} an explicit bound along the continued cusp family: there $a_1$ changes with
+the couplings, and within the quartic family changing $(r,s)$ also changes the resident state,
+the cusp location and its cubic coefficient. The supremum $1/81$ in \eqref{eq:rsSup} therefore
+bounds the uncoupled origin's stability margin, not the admissible coupling. The two-parameter quartic
+family of Proposition~\ref{p:Qua} permits the cusp location, the
+second stable equilibrium, and the boundary stability margin to be
+varied while the response zero set is fixed; its coupled continuation
+requires only the same hyperbolicity and unfolding hypotheses.
+The theorem gives local continuation, not a classification of all cusp
+branches by their invasion thresholds.
+\eeR
+
+\beR[Why the coupling must be multiplicative for singleton siphons][multiplicative coupling][Mul]
+The arguments of \eqref{eq:oddsNet} are $x(1+\gamma y)$ and $y(10+\varepsilon x)$,
+not $x+\gamma y$ and $10y+\varepsilon x$. For a zero-onset response that is strictly positive on $(0,\infty)$,
+diagonal removal and nonnegative polynomials $P_i$, the singleton $\{i\}$ is a
+siphon exactly when
+\[
+ P_i(x)\big|_{x_i=0}\equiv0,
+\]
+that is, when every monomial of $P_i$ contains $x_i$; this is the criterion of
+Proposition~\ref{p:KBsiph} specialised to a singleton. The additive argument
+$x+\gamma y$ has the monomial $\gamma y$, which survives at $x=0$, so
+$\Phi(\gamma y)>0$ and the face $x=0$ is not invariant: the siphon is destroyed for
+every $\gamma>0$. The multiplicative argument $x(1+\gamma y)$ carries $x$ in every
+monomial and so preserves it for all $\gamma$. A nonzero off-diagonal linear term therefore destroys the
+corresponding singleton siphon.
+
+The necessity is specific to singleton siphons. For a general $\Sigma$, with
+$V_{\Sigma\Sigma^c}=0$, the criterion of Proposition~\ref{p:Odd} requires only
+\[
+ \operatorname{supp}\nu\cap\Sigma\ne\varnothing
+ \quad\text{for every monomial }x^\nu\text{ of }P_i,\ i\in\Sigma,
+\]
+so a coordinate of $\Sigma$ may have an additive term from another coordinate of
+$\Sigma$. Overlapping minimal siphons therefore allow a richer class of couplings.
+\eeR
+
+% Former separate minimum-degree proposition (merged above; inactive).
+% \beP[Quartic is the minimal degree carrying a stable origin and a positive cusp][minimal odds degree][Min]
+% For the scalar equation $\dot x=f(x)=-x+F(x)$ with $F$ as in
+% \eqref{eq:oddsFamily} and $a_k\ge0$, no degree $m\le3$ admits
+% simultaneously a hyperbolically stable origin and a positive
+% nondegenerate cusp. The quartic family of
+% Proposition~\ref{p:Qua} therefore attains the minimum degree.
+% \eeP
+% \begin{proof}
+% The numerator $(1-x)\phi(x)-x$ has degree at most $m+1$,
+% and contains the factor $x$. A positive triple equilibrium thus
+% requires $m\ge3$. If $m=3$, its leading coefficient is $-a_3$
+% and necessarily
+% \[
+%  (1-x)\phi(x)-x=-a_3x(x-r)^3,\qquad r>0.
+% \]
+% Comparison of the coefficients of $x$ yields
+% $a_1-1=a_3r^3>0$. Thus the origin is unstable.
+% For $m\le2$ the numerator cannot contain both $x$ and a
+% positive triple root.
+% \end{proof}
+%
+
+% Former longer margin discussion (inactive).
+% \beR[The margin trade-off is not monotone in $a_1$][margin trade-off][Tra]
+% Lowering $a_1$ does improve
+% \eqref{eq:rsGamma} with everything else fixed, but $a_1$ is not a free
+% parameter: it is determined by $(r,s)$ through \eqref{eq:rsMargin}, and moving
+% $(r,s)$ also moves the cusp location $r$, the second equilibrium $s$, and the
+% cusp strength $f'''(r)$. The margin is therefore traded against the geometry of
+% the equilibria, and the trade is constrained by $a_3\ge0$. By
+% \eqref{eq:rsSup} the margin never reaches $1/81$ and approaches it only as
+% the cusp degenerates. A quantitative coupling window along the continued cusp
+% family is a separate problem, which remains open.
+% \eeR 

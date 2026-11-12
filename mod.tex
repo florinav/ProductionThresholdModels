@@ -1,0 +1,473 @@
+\section{Siphons of a production model.}\label{s:KB}
+\beP[Production zeros determine siphons and first-order terms determine their invasion matrices]
+[siphons and transverse invasion][InvF]\label{p:KBsiph}
+\label{p:KBresponsezeros}\label{p:KBorder}
+
+Let $\Omega$ be $\mathbb R_+^{n_S}$ or $[0,\bar x]$ with $\bar x\gg0$, and assume
+$f$ in \eqref{eq:KB} is $C^1$ on a neighbourhood of $\Omega$ and satisfies
+\[
+ f_i(x)\ge0\quad(x_i=0,\ x\in\Omega).
+\]
+In the box case assume also $f_i(x)\le0$ on $x_i=\bar x_i$.
+The lower-face inequalities hold automatically when $\Pi\ge0$.
+For $\varnothing\ne \Sigma\subseteq\{1,\ldots,n_S\}$ write $z=x_\Sigma$, $y=x_{\Sigma^c}$.
+Here $\Sigma$ is a siphon if $\{x\in\Omega:x_\Sigma=0\}$ is forward invariant
+(for the lifetime of solutions in the orthant case).
+Write $s(M)=\max_{\lambda\in\sigma(M)}\operatorname{Re}\lambda$.
+\begin{enumerate}
+\item \emph{Face invariance and transverse linearization.}
+The set $\Sigma$ is a siphon exactly when
+\begin{equation}\label{eq:KB-face-general}
+ \Pi_\Sigma(0,y)=V_{\Sigma\Sigma^c}\,y\quad\text{for every }y\text{ with }(0,y)\in\Omega.
+\end{equation}
+Since $\Pi_\Sigma\ge0$ and $V_{\Sigma\Sigma^c}\le0$, this is equivalent to
+\begin{equation}\label{eq:KB-face}
+ V_{\Sigma\Sigma^c}=0,\qquad \Pi_\Sigma(0,y)=0\quad\text{for every }y\text{ with }(0,y)\in\Omega.
+\end{equation}
+On the face,
+\[
+ J(0,y)=\begin{pmatrix}J^\perp&0\\J_{\mathrm{mix}}&J_{\mathrm{tan}}\end{pmatrix},
+ \quad F_\Sigma(y)=\partial_z\Pi_\Sigma(0,y),\quad
+ J^\perp=F_\Sigma(y)-V_\Sigma,
+\]
+where $J_{\mathrm{mix}}=\partial_zf_{\Sigma^c}(0,y)$ and
+$J_{\mathrm{tan}}=\partial_yf_{\Sigma^c}(0,y)$.
+The matrix $J^\perp$ is Metzler, $F_\Sigma(y)\ge0$, and
+\[
+ \operatorname{sign}s(J^\perp)
+ =\operatorname{sign}\bigl(\rho(F_\Sigma(y)V_\Sigma^{-1})-1\bigr).
+\]
+At a
+boundary equilibrium every eigenvalue of the full Jacobian has negative
+real part exactly when this holds for both $J^\perp$ and
+$J_{\mathrm{tan}}$. For $\Sigma^c=\varnothing$ the tangential condition is omitted.
+
+\item \emph{Response zeros.} For \eqref{eq:KB-general-response}, suppose
+$a_i(0)>0$ for every $i\in \Sigma$ and put
+\[
+ \mathcal Q_{i,\Sigma}=\{h_i+P_i(0,y):(0,y)\in\Omega\}.
+\]
+Then the face criterion becomes
+\begin{equation}\label{eq:KB-response-zero-test}
+ V_{\Sigma\Sigma^c}=0,\qquad
+ \mathcal Q_{i,\Sigma}\subseteq\{q:\Phi_i(q)=0\}\quad(i\in \Sigma).
+\end{equation}
+Keeping $V$, $a_i$ and $P_i$ fixed, replacing responses by
+nonnegative functions with the same zero sets
+on attained arguments preserves every siphon. Strictly positive responses
+on those arguments exclude nonempty siphons when all $a_i(0)>0$.
+For an index with $a_i(0)=0$, its production vanishes on the face
+regardless of its response.
+
+\item \emph{Nonnegative polynomials $P_i$.} In \eqref{polR},
+assume $\Phi_i(q)=0$ for $q\le0$ and $\Phi_i(q)>0$ for $q>0$.
+On the full orthant, the criterion is
+\[
+ V_{\Sigma\Sigma^c}=0,\quad h_i\le0\ (i\in \Sigma),\quad
+ \operatorname{supp}\nu\cap \Sigma\ne\varnothing
+ \quad(i\in \Sigma,\ a_{i\nu}>0).
+\]
+On a finite box it is equivalent when $h_i=0$ for $i\in \Sigma$.
+For arbitrary $h_i$, the exact box criterion is
+\[
+ V_{\Sigma\Sigma^c}=0,\qquad h_i+P_i(0,\bar x_{\Sigma^c})\le0\quad(i\in \Sigma).
+\]
+Here $\operatorname{supp}\nu=\{j:\nu_j>0\}$. For linear $P_i$, zero stimulus,
+and $\beta>0$, the monomial condition is $W_{\Sigma\Sigma^c}=0$.
+With diagonal $V$, minimal siphons are the source strongly connected
+components of the influence graph $j\to i$ when $w_{ij}>0$---the closed
+recurrent classes in the opposite row-transition convention for stochastic $W$.
+
+\item \emph{Order in absent variables.}
+On a siphon face write
+\[
+ \Pi_\Sigma(z,y)=\Pi_\Sigma(0,y)+F_\Sigma(y)z+R_\Sigma(z,y).
+\]
+If $R_\Sigma=O(\|z\|^2)$ at each resident state under consideration,
+changing only the remainder preserves $J^\perp$.
+More generally, adding a $C^1$ vector field $H$ preserves face dynamics
+and the transverse matrix under
+\[
+ H(0,y)=0,\qquad \partial_zH_\Sigma(0,y)=0.
+\]
+Preservation of the entire face Jacobian additionally requires
+$\partial_zH_{\Sigma^c}(0,y)=0$; otherwise $J_{\mathrm{mix}}$ may change.
+These identities must hold along the face, not just at one equilibrium.
+In particular, $\Pi_\Sigma(z,y)-\Pi_\Sigma(0,y)=O(\|z\|^2)$ gives
+$J^\perp=-V_\Sigma$ along every resident trajectory.
+For nonnegative production on a siphon face, $\Pi_\Sigma(0,y)=0$.
+\end{enumerate}
+\eeP
+\begin{proof}
+\begin{enumerate}
+\item On the face the absent equations are
+$\dot z=-V_{\Sigma\Sigma^c}y+\Pi_\Sigma(0,y)$.
+Invariance forces this expression to vanish at every initial point
+of the face. Conversely, under \eqref{eq:KB-face-general}, a solution
+of the resident equations with $z\equiv0$ solves the full system;
+uniqueness proves invariance.
+
+Since the off-diagonal entries of $V$ are nonpositive, both
+$-V_{\Sigma\Sigma^c}y$ and $\Pi_\Sigma(0,y)$ are nonnegative when production is
+nonnegative on the face. Their sum vanishes only if both vanish.
+Taking $y=t e_j$ for each resident index and an admissible $t>0$
+gives $V_{\Sigma\Sigma^c}=0$. This uses the specified orthant or nondegenerate box.
+
+The triangular form and the Metzler property of $J^\perp$
+are Proposition~\ref{p:Tri}. Its one-sided difference quotient
+argument, applied to $\Pi_i$ and including $j=i$, proves $F_\Sigma\ge0$ when
+production is nonnegative near the face and vanishes on it.
+Every principal submatrix $V_\Sigma$ is a nonsingular $M$-matrix;
+the nonnegative-production splitting $F_\Sigma-V_\Sigma$ gives the
+spectral-radius sign test.
+The stability assertion is Proposition~\ref{p:Tri}(2).
+
+\item On the face,
+$\Pi_i(0,y)=a_i(0)\Phi_i(h_i+P_i(0,y))$.
+For $a_i(0)>0$ its vanishing is precisely the response zero-set
+condition; for $a_i(0)=0$ it is automatic. Together with
+\eqref{eq:KB-face}, this proves all zero-set assertions.
+
+\item At $y=0$ the argument of $\Phi_i$ equals $h_i$, so $h_i\le0$ is necessary.
+Any positive-coefficient monomial containing only resident
+variables grows without bound along $y=t\mathbf1$ and eventually
+makes this argument positive. Hence such monomials are excluded on
+the full orthant. Conversely, every monomial containing an absent
+variable vanishes on the face.
+On a box the nonnegative polynomial attains its largest resident
+value at $\bar x_{\Sigma^c}$, proving the exact box test; for $h_i=0$ every
+resident-only monomial is strictly positive there.
+For linear $P_i$ and diagonal $V$, the criterion says that no
+edge enters $\Sigma$ from outside. Such a set is a union of strongly
+connected components and contains a source component of the full
+graph. Each source component is itself predecessor closed, so
+these and only these are the minimal nonempty siphons.
+With nondiagonal $V$, the same proof includes the transfer edges.
+
+\item A differentiable $O(\|z\|^2)$ remainder has zero derivative
+at $z=0$. Also $H(0,y)=0$ implies $\partial_yH(0,y)=0$.
+These facts identify the preserved entries of the face Jacobian.
+\end{enumerate}
+\end{proof}
+
+\ssec{Re-splitting the family of the introduction.}
+For the family \eqref{eq:intro-family}, write the
+bracket as $B_i(x)$ and work on an invariant box $\Omega$ with
+$\rho_ix_i\le1$. The production $\Pi_i=(1-\rho_ix_i)B_i\ge0$, but the
+nonlinear removal is outside the linear form $-Vx$. Choose
+\[
+ \mu_i\ge\rho_i\sup_\Omega B_i+\sup_{[0,\bar x_i]}L_i',\qquad
+ V'=V+\operatorname{Diag}(\mu_i),\quad \Pi' =\Pi-L+\operatorname{Diag}(\mu_i)x.
+\]
+Then $\partial_i\Pi_i'\ge0$ and $\Pi_i'(0,x_{-i})=B_i(0,x_{-i})\ge0$,
+so $\Pi'\ge0$. The ODE and its upper-face condition are unchanged;
+$V'$ remains a nonsingular $M$-matrix. Off-diagonal derivatives are
+unchanged, so the Jacobian is Metzler on the box when the responses increase
+in the other variables. Capacity factors can make $\partial_i\Pi_i<0$.
+
+For SIS, with $\Pi_i=(1-x_i)H_i$, the
+choice $\mu_i\ge\sup H_i$ restores monotonicity on the cube without changing the siphons or the
+transverse Jacobians; the value of $R_\Sigma$ depends on the splitting, while its position relative to
+one does not. What the siphon calculus uses holds in any case: on a siphon face,
+$\Pi_\Sigma(0,y)=0$ and $\Pi\ge0$ give $\partial_z\Pi_\Sigma(0,y)\ge0$ entrywise, the diagonal included.
+
+\beP[Positive networks have invariant boxes and cooperative networks have extremal equilibria]
+[existence, bounds, and extremal equilibria][KBpositive]\label{p:KBwell}
+Let $\Omega=[0,\bar x]$, $\bar x\gg0$, and suppose $\Pi\ge0$ on $\Omega$ and
+$f_i\le0$ on $x_i=\bar x_i$. Then each initial state in $\Omega$ has a unique
+global solution remaining in $\Omega$, and an equilibrium exists there.
+More generally, if $\Pi$ is defined on the full orthant and $0\le\Pi\le b$,
+then without monotonicity all nonnegative solutions are global and
+\[
+ x(t)\le\bar x+e^{-Vt}(x(0)-\bar x),\qquad
+ \bar x=V^{-1}b,\qquad\limsup_{t\to\infty}x(t)\le\bar x.
+\]
+\begin{enumerate}
+\item[(a)] \emph{Cooperative box.} If in addition $J=-V+\partial_x\Pi$ is
+Metzler on $\Omega$, the trajectories from $0$ and $\bar x$
+converge to the least and greatest equilibria $x^-\le x^+$; every
+equilibrium lies between them and every trajectory satisfies
+\[
+ x^-\le\liminf_{t\to\infty}x(t)\le\limsup_{t\to\infty}x(t)\le x^+.
+\]
+Consequently a unique equilibrium attracts the whole box, without
+requiring contraction.
+\item[(b)] \emph{Globally bounded monotone production.} If $0\le\Pi\le b$,
+$b\gg0$, and $\partial_x\Pi\ge0$ entrywise (diagonal included) on the
+orthant, then each $[0,a\bar x]$, $a\ge1$, is invariant and, for $a>1$,
+absorbs every nonnegative solution in finite time. All equilibria lie in
+$[0,\bar x]$; the least and greatest are also the limits of
+\[
+ x^-_0=0,\quad x^+_0=\bar x,\qquad x^\pm_{n+1}=V^{-1}\Pi(x^\pm_n).
+\]
+\end{enumerate}
+\eeP
+\begin{proof}
+At $x_i=0$,
+$f_i=-\sum_{j\ne i}v_{ij}x_j+\Pi_i\ge0$; at $x_i=\bar x_i$ the
+assumed inequality is reversed. These inward signs give invariance.
+Local uniqueness and compactness then give global solutions.
+For existence of an equilibrium, apply Brouwer to the continuous map
+$x\mapsto\operatorname{proj}_\Omega(x+\varepsilon f(x))$.
+At a fixed point, an interior coordinate forces $f_i=0$;
+a zero coordinate forces $f_i\le0$, and an upper coordinate forces
+$f_i\ge0$. The inward signs force equality in both boundary cases.
+
+On the orthant, positivity of $e^{-Vt}$ and variation of constants give
+\[
+ x(t)=e^{-Vt}x(0)+\int_0^t e^{-V(t-s)}\Pi(x(s))\,ds
+ \le e^{-Vt}x(0)+V^{-1}(I-e^{-Vt})b.
+\]
+This bound excludes finite-time blow-up; $e^{-Vt}\to0$ gives
+the asserted componentwise upper limit.
+
+In (a), the Metzler Jacobian makes the flow $\varphi_t$ order preserving
+\cite{smith1995}, \cite{Hirsch}. Invariance and the semigroup identity give
+\[
+ \varphi_t(0)\le\varphi_{t+h}(0),\qquad
+ \varphi_{t+h}(\bar x)\le\varphi_t(\bar x)\qquad(t,h\ge0).
+\]
+Both bounded trajectories therefore have limits $x^-,x^+$.
+For each $h\ge0$, continuity gives
+$\varphi_h(x^\pm)=\lim_{t\to\infty}\varphi_{t+h}(0\text{ or }\bar x)=x^\pm$,
+so both limits are equilibria.
+Comparison with $\varphi_t(0)$ and $\varphi_t(\bar x)$ bounds every trajectory
+and every equilibrium, proving extremality and the limit inequalities.
+
+In (b), $V^{-1}\ge0$ has no zero row, so $\bar x\gg0$.
+Since $f(a\bar x)\le-(a-1)b$, cooperativity implies the upper-face
+inequalities on $[0,a\bar x]$: if $x_i=a\bar x_i$ and $x\le a\bar x$,
+then $f_i(x)\le f_i(a\bar x)\le0$.
+For $a>1$, the preceding global bound and decay of $e^{-Vt}$ give
+$x(t)\le a\bar x$ for all sufficiently large $t$.
+Finally $T=V^{-1}\Pi$ is continuous and increasing, with
+$T(0)\ge0$ and $T(\bar x)\le\bar x$. Thus
+\[
+ 0=x_0^-\le x_1^-\le\cdots\le x_n^-\le x_n^+\le\cdots
+ \le x_1^+\le x_0^+=\bar x .
+\]
+Both sequences converge to fixed points of $T$. Every equilibrium
+$e$ satisfies $e=T(e)\le\bar x$ and, by induction,
+$x_n^-\le e\le x_n^+$; hence the limits are precisely the least
+and greatest equilibria.
+\end{proof}
+
+\beP[Every positive smooth box model admits the general production representation]
+[representation of positive box models][KBrepresentation]
+Let $f$ be $C^1$ on a neighbourhood of an invariant box $[0,\bar x]$,
+$\bar x\gg0$. Choose
+\[
+ \mu_i>\max\{0,\sup_{x\in[0,\bar x]}(-\partial_i f_i(x))\},\qquad
+ V=\operatorname{Diag}(\mu_i),\qquad \Pi_i(x)=f_i(x)+\mu_i x_i.
+\]
+Then $\Pi\ge0$ on the box, so the same ODE has a representation with
+nonnegative production and inward upper faces. If $f$ is cooperative there, $\partial_x\Pi\ge0$ entrywise,
+including the diagonal.
+The chosen diagonal coefficients describe a mathematical splitting;
+they need not equal the physical removal coefficients of a given model.
+\eeP
+\begin{proof}
+Invariance gives $f_i(0,x_{-i})\ge0$. Integration in the $i$th
+coordinate yields
+\[
+ \Pi_i(x)=f_i(0,x_{-i})+
+ \int_0^{x_i}[\partial_i f_i(s,x_{-i})+\mu_i]\,ds\ge0.
+\]
+For $j\ne i$, $\partial_j\Pi_i=\partial_j f_i$, while
+$\partial_i\Pi_i=\partial_i f_i+\mu_i>0$, proving the derivative assertion. The original inward boundary conditions are
+unchanged because the vector field itself is unchanged.
+\end{proof}
+\beR[Smooth ecological and regulatory models]
+[ecological models][KBecoG]
+Thus the results that assume only nonnegative production on an invariant
+box also apply to smooth ecological or regulatory models, even when their natural
+production and loss terms have a different form. Global bounds on the
+whole orthant and the special threshold bifurcation formulas remain
+additional hypotheses.
+\eeR
+
+\beR[Smooth onset of a response]
+[smooth onset][KBonset]
+If $\Phi$ is $C^1$ on all of $\mathbb R$ and vanishes on
+$(-\infty,0]$, necessarily $\Phi'(0)=0$. A positive linear onset
+$\Phi'(0+)>0$ instead uses a response defined and $C^1$ from the right
+on $[0,\infty)$, with a smooth extension for local calculations;
+its zero extension to negative arguments is not $C^1$. The results
+use smoothness of $\Pi$ on the admissible phase space, in the sense of
+Definition~\ref{d:KB}, not an incompatible smoothness assumption on that
+zero extension. For the odds responses of Definition~\ref{d:Odd} the
+formula $\phi/(1+\phi)$ itself is a smooth extension to a neighbourhood
+of $[0,\infty)$, since $1+\phi>0$ near zero.
+\eeR
+
+\paragraph{The results using each subclass.}
+\begin{enumerate}
+
+\item \emph{Linear $P_i$} are used in the contraction bound \eqref{eq:KB-shared-contraction} (with
+$0\le \Phi_i'\le L_i$) and Theorems~\ref{t:KBsharp} (common $\Phi$, $b_i=1$, $h_i=0$, monotone production with a slope bound), \ref{t:KBhom} (common $\Phi$, $V\mathbf1=v\mathbf1$), \ref{t:KBexchange}
+(two identical communities, common $\Phi$ and $b$)\xs{ and in
+Propositions~\ref{p:EneF} (strictly increasing $\Phi_i$, diagonal
+$V$) and~\ref{p:KBdelay} (time-dependent weights, delays)}.
+
+\item \emph{Polynomial $P_i$} are used in Proposition~\ref{p:InvF}
+(criterion with $\Phi_i=0$ on $(-\infty,0]$, $\Phi_i>0$ on $(0,\infty)$),
+Theorems~\ref{t:siphMulti} ($h_i=0$, common $\Phi$ in the class $\mathcal C_0$)
+and~\ref{t:ActF} ($\Phi_i(sP_i)$ with monomials of degree at least two)\nsh{,}
+\nsh{coefficient tests for invariant reductions (omitted here)}.
+\nsh{Scalar sums $-vs+\sum_kb_k\Phi_k(\alpha_ku+\beta s)$ in
+Proposition~\ref{p:KBmixcounter} and Theorem~\ref{t:MixCusp} use linear $P_i$.}
+
+\item \emph{State-dependent factors} \eqref{eq:KB-general-response} are used in
+Propositions~\ref{p:InvF} (zero sets of $\Phi_i$ and siphons, with
+$a_i(0)>0$)\shortalt{ and}{,} \ref{p:KBshared} (shared responses; $a_i=b_i$ in the contraction
+test)\nsh{ and the capacity-factor reduction of the supplementary material (factors constant on groups)}.
+\nsh{With $a_i(x_i)=b_i(1-\rho_ix_i)$ and $\Phi_i$ strictly increasing from $\mathbb R$
+onto $(0,1)$ it is used in \ifjournal the energy result of the supplementary material\else Proposition~\ref{p:EneF}\fi. }With
+$a_i(x_i)=1-x_i$, $\Phi_i(q)=q$, $h_i=0$ and $P_i=H_i$ polynomial it is the SIS
+equation\nsh{ \eqref{eq:KB-SIS}, used in
+Theorem~\ref{t:KBidentity} and Theorem~\ref{t:Act}, and in the table of SIS results}.
+\end{enumerate}
+
+\paragraph{Transverse dynamics and higher-order activation.}
+
+\beR[The transverse matrix of the capacity-factor form and of SIS]
+[transverse matrix][KBtransG]
+The initial siphon decomposition gives the transverse Metzler property
+without full cooperativity; Proposition~\ref{p:InvF} supplies its
+production splitting and spectral test. For the
+capacity-factor form \eqref{eq:KB-capacity} the factor $1-\rho_ix_i$ equals one
+on the face and drops out of the transverse matrix; for SIS contagion,
+\[
+ J^\perp(y)=A_{\Sigma\Sigma}+\partial_{x_\Sigma}g_\Sigma(0,y)-V_\Sigma.
+\]
+Only at the origin, or when $\partial_{x_\Sigma}g_\Sigma(0,y)=0$, does this
+reduce to $A_{\Sigma\Sigma}-V_\Sigma$. For instance, $g_i=x_jx_k$ with
+$i,j\in \Sigma$ and $k\notin \Sigma$ contributes the resident value $y_k$
+to the $(i,j)$ transverse entry. Total polynomial degree and degree
+in the absent variables must therefore be distinguished.
+\eeR
+
+% Preserved original shared-response block; active version moved to commonRed.
+% \paragraph{A common response within each siphon is a restriction, not a new ODE.}
+% For a specified family $\mathcal S$ of siphons (for example, the minimal
+% siphons of a zero-onset model), impose
+% \begin{equation}\label{eq:KB-share-siphons}
+%  F_i=F_j\quad\text{as functions whenever }i,j\in S,\quad S\in\mathcal S.
+% \end{equation}
+% Overlaps force agreement. Let $C_1,\ldots,C_m$ be the resulting equivalence
+% classes, with uncovered indices initially singleton classes. Equivalently,
+% \begin{equation}\label{eq:KB-shared-response}
+%  F_i=\mathcal F_{\kappa(i)},\quad i\in C_{\kappa(i)},\qquad
+%  \Pi_i(x)=a_i(x_i)\mathcal F_{\kappa(i)}(h_i+P_i(x)).
+% \end{equation}
+% Covered classes are unions of overlapping siphons and hence siphons:
+% their zero faces are intersections of invariant faces. Uncovered classes
+% need not be siphons; further response sharing is optional. Sharing on
+% \emph{every} siphon would force one global response whenever the full index
+% set is a siphon. Preserving the response zero sets preserves the chosen
+% family (Proposition~\ref{p:InvF}).
+%
+% \beP[Sharing responses preserves the general theory but does not imply reduction]
+% [shared responses and theorem scope][KBshared]
+% Consider \eqref{eq:KB-shared-response} with the positivity and
+% invariance assumptions of Proposition~\ref{p:KBpositive}.
+% \begin{enumerate}
+% \item Every result stated for production models remains valid under
+% this restriction when its own hypotheses hold. Sharing does
+% not imply cooperativity, irreducibility, contraction or symmetry.
+% For constant amplitudes $a_i=b_i>0$, linear inputs
+% $P_i=\beta(Wx)_i$, $\beta\ge0$, $W\ge0$, and
+% $0\le\mathcal F_a'\le L_a$, a sufficient condition for exponential contraction is
+% \begin{equation}\label{eq:KB-shared-contraction}
+%  \beta\rho\!\left(
+%  \operatorname{Diag}(b_iL_{\kappa(i)})WV^{-1}\right)<1.
+% \end{equation}
+% \item On a siphon face where $P_i(0,y)=0$ for $i\in S$ and
+% $\mathcal F_{\kappa(i)}(h_i)=0$, the transverse matrix is
+% \begin{equation}\label{eq:KB-shared-transverse}
+%  J^\perp(y)=-V_{SS}+
+%  \operatorname{Diag}\!\left(
+%  a_i(0)\mathcal F_{\kappa(i)}'(h_i):i\in S\right)
+%  \partial_{x_S}P_S(0,y).
+% \end{equation}
+% Derivatives at a boundary input are understood from the admissible
+% side when needed. If the response, stimulus and $a_i(0)$ are common
+% on $S$, their scalar factor is common; the remaining matrix need
+% not have constant rows or equal eigenvalues.
+% \item Sharing responses within $C_a$ gives an exact reduction only
+% with additional identities. Let $H_{ia}=1$ for $i\in C_a$ and zero
+% otherwise. Sufficient conditions are
+% \[
+%  VH=H\widehat V,\qquad
+%  a_i(r)=\widehat a_a(r),\quad h_i=\widehat h_a,\quad
+%  P_i(Hy)=\widehat P_a(y)\quad(i\in C_a).
+% \]
+% Then variables initially equal within each $C_a$ remain equal,
+% and their common values satisfy
+% \[
+%  \dot y_a=-(\widehat V y)_a+
+%  \widehat a_a(y_a)\mathcal F_a(\widehat h_a+\widehat P_a(y)).
+% \]
+% When the system is cooperative, Theorem~\ref{t:RedF} transfers local
+% exponential stability exactly between a reduced equilibrium and its lift.
+% Without cooperativity, exact reduction alone gives no such conclusion.
+% \end{enumerate}
+% \eeP
+% \begin{proof}
+% For the contraction assertion put
+% $B=\beta\operatorname{Diag}(b_iL_{\kappa(i)})W$ and $M=B-V$.
+% Here $\beta\ge0$. The spectral inequality gives $s(M)<0$.
+% Since $M$ is Metzler, there are $q\gg0$ and $c>0$ such that
+% $Mq\le-cq$. Moreover $J(x)\le M$ entrywise and $J(x)$ is Metzler.
+% The mean-value formula on the convex box therefore gives, for two solutions,
+% \[
+%  D^+\|x(t)-\widetilde x(t)\|_{\infty,q}
+%  \le-c\|x(t)-\widetilde x(t)\|_{\infty,q},
+%  \qquad \|w\|_{\infty,q}=\max_i |w_i|/q_i.
+% \]
+% Integration proves exponential contraction.
+%
+% Differentiating the production gives
+% \[
+%  \partial_j\Pi_i
+%  =\delta_{ij}a_i'(x_i)\mathcal F_{\kappa(i)}(h_i+P_i(x))
+%  +a_i(x_i)\mathcal F_{\kappa(i)}'(h_i+P_i(x))\partial_jP_i(x).
+% \]
+% The first term vanishes on the specified face, proving
+% \eqref{eq:KB-shared-transverse}.
+% For the reduction, direct substitution gives $f(Hy)=H\widehat f(y)$.
+% Uniqueness then preserves equality within each group, and
+% Theorem~\ref{t:RedF} gives the stability transfer.
+% \end{proof}
+% \beR[Shared responses and correlated thresholds]
+% [shared thresholds][KBsharenote]
+% Sharing a response means sharing a threshold \emph{distribution};
+% it does not mean that all variables use the same random threshold
+% realization or the same noise. Such correlated updates require a
+% separate microscopic model. For disjoint minimal siphons of a linear
+% network the sharing requirement is particularly simple, but even
+% then unequal removal coefficients or unequal row sums can prevent
+% reduction. For example, $V=\operatorname{Diag}(1,2)$,
+% $P_1=x_2$, $P_2=x_1$, $h=0$, and a common zero-onset response
+% have the minimal siphon $\{1,2\}$, whereas at $x_1=x_2=r>0$,
+% $f_1=-r+F(r)$ and $f_2=-2r+F(r)$ are unequal.
+% \eeR
+%
+% \beR[Response shape, zero sets and sharpness]
+% [shape and zeros][KBshapenote]
+% Changing response shapes while preserving their zero sets preserves
+% siphons, but can change slopes in \eqref{eq:KB-shared-transverse},
+% contraction constants, equilibria, folds and cusps. For a globally $C^1$ zero-onset response,
+% Remark~\ref{r:KBonset} gives $\mathcal F_a'(0)=0$; hence zero stimulus
+% and inputs vanishing on the face give $J^\perp=-V_{SS}$.
+% The common-response sharpness theorem
+% \ref{t:KBsharp} already satisfies any prescribed equality among
+% responses, but its full-support perturbation removes all nonempty
+% siphons. It must not be used to assert arbitrary multistability
+% while simultaneously preserving a prescribed nontrivial siphon
+% family. For SIS the common identity response is already shared
+% by every index; restrictions on its infection coefficients and
+% susceptible factors remain essential.
+% \eeR
+%
+

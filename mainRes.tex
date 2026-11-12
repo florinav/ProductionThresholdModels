@@ -1,0 +1,404 @@
+% Unified short-paper replacement for princ.tex, mainRes.tex and exas.tex.
+% Load only this file: \input{mainRes}.
+% Keep the abstract's existing \ideaitem / \ideahead definitions unchanged.
+% The six headings below are supplied by \ideahead, not copied manually.
+\subsection{Main results}\label{s:mainRes}
+
+
+The following enumeration follows the abstract; the text gives the main
+formulas, their scope and relevant earlier results.
+\begin{enumerate}
+\ideahead{1}
+The siphon identity and positivity give
+\[
+ J(0,y)=\begin{pmatrix}
+ J_\Sigma^\perp(y)&0\\
+ J_{\mathrm{mix},\Sigma}(y)&J_{\mathrm{tan},\Sigma}(y)
+ \end{pmatrix},\qquad
+ \begin{aligned}
+ J_\Sigma^\perp&=\partial_zf_\Sigma(0,y),\\
+ J_{\mathrm{mix},\Sigma}&=\partial_zf_{\Sigma^c}(0,y),\\
+ J_{\mathrm{tan},\Sigma}&=\partial_yf_{\Sigma^c}(0,y).
+ \end{aligned}
+\]
+The transverse block is Metzler even when the resident system is not
+cooperative (Proposition~\ref{p:Tri}, \cite{AAHK,AA26}). For a regular
+splitting $J_\Sigma^\perp=F_\Sigma-V_\Sigma$, with
+$F_\Sigma\ge0$ and $V_\Sigma$ a nonsingular $M$-matrix,
+\[
+ s(J_\Sigma^\perp)<0
+ \quad\Longleftrightarrow\quad
+ R_\Sigma:=\rho(F_\Sigma V_\Sigma^{-1})<1
+\]
+is the next-generation matrix criterion \cite{Diek},\newline \cite{Van}.
+
+For example, in the higher-order SIS model \eqref{eq:SIS}, $V_\Sigma=\operatorname{Diag}(\mu_i:i\in\Sigma)$.
+For $i,j\in\Sigma$,
+\[
+ (F_\Sigma)_{ij}(y)=a_{ij}+
+ \sum_{\substack{|E|\ge2\\E\cap\Sigma=\{j\}}}
+ \beta_{iE}\prod_{k\in E\setminus\{j\}}y_k,
+ \qquad J_\Sigma^\perp=F_\Sigma-V_\Sigma.
+\]
+Thus any term containing exactly one absent variable contributes to
+invasion, regardless of its total degree. Terms vanishing together
+with their first $z$-derivatives on the face leave both the resident
+equations and the invasion matrix unchanged.
+The scalar simplicial model \eqref{eq:simp} already exhibits bistability although its derivative at zero,
+$\lambda-1$, is independent of $\lambda_\Delta$.
+
+Theorem~\ref{t:siphMulti} constructs any prescribed finite number
+of stable positive equilibria while preserving every siphon and every
+transverse Jacobian $-V_\Sigma$. It uses nonnegative polynomials
+$P_i$ and a smooth response vanishing on $(-\infty,0]$ and
+positive on $(0,\infty)$. Its support condition is $V^{-1}c\gg0$,
+where $c_i=b_i$ if $P_i\not\equiv0$ and $c_i=0$ otherwise.
+The response depends on the prescribed count; no common slope bound
+is imposed. The response is flat at onset, so all production derivatives on
+siphon faces vanish: the transverse Jacobians are specifically
+$-V_\Sigma$, rather than arbitrary prescribed matrices. This controls all boundary faces simultaneously, extending
+the separation illustrated by the scalar contagion model. Siphon-based
+persistence and boundary analysis have precedents in \cite{AdLS}.
+The face property alone does not imply interior cooperativity:
+$\dot z_1=-z_1z_2$, $\dot z_2=-z_2$ has a Metzler Jacobian at zero
+but $\partial_{z_2}f_1=-z_1<0$ for $z_1>0$.
+
+\ideahead{4}
+For $\dot x=-Vx+\Phi(\beta Wx)$, assume a synaptic matrix $W\ge0$, $\beta\ge0$ and
+that $\Phi\ge0$ is smooth on the attained arguments with $0\le \Phi'\le L$,
+$L>0$. Theorem~\ref{t:KBsharp} compares
+\[
+ \bar R_0=\rho(\beta WV^{-1})
+\]
+with the reciprocal $1/L$ of the slope bound.
+It extends the next-generation number: $J(x)=F(x)-V$ with
+$F(x)=\beta\operatorname{Diag}(\Phi'(\beta Wx))W\le\beta LW$, so the classical number
+$R(x_*)=\rho(F(x_*)V^{-1})$, which decides the stability of one equilibrium $x_*$ \cite{Van}, satisfies
+$R(x_*)\le L\bar R_0$ for all equilibria and all responses in the class (Remark~\ref{r:NGMg}).
+The transition is
+\[
+ \begin{cases}
+ \bar R_0<\dfrac1L: & \parbox[t]{.7\linewidth}{every response in the class gives a unique globally exponentially attracting equilibrium, since $J(x)\le-V+\beta LW$;}\\[12pt]
+ \bar R_0>\dfrac1L: & \parbox[t]{.7\linewidth}{for each $m\ge2$, some response in the class gives at least $m$ locally exponentially stable equilibria, including a choice with $\Phi>0$ and $\Phi'>0$ on $\mathbb R$ and all equilibria strictly positive.}
+ \end{cases}
+\]
+No assertion at equality is needed. The response may depend on $m$;
+this is not a count for one fixed response or polynomial degree.
+
+Positive-feedback multistability is studied generally in
+\cite{AngeliSontag2004}, \cite{AngeliFerrellSontag2004}.
+The contraction below the bound is known: it is the case $B=I$
+of the multivariable Lur'e theorem of \cite{Davydov}, for general $V$,
+and \cite{Boud26} has the case $V=I$, $W\mathbf1=\mathbf1$; see also
+\cite{Coogan2019,KawanoBesselinkCao2020}. The contribution here is its
+constructive sharpness: with $V$, $W$, $L$ fixed and one common scalar response, every
+prescribed finite stable count is attained above the bound, without irreducibility.
+
+The construction principle, plateaus of the response on which $J=-V$, has a predecessor.
+For $\dot u_i=-d_iu_i+\sum_jw_{ij}f_j(u_j)+I_i$ with piecewise linear
+activations with $\ell+1$ plateaus, \cite[Theorem~3]{WangLuChen2010} give exactly
+$(2\ell+1)^n$ equilibria, of which $(\ell+1)^n$ are locally stable, and estimate their
+attraction basins; multilevel sigmoid activations are in their Section~5. Their condition (35)
+requires self-feedback domination, which for a common activation implies
+$w_{ii}>\ell\sum_{j\ne i}|w_{ij}|$. Thus it
+cannot supply arbitrary counts on a fixed network with cross-coupling, whereas
+Theorem~\ref{t:KBsharp} needs only $\bar R_0>1/L$, and asserts a lower bound rather than an exact count.
+For example, take $V=I$, $W=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ and $\beta L>1$. With
+$y=\beta Wx$ the system becomes $\dot y=-y+\beta W\Phi(y)$, which has zero diagonal weights, so
+(35) cannot hold, while Theorem~\ref{t:KBsharp} gives every finite count.
+Theorem~\ref{t:siphMulti} uses the same mechanism; its addition is that $V$ and the
+polynomials $P_i$ stay fixed, the siphon lattice and every transverse Jacobian are preserved,
+and $V^{-1}c\gg0$ is the exact feasibility condition.
+
+Betteti, Baggio, Bullo and Zampieri \cite{Betteti2025} construct symmetric firing-rate networks
+whose prescribed two-level memory patterns are stable equilibria. Their formulas prescribe
+response values at two argument levels, and their stability test controls the derivatives at those
+levels, a precedent for the value-and-slope construction used here. Their synaptic matrix is
+designed from the patterns, whereas Theorem~\ref{t:KBsharp} fixes the removal and synaptic matrices, dimension
+and response slope bound and realizes every finite stable count by varying one common response.
+Their construction does not impose the simultaneous preservation of siphons and transverse
+matrices established in Theorem~\ref{t:siphMulti}. In their symmetric setting, an energy function
+gives convergence to the set of equilibria. Its integral term is the convex generator of the
+Fenchel--Bregman divergence of Subsection~\ref{s:FenBre}, which also recovers Volterra functions.
+
+For an explicit three-population network, Theorem~\ref{t:KBsharp} is compatible with the
+$2$-contraction criterion of \cite{OfirOvseevichMargaliot2024}. As a consequence of the two
+results, arbitrarily many stable equilibria can coexist while every trajectory converges to an
+equilibrium.
+
+Equilibria of \eqref{eq:KB} are the fixed points of $T=V^{-1}\Pi$, and $DT(x_*)=V^{-1}\partial_x\Pi(x_*)$ is similar to the
+next-generation matrix $\partial_x\Pi(x_*)V^{-1}$. For linear $P_i$, $T$ is a two-layer nonnegative neural network in the sense of
+\cite{piotrowski2024fixed}. Their results apply when $T$ is monotone and weakly scalable, as for concave responses: the fixed point
+is then unique and positive if $T$ is scalable, and the positive fixed points form an interval of a ray under a primitivity
+condition. The responses of Theorems~\ref{t:KBsharp} and~\ref{t:siphMulti} and Proposition~\ref{p:Qua} are therefore not concave
+where they are evaluated. Their certificate $T^m(0)\gg0$ excludes every nonempty siphon, since $T$ maps each siphon face into itself.
+
+Linear-threshold networks have diagonal removal and clipped affine production, which is only locally Lipschitz.
+\cite{Retnaraj2026} study a timescale family, with production $\tau^{-1}[Dx+\tau((W-D)x+h)]_0^1$, whose equilibrium set is independent
+of $\tau$. Its invariant siphon faces are independent of $\tau$ as well: on $x_i=0$, the production vanishes exactly when
+$((W-D)x+h)_i\le0$. Smooth bifurcation criteria require additional regularity at the clipping thresholds.
+
+Unlike Theorem~\ref{t:siphMulti}, Theorem~\ref{t:KBsharp} fixes a slope bound
+and linear $P_i$; its full-support construction has no nonempty
+siphon. Neither theorem requires the other, and neither constructs
+a cusp. The explicit cusp results use separate calculations and
+continuation arguments.
+
+\ifdefined\withSpatial
+\ideahead{spat}
+Add diffusion to \eqref{eq:KB}, $x_t=\mathcal D\Delta_\zeta x+\Pi(x)-Vx$ with $\zeta\in\mathbb R^n$, and linearize at a resident equilibrium on the face of a siphon
+$\Sigma$. The absent variables obey $z_t=\mathcal D_\Sigma\Delta_\zeta z+J_\Sigma^\perp z$, with $J_\Sigma^\perp=F_\Sigma-V_\Sigma$, and the ansatz
+$z=e^{-\lambda(e\cdot\zeta-ct)}q$, with $e$ a unit vector, gives the speed of exponential modes normal to $e$. In principle this speed depends on $e$; since the Laplacian assumes diffusion independent of the direction, it does not, and it is the speed of Proposition~\ref{t:spread}. The threshold is again next-generation: $c_*>0$ exactly when
+$R_\Sigma>1$, and $c_*\sim2\sqrt{\langle\mathcal D\rangle s(J_\Sigma^\perp)}$ near it (Remark~\ref{r:movNGM}). The speed has the form of the
+Freidlin--G\"artner formula. It concerns the linearized equation only: the flat-onset responses of Theorem~\ref{t:siphMulti} have
+$R_\Sigma=0$ and no such speed, and with bistability a front can have positive speed although $R_\Sigma<1$.
+For threshold responses, Theorem~\ref{t:SpdBd} carries Theorem~\ref{t:KBsharp} over to diffusion: below $1/L$ every solution converges to the
+one equilibrium and there are no fronts, above it the $m$ stable states persist for every $\mathcal D$, and no response in $\mathcal C_L$ with $\Phi(0)=0$ spreads faster
+than $\bar c(L)$, which we conjecture degree-one odds responses attain (Remark~\ref{r:SpdAtt}). For odds responses only $a_1$ enters the speed at a fixed resident
+(Corollary~\ref{c:OddSpd}). The relay switches on two linear speeds, but numerically a front invades $E_{12}$ already while it is stable (Remark~\ref{r:RelSpd}), and the shared species $x_2$, absent from both residents, ignites where they meet (Remark~\ref{r:OvlIgn}, Figure~\ref{fig:overFront}). Every homogeneous Hurwitz equilibrium of a cooperative system stays stable under arbitrary diagonal diffusion, so all the constructed counts of stable equilibria survive, including the nine of Corollary~\ref{c:Nin} (Corollary~\ref{c:DifSta}); reductions with group-compatible diffusion, extinction certificates, global convergence on a box and, on bounded domains, homogeneous cusps extend as well (Corollary~\ref{c:DifAll}). Integrated Lyapunov functions acquire a diffusion term, which has a sign for Lyapunov--Volterra functions but not in general for network energies, and the composite basin certificate of Proposition~\ref{p:ComBas} extends after a change of storage (Proposition~\ref{p:DifLya}). Section~\ref{s:spaSta} recalls the Evans function and treats the stability of these fronts; above $c_*$ an exponential weight stabilizes the state ahead (Proposition~\ref{p:WeiSpe}).
+\fi
+
+\ideahead{3}
+Partition the species into nonempty groups $C_1,\ldots,C_{n_G}$ and
+let $H_{ia}=1$ for $i\in C_a$ and zero otherwise. Then $x=Hy$
+assigns the common value $y_a$ to group $C_a$.
+Assume $f(Hy;\theta)=H\widehat f(y;\theta)$ for all admissible
+$y,\theta$. The group-constant states are invariant, and
+\[
+ J(Hy;\theta)H=H\widehat J(y;\theta),\qquad
+ s(J(Hy;\theta))=s(\widehat J(y;\theta))
+ \quad\text{if }J(Hy;\theta)\text{ is Metzler}.
+\]
+Theorem~\ref{t:Spe} transfers local exponential equilibrium stability
+without irreducibility. A nondegenerate saddle-node or cusp also lifts
+when the full Jacobian has a simple zero eigenvalue and all remaining
+eigenvalues have negative real parts. These reductions support the
+homogeneous and two-population calculations in
+Theorems~\ref{t:KBhom} and~\ref{t:KBexchange}; the homogeneous cusp of a unimodal density
+gives the hysteresis loop of Figure~\ref{fig:hyst}. For a symmetric response,
+$\Phi(-q)=1-\Phi(q)$, Theorem~\ref{t:cuspAsym} gives the exact
+asymmetry interval $|\eta|<\eta_*(\beta)$ on which both two-population cusps remain
+admissible and nondegenerate.
+Invariant synchrony subspaces and balanced partitions are established
+in \cite{SGP03,golubitsky2005patterns}; here the cooperative spectral
+equality supplies the stability test. Exact quotient reduction for row-stochastic
+threshold networks, $WH=HB$, is in \cite{Boud26}, where a lifted equilibrium $Hy^*$ is
+stable under the sufficient condition $\beta\max_aq_a<1$, with
+$q_a=\Phi'(h+\beta(By^*)_a)$; the spectral equality replaces it by the exact test
+$\beta\rho(\operatorname{Diag}(q)B)<1$. Invariance preserves initial
+equality within groups, but does not imply synchronization from
+arbitrary initial states.
+
+\ideahead{odds}
+For $\varphi(q)=\sum_{k=1}^m a_kq^k$, with $a_k\ge0$ and $a_m>0$,
+put $\Phi(q)=\varphi(q)/(1+\varphi(q))$ for $q\ge0$ and $\Phi(q)=0$ for $q\le0$.
+The zero set is fixed, and $\Phi'(0+)=a_1$.
+For fixed $V$, $b_i>0$ and nonnegative polynomials $P_i$,
+Proposition~\ref{p:Odd} preserves the siphon lattice and gives
+\[
+ J_\Sigma^\perp(y)=-V_\Sigma
+ +a_1\operatorname{Diag}(b_i:i\in\Sigma)D_zP_\Sigma(0,y).
+\]
+Higher coefficients enter an invasion threshold only indirectly,
+through the resident equilibrium. For $\dot x=-x+\phi(x)/(1+\phi(x))$,
+with $\phi(0)=0$ and nonnegative polynomial coefficients, Proposition~\ref{p:Qua} combines
+the exact minimum degree, four, for a positive nondegenerate cusp with a hyperbolically
+stable origin, with an attaining construction.
+Its reference polynomial is
+\[
+ \phi(q)=\frac{342q+368q^2+128q^3+1024q^4}{343}.
+\]
+For $\dot x=-x+\Phi(x)$, the equilibria $0$ and $1/2$ are hyperbolically
+stable, while $1/8$ is a nondegenerate cusp with $f'''(1/8)=36/49$,
+generically unfolded by $(a_1,a_2)$. More generally, the root parameters
+$0<r<s$, $3r+s\le1$, give
+\[
+ c=[(1-r)^3(1-s)]^{-1},\qquad
+ 1-a_1=cr^3s,\qquad f'''(r)=6cr(s-r)(1-r).
+\]
+Within this family, the margin $1-a_1$ has supremum $1/81$, approached only as the cusp
+degenerates. This bounds the uncoupled origin's stability margin,
+not the coupling range of a continued cusp.
+Theorem~\ref{t:Net} continues the cusp and the two stable equilibria
+under coupling that preserves singleton siphons and a transversely
+stable boundary equilibrium.
+
+Bistability and hysteresis under rational genetic feedback are established:
+\cite{Hasty2001} derive
+\begin{equation}\label{eq:Hasty}
+ \dot x=m\frac{1+x^2+\alpha\sigma_1x^4}{1+x^2+\sigma_1x^4+\sigma_1\sigma_2x^6}-\gamma_xx
+\end{equation}
+by eliminating fast dimerization and promoter-binding reactions, with hysteresis as the degradation
+rate varies; see also \cite{Isaacs2003}. Its production at zero is $m>0$, so the origin is not an equilibrium, and its numerator
+and denominator are different polynomials; its $x^4$ term therefore has a different role from
+the degree of $\phi$ here.
+Earlier biological feedback models already exhibit cusps associated
+with rational response functions. In particular, van Hoek and
+Hogeweg \cite[Eq.~(21)]{vanHoek} locate a cusp by imposing
+a triple root on the polynomial equilibrium equation.
+Izhikevich \cite[Theorem~1]{Izhikevich1998} derives coupled cubic
+normal forms for weakly coupled systems whose uncoupled components
+already have cusps. These results precede our use of polynomial
+equilibrium equations and coupling near a cusp.
+
+We have not found the minimum-degree result in the preceding
+literature; it concerns the displayed odds family, not rational genetic responses in general. The local cusp criterion is standard \cite{kuznetsov2004};
+the additional result is its explicit realization subject to these
+positivity and boundary constraints.
+
+\ideahead{overl}
+Responses positive at every finite argument, such as Gaussian and logistic distribution functions,
+exclude nonempty siphons (Remark~\ref{r:KBnosiph}). For zero-onset responses,
+Proposition~\ref{p:InvF} gives the criterion:
+for each siphon $\Sigma$, every production monomial for a species
+$i\in\Sigma$ must contain at least one variable from $\Sigma$,
+and $V_{\Sigma\Sigma^c}=0$. For a singleton, this forces its own
+variable to divide each production monomial (Remark~\ref{r:Mul}).
+For linear $P_i$, minimal siphons are the source strongly connected components of the
+graph of $W$ and $V$ (Remark~\ref{r:KBsiphgraph}); for higher-order $P_i$ they can overlap
+(Example~\ref{e:KBoverlap}). The degree of $P_i$ in the absent variables and the onset order
+of $\Phi_i$ fix the order of production along transverse rays (Remark~\ref{r:KBtransOrder}).
+The three-population network
+\[
+ \begin{aligned}
+ \dot x_1&=-x_1+\Phi_a(x_1+\alpha x_2),\\
+ \dot x_2&=-x_2+\Phi_a(x_2+\beta x_1x_3),\\
+ \dot x_3&=-x_3+\Phi_a(x_3+\gamma x_2)
+ \end{aligned}
+\]
+with positive couplings has overlapping minimal siphons
+$\Sigma_{12}=\{1,2\}$ and $\Sigma_{23}=\{2,3\}$.
+Their faces carry $(0,0,s_a)$ and $(s_a,0,0)$, where $s_a>0$
+is the continued stable scalar equilibrium. Their invasion numbers are
+\[
+ R_{\Sigma_{12}}=a_1(1+\sqrt{\alpha\beta s_a}),\qquad
+ R_{\Sigma_{23}}=a_1(1+\sqrt{\gamma\beta s_a}).
+\]
+They differ when $\alpha\ne\gamma$ and depend on the higher odds
+coefficients through $s_a$.
+These siphons share species $2$, whose production term $\beta x_1x_3$ enters both transverse matrices, while
+both residents are independent of $\beta$. This \textbf{double boundary transcritical relay} takes the two residents
+through transcritical bifurcations in turn by varying $\beta$ alone (Remark~\ref{r:KBrelay}, Figure~\ref{fig:relay}), which cannot
+happen with disjoint siphons.
+For sufficiently small positive couplings, Theorem~\ref{t:KBoverlapCusp}
+constructs eight hyperbolic stable equilibria coexisting with an
+interior cusp. Its positive cubic coefficient makes the middle
+branch of the local unfolding stable, yielding at least nine stable
+equilibria in a nearby open parameter region (Corollary~\ref{c:Nin}).
+The cusp equilibrium itself is not counted among the eight.
+A composite function, the scalar quartic energy on the resident coordinate plus a Perron-weighted
+linear term on the absent coordinates, certifies an explicit subset of the basin of attraction of each boundary resident
+(Proposition~\ref{p:ComBas}).
+Earlier weak-coupling constructions \cite{Izhikevich1998,Boud26}
+provide precedents for multiple stable states; the additional
+constraints here preserve overlapping siphons and distinct explicit
+boundary invasion thresholds.
+
+\ideahead{5}
+If the absent variables satisfy
+\[
+ \dot x_\Sigma\le(C_\Sigma-V_\Sigma)x_\Sigma,\qquad
+ C_\Sigma\ge0,\qquad \rho(C_\Sigma V_\Sigma^{-1})<1,
+\]
+with $V_\Sigma$ a nonsingular $M$-matrix, then a constant weight
+$w\gg0$ with $(C_\Sigma-V_\Sigma)^\top w\ll0$ certifies exponential
+extinction (Theorem~\ref{t:Cmp}).
+For a cooperative $C^2$ system on a compact invariant box with a
+Hurwitz equilibrium $e$, Theorem~\ref{t:EqWgt} characterizes global
+convergence to $e$ by a $C^1$ weight $v\gg0$ and $c>0$ satisfying
+\[
+ (\partial_xv)f+J^\top v\le-cv.
+\]
+The construction uses the variational flow
+$\Psi(t,x)=\partial_x\varphi_t(x)$ of $f$, where
+$\partial_t\Psi=J(\varphi_t(x))\Psi$ and $\Psi(0,x)=I$:
+\[
+ v_T(x)=\int_0^T\Psi(t,x)^\top q\,dt,\qquad q\gg0,
+\]
+for a sufficiently large finite $T$.
+The contracting distance is
+\[
+ d_v(x,y)=\inf_{\gamma(0)=x,\ \gamma(1)=y}
+ \int_0^1 v(\gamma(\tau))^\top|\gamma'(\tau)|\,d\tau,
+\]
+where the infimum is over piecewise $C^1$ paths in the box.
+It need not equal $v(x)^\top|x-y|$.
+Theorem~\ref{t:Wgt} gives the corresponding positive-weight converse
+for Metzler variational equations over a compact flow.
+
+The sufficient direction is established. For Metzler $J$, the inequality above is the
+weighted $\ell^1$ case, $\Theta=\operatorname{Diag}(v)$, of Coogan's contraction condition
+$\mu(\dot\Theta\Theta^{-1}+\Theta J\Theta^{-1})\le-c$ \cite{Coogan2019}; his separable Lyapunov
+theorems and sum-of-squares search use weights $\theta_i(x_i)$.
+The converse is also established for monotone systems: on a convex, forward and backward
+invariant set, with bounded Jacobian, Kawano, Besselink and Cao
+\cite[Theorem~4.3, Corollary~4.8]{KawanoBesselinkCao2020} prove that incremental exponential
+stability is equivalent to a bounded, uniformly positive $C^1$ weight $v(x)$ satisfying this
+inequality, and their proof uses the finite-horizon weight above
+\cite[Appendix~B, (61)]{KawanoBesselinkCao2020}.
+Theorem~\ref{t:Wgt} formulates this principle over a compact base flow: the base need not be
+cooperative, $A$ need not be its Jacobian, and only forward evolution is used.
+Theorem~\ref{t:EqWgt} is a compact-domain consequence, starting from global convergence to a
+Hurwitz equilibrium on a forward invariant set. Existence of a polynomial weight on a
+rectangular box is an approximation corollary. Separability here is in the tangent variables,
+with $v_i$ depending on the full state.
+Related converse results are in
+\cite{LohmillerSlotine1998,ForniSepulchre2014,Giesl2015}.
+The weights here also cover extinction. These results describe global convergence;
+they are not prerequisites for the cusp constructions. Multistability
+excludes contraction on a box containing the distinct equilibria.
+
+Lyapunov--Volterra functions fit the same picture.
+The function $\sum_ic_i(x_i-x_i^*-x_i^*\log(x_i/x_i^*))$ is a weighted sum of Fenchel--Bregman
+divergences of the convex generator $x\log x-x$ of the exponential response
+(Subsection~\ref{s:FenBre}). Its zero-reference limit gives the linear terms of the extinction
+certificate of Theorem~\ref{t:Cmp}. The inverse-response primitive also enters the
+response-integral energy of symmetric threshold networks (Proposition~\ref{p:SymEne}) and of the
+scalar quartic odds equation. These divergences are nonnegative; the network
+energy additionally contains a quadratic coupling term. Its decrease, and its local minimum at a
+stable equilibrium, follow from the separate calculations given below.
+Proposition~\ref{p:ComLya} combines a resident storage with such a linear term, and Proposition~\ref{p:LVboundary} applies this with a Lyapunov--Volterra storage to the three-population network.
+\end{enumerate}
+
+% \paragraph{Odds-polynomial responses and the minimum cusp degree.}
+% Autoregulatory genetic models already combine saturating production,
+% positive feedback and bistability; Isaacs et al.~\cite{Isaacs2003}
+% provide a theoretical and experimental example.
+% Multiple cusp bifurcations and multiple attracting states in weakly
+% connected neural networks were studied by Izhikevich
+% \cite{Izhikevich1998}.
+% The specific contribution of
+% Proposition~\ref{p:Qua}  is the exact minimum degree within the stated
+% odds-polynomial class: degree four is necessary and sufficient for a
+% stable origin and a positive nondegenerate cusp to coexist.
+% The response zero set fixes the siphons, its onset slope determines
+% the transverse production derivatives at a fixed resident state,
+% and higher coefficients control the interior equilibrium geometry.
+% Theorem~\ref{t:Net} then continues the cusp under coupling that
+% preserves the prescribed boundary faces.
+%
+% \paragraph{Overlapping siphons and coexistence of stable states.}
+% Persistence of hyperbolic equilibria under small perturbations is
+% standard, and weakly coupled multistable networks already occur in
+% \cite{Izhikevich1998}. Theorem~\ref{t:KBoverlapCusp} imposes additional
+% boundary constraints on such a construction.
+% The minimal siphons $\{1,2\}$ and $\{2,3\}$ remain fixed, their proper
+% faces carry nonzero resident equilibria with distinct invasion numbers,
+% and eight hyperbolic stable equilibria coexist with an interior cusp.
+% Corollary~\ref{c:Nin} obtains a ninth stable equilibrium from its
+% unfolding. This is an explicit realization of the general
+% siphon-preservation rule, rather than a claim that weak coupling
+% or multistability itself is new.
+%
+% \paragraph{Positive weights and converse contraction.}
+% Coogan \cite{Coogan2019} develops contraction criteria using
+% state-dependent weighted norms, while Kawano, Besselink and Cao
+% \cite{KawanoBesselinkCao2020} prove converse results for monotone
+% systems and positive linear time-varying systems.
+% Theorem~\ref{t:EqWgt} belongs to this established line of work.
+% For a cooperative system on a compact invariant box, it constructs
+% positive contraction weights from global convergence to a Hurwitz
+% equilibrium. Its role here is to turn convergence, including
+% extinction, into an explicit variational-flow certificate.
+% The siphon framework identifies the relevant boundary subsystems;
+% the converse contraction principle has an independent literature.

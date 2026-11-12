@@ -1,0 +1,15 @@
+*.aux
+*.log
+*.blg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.ist
+*.nlo
+*.out
+*.toc
+*.pdfsync
+*.synctex*
+*.gz
+talkL.*

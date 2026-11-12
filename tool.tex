@@ -1,0 +1,255 @@
+% Reorganized shared appendix file; load once in the documented order.
+\section{A basic toolbox for siphon calculus}
+\label{ss:siphonToolbox}
+
+Throughout this toolbox, $\dot x=f(x)$ is a positive $C^1$ system on a
+neighbourhood of the orthant; local Lipschitz regularity suffices for
+invariance and mass balance. We use the face, block and spectral notation
+of Section~\ref{ss:siphons}. Reaction-network statements retain the
+exact-zero rate condition of Proposition~\ref{p:zeroset}.
+
+\paragraph{Conservation classes and inaccessible extinction faces.}
+Let $S$ be the stoichiometric matrix. A nonnegative conservation vector
+means $q\geq0$, $q\ne0$, $q^\top S=0$; its associated conserved quantity
+is $q^\top x$. Conservation laws with mixed signs are not substitutes
+for this condition.
+
+\beP[Conservation excludes a siphon face]\label{p:toolConservation}
+Suppose $q\geq0$, $q\ne0$, $q^\top S=0$, and
+$\operatorname{supp}q\subseteq\Sigma$. On a trajectory with
+$q^\top x(0)=c>0$,
+\[
+ q_\Sigma^\top x_\Sigma(t)=c,
+ \qquad \|x_\Sigma(t)\|_1\geq c/\|q\|_\infty.
+\]
+Consequently that trajectory cannot approach $\mathcal F_\Sigma$.
+For a reaction network satisfying the exact-zero condition, if every
+nonempty siphon contains such a conservation support, then every bounded
+trajectory starting strictly positive satisfies
+$\liminf_{t\to\infty}x_i(t)>0$ for every $i$.
+\eeP
+\begin{proof}
+The first assertion follows from $q^\top\dot x=0$ and
+$q_\Sigma^\top x_\Sigma\leq\|q\|_\infty\|x_\Sigma\|_1$.
+For the last assertion, a bounded trajectory has a compact omega-limit
+set. By Proposition~\ref{p:zeroset}, the nonempty exact zero set of a
+boundary limit point would be a siphon. Its conservation support has
+positive conserved mass along the trajectory but zero mass at that point,
+a contradiction. Compactness gives the stated coordinate lower bounds.
+\end{proof}
+This is the familiar noncritical-siphon obstruction to extinction
+\cite{AdLS,ShiuStu}. It yields trajectory-dependent lower bounds;
+it does not assert one uniform bound across conservation classes whose
+conserved masses may approach zero. A conserved quantity can also
+produce zero eigenvalues in the ambient Jacobian: stability must then
+be tested within the stoichiometric compatibility class.
+\iffalse
+\paragraph{Mass balance and boundedness.}
+\beP[A positive mass balance gives a compact absorbing set][][compact]
+For $\dot x=f(x)$ and $q\gg0$, suppose throughout the nonnegative orthant that
+\[
+ q^\top f(x)\leq a-bq^\top x,\qquad a\geq0,\quad b>0.
+\]
+Then $W(t)=q^\top x(t)$ satisfies
+\[
+ W(t)\leq a/b+(W(0)-a/b)e^{-bt}.
+\]
+All solutions are forward complete. Every set
+$\{x\geq0:q^\top x\leq L\}$ with $L>a/b$ is compact,
+positively invariant, and absorbs every trajectory in finite time.
+\eeP
+\begin{proof}
+Multiply the differential inequality for $W-a/b$ by $e^{bt}$ and
+integrate. At $W=L>a/b$ the derivative is strictly negative, proving
+invariance, and the displayed bound gives absorption. Positivity of
+all components of $q$ makes the sublevel set bounded. The estimate keeps
+each solution in a compact set, so local existence extends to all forward times.
+\end{proof}
+This is the standard dissipative mass-balance estimate behind compact
+population models and persistence arguments \cite{SmithThieme2011,HS10}.
+\fi
+\paragraph{Positive weights: one test for stability, decay and comparison.}
+
+\beP[Collatz--Wielandt bounds for Metzler matrices][][ColWie]
+For a Metzler matrix $A$, the following are equivalent:
+\[
+ s(A)<0;\qquad \exists v\gg0:\ Av\ll0;
+ \qquad \exists q\gg0:\ q^\top A\ll0.
+\]
+For every $v\gg0$,
+\[
+ \min_i\frac{(Av)_i}{v_i}\leq s(A)
+ \leq\max_i\frac{(Av)_i}{v_i}.
+\]
+If a nonnegative solution satisfies
+$\dot z\leq Az$ componentwise, and $q^\top A\leq-\alpha q^\top$
+for some $\alpha>0$, then
+\[
+ q^\top z(t)\leq e^{-\alpha t}q^\top z(0).
+\]
+\eeP
+\begin{proof}
+If $A$ is Hurwitz, its positive semigroup gives
+$(-A)^{-1}=\int_0^\infty e^{At}\,dt\geq0$.
+Choose $v=(-A)^{-1}\mathbf1$ and
+$q^\top=\mathbf1^\top(-A)^{-1}$; their components are strictly
+positive and the strict inequalities follow. Conversely, a positive
+left or right weight with strict decrease makes the associated
+weighted column or row sums strictly negative, and bounds $s(A)<0$.
+The two-sided bounds follow by diagonally scaling with $v$ and
+comparing the row sums of a shifted nonnegative matrix.
+The final assertion follows from
+$\frac{d}{dt}(q^\top z)\leq-\alpha q^\top z$ and Gronwall's inequality.
+\end{proof}
+These are classical nonsingular $M$-matrix and positive-systems
+criteria \cite{Berman}, \cite{rantzer2015scalable}. A uniform comparison on a forward-invariant
+region upgrades a local invasion test to an extinction estimate on
+that region. Without the comparison hypothesis, a stable boundary
+equilibrium alone says nothing about large introductions.
+
+\paragraph{Comparison matrices and explicit extinction rates.}
+The preceding positive-weight criterion becomes an explicit decay test
+when the comparison matrix is written as $C-V$. The next theorem applies
+to any nonnegative differential subsolution; a siphon supplies one
+important application.
+
+\beT[A Metzler comparison inequality gives explicit exponential decay]
+[comparison decay][Cmp]
+\emph{Scope: any nonnegative absolutely continuous function satisfying the
+differential inequality; no condition is placed on the other variables.}
+
+Let $V\in\mathbb R^{n\times n}$ be a nonsingular $M$-matrix and $C\ge0$ with $\rho(CV^{-1})<1$.
+Then $V-C$ is a nonsingular $M$-matrix. Put
+\[
+ p=(V-C)^{-1}\mathbf1\gg0,\qquad c=\frac1{\max_ip_i},\qquad
+ w^\top=\mathbf1^\top(V-C)^{-1}\gg0,\qquad c'=\frac1{\max_iw_i}.
+\]
+If $z:[0,\infty)\to\mathbb R_+^n$ is locally absolutely continuous and
+$\dot z\le(C-V)z$ almost everywhere, componentwise, then
+\[
+ \max_i\frac{z_i(t)}{p_i}\le e^{-ct}\max_i\frac{z_i(0)}{p_i},\qquad
+ L=w^\top z\ \text{ satisfies }\ \dot L\le-c'L\quad\text{a.e.}
+\]
+In particular $z(t)\to0$ exponentially.
+\eeT
+\begin{proof}
+$(V-C)^{-1}=V^{-1}\sum_{k\ge0}(CV^{-1})^k\ge V^{-1}\ge0$ and $V-C$ is a
+$Z$-matrix, so it is a nonsingular $M$-matrix; $V^{-1}$ has no zero row or
+column, hence $p,w\gg0$. The matrix $C-V$ is Metzler and $(C-V)p=-\mathbf1\le-cp$.
+The function $r(t)=\max_i z_i(t)/p_i$ is locally absolutely continuous.
+At almost every time, its derivative is the maximum of
+$\dot z_i(t)/p_i$ over the indices attaining the maximum. For each such
+index, $z_i=rp_i$, $z_j\le rp_j$, and the Metzler property gives
+\[
+ \dot z_i\le((C-V)z)_i\le r((C-V)p)_i=-r\le-crp_i.
+\]
+Thus $\dot r\le-cr$ almost everywhere, and integration proves the
+weighted maximum estimate. For the functional, $w\ge0$ gives
+$\dot L\le w^\top(C-V)z=-\mathbf1^\top z\le-L/\max_iw_i$.
+\end{proof}
+
+
+For a siphon, apply the theorem to $z=x_\Sigma$ after verifying the
+comparison inequality throughout the stated invariant region. No
+cooperativity or convergence assumption on the resident variables is
+needed. The inequality may also depend on time, provided the same
+constant matrices $C,V$ bound it almost everywhere. A stable transverse
+Jacobian on the face alone does not provide this global comparison.
+
+\paragraph{What the siphon lattice does, and does not, tell the linear graph.}
+At a relative-interior point of $\mathcal F_\Sigma$, let $G_\Sigma$ have the
+directed edge $j\to i$ for $i\ne j$ when
+$(\JtrS{\Sigma})_{ij}>0$.
+
+\beT[Siphons constrain the linear influx graph][siphons and the influx graph][Graph]\label{p:toolGraph}\label{t:Sip}
+For mass-action kinetics with positive rate constants, if
+$T\subseteq\Sigma$ is a siphon, then $T$ is predecessor-closed in
+$G_\Sigma$: $i\in T$ and $j\to i$ imply $j\in T$.
+If every reaction producing a species of $\Sigma$ has exactly one
+reactant molecule in $\Sigma$, the converse also holds.
+Thus, in this first-order setting, minimal nonempty siphons contained
+in $\Sigma$ are the source strongly connected components of
+$G_\Sigma$. They need not be all its strongly connected components.
+\eeT
+\begin{proof}
+An off-diagonal edge arises from a reaction of order one in $\Sigma$:
+its unique reactant in $\Sigma$ is $j$, and it produces $i\ne j$.
+If $i\in T$, the siphon property forces that reactant $j$ into $T$.
+For the converse, take a reaction producing $i\in T$. Its unique
+$\Sigma$ reactant is $j$. If $j=i$, it consumes $T$; otherwise it
+gives the edge $j\to i$ and predecessor closure forces $j\in T$.
+The last assertion is the source-component characterization of
+minimal nonempty predecessor-closed sets.
+\end{proof}
+This is the elementary graph reduction behind monomolecular siphon
+analysis \cite{AdLS,ShiuStu,Berman}. \label{pg:2A2B}The added first-order hypothesis is
+essential. The networks
+\[
+ A\to B,\quad B\to A,
+ \qquad\text{and}\qquad
+ 2A\to B,\quad 2B\to A
+\]
+have the same sole nonempty siphon $\{A,B\}$, but at its zero face the
+first transverse graph is strongly connected and the second has no
+edges. Adding $A\to\varnothing$, $B\to\varnothing$ to both preserves
+the example and gives negative diagonal entries in the second.
+Hence the siphon lattice alone cannot determine the linear influx
+graph without information about reaction order. Moreover, when the
+transverse graph is reducible,
+$s(\JtrS{\Sigma})=\max_B s(J_B)$ in Frobenius form, and a
+supercritical block may fail to invade from introductions confined
+to components which cannot reach it.
+
+% Exit test: unused by the short paper, kept for the long versions.
+\ifshort\else
+\paragraph{Biologically labelled splittings and the exit test.}
+If a biological convention has already specified a nonnegative matrix
+$F$ of new infections, put $V=F-\JtrS{\Sigma}$. This is a meaningful
+splitting only after its matrix conditions have been checked. The
+labels selecting $F$ are extra model data; stoichiometry alone need
+not distinguish a newly infected individual from an internal transfer.
+
+\beT[When the labelled loss matrix is admissible]\label{p:toolExit}
+For $F\geq0$, the matrix $V=F-\JtrS{\Sigma}$ is a nonsingular
+$M$-matrix if and only if
+\[
+ V_{ij}\leq0\quad(i\ne j),\qquad
+ \exists q\gg0:\ q^\top V\gg0.
+\]
+In the special transfer-and-exit representation
+\[
+ Q=-V,\quad Q_{ij}=t_{ij}\geq0\ (i\ne j),\quad
+ Q_{jj}=-d_j-\sum_{i\ne j}t_{ij},\qquad d_j\geq0,
+\]
+this holds exactly when every compartment can reach one with a
+strictly positive exit rate $d_j$ along transfer edges $j\to i$.
+Equivalently, every terminal strongly connected component contains
+a positive exit.
+\eeT
+\begin{proof}
+The first equivalence is the preceding Metzler criterion applied to
+$-V$. For the second, $Q$ is the generator, in column convention, of
+a finite transfer process killed at rates $d_j$. If every state can
+reach an exit, choose a common finite time and a positive lower bound
+on the exit probability from every initial state. Iterating gives
+exponential decay of the surviving mass, hence $Q$ is Hurwitz.
+Conversely a terminal component without exit conserves its mass;
+its generator has eigenvalue zero, so $Q$ cannot be Hurwitz.
+\end{proof}
+This is a standard compartmental, or $M$-matrix, test
+\cite{Berman,Van}.
+It turns the question of an epidemiologically meaningful splitting
+into a labelled modelling choice followed by a precise admissibility
+test.
+\fi
+
+\paragraph{From local invasion to persistence.}
+The appropriate resident object is an equilibrium, periodic orbit, or
+invariant measure, not necessarily a fixed point. Conservation can
+exclude some boundary faces outright; positive invasion weights can
+repel others. Uniform persistence additionally needs a compact
+absorbing setting and control of all relevant boundary recurrent
+sets, as provided by an acyclic Morse decomposition or a suitable
+average-Lyapunov criterion \cite{FRT94,HS10,HofSch,SmithThieme2011}. A list of
+positive invasion numbers at selected equilibria is not a substitute
+for checking those hypotheses. 

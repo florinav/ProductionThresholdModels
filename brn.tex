@@ -1,0 +1,390 @@
+\section{Autonomous threshold networks admit arbitrarily many stable equilibria}
+The following two theorems construct arbitrary multistability under
+different restrictions on the response.
+Theorem~\ref{t:siphMulti} fixes the response zero set and
+allows its slope to vary, preserving every siphon and every transverse
+Jacobian while creating arbitrarily many stable positive equilibria.
+Indeed, for its production--loss splitting, on every siphon face,
+\[
+ K_\Sigma(y)
+ =\partial_{x_\Sigma}(\Pi_\Phi)_\Sigma(0,y)
+   (V_\Sigma)^{-1}=0,\qquad R_\Sigma(y)=0,
+\]
+because $\Phi'(0)=0$.
+Thus unchanged, strictly subcritical boundary invasion numbers can
+coexist with arbitrarily large interior multistability.
+Theorem~\ref{t:KBsharp} instead fixes a slope bound and identifies a sharp
+extension $\bar R_0$ of the next-generation number: below $1/L$, every response gives global exponential
+convergence; above $1/L$, suitable responses give arbitrarily many stable
+equilibria.
+Both proofs prescribe response values at selected arguments and make
+the response derivative vanish there, giving $J=-V$ at the
+constructed equilibria; neither theorem requires the other.
+
+\paragraph{Arbitrary multistability with unchanged siphons.}
+Without a uniform derivative bound, polynomials $P_i$ give an exact
+support criterion for constructing stable positive equilibria while
+preserving every siphon and its transverse Jacobian.
+
+\beT[Threshold networks admit arbitrarily many stable positive equilibria exactly when production reaches every coordinate]
+[][siphMulti]
+Fix a nonsingular $M$-matrix $V$, $b\gg0$, and polynomials
+$P_i(x)=\sum_{\nu\ne0}a_{i\nu}x^\nu$ with $a_{i\nu}\ge0$,
+allowing $P_i\equiv0$. Consider the production threshold model \eqref{eq:KB}, \eqref{polR}
+with $h_i=0$ and a common response $\Phi$, and write $\Pi_\Phi$ for its production,
+where $\mathcal C_0$ consists of the $C^\infty$ CDFs satisfying
+$\Phi(q)=0$ for $q\le0$, $\Phi(q)>0$ for $q>0$, and $\Phi'\ge0$.
+Every response in $\mathcal C_0$ has all derivatives zero at zero. Put
+\[
+ I=\{i:P_i\not\equiv0\},\qquad
+ c_i=b_i\mathbf1_{\{i\in I\}},\qquad r=V^{-1}c.
+\]
+\begin{enumerate}
+\item A positive equilibrium for any $\Phi\in\mathcal C_0$ requires $r\gg0$.
+\item If $r\gg0$, every $m\ge1$ admits a common $\Phi_0\in\mathcal C_0$
+ with strictly ordered positive equilibria
+ \[
+ x^{(k)}=t_kr,\quad 0<t_1<\cdots<t_m<1,\qquad J(x^{(k)})=-V.
+ \]
+ These and the origin are locally exponentially stable. A small
+ common-response perturbation makes $\Phi'(q)>0$ for all $q>0$ while
+ retaining $m$ strictly ordered stable positive equilibria.
+\item Every allowed response has the same siphons, namely
+ \[
+ \Sigma\ne\varnothing:\quad V_{\Sigma\Sigma^c}=0,
+ \qquad \operatorname{supp}\nu\cap\Sigma\ne\varnothing
+ \quad(i\in\Sigma,\ a_{i\nu}>0).
+ \]
+ On each face $J_\Sigma^\perp(y)=-V_\Sigma$ for every
+ admissible resident state; in particular $J(0)=-V$.
+\end{enumerate}
+Thus $r\gg0$ is necessary and sufficient for arbitrarily many stable positive equilibria as the common response varies
+in this class; additional equilibria are not excluded.
+\eeT
+\begin{proof}
+The common box $[0,V^{-1}b]$ is invariant since
+$0\le\Pi_\Phi\le c\le b$ and $\partial_x\Pi_\Phi\ge0$.
+Indeed, if $\bar x=V^{-1}b$ and $x_i=\bar x_i$, then
+$f_i(x)\le-(V\bar x)_i+b_i=0$; lower-face derivatives are nonnegative.
+Every equilibrium satisfies $x=V^{-1}\Pi_\Phi(x)\le r$, proving necessity.
+For $r\gg0$, each $q_i(t)=P_i(tr)$, $i\in I$, increases strictly from
+zero. Choose $t_m<1$ and recursively choose earlier $t_k$ so that
+\[
+ a_k:=\min_{i\in I}q_i(t_k)\le \widehat b_k:=\max_{i\in I}q_i(t_k)<a_{k+1}.
+\]
+Construct a smooth density, zero on $(-\infty,0]$ and every $[a_k,\widehat b_k]$,
+with respective masses $t_1$, $t_{k+1}-t_k$, and $1-t_m$ on
+$(0,a_1)$, $(\widehat b_k,a_{k+1})$, and $(\widehat b_m,\infty)$.
+Positive pieces flat at their endpoints are normalized multiples of
+\[
+ e^{-1/((q-a)(b-q))}\quad(a<q<b),\qquad
+ e^{-1/(q-\widehat b_m)-(q-\widehat b_m)}\quad(q>\widehat b_m).
+\]
+Their cumulative integral $\Phi_0$ belongs to $\mathcal C_0$, equals
+$t_k$ on $[a_k,\widehat b_k]$, and has zero slope there. Hence
+$\Pi_{\Phi_0}(t_kr)=t_kc=t_kVr$ and $J(t_kr)=-V$.
+All derivatives of $\Phi_0$ vanish at zero, so the origin has the same
+stable Jacobian. Perturb by
+$\Phi_\varepsilon=(1-\varepsilon)\Phi_0+\varepsilon G$ with
+$G(q)=e^{-1/q}$ for $q>0$ and zero otherwise. The implicit-function
+theorem preserves the selected positive equilibria, strict ordering,
+and stability, while $\Phi_\varepsilon'>0$ on $(0,\infty)$.
+
+On a zero face,
+$f_\Sigma(0,y)=-V_{\Sigma\Sigma^c}y+
+(b_i\Phi(P_i(0,y)))_{i\in\Sigma}$ is a sum of nonnegative terms.
+It vanishes identically exactly under the displayed transfer and
+monomial conditions. There $P_i(0,y)=0$ for $i\in\Sigma$, and
+$\Phi'(0)=0$ gives the asserted transverse matrix for every response,
+including the perturbation.
+\end{proof}
+
+\paragraph{Support and scope.}
+For diagonal $V$, $r\gg0$ means that every $P_i$ is nonzero; with
+transfers, every coordinate must be reachable from $I$ through edges
+$j\to i$ with $-v_{ij}>0$, including paths of length zero.
+A common response meets any response-sharing condition within the groups of Section~\ref{s:KBred}
+or overlapping siphons. Resident dynamics may change although the
+siphons and transverse matrices do not.
+
+\paragraph{Arbitrary multistability under a slope bound.}
+\beT[Threshold networks realize arbitrary multistability when $\bar R_0>1/L$]
+[sharp threshold $\bar R_0=1/L$][KBsharp]\label{p:KBinterpolate}\label{o:KBsharp}\label{p:KBmaxstable}\label{o:KBmaxstable}
+Fix a nonsingular $M$-matrix $V$, a synaptic matrix $W\ge0$, and $L>0$.
+Let $\mathcal C_L$ consist of the functions $\Phi$, smooth on $[0,\infty)$, with $\Phi\ge0$ and
+$0\le \Phi'\le L$ there; the arguments $\beta Wx$ are nonnegative on the orthant. Distribution functions
+with this slope bound belong to $\mathcal C_L$, and so does the identity when $L\ge1$.
+Consider
+\begin{equation}\label{eq:KB-sharp-family}
+ \dot x=-Vx+\Phi(\beta Wx),\qquad x\in\mathbb R_+^{n_S},
+ \quad \Phi\in\mathcal C_L,\quad\beta\ge0,
+\end{equation}
+with the same scalar response applied to every coordinate. Put
+\[
+ r_0=\rho(WV^{-1})=\rho(V^{-1}W),\qquad
+ \bar R_0=\rho(\beta WV^{-1})=\beta r_0.
+\]
+
+\begin{enumerate}
+\item If $\bar R_0<1/L$, every $\Phi\in\mathcal C_L$ gives a unique
+globally exponentially attracting equilibrium.
+\item If $\bar R_0>1/L$, for every $m\ge2$ there exists
+$\Phi\in\mathcal C_L$ giving at least $m$ distinct locally exponentially
+stable equilibria. One can choose $\Phi(q)=0$ for $q\le0$ and obtain
+\[
+ x^{(k)}=t_kr,\quad 0=t_0<t_1<\cdots<t_{m-1},
+ \qquad r\ge0,\quad r\ne0,\qquad J(x^{(k)})=-V.
+\]
+Alternatively, one can choose $0<\Phi(q)<1$ and $\Phi'(q)>0$ on
+$\mathbb R$ and obtain $m$ strictly positive stable equilibria.
+The response may depend on $m$, and in both cases it is a distribution function, so
+the construction stays within bounded responses.
+\end{enumerate}
+Thus $\bar R_0=1/L$ is the sharp threshold for coexistence of equilibria within $\mathcal C_L$.
+No irreducibility is required; uniqueness at equality is not asserted.
+A common additive stimulus can be absorbed into $\Phi$, provided $\Phi$ is defined and nonnegative on the
+arguments attained.
+
+Thus the stable count is unbounded over this response class, even
+for $n_S=1$. With $\Phi>0$ and $\Phi'>0$, the interaction graph remains
+fixed and there are no nonempty siphons. In the zero-onset construction, the selected equilibria are ordered
+componentwise and lie on the ray $\{tr:t\ge0\}$.
+This ray need not be invariant. The full-support perturbation
+preserves their number and stability, but need not preserve
+their location on that ray.
+\eeT
+
+\beR[$\bar R_0$ extends the next-generation number][]
+[NGMg]
+Write
+\[
+ J(x)=F(x)-V,\qquad
+ F(x)=\beta\operatorname{Diag}(\Phi'(\beta Wx))W.
+\]
+Since $0\le F(x)\le\beta LW$,
+\[
+ R(x):=\rho(F(x)V^{-1})\le L\bar R_0.
+\]
+At an equilibrium $x_*$, the NGM matrix criterion gives
+$J(x_*)$ Hurwitz if and only if $R(x_*)<1$. If $\Phi(0)=0$, the origin is an equilibrium and
+$R(0)=\rho(\beta\Phi'(0)WV^{-1})=\Phi'(0)\bar R_0$ is the classical $R_0$, so the classical test is $\bar R_0<1/\Phi'(0)$, which is $\bar R_0<1/L$ when $L=\Phi'(0)$.
+In general the test $\bar R_0<1/L$ is uniform over all states and
+responses in $\mathcal C_L$, and the bar marks that $\bar R_0$ is not the reproduction number
+of a specified equilibrium. The condition $\bar R_0<1/L$ ensures global
+exponential convergence; $\bar R_0>1/L$ permits arbitrarily many stable
+equilibria through a suitable choice of response.
+\eeR
+
+\begin{proof}
+\emph{Interpolation used in the construction.}
+Let $0<c<L$ and $0<q_1<\cdots<q_d<1/c$. There is a $C^\infty$ CDF
+$\Phi_0:\mathbb R\to[0,1]$ satisfying
+\[
+ \Phi_0(q)=0\ (q\le0),\qquad 0\le \Phi_0'(q)<L,
+ \qquad \Phi_0(q_j)=cq_j,\quad \Phi_0'(q_j)=0.
+\]
+Its density has compact support in $(0,\infty)$ and vanishes near each
+$q_j$, including $\Phi_0'(0)=0$.
+
+
+Choose $\eta\in C_c^\infty(0,1)$, $\eta\ge0$, with $\int\eta=1$ and
+$\|\eta\|_\infty<L/c$. Such densities have supremum arbitrarily close
+to one. Put $q_0=0$ and choose $a>(1-cq_d)\|\eta\|_\infty/L$. Set
+\[
+ \varphi(q)=\begin{cases}
+ c\eta((q-q_{j-1})/(q_j-q_{j-1})),&q_{j-1}<q<q_j,\\
+ (1-cq_d)\eta((q-q_d)/a)/a,&q_d<q<q_d+a,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+The pieces have masses $c(q_j-q_{j-1})$ and $1-cq_d$, vanish near
+their endpoints, and have supremum less than $L$. Their cumulative
+integral is the required response.
+
+\emph{Contraction below the bound.}
+
+For $\bar R_0<1/L$, the matrix $V-\beta LW$ is a nonsingular $M$-matrix, because
+$\rho(\beta LWV^{-1})<1$. Put
+\[ p=(V-\beta LW)^{-1}\mathbf1\gg0 .\]
+The bound $\partial_x\Pi\le\beta LW$ gives $J(x)\le-V+\beta LW$ entrywise, so
+$J(x)p\le-\mathbf1$ for every $x$. Since $J(x)$ is Metzler, this gives contraction
+in the weighted maximum norm $\max_i|x_i|/p_i$, at rate $1/\max_ip_i$. The vector field is globally
+Lipschitz on the orthant, whose faces $x_i=0$ point inward, so nonnegative solutions are global. The
+time-$t$ maps are strict contractions of the complete orthant, so they have one common fixed point,
+which is the unique equilibrium, and every solution converges to it exponentially.
+\emph{Stable equilibria above the bound.}
+For $\bar R_0>1/L$, choose a nonnegative Perron vector
+\[
+ V^{-1}Wr=r_0r,\qquad r\ne0,\qquad Wr=r_0Vr\ne0,
+\]
+and put $c=1/\bar R_0<L$. Choose the positive $t_k$ so that
+$\max_i\beta t_{m-1}(Wr)_i<1/c$. Apply the interpolation construction above to all distinct positive arguments
+$\beta t_k(Wr)_i$. At these and at zero,
+\[
+ \Phi_0(\beta Wt_kr)=c\beta t_kWr=t_kVr,
+ \qquad
+ J(t_kr)=-V+\beta\operatorname{Diag}(\Phi_0'(\beta Wt_kr))W=-V.
+\]
+The $m$ equilibria are exponentially stable and lie in
+$[0,V^{-1}\mathbf1]$.
+
+\emph{Strictly positive equilibria and full support.}
+Set
+\[
+ G(q)=(1+e^{-Lq})^{-1},\qquad
+ \Phi_\varepsilon=(1-\varepsilon)\Phi_0+\varepsilon G.
+\]
+Since $0<G'\le L/4$, this remains in $\mathcal C_L$ and is strictly
+increasing. The implicit-function theorem continues the equilibria, with
+\[
+ \left.\frac{d x^{(k)}(\varepsilon)}{d\varepsilon}\right|_0
+ =V^{-1}G(\beta Wx^{(k)})-x^{(k)}.
+\]
+The first term is strictly positive: $V^{-1}\ge0$ has no zero row.
+Every initially zero coordinate therefore becomes positive, while
+positive coordinates remain positive. Disjoint neighbourhoods and
+hyperbolicity preserve the count and stability for one small
+$\varepsilon>0$. Replacing $\Phi(q)$ by $\Phi(q+h)$ absorbs a common stimulus
+$h\mathbf1$. Full support excludes zero faces; for these constructions $\beta>0$,
+and the off-diagonal Jacobian entries are positive exactly when $-v_{ij}>0$ or $w_{ij}>0$.
+\end{proof}
+
+\beR[Fixed production coefficients and the scope of the stable-equilibrium count]
+[fixed coefficients and counting scope][KBfixedamp]\label{r:KBcountscope}
+For $-Vx+\operatorname{Diag}(b_i)\Phi(\beta Wx)$, $b_i>0$, replace $r_0$
+by $\rho(\operatorname{Diag}(b_i)WV^{-1})$ and use a Perron vector of
+$V^{-1}\operatorname{Diag}(b_i)W$. The interpolation values remain
+$\Phi(q)=q/(\beta r_0)$, and the selected Jacobians remain $-V$.
+
+
+The response in Theorem~\ref{t:KBsharp} varies with the requested count. Finite bounds require
+additional restrictions, such as a fixed distribution family, density
+oscillation bounds, or fixed polynomial degree. This construction
+preserves neither unimodality nor fixed-degree SIS structure, and does
+not assert infinitely many hyperbolic equilibria for one response.
+\eeR
+
+\beC[Subcritical threshold networks entrain to periodic stimuli][periodic entrainment][Ent]
+Let $V$ be a nonsingular $M$-matrix, $W\ge0$, $\beta\ge0$, and let $\Phi:\mathbb R\to[0,1]$ be $C^1$
+with $0\le \Phi'\le L$, where $L>0$. Apply $\Phi$ coordinatewise and let
+$h:\mathbb R\to\mathbb R^{n_S}$ be continuous and $T$-periodic, with $T>0$. If
+\[
+ \bar R_0=\beta\rho(V^{-1}W)<\frac1L,
+\]
+then
+\[
+ \dot x=-Vx+\Phi(\beta Wx+h(t))
+\]
+has a unique $T$-periodic solution $x_{\rm per}(t)$ in the nonnegative orthant. Every nonnegative
+solution satisfies
+\[
+ \|x(t)-x_{\rm per}(t)\|_{\infty,p}
+ \le e^{-ct}\|x(0)-x_{\rm per}(0)\|_{\infty,p},
+\]
+where $p=(V-\beta LW)^{-1}\mathbf1\gg0$, $c=\min_i p_i^{-1}>0$ and
+$\|z\|_{\infty,p}=\max_i|z_i|/p_i$. The forcing need not be small or slowly varying.
+This is the standard entrainment consequence of contraction
+\cite{RussoDiBernardoSontag2010,Bullo2026}.
+\eeC
+\begin{proof}
+As in the proof of Theorem~\ref{t:KBsharp}, the Jacobian is Metzler and obeys
+\[
+ J(x,t)=-V+\beta\operatorname{Diag}(\Phi'(\beta Wx+h(t)))W\le -V+\beta LW,
+ \qquad J(x,t)p\le-\mathbf1\le-cp.
+\]
+The weighted maximum-norm estimate therefore holds for any pair of solutions with the same stimulus.
+Put $q=V^{-1}\mathbf1\gg0$. On $x_i=0$, $x\ge0$, the vector field points into the orthant. On the
+upper $i$th face of $[0,q]$,
+\[
+ f_i(x,t)\le-(Vq)_i+1=0,
+\]
+because $-V$ is Metzler. Thus $[0,q]$ is invariant, and its time-$T$ map has Lipschitz constant at
+most $e^{-cT}<1$. Banach's theorem gives a periodic solution. Bounded production ensures global
+existence, and contraction proves attraction from every nonnegative initial state and uniqueness
+among all nonnegative $T$-periodic solutions. The minimal period may divide $T$.
+\end{proof}
+
+\paragraph{Arbitrary multistability with convergence of every trajectory.}
+Theorem~2 of \cite{OfirOvseevichMargaliot2024} complements Theorem~\ref{t:KBsharp} by providing
+convergence without uniqueness. For
+\[
+ \dot x=-dx+\Phi(\beta Wx),\qquad d>0,\qquad \Phi\ \text{bounded},\quad 0\le \Phi'\le L,
+\]
+their sufficient condition for $2$-contraction is
+\[
+ \beta^2L^2\bigl(\sigma_1(W)^2+\sigma_2(W)^2\bigr)<2d^2,
+\]
+where $\sigma_1(W)\ge\sigma_2(W)$ are the two largest singular values. Since $\Phi$ is bounded,
+every trajectory then converges to an equilibrium, which may depend on the initial state.
+
+This condition is compatible with $\bar R_0>1/L$. Let $W=I+C$, with $C$ the cyclic permutation matrix
+of three coordinates, so that $\rho(W)=\sigma_1(W)=2$ and $\sigma_2(W)=1$. If
+\[
+ \frac12<\frac{\beta L}d<\sqrt{\frac25},
+\]
+then, for every $m\ge2$, Theorem~\ref{t:KBsharp} provides a common smooth distribution function
+with $0<\Phi<1$ and $0<\Phi'\le L$ giving at least $m$ strictly positive locally exponentially stable
+equilibria, and every nonnegative trajectory converges to an equilibrium. For rank-one
+$W=w\,ee^\top$ with $e\gg0$, convergence needs no such criterion: $z=e^\top x$ satisfies a scalar
+autonomous equation, and each coordinate is then driven by a convergent production term.
+
+% Preserved original lifting theorem; merged into commonRed.
+% \beT[Folds and cusps of invariant reductions persist in the full network]
+% [lifting reduction bifurcations][KBbiflift]
+% Let $f$ be a $C^k$ family, $k\ge3$, and let
+% $H\in\mathbb R^{N\times m}$ be the indicator matrix of a partition
+% $V_1,\ldots,V_m$ into nonempty groups:
+% $H_{ia}=1$ for $i\in V_a$ and $H_{ia}=0$ otherwise. Suppose
+% \[
+%  f(Hy;\theta)=H\widehat f(y;\theta)
+% \]
+% for all nearby $y,\theta$. At an equilibrium $x_*=Hy_*$, put
+% $J=\partial_xf(x_*;\theta_*)$ and
+% $\widehat J=\partial_y\widehat f(y_*;\theta_*)$.
+% Assume either:
+% \begin{enumerate}
+% \item $J$ is irreducible Metzler and $s(\widehat J)=0$; or
+% \item $\widehat J$ has a zero eigenvalue and $J$ has a simple zero
+%  eigenvalue with all other eigenvalues in the open left half-plane.
+% \end{enumerate}
+% In the second alternative, $H$ may more generally be any fixed matrix
+% of full column rank.
+% Then, with the parameters included as constant variables, a reduced
+% center manifold lifts to a full center manifold.
+% A nondegenerate reduced saddle-node or generically unfolded cusp is
+% therefore the same full-network bifurcation, at the same parameter
+% location; stability of its center branches determines their full stability.
+% \eeT
+% \begin{proof}
+% The identity makes $\operatorname{im}H$ invariant for every nearby
+% parameter and gives $JH=H\widehat J$. In the first case,
+% Theorem~\ref{t:Spe} yields $s(J)=s(\widehat J)=0$; irreducible
+% Metzler theory gives a simple zero and a strictly stable complement.
+% The second case assumes these spectral properties directly.
+% Because $H$ is injective, the reduced zero eigenvalue is simple,
+% its kernel maps onto $\ker J$, and all remaining reduced eigenvalues
+% have negative real parts.
+%
+% Use the embedding identity of Proposition~\ref{p:LinRed}.
+% Choose any linear complement to $\operatorname{im}H$ and write
+% $x=Hy+Zz$, with $z=0$ the synchrony subspace. In these coordinates,
+% including $\dot\theta=0$, the linearization has the form
+% \[
+%  \begin{pmatrix}
+%  \widehat J&\partial_\theta\widehat f&*\\
+%  0&0&0\\
+%  0&0&A_\perp
+%  \end{pmatrix}
+%  \quad\text{in the order }(y,\theta,z).
+% \]
+% The lower-left entries vanish because $z=0$ is invariant for every
+% nearby $\theta$. The matrix $A_\perp$ has strictly negative spectral
+% abscissa, so the full generalized center subspace lies in $z=0$,
+% including the parameter directions and their possible generalized
+% eigenvectors. A center manifold of the extended reduced system thus
+% lifts under $(y,\theta)\mapsto(Hy,\theta)$ to an invariant manifold
+% tangent to the full center subspace. Its dynamics are unchanged.
+% The complementary eigenvalues remain strictly stable nearby, proving
+% both the bifurcation and stability assertions.
+% \end{proof}
+% 

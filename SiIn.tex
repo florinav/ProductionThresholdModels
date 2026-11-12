@@ -1,0 +1,303 @@
+% Reorganized shared appendix file; load once in the documented order.
+\section{Positive systems, siphons, triangularity of the Jacobian on siphon faces and the Metzler property of its transversal block, and invasion exponents}\label{ss:siphons}
+
+\beD[Positive ODE][][pos]
+An ODE $\dot x=f(x)$, with $f$ locally Lipschitz on a neighbourhood of
+$\R^{n_S}_{\ge0}$, is called \emph{positive} \cite{rantzer2015scalable} or
+\emph{non-negative} \cite{haddad2010} if the orthant $\R^{n_S}_{\ge0}$ is forward
+invariant. Equivalently, $f_i(x)\ge0$ whenever $x\ge0$ and $x_i=0$.
+\eeD
+
+\beD[Siphon and minimal siphon][siphon][Siphon]
+For a set $\Sigma$ of coordinates, let
+$\mathcal F_\Sigma=\{x\in\R^{n_S}_{\ge0}:\ x_i=0\ \text{for all } i\in\Sigma\}$
+be the corresponding face of the orthant. A nonempty set $\Sigma$ is a
+\emph{siphon} of a positive ODE if $\mathcal F_\Sigma$ is forward invariant, and
+a \emph{minimal siphon} if no nonempty proper subset of $\Sigma$ is a siphon.
+\eeD
+
+Since the coordinates in $\Sigma$ vanish on $\mathcal F_\Sigma$, the face is
+forward invariant if and only if $f_i$ vanishes on $\mathcal F_\Sigma$ for
+every $i\in\Sigma$. A siphon is thus a set of variables that cannot be created
+from nothing: once absent, they stay absent. For a reaction network with
+mass-action kinetics and positive rate constants, or more generally with nonnegative rates that vanish when a reactant is absent
+and are positive when all reactants are present, this is the
+combinatorial condition that every reaction producing a species of $\Sigma$
+consumes one; for more general rates, additional invariant faces can arise from
+rates that vanish for other reasons.
+
+\beD[Exact zero set, or exact supra-siphon, of a point][exact supra-siphon][ExZ]
+The \emph{exact zero set} of a point $w\in\R^{n_S}_{\ge0}$ is $Z(w)=\{i:\ w_i=0\}$. When $Z(w)$ is
+a siphon it is also called the \emph{exact supra-siphon} of $w$. Since $w\in\mathcal F_\Sigma$
+exactly when $\Sigma\subseteq Z(w)$, the exact supra-siphon is the largest siphon on whose face
+$w$ lies, it contains every siphon whose face contains $w$, and $w$ lies in the relative interior of that
+siphon face,
+\[
+\mathcal F^\circ_{Z(w)}=\{x\in\mathcal F_{Z(w)}:\ x_j>0\ \text{for } j\notin Z(w)\}.
+\]
+For $w\gg0$, $Z(w)=\varnothing$ and $w$ lies in the interior of the orthant.
+\eeD
+
+
+
+\beP[The exact zero set of a RN boundary omega-limit point is a siphon][exact zero sets are siphons][zeroset]\label{p:AdLS}
+Consider the reaction system
+\[
+\dot x=f(x)=\sum_r v_r(x)(b_r-a_r),
+\]
+where $a_r,b_r\in\R_{\ge0}^{n_S}$ are the reactant and product vectors. Assume that the rates are $C^1$
+on a neighbourhood of the nonnegative orthant and, for $x\ge0$, satisfy
+\[
+v_r(x)\ge0,\qquad
+v_r(x)>0
+\quad\Longleftrightarrow\quad
+x_j>0\ \text{for every }j\text{ with }a_{rj}>0
+\]
+(these assumptions hold for mass-action kinetics with positive rate constants). Let $x(t)$ be a
+forward-complete solution with $x(0)\gg0$, and let $w$ be a boundary $\omega$-limit point. Then
+its exact zero set $Z(w)$ is a siphon: every reaction producing a species in $Z(w)$ consumes at
+least one species in $Z(w)$. The same holds for every boundary equilibrium $w$.
+\eeP
+\begin{proof}
+First we show that $f_i(w)=0$ for every $i\in Z(w)$; for an equilibrium this holds by assumption.
+Choose $t_k\to\infty$ with $x(t_k)\to w$. Local existence, uniqueness and continuous dependence
+give a solution $y:(-\delta,\delta)\to\R^{n_S}$ through $y(0)=w$ such that, for each
+$s\in(-\delta,\delta)$,
+\[
+y(s)=\lim_{k\to\infty}x(t_k+s)\ge0.
+\]
+Thus, for $i\in Z(w)$, the differentiable function $y_i$ has a local minimum at $s=0$, and
+$f_i(w)=y_i'(0)=0$.
+Fix $i\in Z(w)$. Every reaction consuming species $i$ has zero rate at $w$, because $w_i=0$. Hence
+\[
+0=f_i(w)=\sum_{r:\,a_{ri}=0}b_{ri}v_r(w).
+\]
+All summands are nonnegative. Therefore every reaction producing $i$ without consuming it has zero
+rate at $w$. By the rate assumption, such a reaction consumes some species whose concentration at $w$
+is zero, hence a species in $Z(w)$. A reaction that consumes $i$ already consumes a species in
+$Z(w)$. This proves the siphon property.
+\end{proof}
+
+\beXa[For a general positive ODE, an exact zero-set of  a boundary omega-limit point  may  fail to be siphon][][ZsNsip] On $[0,1]\times[0,2]$ the system
+$\dot x=(y-1)^2-x$, $\dot y=1-y$ sends every trajectory to $(0,1)$, whose exact zero set $\{x\}$ is not a siphon,
+since $\dot x=(y-1)^2>0$ on $\{x=0\}$ for $y\ne1$. The exact zero set of a point is distinguished from the larger invariant
+faces containing it.
+\eeXa
+
+For a   siphon $\Sigma$, $z\in\R^m_{\ge0}$ collects the coordinates in
+$\Sigma$ and $y\in\R^n_{\ge0}$ the remaining, \emph{resident}, ones; we write
+$\dot z=f_z(z,y)$, $\dot y=f_y(z,y)$, with $f$ of class $C^1$, and at a point
+$(0,y)$ of the face we call
+\[
+\Jtr(y):=D_zf_z(0,y),\qquad J_{\mathrm{tan}}(y):=D_yf_y(0,y),\qquad
+J_{\mathrm{mix}}(y):=D_zf_y(0,y)
+\]
+the \emph{transversal}, \emph{tangential} and \emph{mixed} blocks of the
+Jacobian. % a driver that redefines \Jtr as J_tra gets the short wording
+\providecommand{\SiInJdefault}{J^\perp}\ifx\Jtr\SiInJdefault The transversal block is also written $J^\perp$ or
+$\JtrS{\Sigma}$; these are the same matrix.\else When the siphon is to be indicated, the transversal block is
+written $\JtrS{\Sigma}$.\fi{} Invariance of the face reads
+\begin{equation}\label{eq:faceinv}
+f_z(0,y)=0\qquad\text{for all } y\in\R^n_{\ge0}.
+\end{equation} $J_{\mathrm{tan}}$ is the Jacobian of the ODE restricted to the face,
+while $\Jtr$ governs the linearized dynamics of the absent variables.
+
+
+
+Below, $s(A)=\max\{\operatorname{Re}\mu:\ \mu\in\operatorname{spec}A\}$ denotes the
+spectral abscissa of a square matrix $A$.
+
+\beP[The Jacobian on a siphon face is block triangular, with a Metzler transversal block][][Tri]
+\label{p:Sta}
+Let $\Sigma$ be a siphon of a positive $C^1$ system. Then:
+\BEN
+\im At every point of its face, $D_yf_z(0,y)=0$ and
+\begin{equation}\label{eq:blocks}
+J(0,y)=
+\begin{pmatrix}
+\Jtr(y)&0\\
+J_{\mathrm{mix}}(y)&J_{\mathrm{tan}}(y)
+\end{pmatrix}.
+\end{equation}
+Its spectrum is the union of the spectra of the diagonal blocks.
+\im An equilibrium $E=(0,y^*)$ is locally exponentially stable if and only if
+$J_{\mathrm{tan}}(y^*)$ and $\Jtr(y^*)$ are Hurwitz. It is unstable if either
+block has an eigenvalue with positive real part.
+\im The transversal block $\Jtr(y)$ is Metzler at every point of the face;
+the tangential block need not be Metzler.
+\EEN
+The same conclusions hold on a face of an invariant box $[0,\bar x]$, $\bar x\gg0$,
+with derivatives understood in admissible directions when the vector field
+is only $C^1$ up to the boundary. Empty blocks impose no condition.
+\eeP
+\begin{proof}
+Differentiating~\eqref{eq:faceinv} in the resident variables gives
+$D_yf_z(0,y)=0$ in the relative interior and, by continuity, on the entire
+face. The characteristic polynomial therefore factors over the two diagonal
+blocks, giving the stability and instability assertions. Finally, for distinct $i,j\in\Sigma$, positivity at $(te_j,y)$ gives
+\[
+(f_z)_i(te_j,y)\ge0=(f_z)_i(0,y)\qquad(t>0).
+\]
+Dividing by $t$ and letting $t\downarrow0$ proves
+$(\Jtr)_{ij}(y)\ge0$. These arguments use only admissible directions and
+apply equally on a box.
+\end{proof}
+
+
+\beD[Transversal block and invasion exponent][invasion exponent][Inv]
+At a fixed point $E=(0,y^*)$ of the face of a siphon $\Sigma$, the
+\emph{transversal block} is $M_\Sigma(E):=\Jtr(y^*)$, and the \emph{invasion
+exponent} of $\Sigma$ at $E$ is
+\[
+\lambda_\Sigma(E):=s\bigl(M_\Sigma(E)\bigr).
+\]
+\eeD
+
+By Proposition~\ref{p:Tri}, $M_\Sigma(E)$ is Metzler and
+$\lambda_\Sigma(E)$ is an eigenvalue of the full Jacobian. For sufficiently
+large $c$, Perron--Frobenius theory gives
+$\lambda_\Sigma(E)=\rho(M_\Sigma(E)+cI)-c$, with a nonnegative eigenvector.
+It measures asymptotic growth in the transverse linearized system:
+$\lambda_\Sigma(E)>0$ permits invasion, whereas
+$\lambda_\Sigma(E)<0$ gives exponential decay of all transverse perturbations;
+at equality, linearization does not decide invasion.
+
+\beP[transverse factorization on siphon faces][][traFac]\label{t:Inv}
+For a reaction network  as defined in Proposition \ref{p:zeroset}, write $\nu^-_\ell\to\nu^+_\ell$, and   assume
+each rate vanishes exactly when at least one of its reactant
+concentrations vanishes (this  holds for mass-action
+kinetics).
+
+For any siphon $\Sigma$
+\[
+ f_\Sigma(z,y)=M_\Sigma(z,y)z,\qquad
+ M_\Sigma(z,y)=\int_0^1D_zf_\Sigma(tz,y)\,dt,
+ \qquad M_\Sigma(0,y)=\JtrS{\Sigma}(y).
+\]
+The matrix $M_\Sigma$ need not be Metzler away from the face. If the ODE
+preserves the nonnegative orthant, the block-triangular Jacobian on
+$\mathcal F_\Sigma$, its Metzler transverse block, and the stability test at a face
+equilibrium are those of Proposition~\ref{p:Tri}.
+\eeP
+\begin{proof}
+On the face all consumption rates of absent species vanish. If the
+reaction condition holds, all production rates vanish too. Conversely,
+at a relative-interior point of the face, a reaction producing an
+absent species without an absent reactant has positive rate. It cannot
+be cancelled by consumption of that species, so the face is not
+invariant. The integral identity is the fundamental theorem of
+calculus applied along $t\mapsto(tz,y)$; at $z=0$ it gives
+$M_\Sigma(0,y)=D_zf_\Sigma(0,y)=\JtrS{\Sigma}(y)$.
+\end{proof}
+
+\paragraph{Siphons in epidemiology.}
+In the multi-strain models considered here, \emph{epidemiologic strains} often
+correspond to \emph{minimal siphons}. By a \emph{mutation} we mean only a coupling
+between strains that changes the Perron--Frobenius form of the transversal block
+from block diagonal to block triangular. The totality of ``infected variables'' is
+the total siphon, the union of all minimal siphons, and a \DFE\ (DFE) lies on its
+face; a larger siphon may be needed when the face of the total siphon does not
+contain a unique fixed point. For a splitting $\Jtr=F-V$ with
+$F\ge0$ and $V$ a nonsingular $M$-matrix \cite{Diek,Van},
+the Perron spectral radius $\rho(FV^{-1})$ of the next generation matrix on a
+siphon, expressed as a function of the resident variables and called a
+reproduction function in \cite{AAN,AAHJ,AABH25}, characterizes invasion of boundary
+fixed points\bookref{p:NGM}{ (Proposition~\ref{p:NGM})}{}, and often their existence domains; other eigenvalues of the next
+generation matrix play no role in the linear invasion threshold. \bookref{p:toolExit}{The admissibility of a biologically specified $V$ is tested in
+Theorem~\ref{p:toolExit}.}{}
+
+% Exact-support counting: unused by the short paper, kept for the long versions.
+\ifshort\else
+\subsection{Equilibria are partitioned by their exact supra-siphons}
+Counting equilibria, and counting the stable ones, needs two ingredients from
+above: the exact zero set (Definition~\ref{d:ExZ} and
+Proposition~\ref{p:zeroset}), which says \emph{where} an equilibrium is counted,
+and the block-triangular Jacobian (Proposition~\ref{p:Tri}), which says
+\emph{whether} it is stable. Throughout, $\dot x=f(x;\theta)$ depends on
+parameters $\theta$ ranging over a region on which the family of siphons does
+not change.
+
+\beD[Exact-support counts and the full-stability weight][full-stability weight][FSW]
+For a siphon $\Sigma$, or for $\Sigma=\varnothing$, write
+\[
+\mathcal F_\Sigma^\circ=\{x\in \mathcal F_\Sigma:\ x_j>0\ \text{for } j\notin \Sigma\},
+\]
+the interior of the siphon face $\mathcal F_\Sigma$; $\mathcal F_\varnothing^\circ$ is the interior
+of the orthant, and $\varnothing$ is used only as an index, not as a siphon.
+The points of $\mathcal F_\Sigma^\circ$ are exactly the points whose exact zero set is $\Sigma$.
+Let
+\begin{enumerate}
+\item $N_\Sigma(\theta)$ be the number of equilibria in $\mathcal F_\Sigma^\circ$, and
+$N_\Sigma^{\mathrm{st}}(\theta)$ the number of those that are locally exponentially
+stable;
+\item $N_{\ge0}(\theta)$ and $N_{\ge0}^{\mathrm{st}}(\theta)$ be the number of
+all nonnegative equilibria and of the locally exponentially stable ones.
+\end{enumerate}
+At a point $(0,y)\in \mathcal F_\Sigma^\circ$, with the blocks of Proposition~\ref{p:Tri}
+for the siphon $\Sigma$, the \emph{full-stability weight} is
+\begin{equation}\label{eq:weight}
+W_\Sigma(y;\theta)=
+\ind{J_{\mathrm{tan},\Sigma}(y;\theta)\text{ Hurwitz}}\,
+\ind{\JtrS{\Sigma}(y;\theta)\text{ Hurwitz}},
+\end{equation}
+where an empty block counts as Hurwitz. The first factor tests stability
+within the siphon face, the second tests that the absent variables cannot
+invade.
+\eeD
+
+\beP[The exact supra-siphons partition the equilibria, and the full-stability weight selects the stable ones][counting by exact supra-siphon][Part]
+Assume that every boundary equilibrium has a siphon as its exact zero set; by
+Proposition~\ref{p:zeroset} this holds for reaction networks under its rate
+assumptions. Then:
+\begin{enumerate}
+\item every nonnegative equilibrium lies in exactly one set $\mathcal F_\Sigma^\circ$, namely
+the one indexed by its exact supra-siphon, or by $\varnothing$ if it is
+positive; consequently
+\[
+N_{\ge0}=\sum_\Sigma N_\Sigma,\qquad N_{\ge0}^{\mathrm{st}}=\sum_\Sigma N_\Sigma^{\mathrm{st}},
+\]
+the sums running over $\varnothing$ and all siphons, not only the minimal
+ones;
+\item an equilibrium $(0,y)\in \mathcal F_\Sigma^\circ$ is locally exponentially stable if
+and only if $W_\Sigma(y;\theta)=1$, so that
+$N_\Sigma^{\mathrm{st}}=\sum_{(0,y)\in \mathcal F_\Sigma^\circ,\ f(0,y)=0}W_\Sigma(y;\theta)$.
+\end{enumerate}
+\eeP
+\begin{proof}
+For item~1, an equilibrium $e$ lies in $\mathcal F_\Sigma^\circ$ exactly when $\Sigma=Z(e)$, and
+the sets $\mathcal F_\Sigma^\circ$ for distinct $\Sigma$ are therefore disjoint; by assumption
+$Z(e)$ is a siphon whenever $e$ is on the boundary. Item~2 is item~2 of
+Proposition~\ref{p:Tri} applied to the siphon $\Sigma=Z(e)$.
+\end{proof}
+
+\beR[Why minimal siphons cannot be used as counting classes][][noDouble]
+Summing over the minimal siphons instead of the exact supra-siphons counts some
+equilibria several times when minimal siphons overlap. For example, with the
+two overlapping minimal siphons $\{1,2\}$ and $\{2,3\}$, the origin lies on the
+faces of both, but its exact supra-siphon is $\{1,2,3\}$, so it is counted once.
+Likewise, the first factor of $W_\Sigma$ alone counts the attractors of the dynamics
+restricted to the siphon face, some of which are invaded by the absent
+variables. Without the assumption of Proposition~\ref{p:Part}, a boundary
+equilibrium may lie in no counting class at all: in
+Example~\ref{e:ZsNsip} the exact zero set $\{x\}$ of the limit point is not a
+siphon.
+\eeR
+\bookref{t:Ric}{These counts are used in Theorem~\ref{t:Ric}, whose stability
+weight is \eqref{eq:weight}, and in the sum~\eqref{eq:sum} over exact
+supra-siphons.}{}
+\fi
+
+
+
+\beR[historical notes][][hisS]
+The invariant face-siphons correspondence and its use in persistence are developed in
+\cite{AdLS,ShiuStu}.
+
+The Jacobian and transversal factorizations are  elementary \cite{AAHK}, \cite{AAH26} and also supply
+the idea of the role of Perron data in face-repulsion.
+
+The exact-zero-set assertion of Proposition~\ref{p:zeroset} is already contained
+in \cite[Lemma~5.3 and Proposition~5.4]{AdLS}, for real-analytic rates; the proof above gives a
+short argument using a local trajectory through the omega-limit point, and needs only $C^1$ rates.
+The invariant-face equivalence is \cite[Proposition~5.5]{AdLS}.
+\eeR 

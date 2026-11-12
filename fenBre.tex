@@ -1,0 +1,146 @@
+% fenBre.tex -- Fenchel--Bregman divergence and Volterra functions (s:FenBre).
+% Established convex analysis; gives nonnegativity, not dissipation. Input after positiveWeights.
+\subsection{Volterra functions are Fenchel--Bregman divergences}\label{s:FenBre}
+A \emph{Lyapunov--Volterra function} is a weighted sum of terms
+$x_i-x_i^*-x_i^*\log(x_i/x_i^*)$ about an equilibrium $x^*$. These functions and the term
+$\int\Phi^{-1}$ in the energy of symmetric firing-rate networks \cite{Betteti2025} come from one
+construction, a convex generator $h$ with $h'=\Phi^{-1}$; the Lyapunov--Volterra case is $\Phi(v)=e^v$.
+The relevant objects are the Fenchel coupling, also called the Fenchel--Young gap, and its
+representation as a Bregman divergence; see \cite[Appendix~C]{MertikopoulosSandholm2016}. We call
+this quantity the \emph{Fenchel--Bregman divergence}. It gives a nonnegative
+candidate from a response function; decrease along trajectories requires a separate calculation.
+
+\paragraph{An increasing response determines a convex storage.}
+Let $\Phi:\mathbb R\to I$ be a strictly increasing $C^1$ bijection onto an open interval $I$, with
+$\Phi'(v)>0$ for every $v$. Choose $x_0\in I$ and define
+\[
+ h(x)=\int_{x_0}^{x}\Phi^{-1}(s)\,ds,\qquad x\in I.
+\]
+Then
+\[
+ h'(x)=\Phi^{-1}(x),\qquad
+ h''(x)=(\Phi^{-1})'(x)=\frac{1}{\Phi'(\Phi^{-1}(x))}>0,
+\]
+so $h$ is strictly convex. Its convex conjugate is $h^*(v)=\sup_{z\in I}\{vz-h(z)\}$. The maximum is
+attained uniquely at $z=\Phi(v)$, so
+\[
+ h^*(v)=v\Phi(v)-h(\Phi(v)),\qquad (h^*)'(v)=\Phi(v).
+\]
+The Fenchel coupling is
+\[
+ \mathcal S_h(p,v)=h(p)+h^*(v)-pv,\qquad p\in I,\quad v\in\mathbb R.
+\]
+The Fenchel--Young inequality gives $\mathcal S_h(p,v)\ge0$, with equality exactly when $p=\Phi(v)$.
+Adding a constant to $h$ does not change this coupling. Define the Bregman divergence by
+\[
+ D_h(p,x)=h(p)-h(x)-h'(x)(p-x).
+\]
+Substituting $v=\Phi^{-1}(x)=h'(x)$ gives the exact identity
+\[
+ \mathcal S_h(p,\Phi^{-1}(x))=D_h(p,x).
+\]
+Thus fixing $p=x^*$ produces an equilibrium-relative candidate that is nonnegative and vanishes only
+at $x=x^*$. A response with plateaus has no inverse, and needs a separate convex-subdifferential
+argument.
+
+\beP[Symmetric threshold networks admit a response-integral energy][][SymEne]
+Consider $\dot x=-x+\Phi(\beta Wx)$ with $W=W^\top$ and $\beta\ge0$, where the same $C^1$ response
+$\Phi:\mathbb R\to(0,1)$ is applied coordinatewise, $\Phi$ is onto, and $\Phi'(q)>0$ for every $q$. Choose
+$s_0\in(0,1)$ and put
+\[
+ h(s)=\int_{s_0}^{s}\Phi^{-1}(r)\,dr,\qquad
+ \mathcal E(x)=\sum_{i=1}^{n_S}h(x_i)-\frac{\beta}{2}x^\top Wx,\qquad x\in(0,1)^{n_S}.
+\]
+Then
+\[
+ \dot{\mathcal E}(x)=-\sum_{i=1}^{n_S}\bigl(\Phi^{-1}(x_i)-\beta(Wx)_i\bigr)\bigl(x_i-\Phi(\beta(Wx)_i)\bigr)\le0,
+\]
+with equality exactly at equilibria. If $e\in(0,1)^{n_S}$ is an equilibrium, then
+\[
+ \mathcal E(x)-\mathcal E(e)=\sum_{i=1}^{n_S}D_h(x_i,e_i)-\frac{\beta}{2}(x-e)^\top W(x-e),
+\]
+\[
+ \nabla^2\mathcal E(e)=\operatorname{Diag}\Bigl(\frac{1}{\Phi'(\beta(We)_i)}\Bigr)-\beta W.
+\]
+This Hessian is positive definite if and only if the equilibrium Jacobian is Hurwitz, and then
+$\mathcal E(x)-\mathcal E(e)$ is a strict local Lyapunov function. On any compact forward-invariant
+subset of $(0,1)^{n_S}$, every trajectory approaches the equilibrium set; if the equilibria in that
+set are isolated, each trajectory converges to one equilibrium.
+\eeP
+\begin{proof}
+Symmetry of $W$ gives $\partial_{x_i}\mathcal E=\Phi^{-1}(x_i)-\beta(Wx)_i$, and the displayed derivative
+follows from the equations. Since $\Phi$ is strictly increasing, the two factors in each summand have the
+same sign, and their product vanishes exactly when $x_i=\Phi(\beta(Wx)_i)$. At an equilibrium,
+$h'(e_i)=\beta(We)_i$; expanding the quadratic term and using the definition of $D_h$ gives the
+energy-difference identity. With $S=\operatorname{Diag}(\Phi'(\beta(We)_i))\succ0$, the equilibrium
+Jacobian is $J(e)=-I+\beta SW=-S\nabla^2\mathcal E(e)$, which is similar to the symmetric matrix
+$-S^{1/2}\nabla^2\mathcal E(e)S^{1/2}$. The convergence statements follow from LaSalle's invariance
+principle and, for isolated equilibria, connectedness of the omega-limit set.
+\end{proof}
+
+This is the classical symmetric-network energy calculation \cite{Hopfield1984,Betteti2025}, written
+with Bregman divergences. Here the divergence is $D_h(x,e)$, whereas the Lyapunov--Volterra function
+below uses $D_h(e,x)$. The energy gives convergence to the equilibrium set, not global attraction to
+one equilibrium in a multistable network.
+
+\paragraph{The exponential response gives exactly the Lyapunov--Volterra function.}
+For $\Phi(v)=e^v$ and $I=(0,\infty)$, choose $h(x)=x\log x-x$, so that $h^*(v)=e^v$. For $x,x^*>0$,
+\[
+ \mathcal S_h(x^*,\log x)=h(x^*)+h^*(\log x)-x^*\log x=x-x^*-x^*\log\frac{x}{x^*}.
+\]
+Consequently, for $c_i>0$ and $x_i^*>0$,
+\[
+ L(x;x^*)=\sum_{i=1}^{n_S}c_i\,\mathcal S_h(x_i^*,\log x_i)
+ =\sum_{i=1}^{n_S}c_i\left(x_i-x_i^*-x_i^*\log\frac{x_i}{x_i^*}\right)
+\]
+is exactly the weighted Lyapunov--Volterra function. The order of the arguments matters:
+\[
+ D_h(x^*,x)=x-x^*-x^*\log\frac{x}{x^*},\qquad
+ D_h(x,x^*)=x\log\frac{x}{x^*}-x+x^*.
+\]
+The second expression is the entropy term familiar from complex-balanced reaction networks. The two
+use the same convex generator with opposite argument order; their dissipation properties must be
+checked for the respective dynamics. The exponential response is unbounded and not globally
+Lipschitz, so results requiring a global slope bound do not apply to it.
+
+\paragraph{The derivative identifies the compatible equations.}
+For coordinatewise responses $\Phi_i$ satisfying the assumptions above, let $h_i'=\Phi_i^{-1}$, fix
+$x^*\in\prod_iI_i$, and set
+\[
+ L_\Phi(x;x^*)=\sum_{i=1}^{n_S}c_i\,\mathcal S_{h_i}(x_i^*,\Phi_i^{-1}(x_i))
+ =\sum_{i=1}^{n_S}c_iD_{h_i}(x_i^*,x_i).
+\]
+Differentiation gives, along any differentiable trajectory,
+\[
+ \dot L_\Phi=\sum_{i=1}^{n_S}c_i(x_i-x_i^*)(\Phi_i^{-1})'(x_i)\dot x_i.
+\]
+In particular, suppose the equations have the form
+\[
+ \dot x_i=\frac{g_i(x)}{(\Phi_i^{-1})'(x_i)},\qquad g(x^*)=0.
+\]
+Then $\dot L_\Phi=\sum_ic_i(x_i-x_i^*)g_i(x)$, so the response determines the scalar factors that
+cancel in the derivative. For $\Phi_i(v)=e^v$ this form is $\dot x_i=x_ig_i(x)$, the multiplicative
+structure of generalized Lotka--Volterra equations. Not every threshold or production system has
+this form; it must be checked, or the displayed derivative calculated directly.
+
+For $g(x)=A(x-x^*)$ and $C=\operatorname{Diag}(c_1,\ldots,c_{n_S})$,
+\[
+ \dot L_\Phi=\frac12(x-x^*)^\top(CA+A^\top C)(x-x^*).
+\]
+Therefore $CA+A^\top C\preceq0$ makes $L_\Phi$ nonincreasing, while $CA+A^\top C\prec0$ makes its
+derivative strictly negative away from $x^*$. For exponential responses this is the classical
+Volterra--Lyapunov diagonal-stability calculation. Global convergence additionally requires the
+appropriate existence and compactness or coercivity hypotheses.
+
+\paragraph{The zero-reference limit produces linear terms for absent species.}
+For fixed $x>0$, $\lim_{p\downarrow0}(x-p-p\log(x/p))=x$. Equivalently, extending $h(x)=x\log x-x$
+by $h(0)=0$ gives $\mathcal S_h(0,\log x)=x$. Thus a boundary equilibrium naturally leads to
+\[
+ L(x;x^*)=\sum_{\{i:x_i^*>0\}}c_i\left(x_i-x_i^*-x_i^*\log\frac{x_i}{x_i^*}\right)
+ +\sum_{\{i:x_i^*=0\}}c_ix_i.
+\]
+The resident terms are Volterra terms and the absent-species terms are linear. This identifies a
+common convex origin for the two parts of a Perron--Volterra
+ansatz\bookref{d:SVL}{ (Definition~\ref{d:SVL})}{}. The choice of their weights and the sign of their
+combined derivative remain model-dependent, and dissipation of the absent terms still requires a
+transverse estimate; Proposition~\ref{p:LVboundary} carries this out for the three-population network.

@@ -1,0 +1,96 @@
+\begin{abstract}
+This paper examines applications of Jacobian triangularity on invariant
+faces corresponding to siphon sets for positive production networks,
+encompassing higher-order SIS networks, simplicial contagion models
+\cite{IPB}, the threshold models of Granovetter, Kaye and Boudourides
+\cite{granovetter1978,Kaye26,Boud26}, and the firing-rate networks of
+neuroscience \cite{Betteti2025}. Some main ideas are:
+\begin{enumerate}
+\ideaitem{1}{First-order production terms in the absent variables determine
+the transverse invasion matrices and invasion numbers on siphon faces, while
+{\bf terms at least quadratic in the absent variables} leave the transverse
+matrix unchanged at a fixed resident state, but can create bistability.\idearest{
+Theorem~\ref{t:siphMulti} constructs, for each prescribed finite number,
+a smooth response vanishing on $(-\infty,0]$ and positive on $(0,\infty)$
+that produces at least that many stable positive equilibria, while
+preserving the entire siphon lattice. The response is flat at onset, so production does not contribute to any
+transverse Jacobian, which reduces to the linear removal terms.}}
+
+\ideaitem{4}{For threshold networks with a prescribed response-slope
+bound $L$, the next-generation matrix method extends to a sharp uniform
+test $\bar R_0<1/L$.}
+With $\bar R_0=\rho(\beta WV^{-1})$, Theorem~\ref{t:KBsharp} shows that
+\[
+ \begin{cases}
+ \bar R_0<\dfrac1L: & \parbox[t]{.7\linewidth}{every response in the class gives a unique globally exponentially attracting equilibrium;}\\[12pt]
+ \bar R_0>\dfrac1L: & \parbox[t]{.7\linewidth}{for each $m\ge2$, some response in the class gives at least $m$ locally exponentially stable equilibria.}
+ \end{cases}
+\]
+The test is uniform over the
+response class; the constructive result is that this threshold is sharp
+for the possibility of arbitrarily many stable equilibria.
+
+\ifdefined\withSpatial
+\ideaitem{spat}{With diffusion, at a spatially homogeneous resident on a siphon face, with irreducible transverse Metzler matrix and nonzero diffusion in that block, $R_\Sigma>1$ (an unstable resident) gives the positive linear \textbf{spreading speed} $c_*=\inf_{\lambda>0}s(\lambda^2\mathcal D+F_\Sigma-V_\Sigma)/\lambda$.\idearest{
+Proposition~\ref{t:spread} gives the minimizer, and Remark~\ref{r:movNGM} turns the speed into a family of next-generation
+tests: $c>c_*$ exactly when $\rho\bigl(F_\Sigma(c\lambda I+V_\Sigma-\lambda^2\mathcal D)^{-1}\bigr)<1$ for some admissible $\lambda>0$.
+With drift there is a second transition, where the perturbation grows but cannot spread upstream.
+For threshold responses with slope bound $L$, Theorem~\ref{t:SpdBd} keeps the transition at $\bar R_0=1/L$ under diffusion, with the
+\textbf{uniform speed bound} $\bar c(L)=\inf_{\lambda>0}s(\lambda^2\mathcal D+\beta LW-V)/\lambda$; all the constructed counts of stable equilibria survive diffusion (Corollary~\ref{c:DifSta}); numerically, fronts can invade a linearly stable resident, and in the network with non-disjoint siphons the shared species ignites where two residents meet (Figure~\ref{fig:overFront}).}}
+\fi
+
+\ideaitem{3}{{\bf Invariant group partitions} give exact reduced equations.\idearest{
+For cooperative networks, Theorem~\ref{t:Spe} shows that these reductions
+preserve the spectral abscissa and local exponential equilibrium
+stability.
+With a simple zero eigenvalue and stable complementary directions,
+they also lift saddle-node and cusp bifurcations to the full network.
+The cusp of a homogeneous branch with a unimodal response density gives
+{\bf hysteresis} in the stimulus (Figure~\ref{fig:hyst}).}}
+
+\ideaitem{odds}{{\bf Odds-polynomial responses} $\Phi=\varphi/(1+\varphi)$, zero below
+the onset, preserve the siphon lattice as their coefficients vary.\idearest{
+At a fixed resident state, only the first coefficient enters the
+transverse invasion matrix; higher coefficients can affect invasion
+thresholds indirectly by moving the resident equilibrium.
+Proposition~\ref{p:Qua}  establishes that, for the scalar equation
+$\dot x=-x+\Phi(x)$, degree four
+is the exact minimum for coexistence of a stable origin and a positive
+nondegenerate cusp, and gives an explicit quartic attaining it.
+Theorem~\ref{t:Net} preserves this cusp under multiplicative network
+coupling, together with two stable equilibria and a transversely stable
+proper siphon face.}}
+
+\ideaitem{overl}{Siphons are read off the zero sets of the responses and the monomials of the
+polynomials $P_i$, and minimal siphons may overlap; adding cross-couplings preserves them
+if every added production monomial contains at least
+one variable from each such siphon containing the species being produced.\idearest{
+Example~\ref{e:KBoverlap}, with $P_1=x_2$, $P_2=x_1x_3$, $P_3=x_2$, has the non-disjoint
+minimal siphons $\{1,2\}$ and $\{2,3\}$.
+Theorem~\ref{t:KBoverlapCusp} constructs a three-population odds network
+with two overlapping minimal siphons whose proper faces carry nonzero
+resident equilibria with distinct, explicitly computable invasion numbers.
+At the constructed parameter, eight hyperbolic stable equilibria coexist
+with a nondegenerate interior cusp; Corollary~\ref{c:Nin} gives at least
+nine stable equilibria in a nearby open parameter region.
+Non-disjoint siphons allow a \textbf{double boundary transcritical relay}: the production term $\beta x_1x_3$ of the
+shared species $2$ enters both transverse matrices while both residents stay fixed, so $\beta$ alone
+takes the two residents through transcritical bifurcations in turn (Remark~\ref{r:KBrelay}, Figure~\ref{fig:relay}). With disjoint siphons, the production
+of one species enters only one transverse matrix.}}
+
+\ideaitem{5}{Positive weights give {\bf extinction certificates} under a
+Metzler comparison inequality and characterize uniform exponential
+stability of cooperative variational equations over a compact invariant
+set.\idearest{
+Theorem~\ref{t:EqWgt} gives a compact-domain consequence of converse
+contraction theory \cite{KawanoBesselinkCao2020}: for a
+cooperative system on a compact invariant box, global convergence to
+a Hurwitz equilibrium yields contraction in a state-dependent
+positively weighted norm. This includes convergence to extinction.
+\textbf{Lyapunov--Volterra functions are weighted sums of Fenchel--Bregman divergences}, with generator $x\log x-x$, and
+response-integral energies use the response-dependent convex generator $h$ with $h'=\Phi^{-1}$
+(Subsection~\ref{s:FenBre}); combined with Perron-weighted linear terms, they certify
+explicit subsets of the basins of attraction of boundary residents
+(Propositions~\ref{p:ComBas} and~\ref{p:LVboundary}).}}
+\end{enumerate}
+\end{abstract} 

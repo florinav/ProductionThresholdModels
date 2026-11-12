@@ -1,0 +1,1255 @@
+% Shared preamble for the GLVbook papers.  This is the single canonical copy;
+% a driver one level below GLVbook reaches it as
+%
+%     \input{../basicFiles/preamble}
+%
+% What stays in the driver, because it differs from paper to paper:
+% \documentclass, font choice, \title, \author, \date, and any macro genuinely
+% local to one paper.  Everything else belongs here.  The file is
+% self-contained: it does not read any other file.
+
+\usepackage[utf8]{inputenc}
+\usepackage[novbox]{pdfsync}   % required: SyncTeX alone does not work here
+
+% Page geometry, set once here for every paper that loads this file.  A driver
+% that needs different margins says \geometry{...}; a second
+% \usepackage[...]{geometry} raises an option clash and must not be used.
+\makeatletter
+\@ifundefined{AAdefNnogeometry}{\usepackage[a4paper,margin=2cm]{geometry}}{}
+\makeatother
+
+% mathematics
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm,mathrsfs,bbm}
+\usepackage{centernot}
+
+% floats, tables, lists
+\usepackage{graphicx,float}
+\makeatletter
+\@ifpackageloaded{subfig}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{booktabs,longtable,threeparttable,array,multirow}
+\usepackage{enumitem}
+
+% colour, code, algorithms
+\usepackage{xcolor,listings,tcolorbox}
+\makeatletter
+\@ifundefined{c@algorithm}{\usepackage{algorithm}}{}
+\makeatother
+\usepackage{algorithmicx,algpseudocode}
+
+% diagrams
+\usepackage{tikz,tikz-cd,pgfplots}
+\usetikzlibrary{graphs,decorations.pathmorphing,decorations.markings,
+arrows.meta,automata,positioning}
+\tikzcdset{every label/.append style = {font = \small}}
+\pgfplotsset{compat=1.18}
+
+% chemistry
+\usepackage[version=4]{mhchem}
+
+\usepackage{microtype}
+\usepackage{lineno}
+\usepackage{nomencl}
+\makenomenclature
+
+% hyperref first, then bookmark, then glossaries: glossaries must follow
+% hyperref or the entry links are built against the wrong anchors.
+\makeatletter
+\@ifundefined{hyperrefpackage}{%
+  \@ifundefined{AAdefNnohyperref}{\usepackage{hyperref}}{}%
+}{}
+\@ifundefined{hyperrefpackage}{\usepackage{bookmark}}{}
+\makeatother
+\usepackage[toc,sort=use]{glossaries}
+\makeglossaries
+
+% Book/standalone switch.  Material that the book already covers in its
+% prelude, but that a standalone paper still has to state, is wrapped as
+%     \ifbookbuild\else ... \fi
+% Drivers default to standalone; bookM.tex says \bookbuildtrue.
+\newif\ifbookbuild
+\bookbuildfalse
+
+% Part switches for the gradostat paper.  Both default to true; a driver that
+% wants the short submission says \madecfalse and/or \slowfastfalse, and every
+% cross-reference into the dropped part disappears with it.
+%   \ifmadec     Part III, the Lagasquie--Madec model and its break-even geometry
+%   \ifslowfast  Part IV, everything carrying the small parameter \eps
+\newif\ifmadec     \madectrue
+\newif\ifslowfast  \slowfasttrue
+
+% Part switch for the Barrat/simplicial-contagion project.  Defaults to
+% true (the hypernetwork-synchrony part is included); the journal-paper
+% driver says \hnetpartfalse to drop it and every cross-reference into it.
+\newif\ifhnetpart  \hnetparttrue
+
+%% ========================================
+%% PACKAGES
+%% ========================================
+\RequirePackage{etoolbox}
+\usepackage{makecell}
+\usepackage[novbox]{pdfsync}% obsolete; SyncTeX is built into modern engines
+\usepackage{amssymb, amsfonts,mathtools,bbm,eurosym,graphicx,latexsym, amsmath,amsthm,times,nccmath,url}
+\usepackage{listings,verbatim,cases,tabularx}
+% hyperref is deliberately NOT in the line above.  Journal classes often
+% load it themselves, with a long option list, from a begindocument hook
+% (mdpi.cls does: \DeclareHookRule{begindocument}{hyperref}{before}{mdpi}).
+% Loading it here first, without options, makes that later load raise
+% "Option clash for package hyperref".  So load it only if nobody else
+% has, or will:
+%   - \@ifpackageloaded  catches a class that loaded it already;
+%   - \hyperrefpackage    is mdpi.cls's own deferred loader;
+%   - \AAdefNnohyperref   lets any other driver opt out by defining it
+%                         before \input{preamble}.
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+  \@ifundefined{hyperrefpackage}{%
+    \@ifundefined{AAdefNnohyperref}{\usepackage{hyperref}}{}%
+  }{}%
+}
+\makeatother
+% linktoc=all makes a table-of-contents page number a link as well as the
+% entry text; hyperref's default, linktoc=section, links only the text.
+% Deferred to begin-document and guarded: by the block above hyperref may
+% be loaded later (mdpi's own hook) or not at all (\AAdefNnohyperref), and
+% \hypersetup must exist before it is called.  A driver that wants the
+% default back can say \hypersetup{linktoc=section} after \input{preamble}.
+\makeatletter
+\AtBeginDocument{\@ifundefined{hypersetup}{}{\hypersetup{linktoc=all}}}
+\makeatother
+\usepackage{graphicx,float,fancybox}
+\usepackage{epsfig,epstopdf,tikz}
+\usepackage[sans]{dsfont}
+\usetikzlibrary{positioning,arrows,arrows.meta,calc}
+% Configure listings for Mathematica code
+\lstdefinestyle{mathematica}{
+ language=Mathematica,
+ basicstyle=\small\ttfamily,
+ backgroundcolor=\color{gray!10},
+ frame=single,
+ breaklines=true,
+ commentstyle=\color{green!60!black},
+ keywordstyle=\color{blue},
+ stringstyle=\color{red},
+ showstringspaces=false,
+ tabsize=2
+}
+\usepackage{tcolorbox}
+% Colored boxes for key results
+\newtcolorbox{keyresult}[1][]{
+ colback=blue!5!white,
+ colframe=blue!75!black,
+ title=#1,
+ fonttitle=\bfseries
+}
+\newtcolorbox{examplebox}[1][]{
+ colback=green!5!white,
+ colframe=green!75!black,
+ title=#1,
+ fonttitle=\bfseries
+}
+
+
+\makeatletter
+\@ifundefined{theorem}   {\newtheorem{theorem}   {Theorem}}   {}
+\@ifundefined{definition}{\newtheorem{definition}{Definition}} {}
+\@ifundefined{open}      {\newtheorem{open}      {Problem}}   {}
+\@ifundefined{example}   {\newtheorem{example}   {Example}}   {}
+\makeatother
+
+% COUNTER DEFINITIONS
+\newcounter{tabcounter}
+\newcounter{defcounter}
+\newcounter{opcounter}
+\newcounter{thmcounter}
+\newcounter{excounter}
+\newcounter{ascounter}
+\newcounter{cjcounter}
+\newcounter{lemcounter}
+\newcounter{remcounter}
+\newcounter{corcounter}
+\newcounter{propcounter}
+\newcounter{figcounter}
+
+% UNIFIED GLOSSARY STYLE
+\newglossarystyle{unifiedstyle}{%
+  \setglossarystyle{list}%
+  \renewcommand*{\glossarypreamble}{\gdef\glslastsec{}}%
+  \renewcommand{\glossentry}[2]{%
+    \edef\glscursec{\glsentryuseriii{##1}}%
+    \ifx\glscursec\glslastsec\else
+      \item[]\textbf{\S\,\glscursec\enspace\glsentryuseriv{##1}}%
+      \global\let\glslastsec\glscursec
+    \fi
+    \item[\glsentryuserii{##1} \glsentryuseri{##1}:] ``\glossentryname{##1}'' \glsentrydesc{##1}%
+  }%
+}
+
+\makeatletter
+% First-word extractor (used by \beT, \beD and \beXa for the default key)
+% \@firstwordof hello world \relax  ->  hello
+\def\@firstwordof#1 #2\relax{#1}
+% First three letters, used for the heading mnemonic of a theorem given no
+% explicit key.  Padding with \@empty keeps it safe for first words shorter
+% than three letters: \@empty vanishes under \edef, whereas \relax would
+% survive into the label and is illegal inside \csname (it broke every
+% two-letter title, e.g. "ME ...", with "Missing \endcsname inserted").
+\def\@takethree#1#2#3#4\@nil{#1#2#3}
+
+% EXAMPLE COMMAND -- same signature and behaviour as \beT and \beD.
+% Usage: \beXa*[long title][short title][key]
+%   star  = suppresses the printed "[key]" tag after the title (as for \beT*
+%   and \beD*); the label and glossary entry are unaffected.
+%   key = optional label key override; the label becomes e:KEY, and without a
+%   key it is e: plus the first three letters of the title's first word.  A
+%   mnemonic label lets an example be cited as "Example~\ref{e:KEY}" instead
+%   of by section number, which is what the citing prose needs.
+\NewDocumentCommand{\beXa}{s O{} O{} o}{%
+  \def\@temparg{#2}%
+  \ifx\@temparg\@empty
+    \begin{example}%
+  \else
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{excounter}%
+    \IfValueTF{#4}{%
+      \edef\@exlblkey{#4}%
+    }{%
+      \edef\@exfirstword{\@firstwordof#2 \relax}%
+      \edef\@exlblkey{%
+        \expandafter\@takethree\@exfirstword\@empty\@empty\@empty\@nil}%
+    }%
+    \def\@tempshort{#3}%
+    \ifx\@tempshort\@empty
+      \expandafter\xdef\csname @xshort@\@exlblkey\endcsname{\@exlblkey}%
+    \else
+      \expandafter\def\csname @xshort@\@exlblkey\endcsname{#3}%
+    \fi
+    \IfBooleanTF{#1}{\let\@extag\@empty}{%
+      \edef\@extag{\noexpand\ \noexpand\textup{[\noexpand\texttt{e:\@exlblkey}]}}}%
+    \begin{example}[#2\ifshowkeys\@extag\fi]%
+    \label{e:\@exlblkey}%
+    % record the long title so \nref{e:KEY} prints it, as for theorems
+    \protected@write\@auxout{}{%
+      \string\@thmtitle{e:\@exlblkey}{\unexpanded{#2}}}%
+    \expanded{%
+      \noexpand\newglossaryentry{e\theexcounter}{%
+        name={\unexpanded{#2}%
+          \IfBooleanF{#1}{ [\noexpand\texttt{e:\@exlblkey}]}},%
+        sort={\theexample},%
+        description={p.~\noexpand\pageref{e:\@exlblkey}},%
+        user1={\theexample},%
+        user2={Example},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{e\theexcounter}}%
+  \fi
+}
+\newcommand{\eeXa}{\end{example}}
+
+% DEFINITION COMMAND -- same signature and behaviour as \beT below.
+% Usage: \beD[long title][short title][key]
+%   long title  = definition heading (plain text only)
+%   short title = shown in \dref{word}; defaults to the key
+%   key         = optional label key override; the label becomes d:KEY
+% Without a key the label is d: plus the first three letters of the title's
+% first word, so it is a mnemonic rather than the definition's number: a
+% numeric label would silently change whenever a definition is inserted.
+\NewDocumentCommand{\beD}{s O{} O{} o}{%
+  \def\@temparg{#2}%
+  \ifx\@temparg\@empty
+    \begin{definition}%
+  \else
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{defcounter}%
+    \IfValueTF{#4}{%
+      \edef\@deflblkey{#4}%
+    }{%
+      \edef\@deffirstword{\@firstwordof#2 \relax}%
+      \edef\@deflblkey{%
+        \expandafter\@takethree\@deffirstword\@empty\@empty\@empty\@nil}%
+    }%
+    \def\@tempshort{#3}%
+    \ifx\@tempshort\@empty
+      \expandafter\xdef\csname @dshort@\@deflblkey\endcsname{\@deflblkey}%
+    \else
+      \expandafter\def\csname @dshort@\@deflblkey\endcsname{#3}%
+    \fi
+    \IfBooleanTF{#1}{\let\@deftag\@empty}{%
+      \edef\@deftag{\noexpand\ \noexpand\textup{[\noexpand\texttt{d:\@deflblkey}]}}}%
+    \begin{definition}[#2\ifshowkeys\@deftag\fi]%
+    \label{d:\@deflblkey}%
+    % record the long title so \nref{d:KEY} prints it, as for theorems
+    \protected@write\@auxout{}{%
+      \string\@thmtitle{d:\@deflblkey}{\unexpanded{#2}}}%
+    \expanded{%
+      \noexpand\newglossaryentry{d\thedefcounter}{%
+        name={\unexpanded{#2}%
+          \IfBooleanF{#1}{ [\noexpand\texttt{d:\@deflblkey}]}},%
+        sort={\thedefinition},%
+        description={p.~\noexpand\pageref{d:\@deflblkey}},%
+        user1={\thedefinition},%
+        user2={Definition},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{d\thedefcounter}}%
+  \fi
+}
+\newcommand{\eeD}{\end{definition}}
+
+% \showkeysfalse in a driver hides the [t:KEY] mnemonics in result headings
+% (labels and glossary entries are unchanged); used for submission builds.
+\newif\ifshowkeys \showkeystrue
+% \commonredtrue in a driver that inputs basicFiles/commonRed: tool.tex then
+% cites its reduction results instead of restating them.
+\newif\ifcommonred \commonredfalse
+% TheorEM COMMAND
+% Usage: \beT[long title][short title][key]
+%   long title  = theorem heading (plain text only)
+%   short title = shown in \tref{word}; may contain math; defaults to first word of long title
+%   key         = optional label key override; label becomes t:KEY (avoids first-word collisions)
+% Label is t:WORD where WORD = first word of long title (or KEY if given); use \tref{WORD} to reference.
+\NewDocumentCommand{\beT}{s O{} O{} o}{%
+  \def\@temparg{#2}%
+  \ifx\@temparg\@empty
+    \begin{theorem}%
+  \else
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{thmcounter}%
+    % \@thmtag is the mnemonic shown in the heading; every theorem gets one.
+    % With an explicit key the key itself is shown.  Without one the key
+    % defaults to the title's first word, and showing that whole word would
+    % merely repeat the title ("Dissipativity [Dissipativity]"), so only its
+    % first three letters are shown: "Dissipativity [Dis]".  The label is
+    % unaffected -- it still uses the full \@thmlblkey.
+    \IfValueTF{#4}{%
+      \edef\@thmlblkey{#4}%
+    }{%
+      \edef\@thmfirstword{\@firstwordof#2 \relax}%
+      \edef\@thmlblkey{%
+        \expandafter\@takethree\@thmfirstword\@empty\@empty\@empty\@nil}%
+    }%
+    \IfBooleanTF{#1}{\let\@thmtag\@empty}{%
+      \edef\@thmtag{\noexpand\ \noexpand\textup{[\noexpand\texttt{t:\@thmlblkey}]}}}%
+    \def\@tempshort{#3}%
+    \ifx\@tempshort\@empty
+      \expandafter\xdef\csname @tshort@\@thmlblkey\endcsname{\@thmlblkey}%
+    \else
+      \expandafter\def\csname @tshort@\@thmlblkey\endcsname{#3}%
+    \fi
+    \begin{theorem}[#2\ifshowkeys\@thmtag\fi]%
+    \label{t:\@thmlblkey}%
+    % record the long title for \nref; via the .aux so forward refs resolve
+    \protected@write\@auxout{}{%
+      \string\@thmtitle{t:\@thmlblkey}{\unexpanded{#2}}}%
+    \expanded{%
+      \noexpand\newglossaryentry{t\thethmcounter}{%
+        name={\unexpanded{#2}%
+          \IfBooleanF{#1}{ [\noexpand\texttt{t:\@thmlblkey}]}},%
+        % sort/user1 must be the number the document actually prints, i.e. the
+        % theorem environment's counter, not thmcounter.  thmcounter advances
+        % only on \beT with a title, so a bare \beT (or \beT with an
+        % empty title) makes the two drift and the glossary cites a wrong
+        % number.  thmcounter is still fine as the entry key: it is unique.
+        sort={\thetheorem},%
+        description={p.~\noexpand\pageref{t:\@thmlblkey}},%
+        user1={\thetheorem},%
+        user2={Theorem},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{t\thethmcounter}}%
+  \fi
+}
+\newcommand{\eeT}{\end{theorem}}
+
+% CROSS-PART RELATION PARAGRAPH
+% Usage: \xpart{text}  -- place immediately BEFORE \beT, never inside it
+%   (anything inside \beT...\eeT would be swallowed into the glossary entry).
+% The paragraph is typeset only when Part I is actually present, i.e. in the
+% combined book build; in the standalone builds (GranadaDSABNS/A.tex,
+% AAHRah-Submission/AAHRah.tex) the label part:glv is undefined and the whole
+% paragraph disappears rather than leaving ?? cross-references. Same
+% graceful-degradation principle as \GASref in GASt.tex. Resolves on the
+% second LaTeX pass, since r@part:glv comes from the .aux file.
+% (Already inside the \makeatletter region opened above, so no \makeatletter
+% pair here -- adding one would close that region early.)
+\newcommand{\xpart}[1]{\@ifundefined{r@part:glv}{}{\paragraph{Relation with Parts~I--II.}#1}}
+
+% \bookref{label}{precise text}{fallback text}: prints the precise cross-reference
+% when the label resolves (combined book build), and the fallback text otherwise
+% (standalone paper builds, where book-only appendix labels are absent). Same
+% graceful-degradation role as \GASref in GASt.tex, but usable in any file since it
+% lives in this preamble (loaded by every driver) -- unlike \GASref, which is defined in a
+% content file and is therefore undefined in standalone builds that omit that file.
+\newcommand{\bookref}[3]{\@ifundefined{r@#1}{#3}{#2}}
+
+% \PVpart and \RBpart: the two parts that a partial build may omit.
+% They print "Part~N" in any build that contains the part, and a naming phrase
+% in a build that does not, so an excerpt shows no ?? .  Each already supplies
+% the word "Part", so write "\PVpart develops ...", not "Part~\PVpart".
+\newcommand{\PVpart}{\bookref{part:aahrah}%
+  {Part~\ref{part:aahrah}}{the Perron--Volterra part of the full book}}
+\newcommand{\RBpart}{\bookref{part:recbrowne}%
+  {Part~\ref{part:recbrowne}}{the immuno-virology part of the full book}}
+
+% OPEN PROBLEM COMMANDS
+% ASSUMPTION COMMANDS (glossaried)
+\newcommand{\beAs}[1][]{%
+  \def\@temparg{#1}%
+  \ifx\@temparg\@empty
+    \begin{assumption}%
+  \else
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{ascounter}%
+    \begin{assumption}[#1]%
+    \label{as:\theascounter}%
+    \expanded{%
+      \noexpand\newglossaryentry{as\theascounter}{%
+        name={\unexpanded{#1}},%
+        sort={\theascounter},%
+        description={p.~\noexpand\pageref{as:\theascounter}},%
+        user1={\theascounter},%
+        user2={Assumption},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{as\theascounter}}%
+  \fi
+}
+\newcommand{\eeAs}{\end{assumption}}
+% CONJECTURE COMMANDS (glossaried)
+\newcommand{\beCj}[1][]{%
+  \def\@temparg{#1}%
+  \ifx\@temparg\@empty
+    \begin{conjecture}%
+  \else
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{cjcounter}%
+    \begin{conjecture}[#1]%
+    \label{cj:\thecjcounter}%
+    \expanded{%
+      \noexpand\newglossaryentry{cj\thecjcounter}{%
+        name={\unexpanded{#1}},%
+        sort={\thecjcounter},%
+        description={p.~\noexpand\pageref{cj:\thecjcounter}},%
+        user1={\thecjcounter},%
+        user2={Conjecture},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{cj\thecjcounter}}%
+  \fi
+}
+\newcommand{\eeCj}{\end{conjecture}}
+% LEMMA COMMANDS
+% ---------------------------------------------------------------------
+% UNIFORM RESULT WRAPPERS -- \beL, \beC, \beP, \beR share \beT's signature
+%
+%   \beX[long title][short title][key]  ...  \eeX
+%
+%   long title  = heading (math allowed)
+%   short title = shown in the cross-reference; defaults to the key
+%   key         = label key.  With a key the label is X:KEY and the heading
+%                 carries the mnemonic [key], exactly as for \beT.  Without
+%                 one the label falls back to the running counter, which is
+%                 what every pre-existing call site in the book relies on.
+%
+% A bare \beX -- arguments commented out -- opens the plain environment and
+% creates NO label and NO glossary entry.  That is the supported way to keep
+% an individual result out of the catalogue.
+% ---------------------------------------------------------------------
+% #1 wrapper name  #2 environment  #3 label prefix  #4 counter  #5 type name
+\newcommand{\@mkresult}[5]{%
+  % A leading * suppresses the [key] mnemonic in both the heading and the
+  % glossary name, while still making the label X:KEY and the entry:
+  %     \beX*[long][short][key]
+  \expandafter\NewDocumentCommand\csname be#1\endcsname{s O{} O{} o}{%
+    \def\@temparg{##2}%
+    \ifx\@temparg\@empty
+      \begin{#2}%
+    \else
+      \let\@savedSecTitle\@currentsectionname%
+      \refstepcounter{#4}%
+      % With a key: mnemonic label X:KEY and the [key] tag in the heading.
+      % Without one: fall back to the running counter, exactly as these
+      % wrappers behaved before, so every legacy one-argument call site in
+      % the book keeps its label.  The counter is also csname-safe, which a
+      % title's first word is not -- titles beginning with math would
+      % otherwise build \csname \Omega...\endcsname and fail.
+      \IfValueTF{##4}{%
+        \edef\@relbl{##4}%
+        \IfBooleanTF{##1}{\let\@retag\@empty}{%
+          \edef\@retag{\noexpand\ \noexpand\textup{[\noexpand\texttt{#3:##4}]}}}%
+      }{%
+        \edef\@relbl{\arabic{#4}}%
+        \let\@retag\@empty
+      }%
+      \def\@tempshort{##3}%
+      \ifx\@tempshort\@empty
+        \expandafter\xdef\csname @sshort@#3\@relbl\endcsname{\@relbl}%
+      \else
+        \expandafter\def\csname @sshort@#3\@relbl\endcsname{##3}%
+      \fi
+      \begin{#2}[##2\ifshowkeys\@retag\fi]%
+      \edef\@tmplbl{#3:\@relbl}\expandafter\label\expandafter{\@tmplbl}%
+      \expanded{%
+        \noexpand\newglossaryentry{#3\csname the#4\endcsname}{%
+          name={\unexpanded{##2}%
+            \IfBooleanF{##1}{\IfValueT{##4}{ [\noexpand\texttt{#3:##4}]}}},%
+          sort={\csname the#2\endcsname},%
+          description={p.~\noexpand\pageref{#3:\@relbl}},%
+          user1={\csname the#2\endcsname},%
+          user2={#5},%
+          user3={\thesection},%
+          user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+        }%
+      }%
+      \protected@write\@auxout{}{\string\glsliveentry{#3\csname the#4\endcsname}}%
+      \protected@write\@auxout{}{\string\@thmtitle{\@tmplbl}{\unexpanded{##2}}}%
+    \fi
+  }%
+  \expandafter\newcommand\csname ee#1\endcsname{\end{#2}}%
+}
+\@mkresult{L}{lemma}{l}{lemcounter}{Lemma}
+% REMARK / COROLLARY / PROPOSITION -- same signature as \beL above
+\@mkresult{R}{remark}{r}{remcounter}{Remark}
+\@mkresult{C}{corollary}{c}{corcounter}{Corollary}
+\@mkresult{P}{proposition}{p}{propcounter}{Proposition}
+% OPEN-PROBLEM COMMAND -- generated with the same signature as \beT:
+%   \beO[long title][short title][key]   ...   \eeO
+% label o:KEY, or o:<counter> when no key is given; a bare \beO makes
+% neither a label nor a glossary entry.
+\@mkresult{O}{open}{o}{opcounter}{Problem}
+
+
+% Section-level title tracker: updated only by \section, not \subsection.
+% \@currentlabelname is overwritten by every \refstepcounter (including
+% \subsection), so we save it separately here.
+\newcommand{\@currentsectionname}{}
+\AtBeginDocument{%
+  \let\@epidcrn@orig@refstepcounter\refstepcounter
+  \renewcommand{\refstepcounter}[1]{%
+    \@epidcrn@orig@refstepcounter{#1}%
+    \ifstrequal{#1}{section}{\global\let\@currentsectionname\@currentlabelname}{}%
+  }%
+}
+
+% TABLE COMMANDS (glossaried) -- consistent naming with \beT, \beD, etc.
+\newcommand{\beTa}[1][]{%
+  \def\@temparg{#1}%
+  \ifx\@temparg\@empty
+    \begin{table}[htbp]%
+  \else
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{tabcounter}%
+    \begin{table}[htbp]%
+    \label{A:\thetabcounter}%
+    \expanded{%
+      \noexpand\newglossaryentry{A\thetabcounter}{%
+        name={\unexpanded{#1}},%
+        sort={\thetabcounter},%
+        description={p.~\noexpand\pageref{A:\thetabcounter}},%
+        user1={\thetabcounter},%
+        user2={Table},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{A\thetabcounter}}%
+  \fi
+}
+\newcommand{\eeTa}{\end{table}}
+
+% FIGURE COMMANDS (glossaried) -- consistent with \beT, \beR, \beTa, etc.
+% Usage:
+%   \beF[Glossary title]...\caption{Visible caption}\eeF  -> glossaried figure
+%   \beF...\caption{Visible caption}\eeF                  -> plain [H] figure, no glossary
+\newcommand{\beF}[1][]{%
+  \def\@temparg{#1}%
+  \ifx\@temparg\@empty
+    \begin{figure}[H]%
+  \else
+    \begin{figure}[H]%
+    \let\@savedSecTitle\@currentsectionname%
+    \refstepcounter{figcounter}%
+    \label{fig:\thefigcounter}%
+    \expanded{%
+      \noexpand\newglossaryentry{Fig\thefigcounter}{%
+        name={\unexpanded{#1}},%
+        sort={\thefigcounter},%
+        description={p.~\noexpand\pageref{fig:\thefigcounter}},%
+        user1={\thefigcounter},%
+        user2={Figure},%
+        user3={\thesection},%
+        user4={\expandafter\unexpanded\expandafter{\@savedSecTitle}}%
+      }%
+    }%
+    \protected@write\@auxout{}{\string\glsliveentry{Fig\thefigcounter}}%
+  \fi
+}
+\newcommand{\eeF}{\end{figure}}
+\makeatother
+% LIVE-ENTRY REGISTER
+% \glsaddall prints every entry the glossaries package currently knows, and
+% that set includes entries restored from \jobname.glsdefs.  The package
+% rewrites .glsdefs from all *currently defined* entries, so anything it
+% restored is written straight back out: a deleted section kept reappearing in
+% the catalogue for ever, and the .glsdefs had to be erased by hand.  The
+% wrappers therefore record every entry they actually create in the .aux, and
+% \printboth adds only those.  The .aux is rebuilt from scratch on each run, so
+% this is self-healing: a removed result is gone after one further run.
+\makeatletter
+\newcommand{\@glslive}{}
+\newcommand{\@glsaddlive}[1]{\ifglsentryexists{#1}{\glsadd{#1}}{}}
+\newcommand{\glsliveentry}[1]{\g@addto@macro\@glslive{\@glsaddlive{#1}}}
+\makeatother
+% PRINT COMMAND
+% No \clearpage here -- the catalogue continues on the current page.  This has
+% been re-added by mistake several times; leave it out.
+\makeatletter
+\newcommand{\printboth}{%
+  \@glslive   % add exactly the entries this document created last run
+  \printglossary[style=unifiedstyle, title={0 \hspace{.22em} Definitions, Theorems, Examples and Open Problems}]%
+}
+\makeatother
+% Named theorem reference: \tref{word} -> Thm~N(word-or-short)
+% Shows stored short title if available, otherwise shows the key itself.
+\newcommand{\tref}[1]{%
+  Thm~\ref{t:#1}(\ifcsname @tshort@#1\endcsname\csname @tshort@#1\endcsname\else#1\fi)%
+}
+
+% Full-title theorem reference: \nref{t:KEY} prints the number and then the
+% theorem's long title, so one writes "Theorem~\nref{t:blocks}" and gets
+% "Theorem 3 ``Block factorization and siphons''".  Takes the complete label, like
+% \ref, not the bare key like \tref.
+%
+% \beT writes each title to the .aux (see \@thmtitle below), so \nref resolves
+% forward references from the second LaTeX pass, exactly as \ref does.  If the
+% title is not yet known -- first pass, or a label that is not a \beT theorem
+% -- it degrades to the number rather than producing ??.
+% These two use @ in their names, and this point in the file is outside the
+% \makeatletter region opened earlier (it closes at \makeatother above), so
+% the region has to be reopened here.
+\makeatletter
+\newcommand{\@thmtitle}[2]{\global\@namedef{@tlong@#1}{#2}}
+\newcommand{\nref}[1]{%
+  \ref{#1}%
+  \ifcsname @tlong@#1\endcsname
+    \ ``\csname @tlong@#1\endcsname''%
+  \fi
+}
+% \nm{t:KEY}: the stored long title of any \beT/\beL/\beP/\beR/\beC/\beD/\beE result,
+% verbatim and without quotes, so item names follow the macro's first argument.
+\newcommand{\nm}[1]{%
+  \ifcsname @tlong@#1\endcsname
+    \csname @tlong@#1\endcsname%
+  \else
+    \ref{#1}%
+  \fi
+}
+\makeatother
+
+
+
+
+%% ========================================
+%% Other THEOREM ENVIRONMENTS
+%% ========================================
+\makeatletter
+\@ifundefined{lemma}      {\newtheorem{lemma}      {Lemma}}      {}
+\@ifundefined{proposition}{\newtheorem{proposition}{Proposition}} {}
+\@ifundefined{corollary}  {\newtheorem{corollary}  {Corollary}}  {}
+\@ifundefined{conjecture} {\newtheorem{conjecture} {Conjecture}}  {}
+\@ifundefined{remark}     {\newtheorem{remark}     {Remark}}     {}
+\@ifundefined{question}   {\newtheorem{question}   {Question}}   {}
+\@ifundefined{assumption} {\newtheorem{assumption} {Assumption}} {}
+\@ifundefined{hypothesis} {\newtheorem{hypothesis} {Hypothesis}} {}
+\@ifundefined{fact}       {\newtheorem{fact}       {Fact}}       {}
+\makeatother
+
+% \citer: cite the relay-graph threshold theorem of AAHrel. If a document has
+% \input the chapter/file containing t:relayRF (so the label resolves), point
+% straight at it; otherwise fall back to a bare citation of AAHrel. Shared here
+% (not per-paper) so it resolves consistently across every book chapter.
+% \citeR: same idea, for the first theorem of AAHRah (t:Pstar).
+\makeatletter
+\providecommand{\citer}{%
+  \@ifundefined{r@t:relayRF}%
+    {\cite{AAHrel}}%
+    {Theorem~\ref{t:relayRF} of \cite{AAHrel}}%
+}
+\providecommand{\citeR}{%
+  \@ifundefined{r@t:Pstar}%
+    {\cite{AAHRah}}%
+    {Theorem~\ref{t:Pstar} of \cite{AAHRah}}%
+}
+\makeatother
+
+
+% Abbreviations
+\def\beQ{\begin{question}}\def\eeQ{\end{question}}
+\def\beA{\begin{assumption}}\def\eeA{\end{assumption}}
+
+
+%% ========================================
+
+%% ========================================
+%% COLORS & CUSTOM COMMANDS
+%% ========================================
+\definecolor{funccolor}{RGB}{25,25,112}
+\definecolor{desccolor}{RGB}{64,64,64}
+\newcommand{\func}[1]{\texttt{\textcolor{funccolor}{#1}}}
+\def\eq{=}
+\def\mm{-}
+
+%% ========================================
+%% MATHCAL SHORTHANDS
+%% ========================================
+% Project-wide convention: \mX for a capital X is always \mathcal X.
+% Defined for the whole alphabet so the convention never fails to expand.
+\newcommand{\mA}{\mathcal A}\newcommand{\mB}{\mathcal B}
+\newcommand{\mC}{\mathcal C}\newcommand{\mD}{\mathcal D}
+\newcommand{\mE}{\mathcal E}\newcommand{\mF}{\mathcal F}
+\newcommand{\mG}{\mathcal G}\newcommand{\mH}{\mathcal H}
+\newcommand{\mI}{\mathcal I}\newcommand{\mJ}{\mathcal J}
+\newcommand{\mK}{\mathcal K}\newcommand{\mL}{\mathcal L}
+\newcommand{\mM}{\mathcal M}\newcommand{\mN}{\mathcal N}
+\newcommand{\mO}{\mathcal O}\newcommand{\mP}{\mathcal P}
+\newcommand{\mQ}{\mathcal Q}\newcommand{\mR}{\mathcal R}
+\newcommand{\mS}{\mathcal S}\newcommand{\mT}{\mathcal T}
+\newcommand{\mU}{\mathcal U}\newcommand{\mV}{\mathcal V}
+\newcommand{\mW}{\mathcal W}\newcommand{\mX}{\mathcal X}
+\newcommand{\mY}{\mathcal Y}\newcommand{\mZ}{\mathcal Z}
+
+%% ========================================
+%% BASIC MATH ENVIRONMENTS
+%% ========================================
+\def\bep{\begin{pmatrix}}\def\eep{\end{pmatrix}}
+\def\bev{\begin{vmatrix}}\def\eev{\end{vmatrix}}
+\def\bea{\begin{eqnarray*}}\def\eea{\end{eqnarray*}}
+\def\bc{\begin{cases}}\def\ec{\end{cases}}
+\def\BEN{\begin{enumerate}}\def\EEN{\end{enumerate}}
+\def\BI{\begin{itemize}}\def\EI{\end{itemize}}
+
+\newcommand{\be}[1]{\begin{equation}\label{#1}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\beq}{\begin{eqnarray}}
+\def\eeq{\end{eqnarray}}
+\def\eqr{\eqref}\def\fr{\frac}\def\lbl{\label}
+\def\Lra{\Longrightarrow}\def\non{\nonumber}\def\cNGM{\cite{Diek,Van,Van08}}
+\def\Eq{\Leftrightarrow}\def\b{\beta}\def\uph{\red{UP TO HERE}}
+%% ========================================
+%% PROBABILITY & STATISTICS
+%% ========================================
+\renewcommand{\P}{\ensuremath{\mathbb{P}}}  % Note: overrides paragraph symbol
+\newcommand{\E}{\ensuremath{\mathbb{E}}}
+\newcommand{\ind}[1]{\ensuremath{\mathbbm{1}_{\left\{#1\right\}}}}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\TV}{TV}
+\newcommand{\rank}{\operatorname{rank}}
+
+%% ========================================
+%% CRN OPERATORS (organizations/ERCs/buffering/siphons framework)
+%% ========================================
+\def\clos{\mathrm{clos}}
+\def\Supply{\mathrm{Supply}}
+\def\req{\mathrm{req}}
+\def\React{\mathrm{React}}
+\def\Prod{\mathrm{Prod}}
+\def\Gen{\mathrm{Gen}}
+\def\In{\mathrm{In}}
+\def\Out{\mathrm{Out}}
+\def\Act{\mathrm{Act}}
+\def\Min{\mathrm{Min}}
+
+%% ========================================
+%% LINE BREAKING
+%% ========================================
+% Last-resort stretch, used only on paragraphs TeX cannot otherwise break:
+% a long \texttt{} token, a comma-separated inline math list (commas are not
+% breakpoints in math), or a run of \cite/\ref boxes.  Without it those set as
+% overfull \hbox and print into the margin; with it they set slightly loose,
+% which is the lesser evil.  Does not affect paragraphs that already break.
+\emergencystretch=3em
+
+%% ========================================
+%% NUMBER SETS
+%% ========================================
+\newcommand{\R}{\mathbb{R}}  % Real numbers
+\newcommand{\C}{\mathbb{C}}  % Complex numbers
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+% \providecommand, not \newcommand: some papers define these in their own
+% preamble after \input{preamble}, and must not clash.
+\providecommand{\Q}{\mathbb{Q}}
+\providecommand{\res}{\operatorname{res}}   % resultant; used by epiRes.tex
+\newcommand{\MN}{\mathbb{N}}
+\newcommand{\MZ}{\mathbb{Z}}
+\newcommand{\realpos}{\mathbb{R}_{> 0}}
+\newcommand{\realnneg}{\mathbb{R}_{\geq 0}}
+\newcommand{\naturalpos}{\mathbb{N}_{>0}}
+\newcommand{\Rplus}{\mathbb{R}_+}
+\newcommand{\Rp}{\mathbb{R}_{\ge 0}}
+\def\Rnne{\mathbb{R}_{\ge 0}}
+\def\Se{\bar{S}} \def\Ie{\bar{I}}
+\newcommand{\Rpos}{\mathbb{R}_{>0}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\e}{\mathrm e}
+%% ========================================
+%% GREEK LETTERS (2+ character abbreviations) greek
+%% ========================================
+\def\al{\alpha}\def\ba{\bff \alpha}
+\def\w{\omega}\def\Lgn{\ga+\mu+\de}\def\om{\omega}
+\def\de{\delta}\def\De{\Delta}\def\bde{\bff \delta}
+\def\ep{\epsilon}\def\eps{\varepsilon}
+\def\f{\varphi}  % Kept as requested
+\def\ga{\gamma}\def\Ga{\Gamma}\def\G{\Gamma}\def\bg{\bff \gamma}
+\def\up{\upsilon}  % NOT the breve accent: no accent commands anywhere.
+                   % Named \up, not \u, so the LaTeX breve stays reachable.
+\def\la{\lambda}\def\La{\Lambda}
+\def\si{\sigma}\def\ka{\kappa}
+\def\th{\theta}\def\vt{\vartheta}
+\def\ze{\zeta}\def\Gap{\Gamma^{+}} \def\Gam{\Gamma^{-}}
+
+
+%% ========================================
+%% SPECIAL SHORT COMMANDS (kept as requested)
+%% ========================================
+\def\I{\infty}
+\def\T{\widetilde}
+\def\H{\hat}
+\newcommand{\relint}{\operatorname{relint}}
+
+%% ========================================
+%% BOLD/VECTOR NOTATION
+%% ========================================
+\newcommand{\bff}[1]{{\mbox{\boldmath$#1$}}}
+\newcommand\X{\boldsymbol{X}}
+\def\x{\boldsymbol{x}}\def\bx{\bff x}\def\xe{\bar{\x}}
+\newcommand\y{\boldsymbol{y}}\def\by{\boldsymbol{y}}\def\ye{\bar{\y}}
+\def\yb{\y}\def\xb{\x}
+\def\xy{\x-\y}
+\newcommand\br{\boldsymbol{r}}\def\re{\bar{\r}}
+\newcommand\bd{\boldsymbol{d}}
+\newcommand\bQ{\boldsymbol{Q}}
+\newcommand{\Yb}{{\mathbf{Y}}}
+\newcommand{\Ab}{\mathbf{A}}
+\newcommand{\zb}{\mathbf{z}}\def\bz{\bff 0}
+\newcommand{\Zb}{\mathbf{Z}}
+\newcommand{\bb}{\mathbf{b}}
+\def\vbe{\vec {\bff \beta}}
+\def\vb{\vec {\bff b}}
+\def\v1{\vec {\bff 1}}
+\def\vn{\vec \de}
+\def\vz{\vec 0}
+\def\vi{\overset{\rightarrow}{\mathsf i}}
+\def\vv{\overset{\rightarrow}{v}}
+\def\vr{\; \vec {\mathsf r}}
+\newcommand{\va}{\bff a}
+\providecommand{\vect}[1]{\boldsymbol{#1}}   % bold vector (moved from Gradostat.tex)
+\providecommand{\one}{\mathbf 1}             % all-ones vector (moved from AliSF)
+\providecommand{\spr}{s}                     % spectral bound  (moved from AliSF)
+\providecommand{\Ke}{K_{\rm eff}}            % effective carrying capacity
+% Critical right/left eigenvectors in the Hopf projection method (AAHOSN/New.tex)
+\providecommand{\bq}{\mathbf{q}}
+\providecommand{\bp}{\mathbf{p}}
+
+
+%% ========================================
+%% MATHCAL & MATHSCR
+%% ========================================
+% Mathcal
+\newcommand\mc[1]{\mathcal{#1}}
+\def\mC{{\mathcal C}}\def\mD{\mathcal D}\def\mE{\mathcal{E}}
+\def\mF{\mathcal F}\def\mG{{\mathcal G}}\def\mH{{\mathcal H}}
+\def\mI{\mathcal I}\def\mL{\mathcal{L}}\def\mM{{\mathcal M}}
+\def\mN{{\mathcal N}}\def\mP{\mathcal{P}}\def\mR{{\mathcal R}}
+\def\mS{{\mathcal S}}\def\mT{\mathcal{T}}\def\mV{{\mathcal V}}
+\def\mK{\mathcal K}\def\mA{{\mathcal A}}\def\mU{{\mathcal U}}
+% Symmetric bilinear and trilinear forms of the Taylor expansion, used in the
+% first Lyapunov coefficient (AAHOSN/New.tex)
+\providecommand{\Bform}{\mathcal{B}}
+\providecommand{\Cform}{\mathcal{C}}
+
+% Blackboard bold.  Kept here, not in the drivers: a \providecommand in a
+% driver preamble runs before this file and silently wins, so the same name
+% ends up meaning different things in different builds.
+\def\IC{\mathbb{C}}\def\IN{\mathbb{N}}\def\IQ{\mathbb{Q}}
+\def\IR{\mathbb{R}}\def\IZ{\mathbb{Z}}\def\IG{\mathbb{G}}
+\def\II{\mathbb{I}}
+
+% Mathscr
+\newcommand{\Rs}{{\mathscr R}}
+\newcommand{\Ss}{{\mathscr S}}
+\newcommand{\Ns}{{\mathscr N}}
+\newcommand{\Cs}{\mathscr C}
+
+
+%% ========================================
+%% OPERATORS & FUNCTIONS
+%% ========================================
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{Diag}
+\DeclareMathOperator{\Diag}{Diag}
+\DeclareMathOperator{\intr}{\mathrm{Int}}
+\DeclareMathOperator{\Inv}{Inv}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\AUC}{AUC}               % area under the curve
+\newcommand{\ii}{\mathrm{i}}                  % imaginary unit
+\newcommand\op{\operatorname}
+\newcommand{\supp}{\op{supp}}
+\newcommand{\diff}{\mathop{}\mathopen{}\mathrm{d}}
+\newcommand{\pdd}[1]{\frac{\partial}{\partial{#1}}}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\proj}{proj}
+
+%% ========================================
+%% BRACKETS & NORMS
+%% ========================================
+\providecommand{\pr}[1]{\left(#1\right)}
+\providecommand{\pp}[1]{\left[#1\right]}
+\newcommand\croc[1]{\left\langle #1\right\rangle}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+% Short synonym of \inner, used by AAHOSN/New.tex as $\ip{u}{v}=\bar u^\top v$
+\providecommand{\ip}[2]{\langle #1 , #2 \rangle}
+
+
+%% ========================================
+%% FORMATTING & UTILITIES
+%% ========================================
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}
+\newcommand{\te}[1]{\text{#1}}
+\newcommand\steq[1]{\stackrel{\text{\rm #1.}}{=}}
+\newcommand\blue[1]{\textcolor{blue}{#1}}
+\newcommand{\red}{\textcolor[rgb]{1.00,0.00,0.00}}
+\newcommand{\green}{\textcolor[rgb]{0.00,1.00,0.00}}
+
+% Figure command
+\newcommand{\figu}[3]{%
+\begin{figure}[H]
+\centering
+\includegraphics[scale=#3]{#1}
+\caption{#2\label{f:#1}}
+\end{figure}
+}
+
+% Footnote
+\long\def\symbolfootnote[#1]#2{%
+\begingroup
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}%
+\endgroup}
+\def\fn{\symbolfootnote}
+
+\newcommand{\dsum}{\displaystyle\sum}
+
+%% ========================================
+%% CRN & EPIDEMIOLOGY SPECIFIC
+%% ========================================
+% CRN notation
+\def\SS{\mathcal S}
+\def\CC{\mathcal C}
+\def\RR{\mathcal R}
+
+% Reproduction numbers
+\def\Rto{R_{1}^{E_2}}
+\def\Rot{R_{2}^{E_1}}
+\def\Roc{R_{1,c}}
+\def\Rtc{R_{2,c}}
+\def\rd{r_{0}}
+\def\sd{s_{0}}
+\def\dd{D_{0}}
+\def\vd{v_{0}}
+\def\zd{z_{0}}
+\def\se{\sE}
+\def\xd{x_{0}}
+%% ========================================
+%% SPECIAL VALUES & EQUILIBRIA
+%% ========================================
+\def\eE{\bar{e}}
+\def\wE{\bar{w}}
+\def\sE{s_{*}}
+\def\Me{\T M_{ee}}
+\def\Rnne{\mathbb{R}_{\ge 0}}
+
+\newcommand{\ones}{\mathbf 1}
+
+
+%% ========================================
+%% ABBREVIATIONS (alphabetical by category)
+%% ========================================
+
+% -- General mathematical terms --
+\def\adm{admissible}\def\admy{admissibility}
+%\def\and{antisymmetric}% disabled 2026-09-30: it overrode LaTeX's author separator \and (printed "antisymmetric" between authors)
+\def\ass{assumption}
+\def\cadlag{c\`adl\`ag}
+\def\ch{characteristic polynomial}
+\def\chp{characteristic polynomial}
+\def\coe{coefficient}
+\def\comp{computation}
+\def\con{condition}
+\def\coo{coordinate}
+\def\corr{corresponding}
+\def\dec{decomposition}
+\def\den{denominator}
+\def\dete{deterministic}
+\def\eig{eigenvalue}\def\eval{eigenvalue}
+\def\eigv{eigenvector}\def\eiv{eigenvector}\def\evec{eigenvector}
+\def\elt{element}
+\def\enn{essentially nonnegative/positivity preserving}
+\def\equ{equation}
+\def\etal{et al.}
+\def\fe{for example}
+\def\fno{from now on}
+\def\for{\forall}
+\def\form{formula}
+\def\Fr{Furthermore, }
+\def\frt{furthermore}
+\def\fun{function}
+\def\gene{generalization}
+\def\heu{heuristic}
+\def\how{however}\def\How{However, }
+\def\ie{i.e. }
+\def\im{\item}
+\def\isd{is defined by}
+\def\itc{it is easy to check that}
+\def\itf{it follows that}\def\Itf{It follows that}
+\def\ith{it holds that}
+\def\itm{it may be checked that}\def\Itm{It may be checked that}
+\def\ito{it turns out that}\def\Ito{It turns out that}\def\Itou{It turns out useful to}
+\def\ma{mass action}\def\MAR{mass action representation}
+\def\mat{matrix}
+\def\mbc{may be checked to be}
+\def\mbw{may be written as}\def\mubw{must be written as}
+\def\mpr{more precisely, }\def\Mp{More precisely, }
+\def\nc{non-catalytic}
+\def\nne{non-negative}\def\nny{nonnegativity}
+\def\no{\nonumber}
+\def\noni{non-infectious}
+\def\nota{notation}
+\def\np{\newpage}
+\def\Nt{Note that}
+\def\nt{non trivial}\def\nz{non zero}
+\def\oth{otherwise}
+\def\Oth{On the other hand}
+\def\pa{parameter}\def\para{parameter}
+\def\pol{polynomial}
+\def\prob{probability}
+\def\Prf{{\bf  Proof:}}\def\prf{{\bf  Proof:}}
+\def\prop{proportional to}
+\def\qu{\quad}
+\def\QED{\hfill {$\square$}\goodbreak \medskip}
+\def\rep{representation}
+\def\resp{respectively}
+\def\satd{satisfied}\def\satg{satisfying}\def\sats{satisfies}\def\saty{satisfy}
+\def\ssec{\subsection}\def\sssec{\subsubsection}
+\def\sef{see for example}
+\def\sksy{skew-symmetric}
+\def\sub{substrate}
+\def\sys{system}
+\def\var{variable}
+\def\wk{well-known}
+\def\wl{without loss of generality}\def\wlo{w.l.o.g.}
+\def\wmc{We may check that}\def\Wmc{We may check that}
+\def\wmr{we may rewrite}
+\def\wms{we must show that}
+\def\wrt{with respect to}
+
+% -- CRN & Chemistry --
+\newcommand\CRN{chemical reaction network}
+\newcommand\CRNs{chemical reaction networks}
+\newcommand\RN{reaction network}
+\def\ACR{absolute concentration robustness}
+\def\AMSD{acyclic siphon decomposition}
+\def\DAE{differential algebraic equations}
+\def\FHJ{Feinberg-Horn-Jackson}
+\def\GMAK{generalized mass action kinetics}
+\def\MM{Michaelis-Menten}
+\def\sm{stoichiometric matrix}\def\Sm{stoichiometric matrix}
+\def\WRZD{weakly reversible, zero deficiency}\def\aut{autocatalytic}
+
+% -- Epidemiology --
+\def\brn{basic reproduction number}\def\bzn{basic replacement number}
+\def\com{compartment}
+\def\dfe{disease free equilibrium}\def\DFE{disease free equilibrium}
+\def\dwt{dwell times}\def\edt{expected dwell times}
+\def\EM{epidemic model}
+\def\endp{endemic fixed point}\def\enp{endemic point}\def\EE{endemic point}
+\def\ME{mathematical epidemiology}
+\def\MEE{eco-epidemiology}\def\EEP{eco-epidemiological}
+\def\ece{eco-epidemiological model}
+\def\mgm{multi group model}
+\def\mtS{multi-strain model}\def\mSt{multi-strain model}
+\def\mSi{minimal siphon}
+\def\NGM{next generation matrix}
+\def\nim{new infections matrix}
+\def\qem{quadratic epidemiological model}
+\def\repF{invasion functions}
+\def\SPF{SIR-PH-FA model}
+\def\sus{susceptible}
+
+% -- Graph theory & Linear algebra --
+\def\jac{Jacobi matrix}
+\def\jin{Jacobian matrix of the invasion vector field with respect to the invasion variables}
+\def\jrn{Jacobian matrix of the resident vector field with respect to the resident variables}
+\def\jxn{Jacobian matrix of the $\x$ vector field with respect to the $\x$ variables}
+\def\Lm{Laplacian matrix}
+\def\MTT{matrix tree theorem}
+\def\SGT{spectral graph theory}
+\def\SMW{Sherman–Morrison–Woodbury}
+
+% -- Stability & Dynamics --
+\def\absC{absorbtion CTMC}
+\def\BTb{Bogdanov-Takens bifurcation}
+\def\CEP{competitive exclusion partition}
+\def\CTMC{continuous time Markov chain}
+\def\ds{differential system}
+\def\fp{fixed point}\def\bfp{boundary fixed point}\def\fbp{fixed boundary point}
+\def\fbl{fixed boundary line}\def\fif{forward invariant face}
+\def\gas{global asymptotic stability}\def\GAS{globally asymptotically stable}
+\def\GASS{\text{GASS}}
+\def\Hb{Hopf bifurcation}
+\def\Hur{Hurwitz}\def\MH{Metzler-Hurwitz}\def\RH{Routh-Hurwitz}
+\def\IS{\text{IS}}
+\def\LAS{locally asymptotically stable}
+\def\LdS{Lyapunov diagonally stable}
+\def\Lf{Lyapunov function}\def\LyV{Lyapunov Volterra type function}\def\RLF{robust Lyapunov function}
+\def\LyM{Lyapunov Malkin stable}
+\def\PF{Perron-Frobenius}
+\def\spfp{strictly positive fixed point}
+\def\sta{stability}
+\def\STP{sharp threshold property}\def\STT{sharp threshold theorem}
+
+% -- Models (with \varphi explicitly instead of \f) --
+\def\AB{$(A,B)$ Arino-Brauer epidemic models}
+\def\ABa{$(A,\bbe,\ba,\varphi)$ balanced bilinear model}
+\def\ABP{%$(A,\bbe,P,\varphi)$
+\\ balanced bilinear model}
+\def\AMG{Anderson May Gupta}
+\newcommand\BIN{biological interaction network}
+\def\Dt{Descartes type}
+\def\gLV{generalized Lotka-Volterra model}
+\def\IG{\text{invasion graph}}\def\IGMS{interaction graph on minimal siphons}
+\def\LCP{\text{linear complementarity problem}}
+\def\LV{Lotka-Volterra}\def\LVK{Lotka-Volterra-Kolmogorov}
+
+% -- Splitting & Structure --
+\def\reg{regular splitting}\def\regS{{\bf regular splitting}}
+\def\RUR{rational univariate representation}
+\def\bds{block-diagonal structure}\def\NGMs{next generation matrices}
+
+% -- Miscellaneous --
+\def\Ma{{Mathematica}}
+\def\Mm{Max–Min}
+\def\num{numerator}
+\def\rap{rational approximation} \def\DSR{directed species-reaction bipartite graph}\def\PCP{polynomial complementarity problem}\def\rat{rational substitution}
+\def\QSS{quasi steady state} \def\RHS{right hand side} \def\LHS{left hand side}
+\def\OSN{online social network}\def\VdD{Van den Driessche}
+\def\wli{$\omega$-limit} \def\rk{rich kinetics}\def\sJ{symbolic Jacobian}
+\def\cV{\cite{Vas,VasSta,BSV,GSV}} \def\spf{semi-parametric semi-functional}
+\def\CRW{Capasso-Ruan-Wang} \def\ABP{$(A,\bbe,P,\f)$ balanced bilinear model}
+\def\ABa{%$(A,\bbe,\ba,\f)$ \\
+rank-one balanced bilinear model}
+\def\bbe{B%{\bff \beta}
+} \def\vbe{\vec {\bff \beta}
+}
+\def\vb{\vec {\bff b}}
+\newcommand{\Kh}{\hat{K}}          % K with hat, first mention only
+\newcommand{\wS}{w^{\sigma}}       % right Perron J^\perp, full block
+\newcommand{\piS}{\vec \pi^{\sigma}}    % left Perron J^\perp, full block
+\newcommand{\ws}{w^{\sigma}}       % right Perron J^\perp, sub-block
+\newcommand{\pis}{\pi^{\sigma}}    % left Perron J^\perp, sub-block
+\newcommand{\hwS}{\hat{w}^{\sigma}}   % right Perron K, full block
+\newcommand{\hpiS}{\hat{\pi}^{\sigma}} % left Perron K, full block
+\newcommand{\hws}{\hat{w}^{\sigma}}   % right Perron K, sub-block
+\newcommand{\hpis}{\hat{\pi}^{\sigma}} % left Perron K, sub-block
+\newcommand{\twS}{\tilde{w}^{\sigma}}  % right Perron \tilde K, full block
+\newcommand{\tpiS}{\tilde{\pi}^{\sigma}} % left Perron \tilde K
+\newcommand{\tws}{\tilde{w}^{\sigma}}
+\newcommand{\tpis}{\tilde{\pi}^{\sigma}}
+\newcommand{\Mat}[2]{\mathbb{R}_{\ge 0}^{\,#1\times #2}}
+\def\tJ{J_\sigma^\perp} \def\lPe{left Perron eigenvector}
+% \G is \Gamma (defined at :795).  The Volterra function keeps its own name,
+% so that \G no longer has two conflicting meanings in this file.
+\def\GV{G}  % Volterra G(u)=u-1-\ln u
+\def\PVL{Perron-Volterra Lyapunov minimal siphon ansatz}
+\newcommand{\istar}[1]{i_{#1}^{*}}
+%\newcommand{\sE}{s_E}
+\newcommand{\vE}{v_E}
+\def\PV{Perron-Volterra candidate Lyapunov function}
+\def\GLV{generalized Lotka-Volterra}
+\def\MERN{mathematical epidemiology reaction networks}
+\def\CMM{contraction metric method}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\Var}{\operatorname{Var}} 
+
+% ======================================================================
+% IDEAS SHARED BETWEEN THE ABSTRACT AND THE MAIN RESULTS SECTION
+%
+% Write each idea ONCE, in the abstract; the Main Results section recalls it,
+% so the two can never drift apart.
+%
+%   in the abstract        \ideaitem{1}{The first-order reaction terms ...}
+%   in Main Results        \ideahead{1}
+%
+% \ideaitem stores the text globally and typesets
+%   \item \hyperlink{idea:1}{<text>}
+% \ideahead typesets
+%   \item\hypertarget{idea:1}{}\textbf{<the same text>}
+%
+% The abstract must come before the Main Results input, which is the normal
+% order. If a heading has to read differently from the abstract sentence (for
+% instance a long abstract item summarised in one line), override it with the
+% optional argument: \ideahead[short heading]{6}.
+% ======================================================================
+\makeatletter
+\newcommand{\ideaitem}[2]{%
+  \expandafter\gdef\csname @idea@#1\endcsname{#2}%
+  \item\hyperlink{idea:#1}{#2}}
+\newcommand{\ideahead}[2][]{%
+  \item\hypertarget{idea:#2}{}%
+  \def\@ideatmp{#1}%
+  \ifx\@ideatmp\@empty
+    \@ifundefined{@idea@#2}{%
+      \PackageWarning{preamble}{Idea #2 is used in Main Results but was never
+        defined by \string\ideaitem\space in the abstract}%
+      \textbf{[idea #2 undefined]}%
+    }{\textbf{\begingroup\def\ideaterm##1##2{##2}\def\idearest##1{}\@nameuse{@idea@#2}\endgroup}}%
+  \else
+    \textbf{#1}%
+  \fi}
+% \ideaterm{<hypertarget>}{<words>}: inside an abstract idea the words become an
+% invisible link (the document sets \hypersetup{hidelinks}) jumping to the place
+% in Main Results that defines them; inside the Main Results heading itself,
+% where the target sits a few lines below, \ideahead strips the link and prints
+% the words plainly. Mark the destination with \hypertarget{<name>}{} on the line
+% before the display, which adds no equation number and shows nothing.
+\newcommand{\ideaterm}[2]{\hyperlink{#1}{#2}}
+% \idearest{<text>}: the part of an abstract idea after its first sentence; printed in
+% the abstract, omitted from the Main Results heading.
+\newcommand{\idearest}[1]{#1}
+\makeatother
+
+% ======================================================================
+% SHORT-PAPER SWITCH
+% \shorttrue in a master that assembles only part of the companion paper
+% (Barrat/SipArxiv.tex). \nsh{...} drops text that cites results living in the
+% omitted sections, so the short build has no dangling references while the
+% companion paper keeps the text verbatim.
+% ======================================================================
+\newif\ifshort \shortfalse
+\newcommand{\nsh}[1]{\ifshort\else#1\fi}
+% \shortalt{<short build>}{<companion paper>}: use when a sentence needs
+% different wording in the two builds, not merely a deletion.
+\newcommand{\shortalt}[2]{\ifshort#1\else#2\fi}
+% \Jtr, \JtrS{\Sigma}: transverse Jacobian. J^\perp here; SipArxiv.tex redefines them as J_{\mathrm{tra}}, J_{\mathrm{tra},\Sigma}
+\newcommand{\Jtr}{J^\perp}
+\newcommand{\JtrS}[1]{J_{#1}^\perp}
